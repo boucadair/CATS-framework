@@ -1,7 +1,7 @@
 ---
 title: Framework for Computing-Aware Networking
 abbrev: CAN Framework
-docname: draft-xxx-can-framework-00
+docname: draft-xxx-can-framework-latest
 date:
 category: info
 submissionType: IETF
@@ -195,7 +195,7 @@ The service metric advertisements are consumed by the C-PS at CAN-Router 1 that 
 ~~~
 {: #fig-can-example-overlay title="Example CAN Metric Distribution"}
 
-The above example mainly describes a per-instance computing-related metrics distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID will not be included in the distribution. Instead, a per-site CB-ID may be used in the case of multiple sites are attached to the Egress CAN router to indicate from which site the aggregated metrics come. 
+The above example mainly describes a per-instance computing-related metrics distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID will not be included in the distribution. Instead, a per-site CB-ID may be used in the case of multiple sites are attached to the Egress CAN router to indicate from which site the aggregated metrics come.
 
 However, CB-ID is not needed in the distribution (in above example) if the edge site can support consistently service instance selection. For easy deployment, aggregated per-site computing-related metrics distribution is recommeded.
 
