@@ -125,9 +125,9 @@ CAN Service ID (CS-ID):
 CAN Binding ID (CB-ID):
 : An identifier of a single service instance or site of a given service instance (CS-ID).
 
-## CAN Componenets
+## CAN Components
 
-The network takes the forwarding decision for a service demand received from a client according to both service instances status as well as network status. The framework is shown in {{fig-can-fw}}.
+The network takes forwarding decisions for a service demand received from a client according to both service instances status as well as network status. The main CAN functional elements and their interactions are shown in {{fig-can-fw}}.
 
 ~~~ aasvg
       +-----+              +------+            +------+
@@ -164,23 +164,23 @@ The network takes the forwarding decision for a service demand received from a c
 
               edge site 1                   edge site 2
 ~~~
-{: #fig-can-fw title="CAN Framework."}
+{: #fig-can-fw title="CAN Functional Components"}
 
-Edge sites (edges for short) are the sites that provide acess to edge computing resources. A compute service (e.g., a matrix computation for face recognition or a game server) is uniquely identified by a CAN Service ID (CS-ID).
+Edge sites (edges for short) are the sites that provide access to edge computing resources. A compute service (e.g., a matrix computation for face recognition or a game server) is uniquely identified by a CAN Service ID (CS-ID).
 
 Service instances can be hosted on the edge nodes themselves or on servers or virtual machines accessed through the edge sites (such as in an edge data center). Service instances can be instantiated and access through different edge sites so that a single service can have a significant number of instances running at different places in the network.
 
-{{fig-can-fw}} shows two edge sites (CAN-Router 1 and CAN-Router 3) that provide access to service instances. These are Egress CAN-Routers.
+{{fig-can-fw}} shows two edge nodes (CAN-Router 1 and CAN-Router 3) that provide access to service instances. These nodes behaves as Egress CAN-Routers.
 
-The CAN Service Metric Agent (C-SMA) is a functional component that gathers information about edge site and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances in or next to the Egress CAN-Routers. {{fig-can-fw}} shows one C-SMA collocated with CAN-Router 3, and another C-SMA adjacent to CAN-Router 1.
+The CAN Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances in or next to the Egress CAN-Routers. {{fig-can-fw}} shows one C-SMA collocated with CAN-Router 3, and another C-SMA adjacent to CAN-Router 1.
 
-The CAN Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as separate components or may form part of existing components such as CAN-Routers or CAN Path Selectors. {{fig-can-fw}} shows a single C-NMA located independently within the underlay network. There may be one or more C-NMAs for an underlay network.
+The CAN Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as separate components or may form part of existing components such as CAN-Routers or CAN Path Selectors (C-PS). {{fig-can-fw}} shows a single C-NMA located independently within the underlay network. There may be one or more C-NMAs for an underlay network.
 
-The C-SMAs and C-NMAs share the information that they collect with CAN Path Selectors (C-PSs) that use the information to select the Egress CAN-Routers (and potentially the service instances) to which to forward traffic for a service demand. They also determine the best paths (possibly tunnels) to use to forward the traffic depending on the network behavior required for the service and the current network state. The information is presented as one or more metrics and associate with the CS-ID.
+The C-SMAs and C-NMAs share the collected information with CAN Path Selectors (C-PSes) that use the information to select the Egress CAN-Routers (and potentially the service instances) to which to forward traffic for a service demand. They also determine the best paths (possibly tunnels) to use to forward the traffic depending on the network behavior required for the service and the current network state. The information is presented as one or more metrics and associate with the CS-ID.
 
-There may be one or more C-PSs in the network. They can be integrated into the Ingress CAN-Routers (as with CAN-Router 2 in {{fig-can-fw}}) or they may be separate components that communicate with the Ingress CAN-Routers (as with CAN-Router 4 in {{fig-can-fw}}).
+There may be one or more C-PSes in the network. They can be integrated into the Ingress CAN-Routers (as with CAN-Router 2 in {{fig-can-fw}}) or they may be separate components that communicate with the Ingress CAN-Routers (as with CAN-Router 4 in {{fig-can-fw}}).
 
-The final functional component of a CAN system is the CAN Traffic Classifier (C-TC). This is responsible for selecting the incoming packets that belong to the same service demand and ensuring that they are steered onto the same path toward the same service instance as instructed by the C-PS component. There is a C-TC in each Ingress CAN Router.
+Last, CAN Traffic Classifier (C-TC) is a functional component that is responsible for selecting incoming packets that belong to the same service demand and ensuring that they are steered onto the same path toward the same service instance as instructed by a C-PS component. There is a C-TC in each Ingress CAN Router.
 
 The Egress CAN-Routers are the egress endpoints of overlay paths. A site supporting service instances may be linked to one or more Egress CAN routers (that is, dual-homing is supported). If the C-PS has selected a specific service instance and the C-TC has marked the traffic with the CB-ID, the Egress CAN-Router simply forwards the traffic to the correct service instance. In some cases, the choice of service instance may be left open to the Egress CAN-Router (the traffic is marked only with the CS-ID) and in this case the Egress CAN-Router selects an appropriate service instance (using local knowledge of capabilities and current load), but must be sure to deliver all packets from the same service demand to the same service instance.
 
@@ -188,8 +188,9 @@ Note that, depending on deployment and service requirements, per-instance comput
 
 In {{fig-can-fw}}, the "underlay infrastructure" indicates the general IP/MPLS infrastructure that is not aware of CAN. The CAN routes will be distributed among the overlay CAN-Routers assisted by the C-PS, and will not affect the underlay nodes. An implementation may use a control plane or management plane solution to distribute the server metrics, network metrics, and underlay routes - this document dose not define a specific solution.
 
-The above text describes a functional architeture as a distributed framework for CAN. However, an implementation may collocate or combine many of the functional components. One possibility is a centralized implementation where the computing-related metrics from the C-SMAs are collected by a centralized controller/PCE that also collects the network metrics, and which acts on service requests to produce paths and service instance selections that it programs into the relevant C-TCs.
+## Deployment Considerations
 
+This document does not make an assumption about how the various CAN functional elements are implemented. Whether a CAN deployment follows a fully distributed or collocate or combine many of the functional components is deployment specific. One possibility is a centralized implementation where the computing-related metrics from the C-SMAs are collected by a centralized controller/PCE that also collects the network metrics, and which acts on service requests to produce paths and service instance selections that it programs into the relevant C-TCs.
 
 # CAN Framework Workflow
 
@@ -199,9 +200,9 @@ The following subsections provide an overview of how the CAN workflow operates i
 
 A service is associated with a unique identifier called a CS-ID. A CS-ID may be a network identifier, such as an IP address. The mapping of CS-ID to network identifier may learned through a name resolution service such as DNS.
 
-## Metric Distributions
+## Metrics Distribution
 
-As described above, a C-SMA collects service-related capabilities and metrics and associates them with a CS-ID that identifies the service. It may aggregate the metrics for multiple service instances, or maintain them separately. The C-SMA then sends (advertises) the CS-ID along with the metrics to be received by all C-PSs in the network. The service-related metrics include computing-related metrics and potentially other service metrics if needed.
+A C-SMA collects service-related capabilities and metrics and associates them with a CS-ID that identifies the service. It may aggregate the metrics for multiple service instances, or maintain them separately. The C-SMA then sends (advertises) the CS-ID along with the metrics to be received by all C-PSs in the network. The service-related metrics include computing-related metrics and potentially other service metrics if needed.
 
 Computing metrics may change very frequently (see {{?I-D.liu-can-ps-usecases}} for a discussion). When and how frequently such information is distributed is to be determined as part of the specification of any distribution protocol. A spectrum of approaches can be employed, such as interval based updates, threshold triggered updates, policy based updates, etc.
 
