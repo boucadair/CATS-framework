@@ -1,5 +1,5 @@
 ---
-title: Framework for Computing-Aware Networking
+title: A Framework for Computing-Aware Networking (CAN)
 abbrev: CAN Framework
 docname: draft-xxx-can-framework-latest
 date:
@@ -9,7 +9,10 @@ submissionType: IETF
 ipr: trust200902
 area: Routing area
 workgroup: can
-keyword: Internet-Draft
+keyword:
+ - User Experience
+ - Collaborative Networking
+ - Service optimization
 
 coding: us-ascii
 pi: [toc, sortrefs, symrefs]
@@ -21,58 +24,112 @@ author:
   organization: XXX
   email: XX@XX.COM
   country: XXX
+ -
+    fullname: Mohamed Boucadair
+    organization: Orange
+    email: mohamed.boucadair@orange.com
+
+contributor:
+  -
+    name: Huijuan Yao
+    org: China Mobile
+    email: yaohuijuan@chinamobile.com
+
+  -
+    name: Hang Shi
+    org: Huawei
+    email: shihang9@huawei.com
+
 
 normative:
 
 informative:
-  I-D.liu-can-ps-usecases:
 
-...
 
 --- abstract
 
-This document describes a framework for Computing-Aware Networking (CAN). It includes a framework overview, main components, and the workflow of the control plane and data plane.
+This document describes a framework for Computing-Aware Networking (CAN). Particularly, the document identifies a set of CAN components, describes their interactions, and exemplifies the workflow of the control plane and data plane.
 
 --- middle
 
 # Introduction
 
-Edge computing has been expanding from single edge nodes to multiple networked collaborating edge nodes to solve issues like response time, resource optimization, and network efficiency.
+Edge computing architectures have been expanding from single edge nodes to multiple interconnected collaborating edge nodes to address issues, such as long response times, suboptimal service resource utilization, and inefficient network utilization.
 
-The network architecture for edge computing has previously provided only relatively static service dispatching, often directing service traffic to the closest edge from an IGP perspective, or to the server with the most computing resources without considering the network status, and even sometimes just based on static configuration.
+The underlying networking architectures for edge computing usually provide relatively static service dispatching. In such architectures, the service traffic is often directed to the closest edge from a routing perspective or to the server with the most computing resources without considering the network status, and even sometimes simply based on static configurations.
 
-As described in {{I-D.liu-can-ps-usecases}}, traffic steering that takes into account computing resource metrics would benefit several use-cases, such as augmented reality or virtual reality (AR/VR). This document provides an architectural framework, which will enable compute- and network-aware traffic steering decisions in edge computing.
+As described in {{?I-D.liu-can-ps-usecases}}, traffic steering that takes into account computing resource metrics would benefit several services, such as augmented reality or virtual reality (AR/VR). This document provides an architectural framework, which will enable compute- and network-aware traffic steering decisions in edge computing.
 
-The Computing-Aware Networking (CAN) framework presented in this document is an ingress-based overlay framework for the selection of a suitable service instance from a set of possibly several canditates, where 'suitable' may be determined through a combination of networking and computing related metrics.
+The Computing-Aware Networking (CAN) framework assumes that there may be multiple service instances running on different edge nodes, globally providing one single service. A single edge may have limited computing resources (such as CPU or GPU) available, and different edges likely have different resources available. A single edge may host multiple instances of a service, or just one.
 
-CAN assumes that there may be multiple service instances running on different edge nodes, globally providing one single service. A single edge may have limited computing resources (such as CPU or GPU) available, and different edges likely have different resources available. A single edge may host multiple instances of a service, or just one.
+The CAN framework is an ingress-based overlay framework for the selection of the suitable service instance(s) from a set of instance candidates. The exact characterization of 'suitable' will be determined by a combination of networking and computing related metrics. To that aim, the CAN framework assumes that edge nodes collaborate with each other to achieve a global objective of dispatching service demands, by taking into account both service instances status and network state (e.g., forwarding path length, cost, and congestion).
 
-The main principle of this CAN framework is that edge nodes are interconnected and collaborate with each other to achieve a holistic objective of dispatching service demands, by taking into account both service instance status and network state (e.g., path length, cost, and levels of congestion).
-
-This document describes a framework to realize CAN, and the workflows of rhe main procedures in the control and data planes.
+Also, this document describes a workflows of the main CAN procedures in both the control and data planes.
 
 # Terminology
 
-- CAN: Computing-Aware Networking takes into account the dynamic nature of computing resource metrics and network state metrics to steer service traffic to a service instance.
-- Service: A monolithic function that is provided by a network operator according to a specification. A composite service can be built by orchestrating monolithic services.
-- Service instance: A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can have multiple instances running at the same or different network locations.
-- CS-ID: The CAN Service ID is an identifier representing a service, which the clients use to access said service. Such an identifier identifies all of the instances of the same service, no matter on where they are actually running. The CS-ID is independent of which service instance serves the service demand. Usually multiple instances provide a (logically) single service, and service demands are dispatched to the different instance by choosing one instance among all available instances.
-- CB-ID: The CAN Binding ID is an identifier of a single service instance/site of a given CS-ID.
-- Service demand: The demand for a specific service identified by a specific CS-ID.
-- Service request: The request for a specific service instance.
-- CAN-Router: A network device (usualy at the edge of the network) that makes forwarding decisions based on CAN information to steer traffic belonging to the same service demand to the same chosen service instance.
-- Ingress CAN-Router: A network edge router that serves as a service access point for CAN clients. It steers the service packets onto an overlay path to an Egress CAN-Router linked to the most suitable edge site to access a service instance.
-- Egress CAN-Router: An Egress CAN-Router is the egress endpoint of an overlay path.
-- C-SMA: The CAN Service Metric Agent responsible for collecting service capabilities and status, and for reporting them to the C-PS.
-- C-NMA: The CAN Network Metric Agent responsible for collecting network capabilities and status, and for reporting them to the C-PS.
-- C-PS: The CAN Path Selector determines the path toward the appropriate service location and service instances to meet a service demand given the service status and network status information.
-- C-TC: The CAN Traffic Classifier is responsible for determining which packets belong to a traffic flow for a particular service demand, and for steering them on the path to the service instance as determined by the C-PS.
+This document makes use of the following terms:
+
+Client:
+: An endpoint that is connected to a service provider network.
+
+Computing-Aware Networking (CAN):
+ :  An architecture that takes into account the dynamic nature of computing resources and network state to steer service traffic to a service instance. This dynamicity is expressed by means of relevant metrics.
+
+Service:
+  : A monolithic function that is provided by a network operator according to a specification. A composite service can be built by orchestrating multiple monolithic services.
+
+Service instance:
+  : A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can be exposed by multiple instances running at the same or different network locations.
+
+Service demand:
+: The demand for a service identified by a CS-ID.
+
+Service request:
+ : The request for a specific service instance.
+
+CAN-Router:
+ : A network device (usually at the edge of the network) that makes forwarding decisions based on CAN information to steer traffic belonging to the same service demand to the same selected service instance.
+
+Ingress CAN-Router:
+ : A network edge router that serves as a service access point for CAN clients. It steers the service packets onto an overlay path to an Egress CAN-Router linked to the most suitable edge site to access a service instance.
+
+Egress CAN-Router:
+: An egress endpoint of an overlay path and which connected a CAN-serviced site.
+
+CAN Service Metric Agent (C-SMA):
+ : Responsible for collecting service capabilities and status, and reporting them to a CAN Path Selector (C-PS).
+
+CAN Network Metric Agent (C-NMA):
+  : Responsible for collecting network capabilities and status, and reporting them to a C-PS.
+
+CAN Path Selector (C-PS):
+ : An entity that determines the path toward the appropriate service location and service instances to meet a service demand given the service status and network status information.
+
+CAN Traffic Classifier (C-TC):
+ : Responsible for determining which packets belong to a traffic flow for a particular service demand, and for steering them on the path to the service instance as determined by a C-PS.
 
 # Framework and Components {#Framework-and-concepts}
 
-CAN assumes that there are multiple equivalent service instances running on different edge sites, providing one single service which is represented by CS-ID. The network will take forwarding decision for the service demand from the client according to both service instances status as well as network status. The framework is shown below.
+## Assumptions
 
-~~~
+CAN assumes that there are multiple service instances running on different edge sites, providing one single service which is represented by the same service identifier (see {{can-ids}}.
+
+## CAN Identifiers {#can-ids}
+
+CAN introduces the following identifiers:
+
+CAN Service ID (CS-ID):
+  : An identifier representing a service, which the clients use to access said service. Such an ID identifies all of the instances of the same service, no matter on where they are actually running. The CS-ID is independent of which service instance serves the service demand. Usually multiple instances provide a (logically) single service, and service demands are dispatched to the different instance by choosing one instance among all available instances.
+
+CAN Binding ID (CB-ID):
+: An identifier of a single service instance or site of a given service instance (CS-ID).
+
+## CAN Componenets
+
+The network takes the forwarding decision for a service demand received from a client according to both service instances status as well as network status. The framework is shown in {{fig-can-fw}}.
+
+~~~ aasvg
       +-----+              +------+            +------+
     +------+|            +------+ |          +------+ |
     |client|+            |client|-+          |client|-+
@@ -109,9 +166,9 @@ CAN assumes that there are multiple equivalent service instances running on diff
 ~~~
 {: #fig-can-fw title="CAN Framework."}
 
-Edge sites (edges for short) are the sites that provide acess to edge computing. A compute service (e.g., a matrix computation for face recognition, or a game server) is uniquely identified by a CAN Service ID (CS-ID).
+Edge sites (edges for short) are the sites that provide acess to edge computing resources. A compute service (e.g., a matrix computation for face recognition or a game server) is uniquely identified by a CAN Service ID (CS-ID).
 
-Service instances can be hosted on the edge sites themselves or on servers or virtual machines accessed through the edge sites (such as in an edge data center). Service instances can be instantiated and access through different edge sites so that a single service can have a significant number of instances running at different places in the network.
+Service instances can be hosted on the edge nodes themselves or on servers or virtual machines accessed through the edge sites (such as in an edge data center). Service instances can be instantiated and access through different edge sites so that a single service can have a significant number of instances running at different places in the network.
 
 {{fig-can-fw}} shows two edge sites (CAN-Router 1 and CAN-Router 3) that provide access to service instances. These are Egress CAN-Routers.
 
@@ -136,7 +193,7 @@ The above text describes a functional architeture as a distributed framework for
 
 # CAN Framework Workflow
 
-The following section provides an overview of how the CAN workflow operates in the distributed functional architecture.
+The following subsections provide an overview of how the CAN workflow operates in a distributed architecture.
 
 ## Service Announcements
 
@@ -146,7 +203,7 @@ A service is associated with a unique identifier called a CS-ID. A CS-ID may be 
 
 As described above, a C-SMA collects service-related capabilities and metrics and associates them with a CS-ID that identifies the service. It may aggregate the metrics for multiple service instances, or maintain them separately. The C-SMA then sends (advertises) the CS-ID along with the metrics to be received by all C-PSs in the network. The service-related metrics include computing-related metrics and potentially other service metrics if needed.
 
-Computing metrics may change very frequently (see {{I-D.liu-can-ps-usecases}} for a discussion). When and how frequently such information is distributed is to be determined as part of the specification of any distribution protocol. A spectrum of approaches can be employed, such as interval based updates, threshold triggered updates, policy based updates, etc.
+Computing metrics may change very frequently (see {{?I-D.liu-can-ps-usecases}} for a discussion). When and how frequently such information is distributed is to be determined as part of the specification of any distribution protocol. A spectrum of approaches can be employed, such as interval based updates, threshold triggered updates, policy based updates, etc.
 
 Additionally, the C-NMA collects network-related capabilities and metrics. These may be collected and distributed by existing network routing protocols, although enhancements may be needed to distribute additional information not previously available (such as link latency, etc.). The C-NMA distributes the network metrics to the C-PSs so that they can use the combination of service metrics and network metrics to determine the best Egress CAN-Router to provide access to a service instance to provide the compute function needed by a service demand.
 
@@ -158,7 +215,7 @@ In the example, the C-SMA collocated with CAN-Router 2 distributes the service m
 
 The service metric advertisements are consumed by the C-PS at CAN-Router 1 that provides access for the client. The C-PS also consumes network metric advertisements from the C-NMA. All of the metrics are used by the C-PS to determine the best Egress CAN-Router to which to send traffic (and on what path) for the client's service demand given the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances reported by the metrics, and the state of the network.
 
-~~~
+~~~ aasvg
             Service CS-ID 1, instance CB-ID 1 <metrics>
             Service CS-ID 1, instance CB-ID 2 <metrics>
                    :<----------------------:
@@ -243,8 +300,3 @@ A network operator will want to be able to determine the causes of "hot spots" w
 # IANA Considerations
 
 This document makes no requests for IANA action.
-
-# Contributors
-
-- Huijuan Yao, yaohuijuan@chinamobile.com, China Mobile
-- Hang Shi, shihang9@huawei.com, Huawei
