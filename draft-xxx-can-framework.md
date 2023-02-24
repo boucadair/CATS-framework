@@ -206,8 +206,6 @@ A service is associated with a unique identifier called a CS-ID. A CS-ID may be 
 
 TBC.
 
-## 
-
 ## Metrics Distribution
 
 A C-SMA collects service-related capabilities and metrics and associates them with a CS-ID that identifies the service. It may aggregate the metrics for multiple service instances, or maintain them separately. The C-SMA then sends (advertises) the CS-ID along with the metrics to be received by all C-PSes in the network. The service-related metrics include computing-related metrics and potentially other service metrics, if needed.
