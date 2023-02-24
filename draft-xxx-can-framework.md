@@ -83,7 +83,7 @@ Service instance:
   : A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can be exposed by multiple instances running at the same or different network locations.
 
 Service demand:
-: The demand for a service identified by a CS-ID.
+: The demand for a service identified by a  CAN Service ID (CS-ID). See {{can-ids}} for more details.
 
 Service request:
  : The request for a specific service instance.
@@ -200,6 +200,14 @@ The following subsections provide an overview of how the CAN workflow operates i
 
 A service is associated with a unique identifier called a CS-ID. A CS-ID may be a network identifier, such as an IP address. The mapping of CS-ID to network identifier may learned through a name resolution service such as DNS.
 
+## Provisioning CAN Elements
+
+--detail any required provisioning at CAN elements (boptsrapping, credentials of peer CAN nodes, services, optimization metrics per service, etc.)--
+
+TBC.
+
+## 
+
 ## Metrics Distribution
 
 A C-SMA collects service-related capabilities and metrics and associates them with a CS-ID that identifies the service. It may aggregate the metrics for multiple service instances, or maintain them separately. The C-SMA then sends (advertises) the CS-ID along with the metrics to be received by all C-PSes in the network. The service-related metrics include computing-related metrics and potentially other service metrics, if needed.
@@ -257,7 +265,6 @@ The above example mainly describes a per-instance computing-related metrics dist
 
 However, CB-ID is not needed in the distribution (in above example) if the edge site can support consistently service instance selection. For easy deployment, aggregated per-site computing-related metrics distribution is recommeded.
 
-
 ## Service Demand Handling
 
 The C-PS determines the best choice of Egress CAN-Router and path to that router given the service and network metrics distributed as described in the previous section. The C-PS may be collocated with the Ingress CAN-Router (as shown in {{fig-can-example-overlay}}) or the selection function may be offloaded to a dedicated server.
@@ -288,7 +295,9 @@ This document does not define the specific mechanisms for defining or applying s
 
 The computing resource information changes over time very frequently and with the creation and termination of service instances. When such information is carried in routing protocol, too many updates can make the network fluctuate. This instability could be leveraged by an attacker (for example, by spawning and deleting service instances very rapidly). Protocols must, therefore, include aggregation techniques, dampening mechanisms, and threshold to update distriution.
 
-The information distributed by the C-SMA and C-NMA may reveal important facts about the network and the location of compute resources at edge sites. This information could be used by an attacker to understand the weak spots in the operator's network. Furthermore, such information could be modified by an attacker resulting in disrupted service deliver for the clients, up to and including misdirection of traffic to an attacker's service implementation at an edge site. Therefore, solutions to this architecture must include authentication and security of information exchanges between C-SMAs/C-NMAs and C-PCs, and between C-PCs and Ingress CAN-Routers. Furthermore, C-SMAs need to consider ways to authenticate the services provided at the edge sites that they serve.
+The information distributed by the C-SMA and C-NMA may reveal important information about the network and the location of compute resources at edge sites. This information could be used by an attacker to understand the weak spots in the operator's network. Furthermore, such information could be modified by an attacker resulting in disrupted service deliver for the clients, up to and including misdirection of traffic to an attacker's service implementation at an edge site. Therefore, solutions to this architecture must include authentication and security of information exchanges between C-SMAs/C-NMAs and C-PCs, and between C-PCs and Ingress CAN-Routers. Furthermore, C-SMAs need to consider ways to authenticate the services provided at the edge sites that they serve.
+
+--Discuss more threats: integrity-protection of advertized informaiton, origin authentication, prevent ddos, ...
 
 # Privacy Considerations
 
