@@ -1,3 +1,4 @@
+---
 title: A Framework for Computing-Aware Networking (CAN)
 abbrev: CAN Framework
 docname: draft-xxx-can-framework-latest
@@ -38,15 +39,6 @@ contributor:
     name: Hang Shi
     org: Huawei
     email: shihang9@huawei.com
-
-
-
-contributor:
- -
-  name: Huijuan Yao
-  org: China Mobile
-  email: yaohuijuan@chinamobile.com
-
 
 
 normative:
@@ -305,6 +297,8 @@ TBD
 # IANA Considerations
 
 This document makes no requests for IANA action.
+
+--- back
 
 # Acknowledgements
 
