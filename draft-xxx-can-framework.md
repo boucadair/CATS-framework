@@ -1,3 +1,4 @@
+---
 title: A Framework for Computing-Aware Networking (CAN)
 abbrev: CAN Framework
 docname: draft-xxx-can-framework-latest
@@ -8,10 +9,7 @@ submissionType: IETF
 ipr: trust200902
 area: Routing area
 workgroup: can
-keyword:
- - User Experience
- - Collaborative Networking
- - Service optimization
+keyword: Internet-Draft
 
 coding: us-ascii
 pi: [toc, sortrefs, symrefs]
@@ -23,22 +21,6 @@ author:
   organization: XXX
   email: XX@XX.COM
   country: XXX
- -
-    fullname: Mohamed Boucadair
-    organization: Orange
-    email: mohamed.boucadair@orange.com
-
-contributor:
-  -
-    name: Huijuan Yao
-    org: China Mobile
-    email: yaohuijuan@chinamobile.com
-
-  -
-    name: Hang Shi
-    org: Huawei
-    email: shihang9@huawei.com
-
 
 
 contributor:
@@ -52,7 +34,9 @@ contributor:
 normative:
 
 informative:
+  I-D.liu-can-ps-usecases:
 
+...
 
 --- abstract
 
@@ -79,50 +63,35 @@ Also, this document describes a workflows of the main CAN procedures in both the
 
 This document makes use of the following terms:
 
-Client:
-: An endpoint that is connected to a service provider network.
+- Client:An endpoint that is connected to a service provider network.
 
-Computing-Aware Networking (CAN):
- :  An architecture that takes into account the dynamic nature of computing resources and network state to steer service traffic to a service instance. This dynamicity is expressed by means of relevant metrics.
+- Computing-Aware Networking (CAN): An architecture that takes into account the dynamic nature of computing resources and network state to steer service traffic to a service instance. This dynamicity is expressed by means of relevant metrics.
 
-CAN Service ID (CS-ID):
- : An identifier representing a service, which the clients use to access said service.
+- Service: A function that is provided by a network operator according to a specification.
 
-CAN Binding ID (CB-ID):
- : An identifier of a single service instance or site of a given service instance (CS-ID).
+- Service instance: A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can be exposed by multiple instances running at the same or different network locations.
 
-Service:
-  : A monolithic function that is provided by a network operator according to a specification. A composite service can be built by orchestrating multiple monolithic services.
+- CAN Service ID (CS-ID):  An identifier representing a service, which the clients use to access said service.
 
-Service instance:
-  : A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can be exposed by multiple instances running at the same or different network locations.
+- CAN Binding ID (CB-ID): An identifier of a single service instance or site of a given service instance (CS-ID).
 
-Service demand:
-: The demand for a service identified by a  CAN Service ID (CS-ID). See {{can-ids}} for more details.
+- Service demand: The demand for a specific service identified by a specific CS-ID.
 
-Service request:
- : The request for a specific service instance.
+- Service request: The request for a specific service instance.
 
-CAN-Router:
- : A network device (usually at the edge of the network) that makes forwarding decisions based on CAN information to steer traffic belonging to the same service demand to the same selected service instance.
+- CAN-Router: A network device (usually at the edge of the network) that makes forwarding decisions based on CAN information to steer traffic belonging to the same service demand to the selected chosen service instance.
 
-Ingress CAN-Router:
- : A network edge router that serves as a service access point for CAN clients. It steers the service packets onto an overlay path to an Egress CAN-Router linked to the most suitable edge site to access a service instance.
+- Ingress CAN-Router: A network edge router that serves as a service access point for CAN clients. It steers the service packets onto an overlay path to an Egress CAN-Router linked to the most suitable edge site to access a service instance.
 
-Egress CAN-Router:
-: An egress endpoint of an overlay path and which connected a CAN-serviced site.
+- Egress CAN-Router: An egress endpoint of an overlay path and which connected a CAN-serviced site.
 
-CAN Service Metric Agent (C-SMA):
- : Responsible for collecting service capabilities and status, and reporting them to a CAN Path Selector (C-PS).
+- CAN Service Metric Agent (C-SMA):Responsible for collecting service capabilities and status, and reporting them to a CAN Path Selector (C-PS).
 
-CAN Network Metric Agent (C-NMA):
-  : Responsible for collecting network capabilities and status, and reporting them to a C-PS.
+- CAN Network Metric Agent (C-NMA): Responsible for collecting network capabilities and status, and reporting them to a C-PS.
 
-CAN Path Selector (C-PS):
- : An entity that determines the path toward the appropriate service location and service instances to meet a service demand given the service status and network status information.
+- CAN Path Selector (C-PS): An entity that determines the path toward the appropriate service location and service instances to meet a service demand given the service status and network status information.
 
-CAN Traffic Classifier (C-TC):
- : Responsible for determining which packets belong to a traffic flow for a particular service demand, and for steering them on the path to the service instance as determined by a C-PS.
+- CAN Traffic Classifier (C-TC): Responsible for determining which packets belong to a traffic flow for a particular service demand, and for steering them on the path to the service instance as determined by a C-PS.
 
 # Framework and Components {#Framework-and-concepts}
 
@@ -134,17 +103,15 @@ CAN assumes that there are multiple service instances running on different edge 
 
 CAN introduces the following identifiers:
 
-CAN Service ID (CS-ID):
-  : An identifier representing a service, which the clients use to access said service. Such an ID identifies all of the instances of the same service, no matter on where they are actually running. The CS-ID is independent of which service instance serves the service demand. Usually multiple instances provide a (logically) single service, and service demands are dispatched to the different instance by choosing one instance among all available instances.
+- CAN Service ID (CS-ID): An identifier representing a service, which the clients use to access said service. Such an ID identifies all of the instances of the same service, no matter on where they are actually running. The CS-ID is independent of which service instance serves the service demand. Usually multiple instances provide a (logically) single service, and service demands are dispatched to the different instance by choosing one instance among all available instances.
 
-CAN Binding ID (CB-ID):
-: An identifier of a single service instance or site of a given service instance (CS-ID).
+- CAN Binding ID (CB-ID): An identifier of a single service instance or site of a given service instance (CS-ID).
 
 ## CAN Components
 
 The network takes forwarding decisions for a service demand received from a client according to both service instances status as well as network status. The main CAN functional elements and their interactions are shown in {{fig-can-fw}}.
 
-~~~ aasvg
+~~~
       +-----+              +------+            +------+
     +------+|            +------+ |          +------+ |
     |client|+            |client|-+          |client|-+
@@ -207,6 +174,7 @@ In {{fig-can-fw}}, the "underlay infrastructure" indicates the general IP/MPLS i
 
 This document does not make an assumption about how the various CAN functional elements are implemented. Whether a CAN deployment follows a fully distributed or collocate or combine many of the functional components is deployment specific. One possibility is a centralized implementation where the computing-related metrics from the C-SMAs are collected by a centralized controller/PCE that also collects the network metrics, and which acts on service requests to produce paths and service instance selections that it programs into the relevant C-TCs.
 
+
 # CAN Framework Workflow
 
 The following subsections provide an overview of how the CAN workflow operates in a distributed functional architecture.
@@ -231,7 +199,7 @@ In this example, the C-SMA collocated with CAN-Router 2 distributes the service 
 
 The service metric advertisements are consumed by the C-PS at CAN-Router 1 that provides access for the client. The C-PS also consumes network metric advertisements from the C-NMA. All of the metrics are used by the C-PS to determine the best Egress CAN-Router to which to send traffic (and on what path) for the client's service demand given the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances reported by the metrics, and the state of the network.
 
-~~~ aasvg
+~~~
             Service CS-ID 1, instance CB-ID 1 <metrics>
             Service CS-ID 1, instance CB-ID 2 <metrics>
                    :<----------------------:
@@ -272,6 +240,7 @@ The above example mainly describes a per-instance computing-related metrics dist
 
 However, CB-ID is not needed in the distribution (in above example) if the edge site can support consistently service instance selection. For easy deployment, aggregated per-site computing-related metrics distribution is recommeded.
 
+
 ## Service Demand Handling
 
 The C-PS determines the best choice of Egress CAN-Router and path to that router given the service and network metrics distributed as described in the previous section. The C-PS may be collocated with the Ingress CAN-Router (as shown in {{fig-can-example-overlay}}) or the selection function may be offloaded to a dedicated server.
@@ -306,9 +275,6 @@ TBD
 
 This document makes no requests for IANA action.
 
-# Acknowledgements
+#Acknowledgements
 
-The authors would like to thank Joel Halpern, John Scudder, Dino Farinacci, Adrian Farrel,
-Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Fang Gao, Aijun Wang,Cong Li,
-Xinxin Yi, Dirk Trossen, Luigi IANNONE, Yizhou Li, Jari Arkko, Mingyu Wu, Haibo Wang,
-Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li, and Xinyue Zhang for their comments and suggestions.
+The authors would like to thank Joel Halpern, John Scudder, Dino Farinacci, Adrian Farrel, Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Aijun Wang,Cong Li, Xinxin Yi, Dirk Trossen, Luigi IANNONE, Yizhou Li, Jari Arkko, Mingyu Wu, Haibo Wang, Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li, and Xinyue Zhang for their comments and suggestions.
