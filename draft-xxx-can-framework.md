@@ -1,7 +1,7 @@
 ---
-title: Framework for Computing-Aware Networking
+title: A Framework for Computing-Aware Networking
 abbrev: CAN Framework
-docname: draft-xxx-can-framework-00
+docname: draft-xxx-can-framework-latest
 date:
 category: info
 submissionType: IETF
