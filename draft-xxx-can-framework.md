@@ -86,7 +86,7 @@ Computing-Aware Networking (CAN):
  :  An architecture that takes into account the dynamic nature of computing resources and network state to steer service traffic to a service instance. This dynamicity is expressed by means of relevant metrics.
 
 CAN Service ID (CS-ID):
- : An identifier representing a service, which the clients use to access said service. 
+ : An identifier representing a service, which the clients use to access said service.
 
 CAN Binding ID (CB-ID):
  : An identifier of a single service instance or site of a given service instance (CS-ID).
@@ -268,7 +268,7 @@ The service metric advertisements are consumed by the C-PS at CAN-Router 1 that 
 ~~~
 {: #fig-can-example-overlay title="Example CAN Metric Distribution"}
 
-The above example mainly describes a per-instance computing-related metrics distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID will not be included in the distribution. Instead, a per-site CB-ID may be used in the case of multiple sites are attached to the Egress CAN router to indicate from which site the aggregated metrics come. 
+The above example mainly describes a per-instance computing-related metrics distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID will not be included in the distribution. Instead, a per-site CB-ID may be used in the case of multiple sites are attached to the Egress CAN router to indicate from which site the aggregated metrics come.
 
 However, CB-ID is not needed in the distribution (in above example) if the edge site can support consistently service instance selection. For easy deployment, aggregated per-site computing-related metrics distribution is recommeded.
 
