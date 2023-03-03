@@ -8,7 +8,7 @@ submissionType: IETF
 
 ipr: trust200902
 area: Routing area
-workgroup: can
+workgroup: cats
 keyword:
  - User Experience
  - Collaborative Networking
