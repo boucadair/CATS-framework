@@ -2,10 +2,10 @@
 
 This is the working area for the individual Internet-Draft, "A Framework for Computing-Aware Traffic Steering (CATS)".
 
-* [Editor's Copy](https://boucadair.github.io/can-framework/#go.draft-lbc-cats-framework.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-lbc-cats-framework)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-lbc-cats-framework)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/can-framework/#go.draft-lbc-cats-framework.diff)
+* [Editor's Copy](https://boucadair.github.io/can-framework/#go.draft-ldbc-cats-framework.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ldbc-cats-framework)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-ldbc-cats-framework)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/can-framework/#go.draft-ldbc-cats-framework.diff)
 
 
 ## Contributing
