@@ -1,6 +1,6 @@
-# TODO - Your title
+# A Framework for Computing-Aware Traffic Steering (CATS)
 
-This is the working area for the individual Internet-Draft, "TODO - Your title".
+This is the working area for the individual Internet-Draft, "A Framework for Computing-Aware Traffic Steering (CATS)".
 
 * [Editor's Copy](https://boucadair.github.io/can-framework/#go.draft-xxx-can-framework.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-xxx-can-framework)
