@@ -19,32 +19,79 @@ pi: [toc, sortrefs, symrefs]
 
 author:
  -
-  ins: X. XX
-  name: XXX
-  organization: XXX
-  email: XX@XX.COM
-  country: XXX
+  ins: C. Li
+  name: Cheng Li
+  organization: Huawei Technologies
+  email: c.l@huawei.com
+  role: editor
+  country: China
+ -
+  ins: Z. Peng
+  name: Zongpeng Du
+  organization: China Mobile
+  email: duzongpeng@chinamobile.com
+  country: China
  -
     fullname: Mohamed Boucadair
     organization: Orange
+    role: editor
     email: mohamed.boucadair@orange.com
  -
    fullname: Luis M. Contreras
    organization: Telefonica
    country: Spain
    email: luismiguel.contrerasmurillo@telefonica.com
-
+ -
+  ins: J. Drake
+  name: John E Drake
+  organization: Juniper Networks, Inc.
+  email: jdrake@juniper.net
+  country: United States of America
+ -
+  ins: G. Huang
+  name: Guangping Huang
+  organization: ZTE
+  email: huang.guangping@zte.com.cn
+  country: China
+ -
+  ins: G. Mishra
+  name: Gyan Mishra
+  organization: Verizon Inc.
+  email: hayabusagsm@gmail.com
+  country: United States of America
+ -
+  ins: C. Lin
+  name: Changwang Lin
+  organization: New H3C Technologies
+  email: linchangwang.04414@h3c.com
+ -
+  ins: X. Wang
+  name: Xueshun Wang
+  organization: CICT
+  email: xswang@fiberhome.com
+ -
+  ins: X. Wang
+  name: Xuewei Wang
+  organization: Ruijie Networks
+  email: wangxuewei1@ruijie.com.cn
 
 contributor:
-  -
-    name: Huijuan Yao
-    org: China Mobile
-    email: yaohuijuan@chinamobile.com
-
-  -
-    name: Hang Shi
-    org: Huawei
-    email: shihang9@huawei.com
+ -
+  name: Huijuan Yao
+  org: China Mobile
+  email: yaohuijuan@chinamobile.com
+ -
+  name: Yizhou Li
+  org: Huawei Technologies
+  email: liyizhou@huawei.com
+ -
+  name: Dirk Trossen
+  org: Huawei Technologies
+  email: dirk.trossen@huawei.com
+ -
+  name: Hang Shi
+  org: Huawei Technologies
+  email: shihang9@huawei.com
 
 
 normative:
@@ -96,7 +143,7 @@ Service instance:
   : A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can be exposed by multiple instances running at the same or different network locations.
 
 Service demand:
-: The demand for a service identified by a  CATS Service ID (CS-ID). See {{can-ids}} for more details.
+: The demand for a service identified by a  CATS Service ID (CS-ID). See {{cats-ids}} for more details.
 
 Service request:
  : The request for a specific service instance.
@@ -126,9 +173,9 @@ CATS Traffic Classifier (C-TC):
 
 ## Assumptions
 
-CATS assumes that there are multiple service instances running on different edge sites, providing one single service which is represented by the same service identifier (see {{can-ids}}.
+CATS assumes that there are multiple service instances running on different edge sites, providing one single service which is represented by the same service identifier (see {{cats-ids}}.
 
-## CATS Identifiers {#can-ids}
+## CATS Identifiers {#cats-ids}
 
 CATS introduces the following identifiers:
 
@@ -140,7 +187,7 @@ CATS Binding ID (CB-ID):
 
 ## CATS Components
 
-The network takes forwarding decisions for a service demand received from a client according to both service instances status as well as network status. The main CATS functional elements and their interactions are shown in {{fig-can-fw}}.
+The network takes forwarding decisions for a service demand received from a client according to both service instances status as well as network status. The main CATS functional elements and their interactions are shown in {{fig-cats-fw}}.
 
 ~~~ aasvg
       +-----+              +------+            +------+
@@ -148,25 +195,25 @@ The network takes forwarding decisions for a service demand received from a clie
     |client|+            |client|-+          |client|-+
     +------+             +------+            +------+
         |                    |                   |
-        |   +-------------+  |            +------+-----+
-        +---|    C-TC     |--+     +------|    C-TC    |
-            |-------------|        |      |------------|
-            |      | C-PS |    +------+   |CATS-Router 4|
-    ........|      +------|....| C-PS |...|             |....
-    :       |CATS-Router 2|    |      |   |             |   .
-    :       +-------------+    +------+   +-------------+   :
+        |   +-------------+  |            +-------------+
+        +---|    C-TC     |---+     +------|    C-TC     |
+            |-------------|         |      |-------------|
+            |     | C-PS  |     +------+   |CATS-Router 4|
+    ........|     +-------|.....| C-PS |...|             |...
+    :       |CATS-Router 2|     |      |   |             |  .
+    :       +-------------+     +------+   +-------------+  :
     :                                                       :
     :                                            +-------+  :
     :                         Underlay           | C-NMA |  :
     :                      Infrastructure        +-------+  :
     :                                                       :
     :                                                       :
-    :  +-------------+                 +-------------+      :
-    :  |CATS-Router 1|  +-------+      |CATS-Router 3|      :
-    :..|             |..| C-SMA |.-....|             |......:
-       +-------------+  +-------+      +-------------+
-                |         |            |    C-SMA    |
-                |         |            +--------+----+
+    :   +-------------+                 +-------------+     :
+    :   |CATS-Router 1|  +-------+      |CATS-Router 3|     :
+    :...|             |..| C-SMA |.... .|             |.....:
+        +-------------+  +-------+      +-------------+
+                |         |             |    C-SMA    |
+                |         |             +-------------+
                 |         |                     |
                 |         |                     |
               +------------+               +------------+
@@ -177,21 +224,21 @@ The network takes forwarding decisions for a service demand received from a clie
 
               edge site 1                   edge site 2
 ~~~
-{: #fig-can-fw title="CATS Functional Components"}
+{: #fig-cats-fw title="CATS Functional Components"}
 
 Edge sites (edges for short) are the sites that provide access to edge computing resources. A compute service (e.g., a matrix computation for face recognition or a game server) is uniquely identified by a CATS Service ID (CS-ID).
 
 Service instances can be instantiated and access through different edge sites so that a single service can have a significant number of instances running at different places in the network.
 
-{{fig-can-fw}} shows two edge nodes (CATS-Router 1 and CATS-Router 3) that provide access to service instances. These nodes behaves as Egress CATS-Routers.
+{{fig-cats-fw}} shows two edge nodes (CATS-Router 1 and CATS-Router 3) that provide access to service instances. These nodes behaves as Egress CATS-Routers.
 
-The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances in or next to the Egress CATS-Routers. {{fig-can-fw}} shows one C-SMA collocated with CATS-Router 3, and another C-SMA adjacent to CATS-Router 1.
+The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances in or next to the Egress CATS-Routers. {{fig-cats-fw}} shows one C-SMA collocated with CATS-Router 3, and another C-SMA adjacent to CATS-Router 1.
 
-The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as separate components or may form part of existing components such as CATS-Routers or CATS Path Selectors(C-PS). {{fig-can-fw}} shows a single C-NMA located independently within the underlay network. There may be one or more C-NMAs for an underlay network.
+The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as separate components or may form part of existing components such as CATS-Routers or CATS Path Selectors(C-PS). {{fig-cats-fw}} shows a single C-NMA located independently within the underlay network. There may be one or more C-NMAs for an underlay network.
 
 The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use the information to select the Egress CATS-Routers (and potentially the service instances) to which to forward traffic for a service demand. They also determine the best paths (possibly tunnels) to use to forward the traffic depending on the network behavior required for the service and the current network state. The information is presented as one or more metrics and associate with the CS-ID and possible CB-ID.
 
-There may be one or more C-PSes in the network. They can be integrated into the Ingress CATS-Routers (as with CATS-Router 2 in {{fig-can-fw}}) or they may be separate components that communicate with the Ingress CATS-Routers (as with CATS-Router 4 in {{fig-can-fw}}).
+There may be one or more C-PSes in the network. They can be integrated into the Ingress CATS-Routers (as with CATS-Router 2 in {{fig-cats-fw}}) or they may be separate components that communicate with the Ingress CATS-Routers (as with CATS-Router 4 in {{fig-cats-fw}}).
 
 Last, CATS Traffic Classifier (C-TC) is a functional component that is responsible for selecting incoming packets that belong to the same service demand and ensuring that they are steered onto the same path toward the same service instance as instructed by a C-PS component. There is a C-TC in each Ingress CATS Router.
 
@@ -199,7 +246,7 @@ The Egress CATS-Routers are the egress endpoints of overlay paths. A site suppor
 
 Note that, depending on deployment and service requirements, per-instance computing-related metrics or aggregated per-site computing-related metrics can be used by the C-PS. Using aggregated per-site computing-related metrics offers a more scalable choice, but relies on the Egress CATS-Router to consistently select a service instance.
 
-In {{fig-can-fw}}, the "underlay infrastructure" indicates the general IP/MPLS infrastructure that is not aware of CATS. The CATS routes will be distributed among the overlay CATS-Routers assisted by the C-PS, and will not affect the underlay nodes. An implementation may use a control plane or management plane solution to distribute the server metrics, network metrics, and underlay routes - this document does not define a specific solution.
+In {{fig-cats-fw}}, the "underlay infrastructure" indicates the general IP/MPLS infrastructure that is not aware of CATS. The CATS routes will be distributed among the overlay CATS-Routers assisted by the C-PS, and will not affect the underlay nodes. An implementation may use a control plane or management plane solution to distribute the server metrics, network metrics, and underlay routes - this document does not define a specific solution.
 
 ## Deployment Considerations
 
@@ -223,7 +270,7 @@ Additionally, the C-NMA collects network-related capabilities and metrics. These
 
 Network metrics may also change very frequently. Routing protocols may apply elements of thresholding and policy to prevent the network being flooded with state change information. The C-NMA should apply similar processes to those used in the C-SMA to determine when and how often to distribute updates to the C-PSes.
 
-{{fig-can-example-overlay}} shows an example to illustrate how CATS metrics can be distributed. There is a client attached to the netowrk via CATS-Router 1. There are three instances of the service with CS-ID 1: two are at Edge Site 2 attached via CATS-Router 2 and have CB-IDs 1 and 2; the third is at Edge Site 3 attached via CATS-Router 3 and with CB-ID 3. There is also a second service with CS-ID 2 with only one instance located at Edge Site 2.
+{{fig-cats-example-overlay}} shows an example to illustrate how CATS metrics can be distributed. There is a client attached to the netowrk via CATS-Router 1. There are three instances of the service with CS-ID 1: two are at Edge Site 2 attached via CATS-Router 2 and have CB-IDs 1 and 2; the third is at Edge Site 3 attached via CATS-Router 3 and with CB-ID 3. There is also a second service with CS-ID 2 with only one instance located at Edge Site 2.
 
 In this example, the C-SMA collocated with CATS-Router 2 distributes the service metrics for both service instances. Note that these could be aggregated into a single advertisement, but in this case the metrics for each instance are advertised. Similarly, the C-SMA at Edge Site 2 advertises the service metrics for the two services offered at Edge Site 2.
 
@@ -233,29 +280,29 @@ The service metric advertisements are consumed by the C-PS at CATS-Router 1 that
             Service CS-ID 1, instance CB-ID 1 <metrics>
             Service CS-ID 1, instance CB-ID 2 <metrics>
                    :<----------------------:
-                   :                       :             +-------+
-                   :                       :             |CS-ID 1|
-                   :                       :          +--|CB-ID 1|
-                   :               +-------------+    |  +-------+
-                   :               |    C-SMA    |----|    Edge Site 2
-                   :               +-------------+    |  +-------+
-                   :               |CATS-Router 2|    +--|CS-ID 1|
-                   :               +-------------+       |CB-ID 2|
-   +--------+      :                        |            +-------+
-   | Client |      :  Network +-------------+--------+
+                   :                       :              +-------+
+                   :                       :              |CS-ID 1|
+                   :                       :           +--|CB-ID 1|
+                   :                +-------------+    |  +-------+
+                   :                |    C-SMA    |----|   Edge Site 2
+                   :                +-------------+    |  +-------+
+                   :                |CATS-Router 2|    +--|CS-ID 1|
+                   :                +-------------+       |CB-ID 2|
+   +--------+      :                        |             +-------+
+   | Client |      :  Network +----------------------+
    +--------+      :  metrics | +-------+            |
         |          : :<---------| C-NMA |            |
         |          : :        | +-------+            |
-   +--------------------+     |                      |
-   |CATS-Router 1| C-PS |-----|                      |
-   +--------------------+     |       Underlay       |
+   +-------------------+      |                      |
+   |CATS-Router 1|C-PS |------|                      |
+   +-------------------+      |       Underlay       |
                    :          |     Infrastructure   |     +-------+
                    :          |                      |     |CS-ID 1|
                    :          +----------------------+ +---|CB-ID 3|
                    :                    |              |   +-------+
-                   :           +-------------+  +-------+
-                   :           |CATS-Router 3|--| C-SMA | Edge Site 3
-                   :           +-------------+  +-------+
+                   :            +-------------+  +-------+
+                   :            |CATS-Router 3|--| C-SMA | Edge Site 3
+                   :            +-------------+  +-------+
                    :                                :  |   +-------+
                    :                                :  +---|CS-ID 2|
                    :                                :      +-------+
@@ -264,7 +311,7 @@ The service metric advertisements are consumed by the C-PS at CATS-Router 1 that
             Service CS-ID 2, <metrics>
 
 ~~~
-{: #fig-can-example-overlay title="Example CATS Metric Distribution"}
+{: #fig-cats-example-overlay title="Example CATS Metric Distribution"}
 
 The above example mainly describes a per-instance computing-related metrics distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID will not be included in the distribution. Instead, a per-site CB-ID may be used in the case of multiple sites are attached to the Egress CATS router to indicate from which site the aggregated metrics come.
 
@@ -272,11 +319,11 @@ However, CB-ID is not needed in the distribution (in above example) if the edge 
 
 ## Service Demand Handling
 
-The C-PS determines the best choice of Egress CATS-Router and path to that router given the service and network metrics distributed as described in the previous section. The C-PS may be collocated with the Ingress CATS-Router (as shown in {{fig-can-example-overlay}}) or the selection function may be offloaded to a dedicated server.
+The C-PS determines the best choice of Egress CATS-Router and path to that router given the service and network metrics distributed as described in the previous section. The C-PS may be collocated with the Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or the selection function may be offloaded to a dedicated server.
 
 This document does not describe any algorithms for path selection, but it is expected that a service demand or local policy may give directions to the C-PS in terms of "objective functions" that describe the desired behavior from the network and the chosen service instance.
 
-In the example in {{fig-can-example-overlay}}, when the client sends a service demand to CATS-Router 1, the router consults the C-PS to select a service instance at a remote edge site accessed through a particular Egress CATS-Router. The C-PS also determines a path to the Egress CATS-Router. This information is provided to the Ingress CATS-Router (CATS-Router 1) so that it can correctly encapsulate and route packets.
+In the example in {{fig-cats-example-overlay}}, when the client sends a service demand to CATS-Router 1, the router consults the C-PS to select a service instance at a remote edge site accessed through a particular Egress CATS-Router. The C-PS also determines a path to the Egress CATS-Router. This information is provided to the Ingress CATS-Router (CATS-Router 1) so that it can correctly encapsulate and route packets.
 
 A service transaction consists of one or more service packets sent by the client to its Ingress CATS-Router. The Ingress CATS-Router classifies the packets using the C-TC functionality, and forwards the packets to the chosen Egress CATS-Router using an overlay path with appropriate encapsulation. When the packets reach the Egress CATS-Router, the outer header of the overlay encapsulation is removed and the inner packets are sent to the service instance.
 
@@ -309,6 +356,6 @@ This document makes no requests for IANA action.
 # Acknowledgements
 
 The authors would like to thank Joel Halpern, John Scudder, Dino Farinacci, Adrian Farrel,
-Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Fang Gao, Aijun Wang,Cong Li,
-Xinxin Yi, Dirk Trossen, Luigi IANNONE, Yizhou Li, Jari Arkko, Mingyu Wu, Haibo Wang,
+Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Peng Liu, Fang Gao, Aijun Wang,Cong Li,
+Xinxin Yi, Dirk Trossen, Luigi Iannone, Yizhou Li, Jari Arkko, Mingyu Wu, Haibo Wang,
 Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li, and Xinyue Zhang for their comments and suggestions.
