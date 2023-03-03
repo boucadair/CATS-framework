@@ -1,7 +1,7 @@
 ---
 title: A Framework for Computing-Aware Traffic Steering (CATS)
 abbrev: CATS Framework
-docname: draft-lbc-cats-framework-latest
+docname: draft-ldbc-cats-framework-latest
 date:
 category: info
 submissionType: IETF
