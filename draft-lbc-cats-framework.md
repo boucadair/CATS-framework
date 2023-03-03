@@ -1,7 +1,7 @@
 ---
 title: A Framework for Computing-Aware Traffic Steering (CATS)
 abbrev: CATS Framework
-docname: draft-xxx-cats-framework-latest
+docname: draft-lbc-cats-framework-latest
 date:
 category: info
 submissionType: IETF
@@ -28,6 +28,12 @@ author:
     fullname: Mohamed Boucadair
     organization: Orange
     email: mohamed.boucadair@orange.com
+ -
+   fullname: Luis M. Contreras
+   organization: Telefonica
+   country: Spain
+   email: luismiguel.contrerasmurillo@telefonica.com
+
 
 contributor:
   -
