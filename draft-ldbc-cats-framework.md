@@ -5,7 +5,6 @@ category: info
 
 docname: draft-ldbc-cats-framework-latest
 submissionType: IETF
-date:
 number:
 date:
 consensus: true
@@ -38,6 +37,7 @@ author:
     fullname: Mohamed Boucadair
     organization: Orange
     role: editor
+    country: France
     email: mohamed.boucadair@orange.com
  -
    fullname: Luis M. Contreras
@@ -104,7 +104,7 @@ informative:
 
 --- abstract
 
-This document describes a framework for Computing-Aware Traffic Steering (CATS). Particularly, the document identifies a set of CATS components, describes their interactions, and exemplifies the workflow of the control plane and data plane.
+This document describes a framework for Computing-Aware Traffic Steering (CATS). Particularly, the document identifies a set of CATS components, describes their interactions, and exemplifies the workflow of the control and data planes.
 
 --- middle
 
