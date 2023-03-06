@@ -1,12 +1,15 @@
 ---
 title: A Framework for Computing-Aware Traffic Steering (CATS)
 abbrev: CATS Framework
-docname: draft-ldbc-cats-framework-latest
-date:
 category: info
-submissionType: IETF
 
-ipr: trust200902
+docname: draft-ldbc-cats-framework-latest
+submissionType: IETF
+date:
+number:
+date:
+consensus: true
+v: 3
 area: Routing area
 workgroup: cats
 keyword:
@@ -113,7 +116,7 @@ The underlying networking architectures for edge computing usually provide relat
 
 As described in {{?I-D.yao-cats-ps-usecases}}, traffic steering that takes into account computing resource metrics would benefit several services, such as augmented reality or augmented/virtual reality (AR/VR). This document provides an architectural framework, which will enable compute- and network-aware traffic steering decisions in edge computing.
 
-The Computing-Aware Traffic Steering (CATS) framework assumes that there may be multiple service instances running on different edge nodes, globally providing one single service. A single edge may have limited computing resources (such as CPU or GPU) available, and different edges likely have different resources available. A single edge may host multiple instances of a service, or just one.
+The Computing-Aware Traffic Steering (CATS) framework assumes that there may be multiple service instances running on different edge nodes, globally providing one single service. A single edge may have limited computing resources (such as CPU or GPU) available, and different edges likely have different resources available. A single edge may host multiple instances of a service or just one service instance.
 
 The CATS framework is an ingress-based overlay framework for the selection of the suitable service instance(s) from a set of instance candidates. The exact characterization of 'suitable' will be determined by a combination of networking and computing related metrics. To that aim, the CATS framework assumes that edge nodes collaborate with each other under a single administrative domain to achieve a global objective of dispatching service demands, by taking into account both service instances status and network state (e.g., forwarding path length, cost, and congestion).
 
@@ -226,9 +229,9 @@ The network takes forwarding decisions for a service demand received from a clie
 ~~~
 {: #fig-cats-fw title="CATS Functional Components"}
 
-Edge sites (edges for short) are the sites that provide access to edge computing resources. A compute service (e.g., a matrix computation for face recognition or a game server) is uniquely identified by a CATS Service ID (CS-ID).
+Edge sites (edges for short) are the sites that provide access to edge computing resources. A compute service (e.g., a matrix computation for face recognition or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID).
 
-Service instances can be instantiated and access through different edge sites so that a single service can have a significant number of instances running at different places in the network.
+Service instances can be instantiated and accessed through different edge sites so that a single service can have a (significant) number of instances running at different places in the network.
 
 {{fig-cats-fw}} shows two edge nodes (CATS-Router 1 and CATS-Router 3) that provide access to service instances. These nodes behaves as Egress CATS-Routers.
 
@@ -250,7 +253,7 @@ In {{fig-cats-fw}}, the "underlay infrastructure" indicates the general IP/MPLS 
 
 ## Deployment Considerations
 
-This document does not make an assumption about how the various CATS functional elements are implemented. Whether a CATS deployment follows a fully distributed or collocate or combine many of the functional components is deployment specific. One possibility is a centralized implementation where the computing-related metrics from the C-SMAs are collected by a centralized controller/PCE that also collects the network metrics, and which acts on service requests to produce paths and service instance selections that it programs into the relevant C-TCs.
+This document does not make an assumption about how the various CATS functional elements are implemented. Whether a CATS deployment follows a fully distributed or collocate or combine many of the functional components is deployment specific. An implementation example is a centralized implementation where the computing-related metrics from the C-SMAs are collected by a centralized controller/PCE that also collects the network metrics, and which acts on service requests to produce paths and service instance selections that it programs into the relevant C-TCs.
 
 # CATS Framework Workflow
 
