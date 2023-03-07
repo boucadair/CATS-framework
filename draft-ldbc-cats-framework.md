@@ -354,6 +354,18 @@ This document does not define the specific mechanisms for defining or applying s
 
 TBD
 
+# Privacy Considerations
+
+Means to prevent that on-path nodes in the underlay infrastructure to fingerprint and tracl clients (e.g., determine which client is accessing which service) must be supported by CATS solutions. More generally, personal data must not be exposed to external parties by CATS beyond what is exposed in the packet that was originally issued by the client.
+
+Since the service will, in some cases, need to know about application, client, and even user identities, it is likely that the overlay path from Ingress CAN-Router to Egress CAN-Router will need to be encrypted if the client/service communication is not already encrypted.
+
+For more discussion about privacy, refer to {{?RFC6462}} and {{?RFC6973}}.
+
+# Manageability Considerations
+
+A network operator will want to be able to determine the causes of "hot spots" within their network. To do this, they will want OAM mechanisms that allow them to trace traffic flows for services, and to identify the esge sites responsible for particular flows.
+
 # IANA Considerations
 
 This document makes no requests for IANA action.
