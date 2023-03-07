@@ -62,21 +62,7 @@ author:
   organization: Verizon Inc.
   email: hayabusagsm@gmail.com
   country: United States of America
- -
-  ins: C. Lin
-  name: Changwang Lin
-  organization: New H3C Technologies
-  email: linchangwang.04414@h3c.com
- -
-  ins: X. Wang
-  name: Xueshun Wang
-  organization: CICT
-  email: xswang@fiberhome.com
- -
-  ins: X. Wang
-  name: Xuewei Wang
-  organization: Ruijie Networks
-  email: wangxuewei1@ruijie.com.cn
+
 
 contributor:
  -
@@ -92,10 +78,28 @@ contributor:
   org: Huawei Technologies
   email: dirk.trossen@huawei.com
  -
+  name: Luigi Iannone
+  org: Huawei Technologies
+  email: luigi.iannone@huawei.com
+ -
   name: Hang Shi
   org: Huawei Technologies
   email: shihang9@huawei.com
-
+ -
+  ins: C. Lin
+  name: Changwang Lin
+  organization: New H3C Technologies
+  email: linchangwang.04414@h3c.com
+ -
+  ins: X. Wang
+  name: Xueshun Wang
+  organization: CICT
+  email: xswang@fiberhome.com
+ -
+  ins: X. Wang
+  name: Xuewei Wang
+  organization: Ruijie Networks
+  email: wangxuewei1@ruijie.com.cn
 
 normative:
 
