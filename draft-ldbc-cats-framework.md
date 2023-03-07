@@ -362,10 +362,6 @@ Since the service will, in some cases, need to know about application, client, a
 
 For more discussion about privacy, refer to {{?RFC6462}} and {{?RFC6973}}.
 
-# Manageability Considerations
-
-A network operator will want to be able to determine the causes of "hot spots" within their network. To do this, they will want OAM mechanisms that allow them to trace traffic flows for services, and to identify the esge sites responsible for particular flows.
-
 # IANA Considerations
 
 This document makes no requests for IANA action.
