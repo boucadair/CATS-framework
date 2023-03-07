@@ -348,7 +348,9 @@ This document does not define the specific mechanisms for defining or applying s
 
 # Security Considerations
 
-TBD
+The computing resource information changes over time very frequently and with the creation and termination of service instances. When such an information is carried in a routing protocol, too many updates may induce a network instability. This instability could be exploited by an attacker (e.g., by spawning and deleting service instances very rapidly). CATS solutions must support guards against such misbehaviors. For example, these solutions should support aggregation techniques, dampening mechanisms, and threshold-triggered distribution updates.
+
+The information distributed by the C-SMA and C-NMA may reveal sensitive information about the network and the location of compute resources at edge sites. This information may be used by an attacker to identify weak spots in an operator's network. Furthermore, such information may be modified by an attacker resulting in disrupted service delivery for the clients, up to and including misdirection of traffic to an attacker's service implementation at an edge site.  CATS solutions must support authentication and integrity-protection mechanisms between C-SMAs/C-NMAs and C-PCs, and between C-PCs and Ingress CAN-Routers. Also, C-SMAs need to support a mechanism to authenticate the services provided at the edge sites that they serve.
 
 # IANA Considerations
 
