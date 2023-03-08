@@ -165,7 +165,7 @@ Egress CATS-Router:
 : A node that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.
 
 CATS Service Metric Agent (C-SMA):
- : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS). Such agents may be hosted by CATS-Routers.
+ : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS).
 
 CATS Network Metric Agent (C-NMA):
   : An agent that is responsible for collecting network capabilities and status, and for reporting them to a C-PS. Such agents may be hosted by CATS-Routers.
