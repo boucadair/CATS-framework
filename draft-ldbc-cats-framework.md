@@ -162,7 +162,7 @@ Ingress CATS-Router:
  : A  node that serves as a service access point for CATS clients. It steers service-specific traffic along a CATS-computed path that leads to an Egress CATS-Router that connects to the most suitable edge site that hots the service instance selected to satisfy the initial service demand.
 
 Egress CATS-Router:
-: A CATS-Router that is located at the end of a CATS-cmputed path and which connects to a CATS-serviced site.
+: A node that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.
 
 CATS Service Metric Agent (C-SMA):
  : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS). Such agents may be hosted by CATS-Routers.
