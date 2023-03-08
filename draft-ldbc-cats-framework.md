@@ -180,7 +180,7 @@ CATS Traffic Classifier (C-TC):
 
 ## Assumptions
 
-CATS assumes that there are multiple service instances running on different edge nodes, and which provide a given service that is represented by a service identifier (see {{cats-ids}}). 
+CATS assumes that there are multiple service instances running on different edge nodes, and which provide a given service that is represented by a service identifier (see {{cats-ids}}).
 
 ## CATS Identifiers {#cats-ids}
 
