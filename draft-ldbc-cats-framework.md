@@ -186,14 +186,14 @@ CATS Traffic Classifier (C-TC):
 
 ## Assumptions
 
-CATS assumes that there are multiple service instances running on different edge nodes, and which provide a given service that is represented by a service identifier (see {{cats-ids}}).
+CATS assumes that there are multiple service instances running on different edge nodes, and which provide a given service that is represented by the same service identifier (see {{cats-ids}}).
 
 ## CATS Identifiers {#cats-ids}
 
 CATS introduces the following identifiers:
 
 CATS Service ID (CS-ID):
-  : An identifier representing a service, which the clients use to access it. Such an ID identifies all the instances of a given service, rgardless of the location of such instances. The CS-ID is independent of which service instance serves the service demand. Service demands are spread over the service instances that can accommodate them, considering the location of the initiator of the service demand and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.
+  : An identifier representing a service, which the clients use to access it. Such an ID identifies all the instances of a given service, rgardless of their location. The CS-ID is independent of which service instance serves the service demand. Service demands are spread over the service instances that can accommodate them, considering the location of the initiator of the service demand and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.
 
 CATS Binding ID (CB-ID):
 : An identifier of a single service instance or location of a given service instance (CS-ID).
