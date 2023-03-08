@@ -145,7 +145,7 @@ CATS Binding ID (CB-ID):
  : An identifier of a single service instance or location of a given service instance (CS-ID).
 
 Service:
-  : A monolithic function that is provided by a network operator according to a specification. A composite service can be built by orchestrating multiple monolithic services.
+  : An offering provided by a service provider and which is delivered using one or more service functions {{?RFC7665}}.
 
 Service instance:
   : A run-time environment (e.g., a server or a process on a server) that makes a service instance available (i.e., up and running). One service can be accessed through multiple instances running at the same or different locations.
