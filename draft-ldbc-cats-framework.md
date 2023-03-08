@@ -144,7 +144,7 @@ CATS Binding ID (CB-ID):
  : An identifier of a single service instance or site of a given service instance (CS-ID).
 
 Service:
-  : A monolithic function that is provided by a network operator according to a specification. A composite service can be built by orchestrating multiple monolithic services.
+  : An offering provided by a service provider and which is delivered using one or more service functions {{?RFC7665}}.
 
 Service instance:
   : A run-time environment (e.g., a server or a process on a server) that makes the functionality of a service available. One service can be exposed by multiple instances running at the same or different network locations.
@@ -354,7 +354,7 @@ This document does not define the specific mechanisms for defining or applying s
 
 The computing resource information changes over time very frequently and with the creation and termination of service instances. When such an information is carried in a routing protocol, too many updates may induce a network instability. This instability could be exploited by an attacker (e.g., by spawning and deleting service instances very rapidly). CATS solutions must support guards against such misbehaviors. For example, these solutions should support aggregation techniques, dampening mechanisms, and threshold-triggered distribution updates.
 
-The information distributed by the C-SMA and C-NMA may reveal sensitive information about the network and the location of compute resources at edge sites. This information may be used by an attacker to identify weak spots in an operator's network. Furthermore, such information may be modified by an attacker resulting in disrupted service delivery for the clients, up to and including misdirection of traffic to an attacker's service implementation at an edge site.  CATS solutions must support authentication and integrity-protection mechanisms between C-SMAs/C-NMAs and C-PCs, and between C-PCs and Ingress CAN-Routers. Also, C-SMAs need to support a mechanism to authenticate the services provided at the edge sites that they serve.
+The information distributed by the C-SMA and C-NMA may reveal sensitive information about the network and the location of compute resources at edge sites. This information may be used by an attacker to identify weak spots in a service provider network. Furthermore, such information may be modified by an attacker resulting in disrupted service delivery for the clients, up to and including misdirection of traffic to an attacker's service implementation at an edge site.  CATS solutions must support authentication and integrity-protection mechanisms between C-SMAs/C-NMAs and C-PCs, and between C-PCs and Ingress CAN-Routers. Also, C-SMAs need to support a mechanism to authenticate the services provided at the edge sites that they serve.
 
 # Privacy Considerations
 
