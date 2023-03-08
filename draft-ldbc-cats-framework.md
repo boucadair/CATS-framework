@@ -100,6 +100,11 @@ contributor:
   name: Xuewei Wang
   organization: Ruijie Networks
   email: wangxuewei1@ruijie.com.cn
+ -
+  ins: C. Jacquenet
+  name: Christian Jacquenet
+  organization: Orange
+  email: christian.jacquenet@orange.com
 
 normative:
 
