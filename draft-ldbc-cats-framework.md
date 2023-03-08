@@ -356,6 +356,14 @@ The computing resource information changes over time very frequently and with th
 
 The information distributed by the C-SMA and C-NMA may reveal sensitive information about the network and the location of compute resources at edge sites. This information may be used by an attacker to identify weak spots in an operator's network. Furthermore, such information may be modified by an attacker resulting in disrupted service delivery for the clients, up to and including misdirection of traffic to an attacker's service implementation at an edge site.  CATS solutions must support authentication and integrity-protection mechanisms between C-SMAs/C-NMAs and C-PCs, and between C-PCs and Ingress CAN-Routers. Also, C-SMAs need to support a mechanism to authenticate the services provided at the edge sites that they serve.
 
+# Privacy Considerations
+
+Means to prevent that on-path nodes in the underlay infrastructure to fingerprint and tracl clients (e.g., determine which client is accessing which service) must be supported by CATS solutions. More generally, personal data must not be exposed to external parties by CATS beyond what is exposed in the packet that was originally issued by the client.
+
+Since the service will, in some cases, need to know about application, client, and even user identities, it is likely that the overlay path from Ingress CAN-Router to Egress CAN-Router will need to be encrypted if the client/service communication is not already encrypted.
+
+For more discussion about privacy, refer to {{?RFC6462}} and {{?RFC6973}}.
+
 # IANA Considerations
 
 This document makes no requests for IANA action.
