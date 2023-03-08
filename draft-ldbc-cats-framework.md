@@ -326,7 +326,7 @@ However, a CB-ID is not required if the edge site can support consistently servi
 
 ## Service Demand Processing
 
-The C-PS computes and selects paths that lead to CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with a CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
+The C-PS computes and selects paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with a Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
 
 This document does not specify any algorithm for path computation and selection purposes, but it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
 
