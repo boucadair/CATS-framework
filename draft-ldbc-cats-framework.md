@@ -281,7 +281,7 @@ Network metrics may also change over time. Dynamic routing protocols may take ad
 
 In this example, the C-SMA collocated with CATS-Router 2 distributes the service metrics for both service instances. Note that this information could be aggregated into a single advertisement, but in this case, the metrics for each instance are advertised separately. Similarly, the C-SMA agent located at Edge Site 2 advertises the service metrics for the two services hosted by Edge Site 2.
 
-The service metric advertisements are processed by the C-PS hosted by CATS-Router 1. The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the CATS-Router according to the initial  client's service demand, the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances as reported by the metrics, and the state of the network.
+The service metric advertisements are processed by the C-PS hosted by CATS-Router 1. The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances as reported by the metrics, and the state of the network.
 
 ~~~ aasvg
             Service CS-ID 1, instance CB-ID 1 <metrics>
