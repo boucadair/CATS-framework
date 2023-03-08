@@ -331,7 +331,7 @@ The C-PS computes and selects paths that lead to Egress CATS-Routers according t
 This document does not specify any algorithm for path computation and selection purposes, but it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
 
 In the example of {{fig-cats-example-overlay}}, when the client sends a service demand to CATS-Router 1, the router solicits
-the C-PS to select a service instance hosted by an edge site that can be accessed through a particular CATS-Router. The C-PS also determines a path to the CATS-Router. This information is provided to CATS-Router 1 so that it can forward packets to their proper destination, as computed by the C-PS.
+the C-PS to select a service instance hosted by an edge site that can be accessed through a particular CATS-Router. The C-PS also determines a path to the Egress CATS-Router. This information is provided to Ingress CATS-Router (CATS-Router 1) so that it can forward packets to their proper destination, as computed by the C-PS.
 
 A service transaction consists of one or more service packets sent by the client to the CATS-Router it is connected to. The CATS-Router classifies incoming packets by soliciting the C-TC classifier, and forwards them to the C-PS-selected  CATS-Router. When these packets reach the CATS-Router, the outer header of the possible overlay encapsulation is removed and resulting packets are sent to the relevant service instance.
 
