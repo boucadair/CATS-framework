@@ -162,10 +162,10 @@ Service request:
  : The request for a specific service instance.
 
 CATS-Router:
- : A network device (usually located at the edge of the network) that makes forwarding decisions based on CATS information to steer traffic specific to a  service demand towards a corresponding yet selected service instance. The selection of a service instance relies upon a multi-metric CATS-based path computation.
+ : A network device (usually located at the edge of the network) that makes forwarding decisions based on CATS information to steer traffic specific to a  service demand towards a corresponding yet selected service instance. The selection of a service instance relies upon a multi-metric CATS-based path computation. A CATS router may behave as Ingress or Egress CATS-Router.
 
 Ingress CATS-Router:
- : A  node that serves as a service access point for CATS clients. It steers service-specific traffic along a CATS-computed path that leads to an Egress CATS-Router that connects to the most suitable edge site that hots the service instance selected to satisfy the initial service demand.
+ : A node that serves as a service access point for CATS clients. It steers service-specific traffic along a CATS-computed path that leads to an Egress CATS-Router that connects to the most suitable edge site that hots the service instance selected to satisfy the initial service demand.
 
 Egress CATS-Router:
 : A node that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.
@@ -200,16 +200,16 @@ CATS Binding ID (CB-ID):
 
 ## CATS Components
 
-The network nodes make forwarding decisions for a given service demand that has been received from a client according to both service instance and network status information. The main CATS functional elements and their interactions are shown in {{fig-cats-fw}}.
+The network nodes make forwarding decisions for a given service demand that has been received from a client according to both service instances and network status information. The main CATS functional elements and their interactions are shown in {{fig-cats-fw}}.
 
 ~~~ aasvg
       +-----+              +------+            +------+
     +------+|            +------+ |          +------+ |
     |client|+            |client|-+          |client|-+
-    +------+             +------+            +------+
+    +---+--+             +---+--+            +---+--+
         |                    |                   |
-        |   +-------------+  |            +-------------+
-        +---|    C-TC     |---+     +------|    C-TC     |
+        |   +-------------+  |             +-----+-------+
+        +---+    C-TC     +--+      +------+    C-TC     |
             |-------------|         |      |-------------|
             |     | C-PS  |     +------+   |CATS-Router 4|
     ........|     +-------|.....| C-PS |...|             |...
@@ -224,9 +224,9 @@ The network nodes make forwarding decisions for a given service demand that has 
     :   +-------------+                 +-------------+     :
     :   |CATS-Router 1|  +-------+      |CATS-Router 3|     :
     :...|             |..| C-SMA |.... .|             |.....:
-        +-------------+  +-------+      +-------------+
+        +-------+-----+  +-------+      +-------------+
                 |         |             |    C-SMA    |
-                |         |             +-------------+
+                |         |             +-------+-----+
                 |         |                     |
                 |         |                     |
               +------------+               +------------+
@@ -239,31 +239,35 @@ The network nodes make forwarding decisions for a given service demand that has 
 ~~~
 {: #fig-cats-fw title="CATS Functional Components"}
 
-Edge nodes (or edges for short) are the premises that provide access to edge computing resources. A compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID).
+Edge nodes (or edges for short) are the premises that provide access to edge computing resources. As mentioned in {{cats-ids}}, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID).
 
 Service instances can be instantiated and accessed through different edge sites so that a single service can be represented and accessed by several instances that run in different regions of the network.
 
-{{fig-cats-fw}} shows two edge nodes (CATS-Router 1 and CATS-Router 3) that provide access to service instances. These nodes behave as Egress CATS-Routers.
+{{fig-cats-fw}} shows two edge nodes ("CATS-Router 1" and "CATS-Router 3") that provide access to service instances. These nodes behave as Egress CATS-Routers.
 
-The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances and can be hosted by the Egress CATS-Routers or located next to them. {{fig-cats-fw}} shows one C-SMA embedded in CATS-Router 3, and another C-SMA that is adjacent to CATS-Router 1.
+> Note: "Egress" is used here in reference the direction of the service request placement. The directionalty is called to explicitly identify the exit node of the CATS infrastructure.
 
-The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as standalone components or may be hosted by existing components such as CATS-Routers or CATS Path Selectors(C-PS). {{fig-cats-fw}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
+The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances and can be hosted by the Egress CATS-Routers or located next to them. {{fig-cats-fw}} shows one C-SMA embedded in "CATS-Router 3", and another C-SMA that is adjacent to "CATS-Router 1".
 
-The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand. They also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such information also includes CS-ID and possibly CB-ID identifiers.
+The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Routers or CATS Path Selectors(C-PS). {{fig-cats-fw}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
 
-There may be one or more C-PSes used to computae CATS paths. They can be integrated into CATS-Routers (like CATS-Router 2 in {{fig-cats-fw}}) or they may be standalone components that communicate with CATS-Routers (like CATS-Router 4 in {{fig-cats-fw}}).
+The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand. They also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CB-ID identifiers.
 
-In addition, CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets with existing service demands. CATS classifiers also make sure that packets that are bound to a specific service instance are all forwarded along the same path that leads to the same service instance, as instructed by a C-PS component. CATS classifiers are typically hosted in CATS routers that are located at the edge/border of the network.
+There may be one or more C-PSes used to compute CATS paths. They can be integrated into CATS-Routers (e.g., "CATS-Router 2" in {{fig-cats-fw}}) or they may be standalone components that communicate with CATS-Routers (e.g., "CATS-Router 4" in {{fig-cats-fw}}).
 
-The Egress CATS-Routers are the egress endpoints of overlay paths. An edge location that hosts service instances may be connected to one or more CATS routers (that is, multi-homing is of course a design option). If a C-PS has selected a specific service instance and the C-TC has marked the traffic with the CB-ID, the CATS-Router then forwards traffic to the relevant service instance. In some cases, the choice of service instance may be left open to the CATS-Router ( traffic is marked only with the CS-ID) and in this case the CATS-Router selects a service instance (using its knowledge of service and network capabilities as well as the current load as observed by the CATS router, among other considerations). In any case, a CATS router must make sure to forward all packets that pertain to a given service demand towards the same service instance.
+In addition, CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets with existing service demands. CATS classifiers also ensure that packets that are bound to a specific service instance are all forwarded along the same path that leads to the same service instance, as instructed by a C-PS. CATS classifiers are typically hosted in CATS routers that are located at the edge of the network.
 
-Note that, depending on design considerations and service requirements, per- service instance computing-related metrics or aggregated per-site computing-related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing-related metrics appears as a privileged option scalability-wise, but relies on CATS-Routers that connect to various service instances to select the proper service instance.
+The Egress CATS-Routers are the endpoints that behave as an overlay egress for service requests that are forwatded over a CATS infrastructure. An edge location that hosts service instances may be connected to one or more Egress CATS routers (that is, multi-homing is of course a design option). If a C-PS has selected a specific service instance and the C-TC has marked the traffic with the CB-ID, the Egress CATS-Router then forwards traffic to the relevant service instance. In some cases, the choice of the service instance may be left open to the Egress CATS-Router (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Router selects a service instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS router, among other considerations. In any case, an Egress CATS router must make sure to forward all packets that pertain to a given service demand towards the same service instance.
 
-In {{fig-cats-fw}}, the "underlay infrastructure" indicates an IP/MPLS network that is not necessarily CATS-aware. The P-CS computed CATS routes will be distributed among the overlay CATS-Routers, and will not affect the underlay nodes. A CATS implementation may rely upon a control plane or a management plane  to distribute service metrics and network metrics - this document does not define a specific solution.
+Note that, depending on design considerations and service requirements, per-service instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a privileged option scalability-wise, but relies on Egress CATS-Routers that connect to various service instances to select the proper service instance.
+
+In {{fig-cats-fw}}, the "underlay infrastructure" indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS routes that are computed by a P-CS will be distributed among the overlay CATS-Routers, and will not affect the underlay nodes. A CATS implementation may rely upon a control or management plane to distribute service metrics and network metrics - this document does not define a specific solution.
 
 ## Deployment Considerations
 
-This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider. Centralized designs where the computing-related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (like a Path Computation Element (PCE) {{?RFC4655}}) that also collects network metrics may, thus, be adopted. In the latter case, the (logically) centralized CATS computation logic may process incoming service requests to compute and select paths let alone service instances. The outcomes of such a computation may then be communicated to CATS traffic classifiers (C-TCs).
+This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.
+
+Centralized designs where the computing related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (e.g., a Path Computation Element (PCE) {{?RFC4655}}) that also collects network metrics may be adopted. In the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service instances. The outcomes of such a computation process may then be communicated to CATS traffic classifiers (C-TCs).
 
 # CATS Framework Workflow
 
@@ -283,11 +287,11 @@ Additionally, the C-NMA collects network-related capabilities and metrics. These
 
 Network metrics may also change over time. Dynamic routing protocols may take advantage of some information or capabilities (e.g., Partial Route Computation (PRC) of OSPFv3 {{?RFC5340}}) to prevent the network from being flooded with state change information. C-NMA agents should also be configured or instructed like C-SMA agents to determine when and how often updates should be notified to the C-PSes.
 
-{{fig-cats-example-overlay}} shows an example of how CATS metrics can be distributed. There is a client attached to the netowrk via CATS-Router 1. There are three instances of the service with CS-ID 1: two are located at Edge Site 2 attached via CATS-Router 2 and have CB-IDs 1 and 2; the third is located at Edge Site 3 attached via CATS-Router 3 and with CB-ID 3. There is also a second service with CS-ID 2 with only one instance located at Edge Site 2.
+{{fig-cats-example-overlay}} shows an example of how CATS metrics can be distributed. There is a client attached to the netowrk via "CATS-Router 1". There are three instances of the service with CS-ID 1: two are located at edge site 2 attached via "CATS-Router 2 "and have CB-IDs 1 and 2; the third is located at Edge Site 3 attached via "CATS-Router 3" and with CB-ID 3. There is also a second service with CS-ID 2 with only one instance located at Edge Site 2.
 
-In this example, the C-SMA collocated with CATS-Router 2 distributes the service metrics for both service instances. Note that this information could be aggregated into a single advertisement, but in this case, the metrics for each instance are advertised separately. Similarly, the C-SMA agent located at Edge Site 2 advertises the service metrics for the two services hosted by Edge Site 2.
+In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Router 2" distributes the service metrics for both service instances. Note that this information could be aggregated into a single advertisement, but in this case, the metrics for each instance are advertised separately. Similarly, the C-SMA agent located at Edge Site 2 advertises the service metrics for the two services hosted by Edge Site 2.
 
-The service metric advertisements are processed by the C-PS hosted by CATS-Router 1. The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances as reported by the metrics, and the state of the network.
+The service metric advertisements are processed by the C-PS hosted by "CATS-Router 1". The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances as reported by the metrics, and the state of the network.
 
 ~~~ aasvg
             Service CS-ID 1, instance CB-ID 1 <metrics>
@@ -336,8 +340,8 @@ The C-PS computes and selects paths that lead to Egress CATS-Routers according t
 
 This document does not specify any algorithm for path computation and selection purposes, but it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
 
-In the example of {{fig-cats-example-overlay}}, when the client sends a service demand to CATS-Router 1, the router solicits
-the C-PS to select a service instance hosted by an edge site that can be accessed through a particular CATS-Router. The C-PS also determines a path to the Egress CATS-Router. This information is provided to Ingress CATS-Router (CATS-Router 1) so that it can forward packets to their proper destination, as computed by the C-PS.
+In the example of {{fig-cats-example-overlay}}, when the client sends a service demand to "CATS-Router 1", the router solicits
+the C-PS to select a service instance hosted by an edge site that can be accessed through a particular CATS-Router. The C-PS also determines a path to the Egress CATS-Router. This information is provided to Ingress CATS-Router ("CATS-Router 1") so that it can forward packets to their proper destination, as computed by the C-PS.
 
 A service transaction consists of one or more service packets sent by the client to an Ingress CATS-Router it is connected to. The Ingress CATS-Router classifies incoming packets by soliciting the C-TC classifier, encapsulates, and then forwards them to the C-PS-selected  Egress CATS-Router. When these packets reach the Egress CATS-Router, the outer header of the possible overlay encapsulation is removed and resulting packets are sent to the relevant service instance.
 
