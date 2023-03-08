@@ -168,7 +168,7 @@ CATS Service Metric Agent (C-SMA):
  : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS).
 
 CATS Network Metric Agent (C-NMA):
-  : An agent that is responsible for collecting network capabilities and status, and for reporting them to a C-PS. Such agents may be hosted by CATS-Routers.
+  : An agent that is responsible for collecting network capabilities and status, and for reporting them to a C-PS.
 
 CATS Path Selector (C-PS):
  : A computation logic that calculates and selects paths towards service locations and  instances and which accommodate the requirements of service demands. Such path computation engine takes into account the service and network status information.
