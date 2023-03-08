@@ -174,13 +174,13 @@ CATS Service Metric Agent (C-SMA):
  : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS).
 
 CATS Network Metric Agent (C-NMA):
-  : An agent that is responsible for collecting network capabilities and status, and for reporting them to a C-PS.
+  :  A functional entity that is responsible for collecting network capabilities and status, and for reporting them to a C-PS.
 
 CATS Path Selector (C-PS):
- : A computation logic that calculates and selects paths towards service locations and  instances and which accommodate the requirements of service demands. Such a path computation engine takes into account the service and network status information.
+ : A computation logic that calculates and selects paths towards service locations and instances and which accommodates the requirements of service demands. Such a path computation engine takes into account the service and network status information.
 
 CATS Traffic Classifier (C-TC):
- : A functional entity that is responsible for determining which packets belong to a traffic flow for a particular service demand. It is also responsible for forwarding such packets along the C-PS-computed  path that leads to the relevant service instance.
+ : A functional entity that is responsible for determining which packets belong to a traffic flow for a particular service demand. It is also responsible for forwarding such packets along the C-PS computed path that leads to the relevant service instance.
 
 # Framework and Components {#Framework-and-concepts}
 
@@ -259,7 +259,7 @@ The Egress CATS-Routers are the egress endpoints of overlay paths. An edge locat
 
 Note that, depending on design considerations and service requirements, per- service instance computing-related metrics or aggregated per-site computing-related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing-related metrics appears as a privileged option scalability-wise, but relies on CATS-Routers that connect to various service instances to select the proper service instance.
 
-In {{fig-cats-fw}}, the "underlay infrastructure" indicates an IP/MPLS network that is not necessarily CATS-aware. The P-CS-computed CATS routes will be distributed among the overlay CATS-Routers, and will not affect the underlay nodes. A CATS implementation may rely upon a control plane or a management plane  to distribute service metrics and network metrics - this document does not define a specific solution.
+In {{fig-cats-fw}}, the "underlay infrastructure" indicates an IP/MPLS network that is not necessarily CATS-aware. The P-CS computed CATS routes will be distributed among the overlay CATS-Routers, and will not affect the underlay nodes. A CATS implementation may rely upon a control plane or a management plane  to distribute service metrics and network metrics - this document does not define a specific solution.
 
 ## Deployment Considerations
 
@@ -367,7 +367,7 @@ The information distributed by the C-SMA and C-NMA agents may be sensitive. Such
 
 Means to prevent that on-path nodes in the underlay infrastructure to fingerprint and track clients (e.g., determine which client accesses which service) must be supported by CATS solutions. More generally, personal data must not be exposed to external parties by CATS beyond what is carried in the packet that was originally issued by the client.
 
-Since the service will, in some cases, need to know about applications, clients, and even user identity, it is likely that the C-PS-computed path information will need to be encrypted if the client/service communication is not already encrypted.
+Since the service will, in some cases, need to know about applications, clients, and even user identity, it is likely that the C-PS computed path information will need to be encrypted if the client/service communication is not already encrypted.
 
 For more discussion about privacy, refer to {{?RFC6462}} and {{?RFC6973}}.
 
