@@ -171,7 +171,7 @@ CATS Network Metric Agent (C-NMA):
   : An agent that is responsible for collecting network capabilities and status, and for reporting them to a C-PS.
 
 CATS Path Selector (C-PS):
- : A computation logic that calculates and selects paths towards service locations and  instances and which accommodate the requirements of service demands. Such path computation engine takes into account the service and network status information.
+ : A computation logic that calculates and selects paths towards service locations and  instances and which accommodate the requirements of service demands. Such a path computation engine takes into account the service and network status information.
 
 CATS Traffic Classifier (C-TC):
  : The C-TC is responsible for determining which packets belong to a traffic flow for a particular service demand. It is also responsible for forwarding such packets along the C-PS-computed  path that leads to the relevant service instance.
