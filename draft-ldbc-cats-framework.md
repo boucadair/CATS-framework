@@ -141,7 +141,7 @@ Client:
 : An endpoint that is connected to a service provider network.
 
 Computing-Aware Traffic Steering (CATS):
- :  A traffic engineering approach that takes into account the dynamic nature of computing resources and network state to optimize service-specific traffic forwarding towards a given service instance. Various relevant metrics may be used to enforce such computing-aware traffic steering policies.
+ :  A traffic engineering approach {{?I-D.ietf-teas-rfc3272bis}} that takes into account the dynamic nature of computing resources and network state to optimize service-specific traffic forwarding towards a given service instance. Various relevant metrics may be used to enforce such computing-aware traffic steering policies.
 
 CATS Service ID (CS-ID):
  : An identifier representing a service, which the clients use to access it.
@@ -275,7 +275,7 @@ The following subsections provide an overview of how the CATS workflow operates 
 
 ## Service Announcement
 
-A service is associated with a unique identifier called a CS-ID. A CS-ID may be a network identifier, such as an IP address. The mapping of CS-IDs to network identifiers may be learned through a name resolution service such as DNS.
+A service is associated with a unique identifier called a CS-ID. A CS-ID may be a network identifier, such as an IP address. The mapping of CS-IDs to network identifiers may be learned through a name resolution service, such as DNS {{?RFC1034}}.
 
 ## Metrics Distribution
 
@@ -291,7 +291,7 @@ Network metrics may also change over time. Dynamic routing protocols may take ad
 
 In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Router 2" distributes the service metrics for both service instances. Note that this information could be aggregated into a single advertisement, but in this case, the metrics for each instance are advertised separately. Similarly, the C-SMA agent located at Edge Site 2 advertises the service metrics for the two services hosted by Edge Site 2.
 
-The service metric advertisements are processed by the C-PS hosted by "CATS-Router 1". The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances as reported by the metrics, and the state of the network.
+The service metric advertisements are processed by the C-PS hosted by "CATS-Router 1". The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service instances as reported by the metrics, and the state of the network.
 
 ~~~ aasvg
             Service CS-ID 1, instance CB-ID 1 <metrics>
@@ -384,6 +384,6 @@ This document makes no requests for IANA action.
 # Acknowledgements
 
 The authors would like to thank Joel Halpern, John Scudder, Dino Farinacci, Adrian Farrel,
-Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Peng Liu, Fang Gao, Aijun Wang,Cong Li,
-Xinxin Yi, Dirk Trossen, Luigi Iannone, Yizhou Li, Jari Arkko, Mingyu Wu, Haibo Wang,
-Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li, and Xinyue Zhang for their comments and suggestions.
+Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Peng Liu, Fang Gao, Aijun Wang, Cong Li,
+Xinxin Yi, Jari Arkko, Mingyu Wu, Haibo Wang, Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li,
+and Xinyue Zhang for their comments and suggestions.
