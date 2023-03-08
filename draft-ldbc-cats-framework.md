@@ -337,7 +337,7 @@ A service transaction consists of one or more service packets sent by the client
 
 ## Instance Affinity
 
-Instance affinity is a key feature of CATS. It means that packets that belong to a given flow associated with a given service should always be sent to the same CATS-Router which will forward them the same service instance. Furthermore, packets of a given flow should be forwarded along the same path to minimizie the risk of jeopardizing the integrity of the communication established between thee client and the service instance.
+Instance affinity is a key feature of CATS. It means that packets that belong to a given flow associated with a given service should always be sent to the same Egress CATS-Router which will forward them the same service instance. Furthermore, packets of a given flow should be forwarded along the same path to minimize the risk of jeopardizing the integrity of the communication established between thee client and the service instance.
 
 The affinity is determined at the time of newly formulated service demands.
 
