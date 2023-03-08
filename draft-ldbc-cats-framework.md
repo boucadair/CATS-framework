@@ -116,7 +116,7 @@ This document describes a framework for Computing-Aware Traffic Steering (CATS).
 
 Edge computing architectures have been expanding from single edge nodes to multiple interconnected collaborating edge nodes to address issues, such as long response time reduction, suboptimal service resource utilization, and inefficient network utilization.
 
-The underlying networking architectures for edge computing usually provide relatively static service dispatching. In such architectures, the service traffic is often directed to the closest edge from a routing perspective or to the server with the most computing resources without considering the network status, and even sometimes simply based on static configurations.
+The underlying networking architectures for edge computing usually provide relatively static service dispatching (that is, the selection of the sevice instances that will be invoked for a request). In such architectures, the service traffic is often directed to the closest edge from a routing perspective or to the server with the most computing resources without considering the network status, and even sometimes simply based on static configurations.
 
 As described in {{?I-D.yao-cats-ps-usecases}}, traffic steering that takes into account computing resource metrics would benefit several services, such as augmented reality or augmented/virtual reality (AR/VR). This document provides an architectural framework, which will enable compute- and network-aware traffic steering decisions in edge computing.
 
