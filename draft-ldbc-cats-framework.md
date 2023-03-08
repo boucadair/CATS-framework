@@ -114,7 +114,7 @@ This document describes a framework for Computing-Aware Traffic Steering (CATS).
 
 # Introduction
 
-Edge computing architectures have been expanding from single edge nodes to multiple, sometimes collaborative, edge nodes to address various issues, like long response times, or suboptimal service and network resource usage.
+Edge computing architectures have been expanding from single edge nodes to multiple, sometimes collaborative, edge nodes to address various issues (e.g., long response times or suboptimal service and network resource usage).
 
 The underlying networking infrastructures that include edge computing resources usually provide relatively static service dispatching. In such infrastructures, service-specific traffic is often directed to the closest edge resource from a routing perspective without considering the actual network state (e.g., traffic congestion conditions).
 
