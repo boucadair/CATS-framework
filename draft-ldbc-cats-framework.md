@@ -322,7 +322,7 @@ The service metric advertisements are processed by the C-PS hosted by CATS-Route
 
 Figure 2 mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID information will not be included in the advertisement. Instead, a per-site CB-ID may be used in case multiple sites are connected to the CATS router to explicitly indicate the site the aggregated metrics come from.
 
-However, a CB-ID is not required if the edge site can support consistently service instance selection. 
+However, a CB-ID is not required if the edge site can support consistently service instance selection.
 
 ## Service Demand Processing
 
