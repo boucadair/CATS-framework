@@ -245,7 +245,7 @@ Service instances can be instantiated and accessed through different edge sites 
 
 {{fig-cats-fw}} shows two edge nodes ("CATS-Router 1" and "CATS-Router 3") that provide access to service instances. These nodes behave as Egress CATS-Routers.
 
-> Note: "Egress" is used here in reference the direction of the service request placement. The directionalty is called to explicitly identify the exit node of the CATS infrastructure.
+> Note: "Egress" is used here in reference to the direction of the service request placement. The directionalty is called to explicitly identify the exit node of the CATS infrastructure.
 
 The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances and can be hosted by the Egress CATS-Routers or located next to them. {{fig-cats-fw}} shows one C-SMA embedded in "CATS-Router 3", and another C-SMA that is adjacent to "CATS-Router 1".
 
