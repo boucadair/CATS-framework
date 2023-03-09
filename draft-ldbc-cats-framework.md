@@ -156,7 +156,7 @@ Service instance:
   : A run-time environment (e.g., a server or a process on a server) that makes a service instance available (i.e., up and running). One service can be accessed through multiple instances running at the same or different locations.
 
 Service demand:
-: The demand for a service identified by a CATS Service ID (CS-ID). 
+: The demand for a service identified by a CATS Service ID (CS-ID).
 
 Service request:
  : The request for a specific service instance.
@@ -340,14 +340,14 @@ A CB-ID is not required if the edge site can support consistently service instan
 
 ## Service Demand Processing
 
-The C-PS computes and selects paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with an Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
+The C-PS computes paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with an Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
 
 This document does not specify any algorithm for path computation and selection purposes, but it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
 
 In the example shown in {{fig-cats-example-overlay}}, when the client sends a service demand to "CATS-Router 1", the router solicits
 the C-PS to select a service instance hosted by an edge site that can be accessed through a particular Egress CATS-Router. The C-PS also determines a path to that Egress CATS-Router. This information is provided to the Ingress CATS-Router ("CATS-Router 1") so that it can forward packets to their proper destination, as computed by the C-PS.
 
-A service transaction consists of one or more service packets sent by the client to an Ingress CATS-Router to which the client is connected to. The Ingress CATS-Router classifies incoming packets received from clients by soliciting the C-TC classifier. When a classification entry is found for the packets, the Ingress CATS-Router encapsulates and forwards them to the C-PS selected Egress CATS-Router. When these packets reach the Egress CATS-Router, the outer header of the possible overlay encapsulation is removed and inner packets are sent to the relevant service instance.
+A service transaction consists of one or more service packets sent by the client to an Ingress CATS-Router to which the client is connected to. The Ingress CATS-Router classifies incoming packets received from clients by soliciting the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Router encapsulates and forwards them to the C-PS selected Egress CATS-Router. When these packets reach the Egress CATS-Router, the outer header of the possible overlay encapsulation is removed and inner packets are sent to the relevant service instance.
 
 > Note that multi-homed clients may be connected to multiple CATS domains that may be operated by the same or distinct service providers. This version of the framework does not cover multihoming specifics.
 
