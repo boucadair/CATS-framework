@@ -246,13 +246,13 @@ Service instances can be instantiated and accessed through different edge sites 
 
 ### CATS Service Metric Agent (C-SMA) {#sec-csma}
 
-The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances and can be hosted by the Egress CATS-Routers or located next to them. 
+The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about edge sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service instances and can be hosted by the Egress CATS-Routers ({{sec-ocr}}) or located next to them.
 
 {{fig-cats-fw}} shows one C-SMA embedded in "CATS-Router 3", and another C-SMA that is adjacent to "CATS-Router 1".
 
 ### The CATS Network Metric Agent (C-NMA) {#sec-cnma}
 
-The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Routers or CATS Path Selectors (C-PS).
+The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Routers or CATS Path Selectors (C-PS) ({{sec-cps}}).
 
 {{fig-cats-fw}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
 
@@ -264,7 +264,9 @@ There may be one or more C-PSes used to compute CATS paths. They can be integrat
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
-CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets with existing service demands. CATS classifiers also ensure that packets that are bound to a specific service instance are all forwarded along the same path that leads to the same service instance, as instructed by a C-PS. CATS classifiers are typically hosted in CATS routers that are located at the edge of the network.
+CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets with existing service demands. CATS classifiers also ensure that packets that are bound to a specific service instance are all forwarded along the same path that leads to the same service instance, as instructed by a C-PS.
+
+CATS classifiers are typically hosted in CATS routers that are located at the edge of the network.
 
 ### Overlay CATS-Routers {#sec-ocr}
 
