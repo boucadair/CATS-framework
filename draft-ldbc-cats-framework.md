@@ -169,14 +169,14 @@ Ingress CATS-Router:
 Egress CATS-Router:
 : A node that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.
 
+CATS Path Selector (C-PS):
+ : A computation logic that calculates and selects paths towards service locations and instances and which accommodates the requirements of service demands. Such a path computation engine takes into account the service and network status information. See {{sec-cps}}.
+
 CATS Service Metric Agent (C-SMA):
  : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS). See {{sec-csma}}.
 
 CATS Network Metric Agent (C-NMA):
   :  A functional entity that is responsible for collecting network capabilities and status, and for reporting them to a C-PS. See {{sec-cnma}}.
-
-CATS Path Selector (C-PS):
- : A computation logic that calculates and selects paths towards service locations and instances and which accommodates the requirements of service demands. Such a path computation engine takes into account the service and network status information. See {{sec-cps}}.
 
 CATS Traffic Classifier (C-TC):
  : A functional entity that is responsible for determining which packets belong to a traffic flow for a particular service demand. It is also responsible for forwarding such packets along the C-PS computed path that leads to the relevant service instance. See {{sec-ctc}}.
