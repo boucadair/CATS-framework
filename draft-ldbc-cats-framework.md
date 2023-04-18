@@ -208,10 +208,10 @@ The network nodes make forwarding decisions for a given service demand that has 
     +---+--+             +---+--+            +---+--+
         |                    |                   |
         |   +-------------+  |             +-----+-------+
-        +---+    C-TC     +--+      +------+    C-TC     |
+        +---+    C-TC#1   +--+      +------+    C-TC#2   |
             |-------------|         |      |-------------|
-            |     | C-PS  |     +------+   |CATS-Router 4|
-    ........|     +-------|.....| C-PS |...|             |...
+            |     |C-PS#1 |     +------+   |CATS-Router 4|
+    ........|     +-------|.....|C-PS#2|...|             |...
     :       |CATS-Router 2|     |      |   |             |  .
     :       +-------------+     +------+   +-------------+  :
     :                                                       :
@@ -222,9 +222,9 @@ The network nodes make forwarding decisions for a given service demand that has 
     :                                                       :
     :   +-------------+                 +-------------+     :
     :   |CATS-Router 1|  +-------+      |CATS-Router 3|     :
-    :...|             |..| C-SMA |.... .|             |.....:
+    :...|             |..|C-SMA#1|.... .|             |.....:
         +-------+-----+  +-------+      +-------------+
-                |         |             |    C-SMA    |
+                |         |             |   C-SMA#2   |
                 |         |             +-------+-----+
                 |         |                     |
                 |         |                     |
@@ -264,7 +264,9 @@ The CATS Network Metric Agent (C-NMA) is a functional component that gathers inf
 
 The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CB-ID identifiers.
 
-There may be one or more C-PSes used to compute CATS paths. They can be integrated into CATS-Routers (e.g., "CATS-Router 2" in {{fig-cats-fw}}) or they may be standalone components that communicate with CATS-Routers (e.g., "CATS-Router 4" in {{fig-cats-fw}}).
+There may be one or more C-PSes used to compute CATS paths in a CATS domain.
+
+A CS-PS can be integrated into CATS-Routers (e.g., "C-PS#1" in {{fig-cats-fw}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-fw}}).
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
