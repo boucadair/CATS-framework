@@ -152,7 +152,7 @@ Service:
   : An offering provided by a service provider and which is delivered using one or more service functions {{?RFC7665}}.
 
 Service instance:
-  : A run-time environment (e.g., a server or a process on a server) that makes a service instance available (i.e., up and running). One service can be accessed through multiple instances running at the same or different locations.
+  : A run-time environment (e.g., a server or a process on a server) that provides an instance of the service. One service can be accessed through multiple instances running at the same or different locations.
 
 Service demand:
 : The demand for a service identified by a CATS Service ID (CS-ID).
