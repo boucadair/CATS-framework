@@ -145,7 +145,7 @@ Computing-Aware Traffic Steering (CATS):
 CATS Service ID (CS-ID):
  : An identifier representing a service, which the clients use to access it. See {{cats-ids}}.
 
-CATS Instance Location ID (CIL-ID):
+CATS Instance Selector ID (CIS-ID):
  : An identifier of a specific service instance or location of a given service instance. See {{cats-ids}}.
 
 Service:
@@ -194,7 +194,7 @@ CATS introduces the following identifiers:
 CATS Service ID (CS-ID):
   : An identifier representing a service, which the clients use to access it. Such an ID identifies all the instances of a given service, rgardless of their location. The CS-ID is independent of which service instance serves the service demand. Service demands are spread over the service instances that can accommodate them, considering the location of the initiator of the service demand and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.
 
-CATS Location Instance ID (CIL-ID):
+CATS Instance Selector ID (CIS-ID):
 : An identifier of a single service instance or location of a given service instance.
 
 ## CATS Components {#sec-cat-arch}
@@ -262,7 +262,7 @@ The CATS Network Metric Agent (C-NMA) is a functional component that gathers inf
 
 ### CATS Path Selector (C-PS) {#sec-cps}
 
-The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CIL-ID identifiers.
+The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CIS-ID identifiers.
 
 There may be one or more C-PSes used to compute CATS paths. They can be integrated into CATS-Routers (e.g., "CATS-Router 2" in {{fig-cats-fw}}) or they may be standalone components that communicate with CATS-Routers (e.g., "CATS-Router 4" in {{fig-cats-fw}}).
 
@@ -274,7 +274,7 @@ CATS classifiers are typically hosted in CATS routers that are located at the ed
 
 ### Overlay CATS-Routers {#sec-ocr}
 
-The Egress CATS-Routers are the endpoints that behave as an overlay egress for service requests that are forwatded over a CATS infrastructure. An edge location that hosts service instances may be connected to one or more Egress CATS routers (that is, multi-homing is of course a design option). If a C-PS has selected a specific service instance and the C-TC has marked the traffic with the CIL-ID, the Egress CATS-Router then forwards traffic to the relevant service instance. In some cases, the choice of the service instance may be left open to the Egress CATS-Router (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Router selects a service instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS router, among other considerations. Absent explicit policy, an Egress CATS-Router must make sure to forward all packets that pertain to a given service demand towards the same service instance.
+The Egress CATS-Routers are the endpoints that behave as an overlay egress for service requests that are forwatded over a CATS infrastructure. An edge location that hosts service instances may be connected to one or more Egress CATS routers (that is, multi-homing is of course a design option). If a C-PS has selected a specific service instance and the C-TC has marked the traffic with the CIS-ID, the Egress CATS-Router then forwards traffic to the relevant service instance. In some cases, the choice of the service instance may be left open to the Egress CATS-Router (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Router selects a service instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS router, among other considerations. Absent explicit policy, an Egress CATS-Router must make sure to forward all packets that pertain to a given service demand towards the same service instance.
 
 Note that, depending on the design considerations and service requirements, per-service instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a privileged option scalability-wise, but relies on Egress CATS-Routers that connect to various service instances to select the proper service instance.
 
@@ -312,24 +312,24 @@ Additionally, the C-NMA collects network-related capabilities and metrics. These
 
 Network metrics may also change over time. Dynamic routing protocols may take advantage of some information or capabilities to prevent the network from being flooded with state change information (e.g., Partial Route Computation (PRC) of OSPFv3 {{?RFC5340}}). C-NMAs should also be configured or instructed like C-SMAs to determine when and how often updates should be notified to the C-PSes.
 
-{{fig-cats-example-overlay}} shows an example of how CATS metrics can be distributed. There is a client attached to the netowrk via "CATS-Router 1". There are three instances of the service with CS-ID "1": two are located at "Edge Site 2" attached via "CATS-Router 2" and have CIL-IDs "1" and "2"; the third service instance is located at "Edge Site 3" attached via "CATS-Router 3" and with CIL-ID "3". There is also a second service with CS-ID "2" with only one service instance located at "Edge Site 2".
+{{fig-cats-example-overlay}} shows an example of how CATS metrics can be distributed. There is a client attached to the netowrk via "CATS-Router 1". There are three instances of the service with CS-ID "1": two are located at "Edge Site 2" attached via "CATS-Router 2" and have CIS-IDs "1" and "2"; the third service instance is located at "Edge Site 3" attached via "CATS-Router 3" and with CIS-ID "3". There is also a second service with CS-ID "2" with only one service instance located at "Edge Site 2".
 
-In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Router 2" distributes the service metrics for both service instances (i.e., (CS-ID 1, CIL-ID 1) and (CS-ID 1, CIL-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service instance are indicated separately. Similarly, the C-SMA agent located at "Edge Site 2" advertises the service metrics for the two services hosted by "Edge Site 2".
+In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Router 2" distributes the service metrics for both service instances (i.e., (CS-ID 1, CIS-ID 1) and (CS-ID 1, CIS-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service instance are indicated separately. Similarly, the C-SMA agent located at "Edge Site 2" advertises the service metrics for the two services hosted by "Edge Site 2".
 
 The service metric advertisements are processed by the C-PS hosted by "CATS-Router 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service instances as reported by the metrics, and the state of the network.
 
 ~~~ aasvg
-            Service CS-ID 1, instance CIL-ID 1 <metrics>
-            Service CS-ID 1, instance CIL-ID 2 <metrics>
+            Service CS-ID 1, instance CIS-ID 1 <metrics>
+            Service CS-ID 1, instance CIS-ID 2 <metrics>
                    :<----------------------:
                    :                       :              +--------+
                    :                       :              |CS-ID 1 |
-                   :                       :           +--|CIL-ID 1|
+                   :                       :           +--|CIS-ID 1|
                    :                +-------------+    |  +--------+
                    :                |    C-SMA    |----|   Edge Site 2
                    :                +-------------+    |  +--------+
                    :                |CATS-Router 2|    +--|CS-ID 1 |
-                   :                +-------------+       |CIL-ID 2|
+                   :                +-------------+       |CIS-ID 2|
    +--------+      :                        |             +--------+
    | Client |      :  Network +----------------------+
    +--------+      :  metrics | +-------+            |
@@ -340,7 +340,7 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Rout
    +-------------------+      |       Underlay       |
                    :          |     Infrastructure   |     +--------+
                    :          |                      |     |CS-ID 1 |
-                   :          +----------------------+ +---|CIL-ID 3|
+                   :          +----------------------+ +---|CIS-ID 3|
                    :                    |              |   +--------+
                    :            +-------------+  +-------+
                    :            |CATS-Router 3|--| C-SMA | Edge Site 3
@@ -349,15 +349,15 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Rout
                    :                                :  +---|CS-ID 2|
                    :                                :      +-------+
                    :<-------------------------------:
-            Service CS-ID 1, instance CIL-ID 3 <metrics>
+            Service CS-ID 1, instance CIS-ID 3 <metrics>
             Service CS-ID 2, <metrics>
 
 ~~~
 {: #fig-cats-example-overlay title="Example CATS Metric Distribution"}
 
-The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIL-ID information will not be included in the advertisement. Instead, a per-site CIL-ID may be used in case multiple sites are connected to the Egress CATS-Router to explicitly indicate the site the aggregated metrics come from.
+The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIS-ID information will not be included in the advertisement. Instead, a per-site CIS-ID may be used in case multiple sites are connected to the Egress CATS-Router to explicitly indicate the site the aggregated metrics come from.
 
-A CIL-ID is not required if the edge site can support consistently service instance selection.
+A CIS-ID is not required if the edge site can support consistently service instance selection.
 
 ## Service Demand Processing
 
