@@ -320,7 +320,7 @@ In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Router 2" distr
 
 The service metric advertisements are processed by the C-PS hosted by "CATS-Router 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service instances as reported by the metrics, and the state of the network.
 
-~~~ aasvg
+~~~
             Service CS-ID 1, instance CB-ID 1 <metrics>
             Service CS-ID 1, instance CB-ID 2 <metrics>
                    :<----------------------:
@@ -363,9 +363,9 @@ A CB-ID is not required if the edge site can support consistently service instan
 
 ## Service Demand Processing
 
-The C-PS computes paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with an Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
+A C-PS computes paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. A C-PS may be collocated with an Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
 
-This document does not specify any algorithm for path computation and selection purposes, but it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
+This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. These algorithms are out of the scope of this document. However, it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
 
 In the example shown in {{fig-cats-example-overlay}}, when the client sends a service demand to "CATS-Router 1", the router solicits
 the C-PS to select a service instance hosted by an edge site that can be accessed through a particular Egress CATS-Router. The C-PS also determines a path to that Egress CATS-Router. This information is provided to the Ingress CATS-Router ("CATS-Router 1") so that it can forward packets to their proper destination, as computed by the C-PS.
