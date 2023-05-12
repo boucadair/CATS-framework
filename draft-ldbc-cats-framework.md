@@ -152,7 +152,7 @@ Service:
   : An offering provided by a service provider and which is delivered using one or more service functions {{?RFC7665}}.
 
 Service instance:
-  : A run-time environment (e.g., a server or a process on a server) that makes a service instance available (i.e., up and running). One service can be accessed through multiple instances running at the same or different locations.
+  : A run-time environment (e.g., a server or a process on a server) that provides an instance of the service. One service can be accessed through multiple instances running at the same or different locations.
 
 Service demand:
 : The demand for a service identified by a CATS Service ID (CS-ID).
@@ -208,10 +208,10 @@ The network nodes make forwarding decisions for a given service demand that has 
     +---+--+             +---+--+            +---+--+
         |                    |                   |
         |   +-------------+  |             +-----+-------+
-        +---+    C-TC     +--+      +------+    C-TC     |
+        +---+    C-TC#1   +--+      +------+    C-TC#2   |
             |-------------|         |      |-------------|
-            |     | C-PS  |     +------+   |CATS-Router 4|
-    ........|     +-------|.....| C-PS |...|             |...
+            |     |C-PS#1 |     +------+   |CATS-Router 4|
+    ........|     +-------|.....|C-PS#2|...|             |...
     :       |CATS-Router 2|     |      |   |             |  .
     :       +-------------+     +------+   +-------------+  :
     :                                                       :
@@ -222,9 +222,9 @@ The network nodes make forwarding decisions for a given service demand that has 
     :                                                       :
     :   +-------------+                 +-------------+     :
     :   |CATS-Router 1|  +-------+      |CATS-Router 3|     :
-    :...|             |..| C-SMA |.... .|             |.....:
+    :...|             |..|C-SMA#1|.... .|             |.....:
         +-------+-----+  +-------+      +-------------+
-                |         |             |    C-SMA    |
+                |         |             |   C-SMA#2   |
                 |         |             +-------+-----+
                 |         |                     |
                 |         |                     |
@@ -264,7 +264,9 @@ The CATS Network Metric Agent (C-NMA) is a functional component that gathers inf
 
 The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CIS-ID identifiers.
 
-There may be one or more C-PSes used to compute CATS paths. They can be integrated into CATS-Routers (e.g., "CATS-Router 2" in {{fig-cats-fw}}) or they may be standalone components that communicate with CATS-Routers (e.g., "CATS-Router 4" in {{fig-cats-fw}}).
+There may be one or more C-PSes used to compute CATS paths in a CATS domain.
+
+A CS-PS can be integrated into CATS-Routers (e.g., "C-PS#1" in {{fig-cats-fw}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-fw}}).
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
@@ -321,6 +323,7 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Rout
 ~~~ aasvg
             Service CS-ID 1, instance CIS-ID 1 <metrics>
             Service CS-ID 1, instance CIS-ID 2 <metrics>
+
                    :<----------------------:
                    :                       :              +--------+
                    :                       :              |CS-ID 1 |
@@ -361,9 +364,9 @@ A CIS-ID is not required if the edge site can support consistently service insta
 
 ## Service Demand Processing
 
-The C-PS computes paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with an Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
+A C-PS computes paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. A C-PS may be collocated with an Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.
 
-This document does not specify any algorithm for path computation and selection purposes, but it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
+This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. These algorithms are out of the scope of this document. However, it is expected that a service demand or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service instance.
 
 In the example shown in {{fig-cats-example-overlay}}, when the client sends a service demand to "CATS-Router 1", the router solicits
 the C-PS to select a service instance hosted by an edge site that can be accessed through a particular Egress CATS-Router. The C-PS also determines a path to that Egress CATS-Router. This information is provided to the Ingress CATS-Router ("CATS-Router 1") so that it can forward packets to their proper destination, as computed by the C-PS.
