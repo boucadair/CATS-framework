@@ -156,11 +156,11 @@ Service:
   : An offering that is made available by a provider by orchestrating a set of resources (networking, compute, storage, etc.).
   : Which and how these resources are solicited is part of the service logic which is internal to the provider, e.g., these resources may be:
 
-    * Exposed by one or multiple processes (a.k.a. Service Functions (SFs) {{?RFC7665}})
-    * Provided by virtual instances, physical, or a combination thereof
-    * Hosted within the same or distinct nodes
-    * Hosted within the same or multiple service sites
-    * Chained to provide a service using a variety of means (e.g., SFC)
+    * Exposed by one or multiple processes (a.k.a. Service Functions (SFs) {{?RFC7665}}).
+    * Provided by virtual instances, physical, or a combination thereof.
+    * Hosted within the same or distinct nodes.
+    * Hosted within the same or multiple service sites.
+    * Chained to provide a service using a variety of means.
 
   : How a service is structured is out of the scope of CATS.
   : The same service can be provided in many locations; each of them constitutes a service instance.
@@ -276,7 +276,7 @@ Service sites are the premises that provide access to a set of computing resourc
 
 Service contact instances can be instantiated and accessed through different service sites so that a single service can be represented and accessed by several contact instances that run in different regions of the network.
 
-{{fig-cats-fw}} shows two service nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders ({{sec-ocr}}).
+{{fig-cats-fw}} shows two CATS nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders ({{sec-ocr}}).
 
 > Note: "Egress" is used here in reference to the direction of the service request placement. The directionality is called to explicitly identify the exit node of the CATS infrastructure.
 
