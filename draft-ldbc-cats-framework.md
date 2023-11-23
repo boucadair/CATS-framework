@@ -316,8 +316,6 @@ Note that, depending on the design considerations and service requirements, per-
 
 The "underlay infrastructure" in {{fig-cats-fw}} indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the overlay CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes.
 
-A CATS implementation may rely upon a control or management plane to distribute service metrics and network metrics - this document does not define a specific solution.
-
 ## Deployment Considerations
 
 This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.
