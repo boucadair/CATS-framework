@@ -200,7 +200,7 @@ Egress CATS-Forwarder:
 : An entity that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.
 
 CATS Path Selector (C-PS):
- : A computation logic that calculates and selects paths towards service locations and instances and which accommodates the requirements of service requests. Such a path computation engine takes into account the service and network status information. See {{sec-cps}}.
+ : A functional entit that computes and selects paths towards service locations and instances and which accommodates the requirements of service requests. Such a path computation engine takes into account the service and network status information. See {{sec-cps}}.
 
 CATS Service Metric Agent (C-SMA):
  : A functional entity that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS). See {{sec-csma}}.
