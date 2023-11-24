@@ -188,10 +188,13 @@ Computing-aware forwarding (or steeting, computing):
   :  A forwarding (or steeting, computing) scheme which takes as input a set of metrics that reflect the capabilities and state of computing resources.
 
 Service request:
- : The request for a specific service. Such a request is steered to a service contact instance.
+ : A request to access or invoke a specific service. Such a request is steered to a service contact instance via CATS-Forwarders.
+ : A service request is placed using service-specific protocols.
+ : Service requests are not explicitly sent by clients to CATS-Forwarders.
 
 CATS-Forwarder:
- : A network device that makes forwarding decisions based on CATS information to steer traffic specific to a  service request towards a corresponding yet selected service contact instance. The selection of a service contact instance relies upon a multi-metric CATS-based path computation. A CATS-Forwarder may behave as Ingress or Egress CATS-Forwarder.
+ : A network entity that makes forwarding decisions based on CATS information to steer traffic specific to a  service request towards a corresponding yet selected service contact instance. The selection of a service contact instance relies upon a multi-metric CATS-based path computation.
+ : A CATS-Forwarder may behave as Ingress or Egress CATS-Forwarder.
 
 Ingress CATS-Forwarder:
  : An entity that steers service-specific traffic along a CATS-computed path that leads to an Egress CATS-Forwarder that connects to the most suitable service site that host the service contact instance selected to satisfy the initial service request.
@@ -399,7 +402,7 @@ A C-PS computes paths that lead to Egress CATS-Forwarders according to the servi
 
 This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. These algorithms are out of the scope of this document. However, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.
 
-In the example shown in {{fig-cats-example-overlay}}, when the client sends a service request to "CATS-Forwarder 1", the forwarder solicits
+In the example shown in {{fig-cats-example-overlay}}, when the client sends a service request via "CATS-Forwarder 1", the forwarder solicits
 the C-PS to select a service contact instance hosted by a service site that can be accessed through a particular Egress CATS-Forwarder. The C-PS also determines a path to that Egress CATS-Forwarder. This information is provided to the Ingress CATS-Forwarder ("CATS-Forwarder 1") so that it can forward packets to their proper destination, as computed by the C-PS.
 
 A service transaction consists of one or more service packets sent by the client to an Ingress CATS-Forwarder to which the client is connected to. The Ingress CATS-Forwarder classifies incoming packets received from clients by soliciting the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation is removed and inner packets are sent to the relevant service contact instance.
