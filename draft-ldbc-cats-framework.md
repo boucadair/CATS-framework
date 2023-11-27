@@ -184,7 +184,7 @@ Service contact instance:
   : A service can be accessed via multiple service contact instances running at the same or different locations (service sites).
   : The same service contact instance may dispatch service requests to one or more service instances (e.g., an instance that behaves as a service load-balancer).
 
-Computing-aware forwarding (or steeting, computing):
+Computing-aware forwarding (or steering, computing):
   :  A forwarding (or steeting, computing) scheme which takes as input a set of metrics that reflect the capabilities and state of computing resources.
 
 Service request:
@@ -224,7 +224,7 @@ CATS uses the following identifiers:
 CATS Service ID (CS-ID):
   : An identifier representing a service, which the clients use to access it. Such an ID identifies all the instances of a given service, regardless of their location.
   : The CS-ID is independent of which service contact instance serves the service request.
-  : service requests are spread over the service contact instances that can accommodate them, considering the location of the initiator of the service request and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.
+  : Service requests are spread over the service contact instances that can accommodate them, considering the location of the initiator of the service request and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.
 
 CATS Instance Selector ID (CIS-ID):
 : An identifier of a specific service contact instance.
