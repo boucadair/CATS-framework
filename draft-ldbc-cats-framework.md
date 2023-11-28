@@ -305,7 +305,7 @@ A CS-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-fw}
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
-CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets from clients with existing service requests. CATS classifiers also ensure that packets that are bound to a specific service contact instance are all forwarded along the same path that leads to the same service contact instance, as instructed by a C-PS.
+CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets from clients with existing service requests. CATS classifiers also ensure that packets that are bound to a specific service contact instance are all forwarded towards that same service contact instance, as instructed by a C-PS.
 
 CATS classifiers are typically hosted in CATS-Forwarders.
 
