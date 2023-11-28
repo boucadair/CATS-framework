@@ -234,7 +234,7 @@ CATS Instance Selector ID (CIS-ID):
 
 ## CATS Components {#sec-cat-arch}
 
-The network nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-fw}}.
+In CATS, the network nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-fw}}.
 
 ~~~ aasvg
     +-----+              +------+           +------+
@@ -277,7 +277,7 @@ The network nodes make forwarding decisions for a given service request that has
 
 Service sites are the premises that host a set of computing resources. As mentioned in {{cats-ids}}, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID).
 
-Service instances can be instantiated and accessed through different service sites so that a single service can be represented and accessed by several contact instances that run in different regions of a network.
+Service instances can be instantiated and accessed through different service sites so that a single service can be represented and accessed via several contact instances that run in different regions of a network.
 
 {{fig-cats-fw}} shows two CATS nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders ({{sec-ocr}}).
 
@@ -317,7 +317,7 @@ Note that, depending on the design considerations and service requirements, per-
 
 ### Underlay Infrastructure
 
-The "underlay infrastructure" in {{fig-cats-fw}} indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the overlay CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes.
+The "underlay infrastructure" in {{fig-cats-fw}} indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes. Underlay nodes are typically P routers ({{Section 5.3.1 of ?RFC4026}}).
 
 A CATS implementation may rely upon a control or management plane to distribute service metrics and network metrics - this document does not define a specific solution.
 
