@@ -396,7 +396,7 @@ The example in {{fig-cats-example-overlay}} mainly describes a per-instance comp
 
 A CIS-ID is not required if the service site can support consistently service contact instance selection.
 
-## Service Request Processing
+## Service Access Processing
 
 A C-PS computes paths that lead to Egress CATS-Forwarders according to the service and network metrics that have been advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized.
 
@@ -405,7 +405,7 @@ This document does not specify any algorithm for path computation and selection 
 In the example shown in {{fig-cats-example-overlay}}, when the client sends a service request via "CATS-Forwarder 1", the forwarder solicits
 the C-PS to select a service contact instance hosted by a service site that can be accessed through a particular Egress CATS-Forwarder. The C-PS also determines a path to that Egress CATS-Forwarder. This information is provided to the Ingress CATS-Forwarder ("CATS-Forwarder 1") so that it can forward packets to their proper destination, as computed by the C-PS.
 
-A service transaction consists of one or more service packets sent by the client to an Ingress CATS-Forwarder to which the client is connected to. The Ingress CATS-Forwarder classifies incoming packets received from clients by soliciting the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation is removed and inner packets are sent to the relevant service contact instance.
+Access to a service consists of one or more service-specific packets (e.g., Session Initiation Protocol (SIP) {{?RFC3261}}, HTTP {[?RFC9112}}, Real-Time Streaming Protocol (RTSP) {{?RFC7826}}) sent by the client via an Ingress CATS-Forwarder to which the client is connected to. The Ingress CATS-Forwarder classifies incoming packets received from clients by soliciting the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. Then, when these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation is removed and inner packets are sent to the relevant service contact instance.
 
 > Note that multi-homed clients may be connected to multiple CATS infrastructures that may be operated by the same or distinct service providers. This version of the framework does not cover multihoming specifics.
 
