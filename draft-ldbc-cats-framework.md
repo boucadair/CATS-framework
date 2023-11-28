@@ -393,7 +393,7 @@ The example in {{fig-cats-example-overlay}} mainly describes a per-instance comp
 
 A CIS-ID is not required if the service site can support consistently service contact instance selection.
 
-## Service Request Processing
+## Service Access Processing
 
 A C-PS computes paths that lead to Egress CATS-Forwarders according to the service and network metrics that have been advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized.
 
