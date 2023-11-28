@@ -392,9 +392,7 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Forw
 ~~~
 {: #fig-cats-example-overlay title="An Example of CATS Metric Distribution"}
 
-The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIS-ID information will not be included in the advertisement. Instead, a per-site CIS-ID may be used in case multiple sites are connected to the Egress CATS-Forwarder to explicitly indicate the site the aggregated metrics come from.
-
-A CIS-ID is not required if the service site can support consistently service contact instance selection.
+The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIS-ID information will not be included in the advertisement. Instead, a per-site CIS-ID may be used in case multiple sites are connected to the Egress CATS-Forwarder to explicitly indicate the site from where the aggregated metrics come.
 
 ## Service Access Processing
 
