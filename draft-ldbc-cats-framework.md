@@ -193,7 +193,7 @@ Service request:
  : Service requests are not explicitly sent by clients to CATS-Forwarders.
 
 CATS-Forwarder:
- : A network entity that makes forwarding decisions based on CATS information to steer traffic specific to a  service request towards a corresponding yet selected service contact instance. The selection of a service contact instance relies upon a multi-metric CATS-based path computation.
+ : A network entity that makes forwarding decisions based on CATS information to steer traffic specific to a  service request towards a corresponding yet selected service contact instance. The selection of a service contact instance relies upon a multi-metric path computation.
  : A CATS-Forwarder may behave as Ingress or Egress CATS-Forwarder.
 
 Ingress CATS-Forwarder:
