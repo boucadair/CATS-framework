@@ -185,7 +185,7 @@ Service contact instance:
   : The same service contact instance may dispatch service requests to one or more service instances (e.g., an instance that behaves as a service load-balancer).
 
 Computing-aware forwarding (or steering, computing):
-  :  A forwarding (or steeting, computing) scheme which takes as input a set of metrics that reflect the capabilities and state of computing resources.
+  : A forwarding (or steering, computing) scheme which takes a set of metrics that reflect the capabilities and state of computing resources as input.
 
 Service request:
  : A request to access or invoke a specific service. Such a request is steered to a service contact instance via CATS-Forwarders.
