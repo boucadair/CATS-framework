@@ -127,9 +127,7 @@ As described in {{?I-D.ietf-cats-usecases-requirements}}, traffic steering that 
 
 The Computing-Aware Traffic Steering (CATS) framework assumes that there may be multiple service instances that are providing one given service. Each of these service instances can be accessed via a service contact instance running on different service sites. A single service site may have limited computing resources available at a given time, whereas the various service sites may experience different resource availability issues over time. A single service site may host one or multiple service contact instances.
 
-Steering in CATS is about selecting the appropriate service contact instance that will service a request according to a set of network and computing metrics.
-That selection may not necessarily reveal the actual service instance that will be invoked, e.g., in hierarchical or recursive contexts.
-The metrics are aggerated; that is, they reflect the collective resources involved in a service instance.
+Steering in CATS is about selecting the appropriate service contact instance that will service a request according to a set of network and computing metrics. That selection may not necessarily reveal the actual service instance that will be invoked, e.g., in hierarchical or recursive contexts. Therefore, the metrics of the service contact instance may be the aggregated metrics from multiple service instances.
 
 The CATS framework is an overlay framework for the selection of the suitable service contact instance(s) from a set of candidates. The exact characterization of 'suitable' is determined by a combination of networking and computing metrics.
 
@@ -313,7 +311,7 @@ CATS classifiers are typically hosted in CATS-Forwarders.
 
 The Egress CATS-Forwarders are the endpoints that behave as an overlay egress for service requests that are forwarded over a CATS infrastructure. A service site that hosts service instances may be connected to one or more Egress CATS-Forwarders (that is, multi-homing is of course a design option). If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance. In some cases, the choice of the service  contact instance may be left open to the Egress CATS-Forwarder (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Forwarder selects a service contact instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS-Forwarder, among other considerations. Absent explicit policy, an Egress CATS-Forwarder must make sure to forward all packets that pertain to a given service request towards the same service contact instance.
 
-Note that, depending on the design considerations and service requirements, per-service  contact instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a privileged option scalability-wise, but relies on Egress CATS-Forwarders that connect to various service  contact instances to select the proper service  contact instance.
+Note that, depending on the design considerations and service requirements, per-service  contact instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a privileged option scalability-wise, but relies on Egress CATS-Forwarders that connect to various service contact instances to select the proper service contact instance. An Egress CATS-Forwarder may choose to aggregate the metrics from different sites as well. In this case, the Egress CATS-Forwarder will choose the best site by itself when the packets arrive at it. 
 
 ### Underlay Infrastructure
 
