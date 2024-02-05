@@ -230,11 +230,41 @@ CATS Service ID (CS-ID):
 CATS Instance Selector ID (CIS-ID):
 : An identifier of a specific service contact instance.
 
-## CATS Components {#sec-cat-arch}
+## CATS Framework {#sec-cats-framework}
 
-In CATS, the network nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-fw}}.
+The high-level CATS framework can be illustrated in Figure 1.  Starting from the bottom part of the figure and moving towards the upper part, the following planes are defined.
 
-~~~ aasvg
+~~~                           
+   +----------------------------------+  |         +--------+
+   |         Management Plane         |  |  Intf   |        |
+   +----------------------------------+  |<=======>| C-SMA  |
+   |           Control Plane          |  |         |        |
+   +----------------------------------+  |         +---+----+
+                   /\ SBI                |             |    
+                   ||                    |             |
+                   \/                    |             |
+   +----------------------------------+  |         +--------+
+   |           Data Plane             |  |  Intf   | +--------+
+   +----------------------------------+  |<=======>| |Service |
+                                         |         +-|instance|
+                                         |           +--------+
+ 
+            Network Domain                  Computing Domain
+~~~
+{: #fig-cats-fw title="CATS Framework"}
+
+* CATS  Management Plane - Responsible for monitoring, configuring, and maintaining CATS network devices.
+* CATS Control Plane - Responsible for scheduling services based on computing and network information, and making decisions on how packets should be forwarded by one or more network devices and pushing such decisions down to the CATS Data Plane for execution.
+* CATS Data Plane - Responsible for computing-aware routing, handling packets in the data path, such as packet forwarding.
+
+Depending on implementation and deployment, these planes may consist of several functional elements/components, and the details will be described in the following sections. 
+
+
+## CATS Components {#sec-cats-arch}
+
+In CATS, the network nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-components}}.
+
+~~~ 
     +-----+              +------+           +------+
   +------+|            +------+ |         +------+ |
   |client|+            |client|-+         |client|-+
@@ -269,7 +299,7 @@ In CATS, the network nodes make forwarding decisions for a given service request
           +------------+               +------------+
            service site 1              service site 2
 ~~~
-{: #fig-cats-fw title="CATS Functional Components"}
+{: #fig-cats-components title="CATS Functional Components"}
 
 ### Service Sites and Services Instances {#sec-service-sites}
 
@@ -277,7 +307,7 @@ Service sites are the premises that host a set of computing resources. As mentio
 
 Service instances can be instantiated and accessed through different service sites so that a single service can be represented and accessed via several contact instances that run in different regions of a network.
 
-{{fig-cats-fw}} shows two CATS nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders ({{sec-ocr}}).
+{{fig-cats-components}} shows two CATS nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders ({{sec-ocr}}).
 
 > Note: "Egress" is used here in reference to the direction of the service request placement. The directionality is called to explicitly identify the exit node of the CATS infrastructure.
 
@@ -285,13 +315,13 @@ Service instances can be instantiated and accessed through different service sit
 
 The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about service sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service contact instances and may be hosted by the Egress CATS-Forwarders ({{sec-ocr}}) or located next to them.
 
-{{fig-cats-fw}} shows one C-SMA embedded in "CATS-Forwarder 3", and another C-SMA that is adjacent to "CATS-Forwarder 1".
+{{fig-cats-components}} shows one C-SMA embedded in "CATS-Forwarder 3", and another C-SMA that is adjacent to "CATS-Forwarder 1".
 
 ### The CATS Network Metric Agent (C-NMA) {#sec-cnma}
 
 The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the underlay network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Forwarders or CATS Path Selectors (C-PS) ({{sec-cps}}).
 
-{{fig-cats-fw}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
+{{fig-cats-components}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
 
 ### CATS Path Selector (C-PS) {#sec-cps}
 
@@ -299,7 +329,7 @@ The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (
 
 There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.
 
-A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-fw}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-fw}}).Generally, a standalone C-PS can be a functional component of a PCE/centralized controller. 
+A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-components}}).Generally, a standalone C-PS can be a functional component of a PCE/centralized controller. 
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
@@ -315,7 +345,7 @@ Note that, depending on the design considerations and service requirements, per-
 
 ### Underlay Infrastructure
 
-The "underlay infrastructure" in {{fig-cats-fw}} indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes. Underlay nodes are typically P routers ({{Section 5.3.1 of ?RFC4026}}).
+The "underlay infrastructure" in {{fig-cats-components}} indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes. Underlay nodes are typically P routers ({{Section 5.3.1 of ?RFC4026}}).
 
 ## Deployment Considerations
 
@@ -343,7 +373,7 @@ A service is associated with a unique identifier called a CS-ID. A CS-ID may be 
 
 ## Metrics Distribution
 
-As described in {{sec-cat-arch}}, a C-SMA collects both service-related capabilities and metrics, and associates them with a CS-ID that identifies the service. The C-SMA may aggregate the metrics for multiple service  contact  instances, or maintain them separately or both. 
+As described in {{sec-cats-arch}}, a C-SMA collects both service-related capabilities and metrics, and associates them with a CS-ID that identifies the service. The C-SMA may aggregate the metrics for multiple service  contact  instances, or maintain them separately or both. 
 
 The C-SMA then advertises CS-IDs along with metrics to related C-PSes in the network. Depending on deployment choice, CS-IDs with metrics may be distributed in different ways.
 
