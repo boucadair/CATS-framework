@@ -121,7 +121,7 @@ This document describes a framework for Computing-Aware Traffic Steering (CATS).
 
 Computing service architectures have been expanding from single service site to multiple, sometimes collaborative, service sites to address various issues (e.g., long response times or suboptimal service and network resource usage).
 
-The underlying networking infrastructures that include computing resources usually provide relatively static service dispatching (that is, the selection of the sevice instances that will be invoked for a request). In such infrastructures, service-specific traffic is often directed to the closest service site from a routing perspective without considering the actual network state (e.g., traffic congestion conditions).
+The underlying networking infrastructures that include computing resources usually provide relatively static service dispatching (that is, the selection of the service instances that will be invoked for a request). In such infrastructures, service-specific traffic is often directed to the closest service site from a routing perspective without considering the actual network state (e.g., traffic congestion conditions).
 
 As described in {{?I-D.ietf-cats-usecases-requirements}}, traffic steering that takes into account computing resource metrics would benefit several services, including latency-sensitive service like immersive services that rely upon the use of augmented reality or virtual reality (AR/VR) techniques. This document provides an architectural framework that aims at facilitating the making of compute- and network-aware traffic steering decisions in networking environments where computing service resources are deployed.
 
@@ -299,7 +299,7 @@ The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (
 
 There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.
 
-A CS-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-fw}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-fw}}).
+A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-fw}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-fw}}).Generally, a standalone C-PS can be a functional component of a PCE/centralized controller. 
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
@@ -322,6 +322,12 @@ The "underlay infrastructure" in {{fig-cats-fw}} indicates an IP/MPLS network th
 This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.
 
 Centralized designs where the computing related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (e.g., a Path Computation Element (PCE) {{?RFC4655}}) that also collects network metrics may be adopted. In the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. The outcomes of such a computation process may then be communicated to CATS traffic classifiers (C-TCs).
+
+In conclusion, considering implementation and deployment of CATS framework, e.g., distribution of service metrics and implementation of C-PS, three possible deployment models are listed below:
+* Distributed model: Computing metrics are distributed among network devices directly using distributed protocols without interactions with a centralized control plane. Service scheduling function is performed by the CATS routers in the distribution model, Therefore, the C-PS is integrated into the ingress CATS-Forwarder.
+* Centralized model: Computing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder. In this model, C-PS is implemented in the centralized control plane.
+* Hybrid model: A combination of Distribution and Centralized models. A part of computing metrics are distributed among the network devices, and others may be collected by a centralized control plane. For example, some static information such as capabilities information can be distributed among network devices since they are quite stable. For the frequent changing information such as utilization of resources, can be collected by a centralized control plane to avoid frequent flooding in distributed control plane. Service scheduling function can be performed by a centralized control plane and/or the CATS router.The entire or partial C-PS function may be implemented in the centralized control plane, depending on the specific implementation and deployment.
+
 
 # CATS Framework Workflow
 
