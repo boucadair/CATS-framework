@@ -519,7 +519,6 @@ If the CATS Framework is deployed in the Hybrid model, the metric distribution c
       Service CS-ID 1, instance CIS-ID 3, <metric 4,5>
       Service CS-ID 2
 ~~~
-
 {: #fig-cats-hybrid title="An Example of CATS Metric Distribution in Hybrid Model"}
 
 
