@@ -246,7 +246,8 @@ A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.
    +----------------------------------+  |         +--------+
    |           Data Plane             |  |         | +--------+
    +----------------------------------+  |<=======>| |Service |
-                                         |         +-|instance|
+                                         |         +-|Contact |
+                                         |           |Instance|
                                          |           +--------+
 
             Network Domain                  Computing Domain
