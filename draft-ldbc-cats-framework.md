@@ -264,7 +264,7 @@ Depending on implementation and deployment, these planes may consist of several 
 
 ## CATS Components {#sec-cats-arch}
 
-In CATS, the network nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-components}}.
+CATS nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service contact instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-components}}.
 
 ~~~
     +-----+              +------+           +------+
