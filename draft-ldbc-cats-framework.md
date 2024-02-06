@@ -232,7 +232,7 @@ CATS Instance Selector ID (CIS-ID):
 
 ## CATS Framework {#sec-cats-framework}
 
-A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.```
+A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.
 
 ~~~
    +----------------------------------+  |         +--------+
