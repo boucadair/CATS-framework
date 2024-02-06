@@ -480,7 +480,7 @@ If the CATS framework is deployed using a centralized model, the metric can be, 
 ~~~
 {: #fig-cats-centralized title="An Example of CATS Metric Distribution in Centralized Model"}
 
-If the CATS Framework is deployed in the Hybrid model, the metric distribution can be illustrated in the {{fig-cats-hybrid}}. For example, the metric 1,2,3 associated with the CS-ID1 is collected by the centralized C-PS, and the metric 4 and 5 are distributed via distributed protocols to the ingress CATS-Forwarder directly. For Service with CS-ID2, all the metrics are collected by the centralized C-PS. The computed path result will be distributed to the Ingress CATS-Forwarder from the C-PS by considering both the metrics from the C-SMA and C-NMA. Furthermore, the Ingress CATS-Forwarder MAY also have some ability to calculate the path for the coming service accessing packets.
+If the CATS Framework is deployed using an hybrid model, the metric can be distributed, e.g., as illustrated in the {{fig-cats-hybrid}}. For example, the metrics 1,2,3 associated with the CS-ID1 are collected by the centralized C-PS, and the metrics 4 and 5 are distributed via distributed protocols to the ingress CATS-Forwarder directly. For a service with CS-ID2, all the metrics are collected by the centralized C-PS. The CATS-computed path result will be distributed to the Ingress CATS-Forwarders from the C-PS by considering both the metrics from the C-SMA and C-NMA. Furthermore, the Ingress CATS-Forwarder may also have some ability to compute the path for the subsequent service accessing packets.
 
 ~~~
 
