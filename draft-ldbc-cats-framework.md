@@ -331,7 +331,7 @@ The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (
 
 There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.
 
-A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-components}}).Generally, a standalone C-PS can be a functional component of a PCE/centralized controller.
+A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-components}}). Generally, a standalone C-PS can be a functional component of a centralized controller (e.g., a Path Computation Element (PCE) {{?RFC4655}}).
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
@@ -353,9 +353,9 @@ The "underlay infrastructure" in {{fig-cats-components}} indicates an IP/MPLS ne
 
 This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.
 
-Centralized designs where the computing related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (e.g., a Path Computation Element (PCE) {{?RFC4655}}) that also collects network metrics may be adopted. In the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. The outcomes of such a computation process may then be communicated to CATS traffic classifiers (C-TCs).
+Centralized designs where the computing related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (e.g., a PCE) that also collects network metrics may be adopted. In the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. The outcomes of such a computation process may then be communicated to CATS traffic classifiers (C-TCs).
 
-In conclusion, considering implementation and deployment of CATS framework (e.g., distribution of service metrics and implementation of C-PS), at least three possible deployment models can be considered as listed below:
+In conclusion, at least three deployment models can be considered for the deployment of the CATS framework:
 
 * Distributed model: Computing metrics are distributed among network devices directly using distributed protocols without interactions with a centralized control plane. Service scheduling function is performed by the CATS forwarders in the distribution model, Therefore, the C-PS is integrated into an Ingress CATS-Forwarder.
 * Centralized model: Computing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder. In this model, C-PS is implemented in the centralized control plane.
