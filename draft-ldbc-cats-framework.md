@@ -389,9 +389,9 @@ The C-SMA then advertises CS-IDs along with metrics to related C-PSes in the net
 
 For example, in Distributed model, CS-IDs with metrics can be distributed from the C-SMA to an Egress CATS Forwarder firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes that are integrated into Ingress CATS Forwarders.
 
-In Centralized mode, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS.
+In the centralized model, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS.
 
-In Hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways.
+In the hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways.
 
 The service metrics include computing-related metrics and potentially other service-specific metrics like the number of end-users who access the service contact instance at any given time, their location, etc.
 
@@ -486,7 +486,7 @@ If the CATS framework is implemented using a centralized model, the metric can b
       Service CS-ID 1, instance CIS-ID 3
       Service CS-ID 2
 ~~~
-{: #fig-cats-centralized title="An Example of CATS Metric Distribution in Centralized Model"}
+{: #fig-cats-centralized title="An Example of CATS Metric Distribution in a Centralized Model"}
 
 If the CATS framework is implemented using an hybrid model, the metric can be distributed, e.g., as illustrated in the {{fig-cats-hybrid}}. For example, the metrics 1,2,3 associated with the CS-ID1 are collected by the centralized C-PS, and the metrics 4 and 5 are distributed via distributed protocols to the ingress CATS-Forwarder directly. For a service with CS-ID2, all the metrics are collected by the centralized C-PS. The CATS-computed path result will be distributed to the Ingress CATS-Forwarders from the C-PS by considering both the metrics from the C-SMA and C-NMA. Furthermore, the Ingress CATS-Forwarder may also have some ability to compute the path for the subsequent service accessing packets.
 
