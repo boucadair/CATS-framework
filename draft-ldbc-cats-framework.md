@@ -234,13 +234,13 @@ CATS Instance Selector ID (CIS-ID):
 
 The high-level CATS framework can be illustrated in Figure 1.  Starting from the bottom part of the figure and moving towards the upper part, the following planes are defined.
 
-~~~                           
+~~~
    +----------------------------------+  |         +--------+
    |         Management Plane         |  |  Intf   |        |
    +----------------------------------+  |<=======>| C-SMA  |
    |           Control Plane          |  |         |        |
    +----------------------------------+  |         +---+----+
-                   /\ SBI                |             |    
+                   /\ SBI                |             |
                    ||                    |             |
                    \/                    |             |
    +----------------------------------+  |         +--------+
@@ -248,7 +248,7 @@ The high-level CATS framework can be illustrated in Figure 1.  Starting from the
    +----------------------------------+  |<=======>| |Service |
                                          |         +-|instance|
                                          |           +--------+
- 
+
             Network Domain                  Computing Domain
 ~~~
 {: #fig-cats-fw title="CATS Framework"}
@@ -373,15 +373,15 @@ A service is associated with a unique identifier called a CS-ID. A CS-ID may be 
 
 ## Metrics Distribution
 
-As described in {{sec-cats-arch}}, a C-SMA collects both service-related capabilities and metrics, and associates them with a CS-ID that identifies the service. The C-SMA may aggregate the metrics for multiple service  contact  instances, or maintain them separately or both. 
+As described in {{sec-cats-arch}}, a C-SMA collects both service-related capabilities and metrics, and associates them with a CS-ID that identifies the service. The C-SMA may aggregate the metrics for multiple service  contact  instances, or maintain them separately or both.
 
 The C-SMA then advertises CS-IDs along with metrics to related C-PSes in the network. Depending on deployment choice, CS-IDs with metrics may be distributed in different ways.
 
-For example, in Distributed model, CS-IDs with metrics can be distributed from the C-SMA to an Egress CATS Forwarder firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes that are integrated into Ingress CATS Forwarders. 
+For example, in Distributed model, CS-IDs with metrics can be distributed from the C-SMA to an Egress CATS Forwarder firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes that are integrated into Ingress CATS Forwarders.
 
-In Centralized mode, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS. 
+In Centralized mode, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS.
 
-In Hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways. 
+In Hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways.
 
 The service metrics include computing-related metrics and potentially other service-specific metrics like the number of end-users who access the service contact instance at any given time, their location, etc.
 
@@ -397,7 +397,7 @@ In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Forwarder 2" di
 
 The service metric advertisements are processed by the C-PS hosted by "CATS-Forwarder 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Forwarder according to the initial  client's service request, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service contact instances as reported by the metrics, and the state of the network.
 
-~~~ 
+~~~
           Service CS-ID 1, instance CIS-ID 1 <metrics>
           Service CS-ID 1, instance CIS-ID 2 <metrics>
 
@@ -518,7 +518,6 @@ If the CATS Framework is deployed in the Hybrid model, the metric distribution c
              :<-------------------------------:
       Service CS-ID 1, instance CIS-ID 3, <metric 4,5>
       Service CS-ID 2 
-
 ~~~
 
 {: #fig-cats-hybrid title="An Example of CATS Metric Distribution in Hybrid Model"}
