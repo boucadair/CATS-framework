@@ -257,14 +257,14 @@ The high-level CATS framework can be illustrated in Figure 1.  Starting from the
 * CATS Control Plane - Responsible for scheduling services based on computing and network information, and making decisions on how packets should be forwarded by one or more network devices and pushing such decisions down to the CATS Data Plane for execution.
 * CATS Data Plane - Responsible for computing-aware routing, handling packets in the data path, such as packet forwarding.
 
-Depending on implementation and deployment, these planes may consist of several functional elements/components, and the details will be described in the following sections. 
+Depending on implementation and deployment, these planes may consist of several functional elements/components, and the details will be described in the following sections.
 
 
 ## CATS Components {#sec-cats-arch}
 
 In CATS, the network nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-components}}.
 
-~~~ 
+~~~
     +-----+              +------+           +------+
   +------+|            +------+ |         +------+ |
   |client|+            |client|-+         |client|-+
@@ -329,7 +329,7 @@ The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (
 
 There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.
 
-A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-components}}).Generally, a standalone C-PS can be a functional component of a PCE/centralized controller. 
+A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-components}}).Generally, a standalone C-PS can be a functional component of a PCE/centralized controller.
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
 
@@ -446,7 +446,7 @@ If the CATS Framework is deployed in the Centralized model, the metric distribut
 
              :       +------+
              :<------| C-PS |<----------------------------------+
-             :       +------+ <------+              +--------+  | 
+             :       +------+ <------+              +--------+  |
              :          ^            |           +--|CS-ID 1 |  |
              :          |            |           |  |CIS-ID 1|  |
              :          |   +----------------+   |  +--------+  |
@@ -456,7 +456,7 @@ If the CATS Framework is deployed in the Centralized model, the metric distribut
              :          |   +----------------+      |CIS-ID 2|  |
  +--------+  :          |             |             +--------+  |
  | Client |  :  Network |   +----------------------+            |
- +--------+  :  metrics |   | +-------+            |            | 
+ +--------+  :  metrics |   | +-------+            |            |
       |      :          +-----| C-NMA |            |      +-----+
       |      :          |   | +-------+            |      |C-SMA|<-+
  +----------------+ <---+   |                      |      +-----+  |
@@ -483,13 +483,13 @@ If the CATS Framework is deployed in the Hybrid model, the metric distribution c
 ~~~
 
                    Service CS-ID 1, instance CIS-ID 1 <metric 1,2,3>
-                   Service CS-ID 1, instance CIS-ID 2 <metric 1,2,3> 
+                   Service CS-ID 1, instance CIS-ID 2 <metric 1,2,3>
                    Service CS-ID 1, instance CIS-ID 3 <metric 1,2,3>
                    Service CS-ID 2, <metrics>
 
              :       +------+
              :<------| C-PS |<----------------------------------+
-             :       +------+ <------+              +--------+  | 
+             :       +------+ <------+              +--------+  |
              :          ^            |           +--|CS-ID 1 |  |
              :          |            |           |  |CIS-ID 1|  |
              :          |   +----------------+   |  +--------+  |
@@ -499,7 +499,7 @@ If the CATS Framework is deployed in the Hybrid model, the metric distribution c
              :          |   +----------------+      |CIS-ID 2|  |
  +--------+  :          |             |             +--------+  |
  | Client |  :  Network |   +----------------------+            |
- +--------+  :  metrics |   | +-------+            |            | 
+ +--------+  :  metrics |   | +-------+            |            |
       |      :          +-----| C-NMA |            |      +-----+
       |      :          |   | +-------+            |      |C-SMA|<-+
  +----------------+ <---+   |                      |      +-----+  |
@@ -517,7 +517,7 @@ If the CATS Framework is deployed in the Hybrid model, the metric distribution c
              :                                :      +-------+
              :<-------------------------------:
       Service CS-ID 1, instance CIS-ID 3, <metric 4,5>
-      Service CS-ID 2 
+      Service CS-ID 2
 ~~~
 
 {: #fig-cats-hybrid title="An Example of CATS Metric Distribution in Hybrid Model"}
