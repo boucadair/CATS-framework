@@ -232,7 +232,7 @@ CATS Instance Selector ID (CIS-ID):
 
 ## CATS Framework {#sec-cats-framework}
 
-The high-level CATS framework can be illustrated in Figure 1.  Starting from the bottom part of the figure and moving towards the upper part, the following planes are defined.
+A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.```
 
 ~~~
    +----------------------------------+  |         +--------+
