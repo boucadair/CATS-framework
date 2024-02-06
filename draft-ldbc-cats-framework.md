@@ -212,7 +212,7 @@ CATS Network Metric Agent (C-NMA):
 CATS Traffic Classifier (C-TC):
  : A functional entity that is responsible for determining which packets belong to a traffic flow for a particular service request. It is also responsible for forwarding such packets along a C-PS computed path that leads to the relevant service contact instance. See {{sec-ctc}}.
 
-# Framework and Components {#Framework-and-concepts}
+# CATS Framework and Components {#Framework-and-concepts}
 
 ## Assumptions
 
@@ -230,7 +230,7 @@ CATS Service ID (CS-ID):
 CATS Instance Selector ID (CIS-ID):
 : An identifier of a specific service contact instance.
 
-## CATS Framework {#sec-cats-framework}
+## Framework Overview {#sec-cats-framework}
 
 A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.
 
@@ -253,7 +253,7 @@ A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.
 ~~~
 {: #fig-cats-fw title="CATS Framework"}
 
-Starting from the bottom part of the figure and moving to the upper part, the following planes are defined:
+Starting from the bottom part of {{fig-cats-fw}} and moving to the upper part, the following planes are defined:
 
 * CATS  Management Plane: Responsible for monitoring, configuring, and maintaining CATS network devices.
 * CATS Control Plane: Responsible for scheduling services based on computing and network information. It is also responsible for making decisions about how packets should be forwarded by involved forwarding nodes and communicating such decisions to the CATS Data Plane for execution.
@@ -262,7 +262,7 @@ Starting from the bottom part of the figure and moving to the upper part, the fo
 Depending on implementation and deployment, these planes may consist of several functional elements/components, and the details will be described in the following sections.
 
 
-## CATS Components {#sec-cats-arch}
+## CATS Functional Components {#sec-cats-arch}
 
 CATS nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service contact instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-components}}.
 
@@ -303,7 +303,7 @@ CATS nodes make forwarding decisions for a given service request that has been r
 ~~~
 {: #fig-cats-components title="CATS Functional Components"}
 
-### Service Sites and Services Instances {#sec-service-sites}
+### Service Sites, Services Instances, and Service Contact Instances {#sec-service-sites}
 
 Service sites are the premises that host a set of computing resources. As mentioned in {{cats-ids}}, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID). The CS-ID does not need to be globally unique, though.
 
@@ -319,7 +319,7 @@ The CATS Service Metric Agent (C-SMA) is a functional component that gathers inf
 
 {{fig-cats-components}} shows one C-SMA embedded in "CATS-Forwarder 3", and another C-SMA that is adjacent to "CATS-Forwarder 1".
 
-### The CATS Network Metric Agent (C-NMA) {#sec-cnma}
+### CATS Network Metric Agent (C-NMA) {#sec-cnma}
 
 The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the underlay network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Forwarders or CATS Path Selectors (C-PS) ({{sec-cps}}).
 
