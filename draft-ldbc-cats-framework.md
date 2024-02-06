@@ -255,7 +255,7 @@ A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.```
 
 Starting from the bottom part of the figure and moving to the upper part, the following planes are defined:
 
-* CATS  Management Plane - Responsible for monitoring, configuring, and maintaining CATS network devices.
+* CATS  Management Plane: Responsible for monitoring, configuring, and maintaining CATS network devices.
 * CATS Control Plane - Responsible for scheduling services based on computing and network information, and making decisions on how packets should be forwarded by one or more network devices and pushing such decisions down to the CATS Data Plane for execution.
 * CATS Data Plane - Responsible for computing-aware routing, handling packets in the data path, such as packet forwarding.
 
