@@ -358,10 +358,15 @@ Centralized designs where the computing related metrics from the C-SMAs are coll
 
 In conclusion, at least three deployment models can be considered for the deployment of the CATS framework:
 
-* Distributed model: Computing metrics are distributed among network devices directly using distributed protocols without interactions with a centralized control plane. Service scheduling function is performed by the CATS forwarders in the distribution model, Therefore, the C-PS is integrated into an Ingress CATS-Forwarder.
-* Centralized model: Computing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder. In this model, C-PS is implemented in the centralized control plane.
-* Hybrid model: is a combination of distribution and centralized models.
-: A part of computing metrics are distributed among the network devices, and others may be collected by a centralized control plane. For example, some static information (e.g., capabilities information) can be distributed among network devices since they are quite stable. Frequent changing information (e.g., resource utilization) can be collected by a centralized control plane to avoid frequent flooding in the distributed control plane. Service scheduling function can be performed by a centralized control plane and/or the CATS forwarder. The entire or partial C-PS function may be implemented in the centralized control plane, depending on the specific implementation and deployment.
+Distributed model:
+: Computing metrics are distributed among network devices directly using distributed protocols without interactions with a centralized control plane. Service scheduling function is performed by the CATS forwarders in the distribution model, Therefore, the C-PS is integrated into an Ingress CATS-Forwarder.
+
+Centralized model:
+: Computing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder. In this model, C-PS is implemented in the centralized control plane.
+
+Hybrid model:
+: Is a combination of distribution and centralized models.
+: A part of computing metrics are distributed among involved network devices, and others may be collected by a centralized control plane. For example, some static information (e.g., capabilities information) can be distributed among network devices since they are quite stable. Frequent changing information (e.g., resource utilization) can be collected by a centralized control plane to avoid frequent flooding in the distributed control plane. Service scheduling function can be performed by a centralized control plane and/or the CATS forwarder. The entire or partial C-PS function may be implemented in the centralized control plane, depending on the specific implementation and deployment.
 
 
 # CATS Framework Workflow
