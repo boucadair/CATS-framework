@@ -50,7 +50,6 @@ author:
    organization: Juniper Networks, Inc.
    email: jdrake@juniper.net
    country: United States of America
- 
 
 contributor:
  -
@@ -61,7 +60,7 @@ contributor:
   name: Gyan Mishra
   org: Verizon Inc.
   email: hayabusagsm@gmail.com
- - 
+ -
   name: Huijuan Yao
   org: China Mobile
   email: yaohuijuan@chinamobile.com
