@@ -581,3 +581,5 @@ The authors would like to thank Joel Halpern, John Scudder, Dino Farinacci, Adri
 Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Peng Liu, Fang Gao, Aijun Wang, Cong Li,
 Xinxin Yi, Jari Arkko, Mingyu Wu, Haibo Wang, Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li,
 Xinyue Zhang, and Nagendra Kumar for their comments and suggestions.
+
+Some text about various deployment models was originally documented in {{?I-D.yao-cats-awareness-architecture}}.
