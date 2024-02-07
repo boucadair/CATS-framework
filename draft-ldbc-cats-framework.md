@@ -34,37 +34,32 @@ author:
   email: duzongpeng@chinamobile.com
   country: China
  -
-    fullname: Mohamed Boucadair
-    organization: Orange
-    role: editor
-    country: France
-    email: mohamed.boucadair@orange.com
+   fullname: Mohamed Boucadair
+   organization: Orange
+   role: editor
+   country: France
+   email: mohamed.boucadair@orange.com
  -
    fullname: Luis M. Contreras
    organization: Telefonica
    country: Spain
    email: luismiguel.contrerasmurillo@telefonica.com
  -
-  ins: J. Drake
-  name: John E Drake
-  organization: Juniper Networks, Inc.
-  email: jdrake@juniper.net
-  country: United States of America
- -
-  ins: G. Huang
-  name: Guangping Huang
-  organization: ZTE
-  email: huang.guangping@zte.com.cn
-  country: China
- -
-  ins: G. Mishra
-  name: Gyan Mishra
-  organization: Verizon Inc.
-  email: hayabusagsm@gmail.com
-  country: United States of America
-
+   ins: J. Drake
+   name: John E Drake
+   organization: Juniper Networks, Inc.
+   email: jdrake@juniper.net
+   country: United States of America
 
 contributor:
+ -
+  name: Guangping Huang
+  org: ZTE
+  email: huang.guangping@zte.com.cn
+ -
+  name: Gyan Mishra
+  org: Verizon Inc.
+  email: hayabusagsm@gmail.com
  -
   name: Huijuan Yao
   org: China Mobile
