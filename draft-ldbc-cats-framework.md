@@ -227,7 +227,7 @@ CATS Instance Selector ID (CIS-ID):
 
 ## Framework Overview {#sec-cats-framework}
 
-A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.
+A high-level view of the CATS framework, without expanding the functional entities in the network, is illustrated in {{fig-cats-fw}}.
 
 ~~~
    +----------------------------------+  |         +--------+
@@ -247,7 +247,7 @@ A high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.
 
             Network Domain                  Computing Domain
 ~~~
-{: #fig-cats-fw title="CATS Framework"}
+{: #fig-cats-fw title="Main CATS Interactions"}
 
 Starting from the bottom part of {{fig-cats-fw}} and moving to the upper part, the following planes are defined:
 
