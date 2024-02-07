@@ -319,6 +319,8 @@ The CATS Service Metric Agent (C-SMA) is a functional component that gathers inf
 
 The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the underlay network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Forwarders or CATS Path Selectors (C-PS) ({{sec-cps}}).
 
+C-NMA is likely to leverage existing techniques (e.g., {{?RFC8571}}).
+
 {{fig-cats-components}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
 
 ### CATS Path Selector (C-PS) {#sec-cps}
