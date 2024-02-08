@@ -384,7 +384,7 @@ As described in {{sec-cats-arch}}, a C-SMA collects both service-related capabil
 
 The C-SMA then advertises CS-IDs along with metrics to related C-PSes in the network. Depending on deployment choice, CS-IDs with metrics may be distributed in different ways.
 
-For example, in Distributed model, CS-IDs with metrics can be distributed from the C-SMA to an Egress CATS Forwarder firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes that are integrated into Ingress CATS Forwarders.
+For example, in a distributed model, CS-IDs with metrics can be distributed from the C-SMA to an Egress CATS Forwarder firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes that are integrated into Ingress CATS Forwarders.
 
 In the centralized model, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS.
 
@@ -439,7 +439,7 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Forw
           Service CS-ID 1, instance CIS-ID 3 <metrics>
           Service CS-ID 2, <metrics>
 ~~~
-{: #fig-cats-example-overlay title="An Example of CATS Metric Distribution in Distributed Model"}
+{: #fig-cats-example-overlay title="An Example of CATS Metric Dessimination in a Distributed Model"}
 
 The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIS-ID information will not be included in the advertisement. Instead, a per-site CIS-ID may be used in case multiple sites are connected to the Egress CATS-Forwarder to explicitly indicate the site from where the aggregated metrics come.
 
@@ -528,14 +528,9 @@ If the CATS framework is implemented using an hybrid model, the metric can be di
 ~~~
 {: #fig-cats-hybrid title="An Example of CATS Metric Distribution in Hybrid Model"}
 
-
-
-
-
-
 ## Service Access Processing
 
-A C-PS computes paths that lead to Egress CATS-Forwarders according to both service and network metrics that were advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized (in a Centralized model or Hybrid model).
+A C-PS computes paths that lead to Egress CATS-Forwarders according to both service and network metrics that were advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized (in a centralized model or hybrid model).
 
 This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. These algorithms are out of the scope of this document. However, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.
 
@@ -545,7 +540,7 @@ In the example shown in  {{fig-cats-example-overlay}}, the client sends a servic
 
 ## Service Contact Instance Affinity
 
-Instance affinity means that packets that belong to a flow associated with a service should always be sent to the same Egress CATS-Forwarder which will forward them to the same service contact instance. Furthermore, packets of a given flow should be forwarded along the same path to avoid mis-ordering and to prevent the introduction of unpredictable latency variations.
+Instance affinity means that packets that belong to a flow associated with a service should always be sent to the same service contact instance. Furthermore, packets of a given flow should be forwarded along the same path to avoid mis-ordering and to prevent the introduction of unpredictable latency variations. Specifically, the same Egress CATS-Forwarder may be sollicited to forward the packets.
 
 The affinity is determined at the time of newly formulated service requests.
 
