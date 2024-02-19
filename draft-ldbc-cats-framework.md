@@ -48,7 +48,7 @@ author:
    ins: J. Drake
    name: John E Drake
    organization: Juniper Networks, Inc.
-   email: jdrake@juniper.net
+   email: je_drake@yahoo.com
    country: United States of America
 
 contributor:
