@@ -319,7 +319,7 @@ The CATS Service Metric Agent (C-SMA) is a functional component that gathers inf
 
 The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the underlay network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Forwarders or CATS Path Selectors (C-PS) ({{sec-cps}}).
 
-C-NMA is likely to leverage existing techniques (e.g., {{?RFC8571}}).
+C-NMA is likely to leverage existing techniques (e.g., {{?RFC7471}}, {{?RFC8570}}, and {{?RFC8571}}).
 
 {{fig-cats-components}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
 
@@ -562,7 +562,7 @@ The information distributed by the C-SMA and C-NMA agents may be sensitive. Such
 
 Means to prevent that on-path nodes in the underlay infrastructure to fingerprint and track clients (e.g., determine which client accesses which service) must be supported by CATS solutions. More generally, personal data must not be exposed to external parties by CATS beyond what is carried in the packet that was originally issued by the client.
 
-Since the service will, in some cases, need to know about applications, clients, and even user identity, it is likely that the C-PS computed path information will need to be encrypted if the client/service communication is not already encrypted.
+Since the service will, in some cases, need to know about applications, clients, and even user identity, the C-PS computed path information should be encrypted if the client/service communication is not already encrypted.
 
 For more discussion about privacy, refer to {{?RFC6462}} and {{?RFC6973}}.
 
