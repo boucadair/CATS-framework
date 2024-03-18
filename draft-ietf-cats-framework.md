@@ -48,7 +48,7 @@ author:
    ins: J. Drake
    name: John E Drake
    organization: Juniper Networks, Inc.
-   email: jdrake@juniper.net
+   email: je_drake@yahoo.com
    country: United States of America
 
 contributor:
@@ -311,7 +311,7 @@ Service instances can be instantiated and accessed through different service sit
 
 ### CATS Service Metric Agent (C-SMA) {#sec-csma}
 
-The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about service sites and server resources, as well as the status of the different service instances. The C-SMAs are located adjacent to the service contact instances and may be hosted by the Egress CATS-Forwarders ({{sec-ocr}}) or located next to them.
+The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about service sites and server resources, as well as the status of the different service instances. The C-SMAs may be located adjacent to the service contact instances, co-located with service contact instances, hosted by the Egress CATS-Forwarders ({{sec-ocr}}), etc.
 
 {{fig-cats-components}} shows one C-SMA embedded in "CATS-Forwarder 3", and another C-SMA that is adjacent to "CATS-Forwarder 1".
 
@@ -319,7 +319,7 @@ The CATS Service Metric Agent (C-SMA) is a functional component that gathers inf
 
 The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the underlay network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Forwarders or CATS Path Selectors (C-PS) ({{sec-cps}}).
 
-C-NMA is likely to leverage existing techniques (e.g., {{?RFC8571}}).
+C-NMA is likely to leverage existing techniques (e.g., {{?RFC7471}}, {{?RFC8570}}, and {{?RFC8571}}).
 
 {{fig-cats-components}} shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.
 
@@ -341,11 +341,11 @@ CATS classifiers are typically hosted in CATS-Forwarders.
 
 The Egress CATS-Forwarders are the endpoints that behave as an overlay egress for service requests that are forwarded over a CATS infrastructure. A service site that hosts service instances may be connected to one or more Egress CATS-Forwarders (that is, multi-homing is of course a design option). If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance. In some cases, the choice of the service  contact instance may be left open to the Egress CATS-Forwarder (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Forwarder selects a service contact instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS-Forwarder, among other considerations. Absent explicit policy, an Egress CATS-Forwarder must make sure to forward all packets that pertain to a given service request towards the same service contact instance.
 
-Note that, depending on the design considerations and service requirements, per-service  contact instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a privileged option scalability-wise, but relies on Egress CATS-Forwarders that connect to various service contact instances to select the proper service contact instance. An Egress CATS-Forwarder may choose to aggregate the metrics from different sites as well. In this case, the Egress CATS-Forwarder will choose the best site by itself when the packets arrive at it.
+Note that, depending on the design considerations and service requirements, per-service  contact instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a preferred option scalability-wise, but relies on Egress CATS-Forwarders that connect to various service contact instances to select the proper service contact instance. An Egress CATS-Forwarder may choose to aggregate the metrics from different sites as well. In this case, the Egress CATS-Forwarder will choose the best site by itself when the packets arrive at it.
 
 ### Underlay Infrastructure
 
-The "underlay infrastructure" in {{fig-cats-components}} indicates an IP/MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes. Underlay nodes are typically P routers ({{Section 5.3.1 of ?RFC4026}}).
+The "underlay infrastructure" in {{fig-cats-components}} indicates an IP and/or MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders ({{sec-ocr}}), and will not affect the underlay nodes. Underlay nodes are typically P routers ({{Section 5.3.1 of ?RFC4026}}).
 
 ## Deployment Considerations
 
@@ -400,7 +400,7 @@ Network metrics may also change over time. Dynamic routing protocols may take ad
 
 {{fig-cats-example-overlay}} shows an example of how CATS metrics can be disseminated in the distributed model. There is a client attached to the network via "CATS-Forwarder 1". There are three instances of the service with CS-ID "1": two are located at "Service Site 2" attached via "CATS-Forwarder 2" and have CIS-IDs "1" and "2"; the third service contact instance is located at "Service Site 3" attached via "CATS-Forwarder 3" and with CIS-ID "3". There is also a second service with CS-ID "2" with only one service contact instance located at "Service Site 2".
 
-In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Forwarder 2" distributes the service metrics for both service contact instances (i.e., (CS-ID 1, CIS-ID 1) and (CS-ID 1, CIS-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service contact instance are indicated separately. Similarly, the C-SMA agent located at "Service Site 2" advertises the service metrics for the two services hosted by "Service Site 2".
+In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Forwarder 2" distributes the service metrics for both service contact instances (i.e., (CS-ID 1, CIS-ID 1) and (CS-ID 1, CIS-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service contact instance are indicated separately. Similarly, the C-SMA agent located at "Service Site 3" advertises the service metrics for the two services hosted by "Service Site 3".
 
 The service metric advertisements are processed by the C-PS hosted by "CATS-Forwarder 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Forwarder according to the initial  client's service request, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service contact instances as reported by the metrics, and the state of the network.
 
@@ -532,7 +532,7 @@ If the CATS framework is implemented using an hybrid model, the metric can be di
 
 A C-PS computes paths that lead to Egress CATS-Forwarders according to both service and network metrics that were advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized (in a centralized model or hybrid model).
 
-This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. These algorithms are out of the scope of this document. However, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.
+This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. However, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.
 
 In the example shown in  {{fig-cats-example-overlay}}, the client sends a service access via the network through the "CATS-Forwarder 1", which is an Ingress CATS-Forwarder. Note that, a service access may consist of one or more service packets (e.g., Session Initiation Protocol (SIP) {{?RFC3261}}, HTTP {{?RFC9112}}, IPv6 {{?RFC8200}}, SRv6 {{?RFC8754}} or Real-Time Streaming Protocol (RTSP) {{?RFC7826}}) that carry the CS-ID and potential parameters. The Ingress CATS-Forwarder classifies the packets using the information provided by the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation will be removed and the inner packets will be sent to the relevant service contact instance.
 
@@ -562,7 +562,7 @@ The information distributed by the C-SMA and C-NMA agents may be sensitive. Such
 
 Means to prevent that on-path nodes in the underlay infrastructure to fingerprint and track clients (e.g., determine which client accesses which service) must be supported by CATS solutions. More generally, personal data must not be exposed to external parties by CATS beyond what is carried in the packet that was originally issued by the client.
 
-Since the service will, in some cases, need to know about applications, clients, and even user identity, it is likely that the C-PS computed path information will need to be encrypted if the client/service communication is not already encrypted.
+Since the service will, in some cases, need to know about applications, clients, and even user identity, the C-PS computed path information should be encrypted if the client/service communication is not already encrypted.
 
 For more discussion about privacy, refer to {{?RFC6462}} and {{?RFC6973}}.
 
