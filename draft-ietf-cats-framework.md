@@ -149,7 +149,7 @@ Service:
   : An offering that is made available by a provider by orchestrating a set of resources (networking, compute, storage, etc.).
   : Which and how these resources are solicited is part of the service logic which is internal to the provider. For example, these resources may be:
 
-    * Exposed by one or multiple processes (a.k.a. Service Functions (SFs) {{?RFC7665}}).
+    * Exposed by one or multiple processes.
     * Provided by virtual instances, physical, or a combination thereof.
     * Hosted within the same or distinct nodes.
     * Hosted within the same or multiple service sites.
