@@ -175,7 +175,7 @@ Service contact instance:
   : A client-facing service function instance that is responsible for receiving requests in the context of a given service. A service request is processed according to the service logic (e.g., handle locally or solicit backend resources). Steering beyond the service contact instance is hidden to both clients and CATS components.
   : a service contact instance is reachable via at least one Egress CATS Forwarder.
   : A service can be accessed via multiple service contact instances running at the same or different locations (service sites).
-  : The same service contact instance may dispatch service requests to one or more service instances (e.g., an instance that behaves as a service load-balancer).
+  : The same service contact instance may dispatch service requests to one or more service instances (e.g., a service contact instance that behaves as a service load-balancer).
 
 Computing-aware forwarding (or steering, computing):
   : A forwarding (or steering, computing) scheme which takes a set of metrics that reflect the capabilities and state of computing resources as input.
