@@ -1,0 +1,3327 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-06-13T01:05:06.114554+00:00",
+  "repo": "boucadair/CATS-framework",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    },
+    {
+      "name": "editorial",
+      "description": "",
+      "color": "c5def5"
+    },
+    {
+      "name": "terminology",
+      "description": "",
+      "color": "f9d0c4"
+    },
+    {
+      "name": "revive-stable-version",
+      "description": "",
+      "color": "d4c5f9"
+    },
+    {
+      "name": "Close_No_Change_Needed",
+      "description": "",
+      "color": "c5def5"
+    }
+  ],
+  "issues": [
+    {
+      "number": 7,
+      "id": "I_kwDOJBcdGs5f23Hg",
+      "title": "Add \"Provisioning CAN Elements\" Section",
+      "url": "https://github.com/boucadair/CATS-framework/issues/7",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "--detail any required provisioning at CAN elements (booptsrapping, credentials of peer CAN nodes, services, optimization metrics per service, etc.)--\r\n",
+      "createdAt": "2023-03-03T08:59:33Z",
+      "updatedAt": "2023-05-12T06:32:39Z",
+      "closedAt": "2023-05-12T06:32:39Z",
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOJBcdGs5f23nE",
+      "title": "Discuss more threats in the Security Section",
+      "url": "https://github.com/boucadair/CATS-framework/issues/8",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "--Discuss more threats: integrity-protection of advertized information, origin authentication, prevent ddos, ...",
+      "createdAt": "2023-03-03T09:00:42Z",
+      "updatedAt": "2023-11-28T15:04:59Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "From Christian\r\n\r\n> `> too many updates may affect network stability.\r\n> \r\n> Not a security issue per se. This rather enoucrages a dedicated \"discussion\" section for all the issues that may arise from the deployment of a CATS environment - scalability, coexistence of multiple C-PS functions, traffic load balancing implications, etc. Route flap dampening is not a security consideration per se.`",
+          "createdAt": "2023-03-08T17:17:09Z",
+          "updatedAt": "2023-03-08T17:17:09Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "TBD, let's  address other comments before this one, leave it aside for now. ",
+          "createdAt": "2023-11-28T15:04:58Z",
+          "updatedAt": "2023-11-28T15:04:58Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOJBcdGs5gQqar",
+      "title": "About the notion of \"static service dispatching\"",
+      "url": "https://github.com/boucadair/CATS-framework/issues/12",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "> usually provide relatively static service dispatching\r\n\r\nI don't get what is meant here. Does this mean \"service design remains relatively static in a sense that the resources that participate in the delivery (and the operation) of a service remain the same over time, regardless of various, yet possibly affecting criteria like the number of end-users, their location and whether they are in motion or not\"? If so, I would rephrase.",
+      "createdAt": "2023-03-08T09:55:48Z",
+      "updatedAt": "2023-03-08T13:59:55Z",
+      "closedAt": "2023-03-08T13:59:54Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "@Deguello1, you got the intent.  An edit proposal can be seen at: https://github.com/boucadair/can-framework/commit/2101fe4e5ee022775f7ca2209ee5fba96417d5ac ",
+          "createdAt": "2023-03-08T10:17:02Z",
+          "updatedAt": "2023-03-08T10:17:02Z"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOJBcdGs5gQt28",
+      "title": "About \"ingress-based overlay\"",
+      "url": "https://github.com/boucadair/CATS-framework/issues/13",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "> ingress-based overlay\r\n\r\nThis should be elaborated as it suggests some directionality that is debatable.",
+      "createdAt": "2023-03-08T10:02:22Z",
+      "updatedAt": "2023-11-23T16:25:54Z",
+      "closedAt": "2023-11-23T16:25:54Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "I'm not sure there is a value in maintaining that wording, either. \r\n\r\nThe directionality is relevant as the placement decision is made when first receiving an incoming request but that's obvious and does not need to be called out. ",
+          "createdAt": "2023-03-08T10:38:53Z",
+          "updatedAt": "2023-03-08T10:38:53Z"
+        },
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The text is removed. This issue can be closed?",
+          "createdAt": "2023-11-23T07:31:18Z",
+          "updatedAt": "2023-11-23T07:31:18Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Already removed in draft-ldbc-cats-framework-03",
+          "createdAt": "2023-11-23T16:25:54Z",
+          "updatedAt": "2023-11-23T16:25:54Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOJBcdGs5gQx0P",
+      "title": "About the definition of \"service\"",
+      "url": "https://github.com/boucadair/CATS-framework/issues/14",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "> A monolithic function that is provided by a network operator according to a specification. A composite service can be built by orchestrating multiple monolithic services.\r\n\r\nThis reads strange as the woring mixes function with service. I would encourage some consisitency, e.g., based upon the terminology used by RFC7665 (Service Function). Also, since earlier text mentions service provider, I would suggest s/network operator/service provider.",
+      "createdAt": "2023-03-08T10:10:22Z",
+      "updatedAt": "2023-03-08T14:01:08Z",
+      "closedAt": "2023-03-08T14:01:08Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Fair point. A proposal can be seen at https://github.com/boucadair/can-framework/pull/16/commits/f669192f74c07bc4a3dd40fb95032cdcb2fde2af",
+          "createdAt": "2023-03-08T10:32:55Z",
+          "updatedAt": "2023-03-08T10:32:55Z"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOJBcdGs5gQ77C",
+      "title": "About the role of C-PS",
+      "url": "https://github.com/boucadair/CATS-framework/issues/17",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "> The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Routers (and potentially the service instances) where to forward traffic for a given service demand\r\n\r\nThis wording suggests a somewhat limited role of C-PS (seemingly restricted to the selection of egress CATS-Routers), whereas the initial definition of a C-PS rather suggests path computation capabilities. I would therefore rephrase the above wording (by introducing the notion of path computation and selection besides the selection of egress CATS routers).",
+      "createdAt": "2023-03-08T10:40:17Z",
+      "updatedAt": "2023-11-28T16:06:49Z",
+      "closedAt": "2023-11-28T16:06:49Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Here is the definition of C-PS: \r\n`CATS Path Selector (C-PS):\r\nA computation logic that calculates and selects paths towards service locations and instances and which accommodates the requirements of service requests. Such a path computation engine takes into account the service and network status information.`\r\n\r\nPath computation reminds me of PCE. I think the main part of computation in C-PS is more about selecting existing paths rather than calculate the path based on some requirements. It is also reflected in the name of C-PS(selector). Why does the definition of C-PS begin with \"computation logic\" while other definition begin with \"an entity\"?",
+          "createdAt": "2023-11-23T07:41:37Z",
+          "updatedAt": "2023-11-23T07:41:37Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "it seems that this issue can be closed.",
+          "createdAt": "2023-11-28T16:03:16Z",
+          "updatedAt": "2023-11-28T16:03:16Z"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOJBcdGs5gRNju",
+      "title": "About the forwarding role of CATS classifiers",
+      "url": "https://github.com/boucadair/CATS-framework/issues/18",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "> forwarded along the same path\r\n\r\nThe current wording implicitly suggests there's no room for traffic load balancing. I would relax (or clarify) this a bit as the outcomes of C-PS ccomputation may very well encourage traffic load distribution as a function of the traffic ocngestion conditions, possibly leading to multi-path forwarding policies towards a given service instance.",
+      "createdAt": "2023-03-08T11:35:53Z",
+      "updatedAt": "2023-11-28T16:07:51Z",
+      "closedAt": "2023-11-28T16:07:51Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I would remove \"along the same path\" and only keep \"towards the same service contact instance\".",
+          "createdAt": "2023-11-23T07:35:55Z",
+          "updatedAt": "2023-11-23T07:35:55Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "can be closed after merging the text. Thanks Med's text",
+          "createdAt": "2023-11-28T16:04:28Z",
+          "updatedAt": "2023-11-28T16:04:28Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOJBcdGs5gRONN",
+      "title": "About egress/ingress taxonomy",
+      "url": "https://github.com/boucadair/CATS-framework/issues/19",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "terminology",
+        "revive-stable-version"
+      ],
+      "body": "> The Egress CATS-Routers are the egress endpoints of overlay paths\r\n\r\nI fail to see the need for this. Again, this suggests (unnecessary) distinction between two types of CATS routers at the risk of obliterating the very likely heuristic.",
+      "createdAt": "2023-03-08T11:38:15Z",
+      "updatedAt": "2023-11-28T16:08:44Z",
+      "closedAt": "2023-11-28T16:08:44Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Reasoning about directionality (in reference to service placement requests) has the merit to easily identify the nodes and whether they need to perform specific features. The ingress/egress thing if you will is similar to the ITR/ETR in LISP.\r\n\r\nAdded this note to -01:\r\n\r\n> Note: \"Egress\" is used here in reference the direction of the  service request placement.  The directionality is called to\r\n>            explicitly identify the exit node of the CATS infrastructure.\r\n\r\nI prefer to leave this terminology now but reassess the point (simplify the terminology) when we will have a more stable text. Thanks @Deguello1.\r\n\r\n",
+          "createdAt": "2023-03-09T06:23:59Z",
+          "updatedAt": "2023-03-09T06:23:59Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Agree with Med to keep the text. This has been dicussed in the WG, and we need to define two roles. Ingress and Egress CATS-Forwarder.",
+          "createdAt": "2023-11-28T16:07:40Z",
+          "updatedAt": "2023-11-28T16:08:01Z"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOJBcdGs5gRRdh",
+      "title": "About the underlay/overlay taxonomy",
+      "url": "https://github.com/boucadair/CATS-framework/issues/20",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "> the \"underlay infrastructure\" indicates an IP/MPLS network that is not necessarily CATS-aware. The P-CS-computed CATS routes will be distributed among the overlay CATS-Routers, and will not affect the underlay nodes.\r\n\r\nThis reads like a pretty strong statement. It not only assumes that CATS routers are distinct from IP/MPLS routers of the underlay (which is highly debatable). It also asssumes that CATS routers will not affect (whatever that means) undermlay nodes: it seems to me that LIBs and FIBs maintaintes by PE routers (for example) may very well be populated by P-CS-computed routes (at least I fail to understand why not). So, I thi\u00e7nk this should deserve some elaboration. In addition, the IP/MPLSunderlay could contribute to the improvement of C-PS-computed routes (e.g., by means of Segment Routing). So, I don't think the underlay/overlay is that black and white.",
+      "createdAt": "2023-03-08T11:49:48Z",
+      "updatedAt": "2023-11-28T16:06:34Z",
+      "closedAt": "2023-11-28T16:06:34Z",
+      "comments": [
+        {
+          "author": "dzpzp",
+          "authorAssociation": "COLLABORATOR",
+          "body": "IMO, the CATS routers can have the full ability of the IP/MPLS routers; meanwhile, the CATS routers support the additional ability about traffic steering defined in CATS.\r\nThe current underlay technology can meet the forwarding requirement of the CATS traffic. Anyway, maybe some intent for example low-latency of the CATS traffic can be synchronized to the underlay.\r\n",
+          "createdAt": "2023-03-13T07:35:24Z",
+          "updatedAt": "2023-03-13T07:35:24Z"
+        },
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The underlay infracture is just a bunch of P nodes which are not supposed to be aware of CATS related metric.",
+          "createdAt": "2023-11-23T07:26:23Z",
+          "updatedAt": "2023-11-23T07:26:23Z"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOJBcdGs5gRS02",
+      "title": "About CATS (C-PS) implementation",
+      "url": "https://github.com/boucadair/CATS-framework/issues/21",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "> A CATS implementation may rely upon a control plane or a management plane  to distribute service metrics and network metrics - this document does not define a specific solution.\r\n\r\nI'm not sure I would keep this unless further elaboration is provided. In addition, the initial text mentions underlay nodes (as far as metric distribution is concerned), which somewhat contradicts the previous statement about the underlay/overlay taxonomy: if CATS routers are not supposed to be involved in the IP/MPLS control and forwarding planes of the so-called underlay, then what's the point of feeding underlay nodes with CATS metrics?",
+      "createdAt": "2023-03-08T11:54:47Z",
+      "updatedAt": "2023-11-28T16:07:21Z",
+      "closedAt": "2023-11-28T16:07:20Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I do not understand why put this paragraph in the Underlay Infrastructure section. Is the control plane or management plane refers to the control/management plane of the underlay infratructure?",
+          "createdAt": "2023-11-23T07:22:50Z",
+          "updatedAt": "2023-11-23T07:22:50Z"
+        },
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The underlay nodes should not be affected by CATS metrics.",
+          "createdAt": "2023-11-23T07:23:46Z",
+          "updatedAt": "2023-11-23T07:23:46Z"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOJBcdGs5gRVY8",
+      "title": "About several C-PS computation logics in the network",
+      "url": "https://github.com/boucadair/CATS-framework/issues/22",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "> The C-SMA then advertises the CS-IDs along with the metrics to be received by all C-PSs in the network\r\n\r\nThis encourages some clarification about the respective roles and responsibilities of all the C-PSes deployed in the network. let alone the security and consistency issues that may arise because of such design. This should deserve an editor's note at least.",
+      "createdAt": "2023-03-08T12:03:16Z",
+      "updatedAt": "2023-12-14T16:37:10Z",
+      "closedAt": "2023-12-14T16:37:10Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It is not necessary to propagate the metric to **all** C-PS. [This IDR draft by CMCC](https://datatracker.ietf.org/doc/draft-fu-idr-computing-info-notification-domain/) proposes notification domain to segment C-PSs. If there will not be clients connected through an ingress, then there is no need to advertise the CS-ID and metric to it.",
+          "createdAt": "2023-11-23T07:18:39Z",
+          "updatedAt": "2023-11-23T07:18:39Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think we may need to modify the text here. First of all, the C-SMA should advertise the CS-ID to the egress CATS-Forwarder which is connected to the site? and then the Egress CATS-Forwarder will redistribute the metrics with other network metrics together to related Ingress CATS Forwarder? \r\n\r\nDepending on the deployment, all/part of service metrics may be collected by a central controller ort central entity, and then send to the Ingress CATS forwader. is it correct?\r\n\r\nTherefore, I propose the update as below,\r\n\r\n_OLD_\r\nThe C-SMA then advertises the CS-IDs along with the metrics to be received by all C-PSes in the network.\r\n\r\n_NEW_\r\n\r\nThe C-SMA then advertises the CS-IDs along with the metrics to related C-PSes in the network. Depending on the deployment choice, the CS-IDs among with the metrics may be distributed to an Egress CATS Forwader firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes, or they may be collected by a central entity and then be distributed to the related C-PSes.\r\n\r\nWhat do you think?",
+          "createdAt": "2023-11-28T16:25:35Z",
+          "updatedAt": "2023-11-28T16:25:35Z"
+        },
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The first step is not necessary either. The metric can be collected by a centralized C-SMA(say cloud management) and distributed directly to the ingress, bypassing the egress.",
+          "createdAt": "2023-11-28T22:53:31Z",
+          "updatedAt": "2023-11-28T22:53:31Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We may have multiple types of deployment. In one deployment, the C-SMA can built the connections with the ingress CATS Forwarder, so it can send the mertics directly. \r\n\r\nBut in other use cases/deployments, the C-SMA might do not have the right to build the connection with ingress CATS-Forwarder. It miht only have a control plane connection with the attached Egress CATS-forwarder,  so the only way is to send the route/CS-ID with the metrics to the egress CATS-Forwarder. Then the Egress CATS-Forwarder will do the rest. Especially in VPN scenarios, the original instance route will only be sent to the Egress CATS-Forwarder/PE, and the Egress CATS-Forwarder will redistribute the route/CS-ID with metric in VPN route style. \r\n\r\nTherefore, I think it is valid to describe these two ways.",
+          "createdAt": "2023-11-29T15:56:05Z",
+          "updatedAt": "2023-11-29T15:56:05Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Med,  any feedback of my reply\uff1fIf you agree, we can merge it into this updat, if not, we can continue the discussion, and address it in the future. Same to other issues that I have replied to you.",
+          "createdAt": "2023-12-07T16:47:56Z",
+          "updatedAt": "2023-12-07T16:47:56Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "@muzixing, please propose the text as a PR. Will act on it :-)",
+          "createdAt": "2023-12-07T17:15:41Z",
+          "updatedAt": "2023-12-07T17:15:41Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "will do. But I am planning to post a new revision(current text) this week. We can address this in the next revision. so no need to be rush.",
+          "createdAt": "2023-12-08T09:59:31Z",
+          "updatedAt": "2023-12-08T09:59:31Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@Deguello1 please review the PR to see if it is ok to you \r\nhttps://github.com/boucadair/CATS-framework/pull/54/commits/1aebab3b00f29a0a131f25a410bb5881b7839af3",
+          "createdAt": "2023-12-12T20:21:31Z",
+          "updatedAt": "2023-12-12T20:21:31Z"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOJBcdGs5gRaX6",
+      "title": "On advertising CB-ID",
+      "url": "https://github.com/boucadair/CATS-framework/issues/23",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "> if the edge site can support consistently service instance selection\r\n\r\nI don't understand what that means.",
+      "createdAt": "2023-03-08T12:19:52Z",
+      "updatedAt": "2023-11-28T16:07:05Z",
+      "closedAt": "2023-11-28T16:07:05Z",
+      "comments": []
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOJBcdGs5gReY_",
+      "title": "On the definition of service transaction",
+      "url": "https://github.com/boucadair/CATS-framework/issues/24",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "terminology"
+      ],
+      "body": "> A service transaction consists of one or more service packets sent by the client to the CATS-Router it is connected to\r\n\r\nShouldn't this be part of the Definitions section of the draft?",
+      "createdAt": "2023-03-08T12:32:27Z",
+      "updatedAt": "2023-11-28T16:06:19Z",
+      "closedAt": "2023-11-28T16:06:19Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "This is currently used once in the document. Will revive this issue when the text is more stable",
+          "createdAt": "2023-03-08T12:54:22Z",
+          "updatedAt": "2023-03-08T12:54:22Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Both \"service transaction\" and \"service packet\" are only mentioned in this sentence which btw has other issues: service packets are not sent CATS forwarders. Service packets are sent to the service contact instance!\r\n\r\nI will propose a PR that basically removes these two notions. If a specific term is needed in the future, we will add it first to the terminology section. ",
+          "createdAt": "2023-11-24T07:48:54Z",
+          "updatedAt": "2023-11-24T07:48:54Z"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOJBcdGs5gRhQ5",
+      "title": "About the Security Considerations section",
+      "url": "https://github.com/boucadair/CATS-framework/issues/25",
+      "state": "CLOSED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "duplicate"
+      ],
+      "body": "> too many updates may affect network stability.\r\n\r\nNot a security issue per se. This rather enoucrages a dedicated \"discussion\" section for all the issues that may arise from the deployment of a CATS environment - scalability, coexistence of multiple C-PS functions, traffic load balancing implications, etc. Route flap dampening is not a security consideration per se.",
+      "createdAt": "2023-03-08T12:42:14Z",
+      "updatedAt": "2023-03-08T17:17:40Z",
+      "closedAt": "2023-03-08T17:17:40Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "This will be discussed as part of #8 ",
+          "createdAt": "2023-03-08T17:17:39Z",
+          "updatedAt": "2023-03-08T17:17:39Z"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "I_kwDOJBcdGs5gTL2h",
+      "title": "Uniqueness scope of the CS-ID ",
+      "url": "https://github.com/boucadair/CATS-framework/issues/27",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "The ID is likely to be globally unique, but is that required? ",
+      "createdAt": "2023-03-08T17:26:37Z",
+      "updatedAt": "2023-11-28T16:07:35Z",
+      "closedAt": "2023-11-28T16:07:35Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It is not required to be global unique. It should be unique within the same CATS service provider domain to avoid the collision",
+          "createdAt": "2023-11-23T07:09:09Z",
+          "updatedAt": "2023-11-23T07:09:09Z"
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOJBcdGs5gW-H9",
+      "title": "Is C-NMA expected to use existing solutions?",
+      "url": "https://github.com/boucadair/CATS-framework/issues/28",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "luismcontreras"
+      ],
+      "labels": [
+        "question"
+      ],
+      "body": "(From Luis) \r\n\r\n> I see we mention several times about \u201cnetwork state\u201d, with the idea that the C-NMA will handle such information. I guess network state can be define using existing solutions/metrics. The question is, do we expect in CATS to define something in this respect on how to feed the C-NMA or what kind of existing information/metrics the C-NMA will lever on, or not? If not, probably we can state that C-NMA is expected to use existing solutions/metrics, maybe providing some reference as well, and concentrate on C-SMA. ",
+      "createdAt": "2023-03-09T07:57:19Z",
+      "updatedAt": "2024-02-07T09:55:51Z",
+      "closedAt": "2024-02-07T09:55:51Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Existing network metric such as RTT, loss, bandwidth seems enough. RFC8571 defines various performance metric extension to BGP-LS.",
+          "createdAt": "2023-11-23T06:45:58Z",
+          "updatedAt": "2023-11-23T06:46:09Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think C-NMA is expected to use existing solutions.",
+          "createdAt": "2023-11-28T16:28:24Z",
+          "updatedAt": "2023-11-28T16:28:24Z"
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "I_kwDOJBcdGs5jrkgd",
+      "title": "(IETF#116 Comments) What is computing?",
+      "url": "https://github.com/boucadair/CATS-framework/issues/29",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "-\tWhat is computing? What is computation? (This is a big thing to\r\nagree on. It needs discussion on the list)\r\n",
+      "createdAt": "2023-04-18T05:14:43Z",
+      "updatedAt": "2024-02-07T09:39:57Z",
+      "closedAt": "2024-02-07T09:39:56Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ok, let's leave it here and ask in the list once we update the draft. To me, it is quite clear. But we might can not define a perfect term to be comfortable to anyone :)",
+          "createdAt": "2023-11-28T16:29:35Z",
+          "updatedAt": "2023-11-28T16:29:35Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "The draft was updated as per https://datatracker.ietf.org/meeting/117/materials/slides-117-cats-service-service-instance-other-cats-concepts-00",
+          "createdAt": "2024-02-07T09:39:56Z",
+          "updatedAt": "2024-02-07T09:39:56Z"
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "id": "I_kwDOJBcdGs5jrkl_",
+      "title": "(IETF#116 Comments) Can the C-PS be located independently?",
+      "url": "https://github.com/boucadair/CATS-framework/issues/30",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "-\tCan the C-PS be located independently? (I think this is already\r\ncovered in 3.3.4, but you might look to see if it could be made clearer\r\n",
+      "createdAt": "2023-04-18T05:15:10Z",
+      "updatedAt": "2023-05-12T06:28:20Z",
+      "closedAt": "2023-05-12T06:28:20Z",
+      "comments": []
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOJBcdGs5jrkuP",
+      "title": "(IETF#116 Comments) Rename \"Binding ID\" to \"Instance ID\"",
+      "url": "https://github.com/boucadair/CATS-framework/issues/31",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "-\tPossibly rename \"Binding ID\" to \"Instance ID\" (Could simply make\r\nthis change unless someone has an issue with it)\r\n",
+      "createdAt": "2023-04-18T05:15:55Z",
+      "updatedAt": "2023-05-12T06:31:11Z",
+      "closedAt": "2023-05-12T06:31:11Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "the steering points to an instance or a site. The proposed change will be interpreted as if we exclude the recursion (point to a site).  \"Instance Location ID\" would be OK, IMO. ",
+          "createdAt": "2023-04-18T05:57:21Z",
+          "updatedAt": "2023-04-18T05:57:21Z"
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOJBcdGs5jrk3A",
+      "title": "(IETF#116 Comments) path selection/computation algorithm is out of scope",
+      "url": "https://github.com/boucadair/CATS-framework/issues/32",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "-\tClarify that the path selection/computation algorithm is out of\r\nscope (Need to add a sentence to 3.3.4)\r\n",
+      "createdAt": "2023-04-18T05:16:41Z",
+      "updatedAt": "2023-05-12T06:28:33Z",
+      "closedAt": "2023-05-12T06:28:33Z",
+      "comments": []
+    },
+    {
+      "number": 33,
+      "id": "I_kwDOJBcdGs5jrlCC",
+      "title": "(IETF#116 Comments) Inputs from draft-shi-cats-analysis-of-metric-distribution",
+      "url": "https://github.com/boucadair/CATS-framework/issues/33",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "Close_No_Change_Needed"
+      ],
+      "body": "-\tLook at draft-shi-cats-analysis-of-metric-distribution and see what\r\ncould move into this document (Would need to work with the authors of that draft and invite them to join the framework as contributors)\r\n",
+      "createdAt": "2023-04-18T05:17:36Z",
+      "updatedAt": "2023-11-24T08:08:37Z",
+      "closedAt": "2023-11-24T08:08:37Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Not sure there is material that can be moved to the framework. Please see https://github.com/boucadair/IETF-Drafts-Reviews/raw/master/draft-shi-cats-analysis-of-metric-distribution-00-rev%20Med.pdf ",
+          "createdAt": "2023-04-18T09:46:47Z",
+          "updatedAt": "2023-04-18T09:46:47Z"
+        },
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "draft-shi-cats-analysis-of-metric-distribution is based on the framework draft, not the other way around. There is no material that can be moved to the framework.",
+          "createdAt": "2023-11-23T06:42:43Z",
+          "updatedAt": "2023-11-23T06:42:43Z"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "I_kwDOJBcdGs51WUwA",
+      "title": "Nits from Nagendra Kumar",
+      "url": "https://github.com/boucadair/CATS-framework/issues/38",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Few typos identified below:\r\n\r\ns/single eservice/single service\r\ns/service requests that are forwatded over/service requests that are forwarded over\r\n",
+      "createdAt": "2023-10-30T16:36:11Z",
+      "updatedAt": "2023-11-23T19:12:14Z",
+      "closedAt": "2023-11-23T16:15:14Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "oh man, you work so quick! Unblievable! Thanks!@med",
+          "createdAt": "2023-11-23T19:12:14Z",
+          "updatedAt": "2023-11-23T19:12:14Z"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "I_kwDOJBcdGs51WXKK",
+      "title": "Service request to a frowarder",
+      "url": "https://github.com/boucadair/CATS-framework/issues/39",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "question"
+      ],
+      "body": "From Nagendra Kumar:\r\n\r\n> In the example shown in Figure 2, when the client sends a service\r\n>    request to \"CATS-Forwarder 1\"\r\n> \r\n> - Can you please help me understand what type of request is this?. Is it a request from the end client requesting for a compute service to host any new service or a SF hosted in a site (host)?.\r\n\r\n[Med] This is the request to access/invoke the service. It is not sent explicitly to the forwarder, but is intercepted. The text should be clarified. Thanks. \r\n",
+      "createdAt": "2023-10-30T16:40:49Z",
+      "updatedAt": "2023-11-28T16:06:03Z",
+      "closedAt": "2023-11-28T16:06:03Z",
+      "comments": []
+    },
+    {
+      "number": 49,
+      "id": "I_kwDOJBcdGs53w1Za",
+      "title": "(Section 4.4) Pull/Push Modes",
+      "url": "https://github.com/boucadair/CATS-framework/issues/49",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 4.4 have the following, which may seem to be contradicting:\r\n\r\n> In the example shown in [Figure 2](https://boucadair.github.io/CATS-framework/draft-ldbc-cats-framework.html#fig-cats-example-overlay), when the client sends a service request to \"CATS-Forwarder 1\", the forwarder solicits the C-PS to select a service contact instance hosted by a service site that can be accessed through a particular Egress CATS-Forwarder.\r\n\r\nand\r\n\r\n> The Ingress CATS-Forwarder classifies incoming packets received from clients by soliciting the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. \r\n\r\nWe need to discuss if we allow both Pull/Push modes or only a mode. Then, make sure we are consistent in the doc",
+      "createdAt": "2023-11-24T08:13:15Z",
+      "updatedAt": "2023-12-14T16:59:32Z",
+      "closedAt": "2023-12-14T16:59:32Z",
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think both modes has its own merit. Pull mode is suitable for centralized C-PS and can get better overall usage result. Push mode is suitable for distributed C-PS and does not introduce the pull latency. Please see [Hybrid Solution draft](https://datatracker.ietf.org/doc/draft-yi-cats-hybrid-solution/) and [its slides](https://datatracker.ietf.org/meeting/118/materials/slides-118-cats-3a-hybird-computing-and-network-awareness-and-routing-architecture-for-cats-00.pdf) for detailed discussion.",
+          "createdAt": "2023-11-24T10:34:09Z",
+          "updatedAt": "2023-11-24T10:34:09Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think both modes are needed. However, in this section, I do not think the text emphasize this. \r\nIt describes the processing of first packet and the following packets. so we may rephrase it as \r\n\r\nIn the example shown in [Figure 2](https://datatracker.ietf.org/doc/html/draft-ldbc-cats-framework-03#fig-cats-example-overlay), the client sends a service access to the network though the \"CATS-Forwarder 1\" that is an Ingress CATS-Forwarder.\r\nNote that, a service access consists of one or more service packets. The Ingress CATS-Forwarder classifies incoming packets received from clients by the information provided by the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation is removed and inner packets are sent to the relevant service contact instance.\r\n\r\nwhat do  you think?",
+          "createdAt": "2023-11-28T16:50:10Z",
+          "updatedAt": "2023-11-28T16:50:10Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This has been closed by https://github.com/boucadair/CATS-framework/pull/54",
+          "createdAt": "2023-12-14T16:59:32Z",
+          "updatedAt": "2023-12-14T16:59:32Z"
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "id": "I_kwDOJBcdGs539qbt",
+      "title": "Comments from Zongpeng",
+      "url": "https://github.com/boucadair/CATS-framework/issues/50",
+      "state": "CLOSED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "    BTW, I have read the draft, and have two small suggestions:\r\n\r\n\r\n1.\r\n     Computing-aware forwarding (or steeting, computing): A forwarding\r\n      (or steeting, computing) scheme which takes as input a set of\r\n      metrics that reflect the capabilities and state of computing\r\n      resources.\r\n    steet--->steering\r\n2.\r\n    CATS Service ID (CS-ID): An identifier representing a service, which\r\n      the clients use to access it.  Such an ID identifies all the\r\n      instances of a given service, regardless of their location.\r\n      The CS-ID is independent of which service contact instance serves\r\n      the service request.\r\n      service requests are spread over the service contact instances\r\n\r\n    service requests are  ---- > Service\r\n\r\n\r\n\r\n",
+      "createdAt": "2023-11-27T16:28:43Z",
+      "updatedAt": "2023-11-27T16:33:28Z",
+      "closedAt": "2023-11-27T16:33:28Z",
+      "comments": []
+    },
+    {
+      "number": 52,
+      "id": "I_kwDOJBcdGs54FSkM",
+      "title": "Editorial comments of Computing-aware forwarding definition",
+      "url": "https://github.com/boucadair/CATS-framework/issues/52",
+      "state": "CLOSED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "Computing-aware forwarding (or steeting, computing):\r\nA forwarding (or steeting, computing) scheme which takes as input a set of metrics that reflect the capabilities and state of computing resources.\r\n\r\nThe syntax seems incorrect or hard to be understood.\r\nhope to make it clear for readers. \r\n\r\n",
+      "createdAt": "2023-11-28T15:03:53Z",
+      "updatedAt": "2023-12-14T16:37:11Z",
+      "closedAt": "2023-12-14T16:37:11Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "A forwarding (or steering, computing) scheme which takes a set of metrics that reflect the capabilities and state of computing resources as input.\r\n\r\nis it ok?",
+          "createdAt": "2023-11-28T16:52:12Z",
+          "updatedAt": "2023-11-28T16:52:12Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Not sure how the proposed NEW is better that the OLD",
+          "createdAt": "2023-11-28T16:56:40Z",
+          "updatedAt": "2023-11-28T16:56:40Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "'takes as input a set of metrics that' seems too complicated in syntax, but put 'as input' in the end can help readers to know, the metrics is treated as input. At least to me, it is better.",
+          "createdAt": "2023-11-29T15:58:28Z",
+          "updatedAt": "2023-11-29T15:58:28Z"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "I_kwDOJBcdGs55EBXF",
+      "title": "Jim's comment of Service ID mapping",
+      "url": "https://github.com/boucadair/CATS-framework/issues/53",
+      "state": "CLOSED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "    [Jim Guichard as individual] From the WG pespective, we do have some high level discussion of compute metrics and deciding which service instance to use, but we do not have some specific discussion of service identifiers. For example, how to map the service ID to a specific service instance in the real network, and what\u2019s the excat metrics for this service. We had some discussions in SFC WG but haven\u2019t solved it yet.\r\n              [Adrian] Yes. The problem is even worse for CATS. For CATS little clusters of packets go to a specific service instance, but in SFC all packets in a flow will be forwarded to the same service instance., but in CATS, they might be forwarded to different service instances. Problem should be solved.\r\n",
+      "createdAt": "2023-12-07T16:20:26Z",
+      "updatedAt": "2024-04-16T14:23:38Z",
+      "closedAt": "2024-04-16T14:23:38Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This is a misunderstanding of the minutes. I have discussed with Jim, and he thought we misunderstood him. \r\nWe can ask him to share what he thought in the ML and close this issue accordingly.",
+          "createdAt": "2024-02-07T09:50:50Z",
+          "updatedAt": "2024-02-07T09:50:50Z"
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "id": "I_kwDOJBcdGs550UNw",
+      "title": "potential text merged from https://datatracker.ietf.org/doc/draft-yao-cats-awareness-architecture/",
+      "url": "https://github.com/boucadair/CATS-framework/issues/55",
+      "state": "CLOSED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Still waiting for text from authors from https://datatracker.ietf.org/doc/draft-yao-cats-awareness-architecture/\r\nwill reach out to them later.",
+      "createdAt": "2023-12-15T13:45:47Z",
+      "updatedAt": "2024-02-07T09:38:05Z",
+      "closedAt": "2024-02-07T09:38:05Z",
+      "comments": []
+    },
+    {
+      "number": 63,
+      "id": "I_kwDOJBcdGs5-hSjD",
+      "title": "Encrypted service identifiers",
+      "url": "https://github.com/boucadair/CATS-framework/issues/63",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "We do currently say that:\r\n\r\n> CATS Service ID (CS-ID):\r\n> An identifier representing a service, which the clients use to access it. See [Section 3.2](https://boucadair.github.io/CATS-framework/draft-ldbc-cats-framework.html#cats-ids).\r\n\r\nHowever, the identifiers that are used by clients is not always available in clear. There are some hidden assumptions that we need to dive into as this will have implication on the CATS Classification",
+      "createdAt": "2024-02-07T10:08:57Z",
+      "updatedAt": "2024-02-07T10:08:58Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 65,
+      "id": "I_kwDOJBcdGs6AsH3N",
+      "title": "Clarify objective function",
+      "url": "https://github.com/boucadair/CATS-framework/issues/65",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-28T14:05:15Z",
+      "updatedAt": "2024-02-28T14:05:19Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 67,
+      "id": "I_kwDOJBcdGs6BVStX",
+      "title": "Editorial review of Figures 3 to 5",
+      "url": "https://github.com/boucadair/CATS-framework/issues/67",
+      "state": "OPEN",
+      "author": "luismcontreras",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Not clear to me some parts fo the figures. Assuming Figure 3 is ok, then it is not clear to me the line at the bottom from CS-ID 2 up to CATS forwarder 1. Also whyService CS-ID 2 has no metrics at the bottom part in Figure 5. More clarification text can be benefitial. ",
+      "createdAt": "2024-03-05T18:04:45Z",
+      "updatedAt": "2024-04-16T15:20:26Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Luis\uff0cthe bottom line from CS-ID2 up to CATS forwarder 1 is an example of CS-ID route distribution with/without metrics. In Figure 3, it is an distributed model, so the metrics will be attached to the CS-ID routes and distributed to the ingress CATS forwarder.  \r\n\r\nIn Figure 5, it is an hybrid model, so we illustrate that the metric can be collected by a central element and sync up with the Ingress CATS forwarder, so in this case, the CS-ID 2 has no (computing metrics). \r\n\r\nis it clear for you? you can propose some text :) ",
+          "createdAt": "2024-04-16T15:20:24Z",
+          "updatedAt": "2024-04-16T15:20:24Z"
+        }
+      ]
+    },
+    {
+      "number": 69,
+      "id": "I_kwDOJBcdGs6Gk6lu",
+      "title": "A clarification problem about definition of Service contact instance",
+      "url": "https://github.com/boucadair/CATS-framework/issues/69",
+      "state": "CLOSED",
+      "author": "dzpzp",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": " \r\nCurrently, in the draft, it is\u00a0described\u00a0\u00a0that:\r\n\r\n\r\nService contact instance:\r\nA client-facing service function instance that is responsible for receiving requests in the context of a given service. A service request is processed according to the service logic (e.g., handle locally or solicit backend resources). Steering beyond the service contact instance is hidden to both clients and CATS components.[\u00b6](https://github.com/boucadair/CATS-framework/issues/new#section-2-2.32.1)\r\na service contact instance is reachable via at least one Egress CATS Forwarder.\r\nA service can be accessed via multiple service contact instances running at the same or different locations (service sites).\r\nThe same service contact instance may dispatch service requests to one or more service instances (e.g., ***an instance*** that behaves as a service load-balancer).\r\n\r\n\u00a0 \u00a0 I wonder what the\u00a0***an instance*** means here. Is it a\u00a0Service contact instance, or a\u00a0\u00a0service instance ?\r\n\r\nIMO, it is a\u00a0Service contact instance.\u00a0Thus, it can be changed to:\r\n\r\nThe same service contact instance may dispatch service requests to one or more service instances (e.g., ***a service contact instance*** that behaves as a service load-balancer).\r\n. \r\n\r\nIf\u00a0I\u00a0misunderstand it,\u00a0please\u00a0correct\u00a0me,\u00a0thanks.\r\n\r\nI also posted an email about the problem, and I hope to obtain some feedback here.",
+      "createdAt": "2024-04-23T02:41:29Z",
+      "updatedAt": "2024-04-25T08:56:52Z",
+      "closedAt": "2024-04-25T08:56:52Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Interesting comment. Thanks for that! The update looks reasonable to me. How about let me make it more clear like below:\r\n\r\nThe same service contact instance may dispatch service requests to one or more service instances. When a service contact instance dispatch the service requiest to multiple service instances, it behaves as a service load-balancer.",
+          "createdAt": "2024-04-24T12:41:31Z",
+          "updatedAt": "2024-04-24T12:41:31Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "I like more the update from dz\r\n\r\n> (e.g., _**a service contact instance**_ that behaves as a service load-balancer).\r\n> .\r\n\r\nLooks good to me. I prefer this over the @muzixing's proposal. Thanks.",
+          "createdAt": "2024-04-24T14:29:13Z",
+          "updatedAt": "2024-04-24T14:29:13Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "No Problem to me, we can use Zongpeng's proposal",
+          "createdAt": "2024-04-24T14:34:42Z",
+          "updatedAt": "2024-04-24T14:34:42Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOJBcdGs5Kl9C4",
+      "title": "Med's Changes",
+      "url": "https://github.com/boucadair/CATS-framework/pull/1",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-02-23T10:36:35Z",
+      "updatedAt": "2023-03-03T09:01:07Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "1e3849a018198b8d6bc7a16072be3a72105690f7",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "759bd12bcd002441ec027e599a964bef5b2d7e8d",
+      "closedAt": "2023-03-03T09:01:07Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOJBcdGs5KwCar",
+      "title": "rev 00-10",
+      "url": "https://github.com/boucadair/CATS-framework/pull/2",
+      "state": "CLOSED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-02-25T06:39:20Z",
+      "updatedAt": "2023-02-27T08:51:07Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "boucadair-patch-1",
+      "baseRefOid": "759bd12bcd002441ec027e599a964bef5b2d7e8d",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "Cheng",
+      "headRefOid": "935e985d73fca21d0adb1b82b79c3966b027d8bd",
+      "closedAt": "2023-02-27T08:51:07Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOJBcdGs5Kzvw_",
+      "title": "Use the latest version edited by @muzixing as the main",
+      "url": "https://github.com/boucadair/CATS-framework/pull/3",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "@muzixing, echoes the version you shared. \r\n\r\nLets's use this one as base for future iterations.",
+      "createdAt": "2023-02-27T08:50:57Z",
+      "updatedAt": "2023-03-03T06:34:48Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "Cheng",
+      "baseRefOid": "935e985d73fca21d0adb1b82b79c3966b027d8bd",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "f852bfddc304d6c7e2b60c21276962a868306c1e",
+      "closedAt": "2023-02-27T08:51:37Z",
+      "mergedAt": "2023-02-27T08:51:37Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9cab15ff61ac4d650727a9425e6fda95edeffae4"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOJBcdGs5KzwNB",
+      "title": "Revert 3 boucadair patch 2",
+      "url": "https://github.com/boucadair/CATS-framework/pull/4",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-02-27T08:52:36Z",
+      "updatedAt": "2023-03-03T06:34:31Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "1e3849a018198b8d6bc7a16072be3a72105690f7",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "revert-3-boucadair-patch-2",
+      "headRefOid": "b1499ae174a826930f971a7ff08c6c8b8c33d12e",
+      "closedAt": "2023-02-27T08:54:09Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOJBcdGs5LJ6Am",
+      "title": "s/CAN/CATS",
+      "url": "https://github.com/boucadair/CATS-framework/pull/5",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-02T18:29:11Z",
+      "updatedAt": "2023-03-03T06:34:40Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "e55f78325b8566a9ad0acacf5b6f587b3af3675b",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "CAN--to-CATS",
+      "headRefOid": "12a71b62531efcee268bf6b6955549c116f24702",
+      "closedAt": "2023-03-02T18:30:03Z",
+      "mergedAt": "2023-03-02T18:30:03Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "22a658242e96b00b200f058b1327c5ae2351419a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOJBcdGs5LNBF2",
+      "title": "Add Luis to the list of authors + change the name",
+      "url": "https://github.com/boucadair/CATS-framework/pull/6",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-03T08:55:29Z",
+      "updatedAt": "2023-03-03T08:57:57Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "0c50330aba48aec6354af817f99e74e7005795fe",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "9f4c732d25fe3bb93ab696aa640cb4bb73689836",
+      "closedAt": "2023-03-03T08:57:56Z",
+      "mergedAt": "2023-03-03T08:57:55Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9bfb58b4d9f1a9c73b3001897bfe95fa09b7a2ad"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOJBcdGs5LNie7",
+      "title": "Edits from Cheng",
+      "url": "https://github.com/boucadair/CATS-framework/pull/9",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "muzixing"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-03T10:20:25Z",
+      "updatedAt": "2023-03-03T12:11:29Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "e3d6192ac824b468a5e15be737a572f8387bf756",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "cheng-edits",
+      "headRefOid": "06ed89e046083b89838a786360053c00349393dd",
+      "closedAt": "2023-03-03T12:11:28Z",
+      "mergedAt": "2023-03-03T12:11:28Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "d74fc24cdf450cb270febfef4e43a519acabedd0"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOJBcdGs5LeayE",
+      "title": "Security Section",
+      "url": "https://github.com/boucadair/CATS-framework/pull/10",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-07T13:23:34Z",
+      "updatedAt": "2023-03-08T07:54:12Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "b2e397dbbce7a3a5c509a64cb5edd222fa4550a8",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "security-section",
+      "headRefOid": "b428f02350e837b6fbcc3cdd4915f21b72225cdf",
+      "closedAt": "2023-03-08T07:54:11Z",
+      "mergedAt": "2023-03-08T07:54:11Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "066303734d7c140b1986a846d8348ea83075f726"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOJBcdGs5LekBO",
+      "title": "Privacy cons",
+      "url": "https://github.com/boucadair/CATS-framework/pull/11",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-07T13:41:45Z",
+      "updatedAt": "2023-03-08T07:54:23Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "da920e1bb17629a1d507a580c609739ae72dbf21",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "privacy-cons",
+      "headRefOid": "b5fca35a9a82aa434f8f804585eab000f74e293a",
+      "closedAt": "2023-03-08T07:54:22Z",
+      "mergedAt": "2023-03-08T07:54:22Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "35233904f01b4e6cd3fd720a54fc46f7e19ead32"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOJBcdGs5LjuFW",
+      "title": "service dispatching",
+      "url": "https://github.com/boucadair/CATS-framework/pull/15",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "#12",
+      "createdAt": "2023-03-08T10:15:32Z",
+      "updatedAt": "2023-03-08T13:59:55Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "e4e49d3d5ebf6b34447e8d0f9bee0219105bebd1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "service-dispatch",
+      "headRefOid": "e191462b146c9a61c1a324048518ad1e9dfe7b11",
+      "closedAt": "2023-03-08T13:59:53Z",
+      "mergedAt": "2023-03-08T13:59:53Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "db7bdabf9a19c4ae0a44b4cd81866d45f253de5b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOJBcdGs5Ljyjs",
+      "title": "service definition",
+      "url": "https://github.com/boucadair/CATS-framework/pull/16",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "#14",
+      "createdAt": "2023-03-08T10:31:59Z",
+      "updatedAt": "2023-03-08T14:01:09Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "db7bdabf9a19c4ae0a44b4cd81866d45f253de5b",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "service-def",
+      "headRefOid": "0af11b6e10498f57d81811a63df238074054041a",
+      "closedAt": "2023-03-08T14:01:07Z",
+      "mergedAt": "2023-03-08T14:01:07Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "a177170de0e458035daa5420a1e66c953c5b6136"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 26,
+      "id": "PR_kwDOJBcdGs5LkZOX",
+      "title": "Update draft-ldbc-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/26",
+      "state": "MERGED",
+      "author": "Deguello1",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-08T12:55:40Z",
+      "updatedAt": "2023-03-08T13:57:50Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "35233904f01b4e6cd3fd720a54fc46f7e19ead32",
+      "headRepository": "Deguello1/can-framework",
+      "headRefName": "patch-1",
+      "headRefOid": "50396b8426a0cd3c3c6174bb9f030b44fe1be0de",
+      "closedAt": "2023-03-08T13:57:50Z",
+      "mergedAt": "2023-03-08T13:57:50Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "e4e49d3d5ebf6b34447e8d0f9bee0219105bebd1"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5PUDZ8",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:19:46Z",
+          "updatedAt": "2023-03-08T13:19:47Z",
+          "comments": [
+            {
+              "originalPosition": 55,
+              "body": "```suggestion\r\n : A network device (usually located at the edge of the network) that makes forwarding decisions based on CATS information to steer traffic specific to a  service demand towards a corresponding yet selected service instance. The selection of a service instance relies upon a multi-metric CATS-based path computation.\r\n```",
+              "createdAt": "2023-03-08T13:19:46Z",
+              "updatedAt": "2023-03-08T13:19:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUDn9",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:20:26Z",
+          "updatedAt": "2023-03-08T13:20:26Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nEdge computing architectures have been expanding from single edge nodes to multiple, sometimes collaborative, edge nodes to address various issues (e.g., long response times or suboptimal service and network resource usage).\r\n```",
+              "createdAt": "2023-03-08T13:20:26Z",
+              "updatedAt": "2023-03-08T13:20:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUEGR",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:21:46Z",
+          "updatedAt": "2023-03-08T13:21:46Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nThe Computing-Aware Traffic Steering (CATS) framework assumes that there may be multiple service instances running on different edge nodes, globally providing one given service. A single edge node may have limited computing resources available at a given time, whereas the various edge nodes may experience different resource availability issues over time. A single edge node may also host multiple instances of a service or just one service instance.\r\n```",
+              "createdAt": "2023-03-08T13:21:46Z",
+              "updatedAt": "2023-03-08T13:21:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUFlP",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:25:43Z",
+          "updatedAt": "2023-03-08T13:25:44Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "```suggestion\r\n : A  node that serves as a service access point for CATS clients. It steers service-specific traffic along a CATS-computed path that leads to an Egress CATS-Router that connects to the most suitable edge site that hots the service instance selected to satisfy the initial service demand.\r\n```",
+              "createdAt": "2023-03-08T13:25:44Z",
+              "updatedAt": "2023-03-08T13:25:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUFsi",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:26:02Z",
+          "updatedAt": "2023-03-08T13:26:03Z",
+          "comments": [
+            {
+              "originalPosition": 63,
+              "body": "```suggestion\r\n: A node that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.\r\n```",
+              "createdAt": "2023-03-08T13:26:02Z",
+              "updatedAt": "2023-03-08T13:26:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUF1z",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:26:26Z",
+          "updatedAt": "2023-03-08T13:26:27Z",
+          "comments": [
+            {
+              "originalPosition": 67,
+              "body": "```suggestion\r\n : An agent that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS).",
+              "createdAt": "2023-03-08T13:26:26Z",
+              "updatedAt": "2023-03-08T13:26:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUGGS",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:27:06Z",
+          "updatedAt": "2023-03-08T13:27:07Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "```suggestion\r\n  : An agent that is responsible for collecting network capabilities and status, and for reporting them to a C-PS.",
+              "createdAt": "2023-03-08T13:27:06Z",
+              "updatedAt": "2023-03-08T13:27:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUGQ0",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:27:34Z",
+          "updatedAt": "2023-03-08T13:27:35Z",
+          "comments": [
+            {
+              "originalPosition": 75,
+              "body": "```suggestion\r\n : A computation logic that calculates and selects paths towards service locations and  instances and which accommodate the requirements of service demands. Such a path computation engine takes into account the service and network status information.\r\n```",
+              "createdAt": "2023-03-08T13:27:34Z",
+              "updatedAt": "2023-03-08T13:27:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUGgk",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:28:14Z",
+          "updatedAt": "2023-03-08T13:28:15Z",
+          "comments": [
+            {
+              "originalPosition": 79,
+              "body": "```suggestion\r\n : A functional entity that is responsible for determining which packets belong to a traffic flow for a particular service demand. It is also responsible for forwarding such packets along the C-PS-computed  path that leads to the relevant service instance.\r\n```",
+              "createdAt": "2023-03-08T13:28:14Z",
+              "updatedAt": "2023-03-08T13:28:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUGsX",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:28:46Z",
+          "updatedAt": "2023-03-08T13:28:46Z",
+          "comments": [
+            {
+              "originalPosition": 86,
+              "body": "```suggestion\r\nCATS assumes that there are multiple service instances running on different edge nodes, and which provide a given service that is represented by a service identifier (see {{cats-ids}}). \r\n```",
+              "createdAt": "2023-03-08T13:28:46Z",
+              "updatedAt": "2023-03-08T13:29:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUINW",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:32:58Z",
+          "updatedAt": "2023-03-08T13:32:59Z",
+          "comments": [
+            {
+              "originalPosition": 147,
+              "body": "```suggestion\r\nThis document does not make any assumption about how the various CATS functional elements are implemented and deployed. Whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider. Centralized designs where the computing-related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (like a Path Computation Element (PCE) {{?RFC4655}}) that also collects network metrics may, thus, be adopted. In the latter case, the (logically) centralized CATS computation logic may process incoming service requests to compute and select paths let alone service instances. The outcomes of such a computation may then be communicated to CATS traffic classifiers (C-TCs).\r\n```",
+              "createdAt": "2023-03-08T13:32:58Z",
+              "updatedAt": "2023-03-08T13:33:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUImr",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:34:04Z",
+          "updatedAt": "2023-03-08T13:34:04Z",
+          "comments": [
+            {
+              "originalPosition": 165,
+              "body": "```suggestion\r\nComputing metrics may change very frequently (see {{?I-D.yao-cats-ps-usecases}} for a discussion). How frequently such information is distributed is to be determined as part of the specification of any communication protocol (including routing protocols) that may be used to distribute the information. Various options can be considered, such as interval-based updates, threshold-triggered updates, policy-based updates, etc.\r\n```",
+              "createdAt": "2023-03-08T13:34:04Z",
+              "updatedAt": "2023-03-08T13:34:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PULSX",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:40:58Z",
+          "updatedAt": "2023-03-08T13:40:58Z",
+          "comments": [
+            {
+              "originalPosition": 171,
+              "body": "```suggestion\r\nNetwork metrics may also change over time. Dynamic routing protocols may take advantage of some information or capabilities (e.g., Partial Route Computation (PRC) of OSPFv3 {{?RFC5340}}) to prevent the network from being flooded with state change information. C-NMA agents should also be configured or instructed like C-SMA agents to determine when and how often updates should be notified to the C-PSes.\r\n```",
+              "createdAt": "2023-03-08T13:40:58Z",
+              "updatedAt": "2023-03-08T13:40:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PULhF",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:41:36Z",
+          "updatedAt": "2023-03-08T13:41:37Z",
+          "comments": [
+            {
+              "originalPosition": 180,
+              "body": "```suggestion\r\nThe service metric advertisements are processed by the C-PS hosted by CATS-Router 1. The C-PS also processes network metric advertisements sent by the C-NMA agent. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Router according to the initial  client's service demand, the service that is requested (CS-ID 1 or CS-ID 2), the state of the service instances as reported by the metrics, and the state of the network.\r\n```",
+              "createdAt": "2023-03-08T13:41:36Z",
+              "updatedAt": "2023-03-08T13:41:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUMGX",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:43:07Z",
+          "updatedAt": "2023-03-08T13:43:08Z",
+          "comments": [
+            {
+              "originalPosition": 189,
+              "body": "```suggestion\r\nThe above example mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CB-ID information will not be included in the advertisement. Instead, a per-site CB-ID may be used in case multiple sites are connected to the Egress CATS router to explicitly indicate the site the aggregated metrics come from.\r\n```",
+              "createdAt": "2023-03-08T13:43:07Z",
+              "updatedAt": "2023-03-08T13:43:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUMau",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:43:56Z",
+          "updatedAt": "2023-03-08T13:43:57Z",
+          "comments": [
+            {
+              "originalPosition": 198,
+              "body": "```suggestion\r\nThe C-PS computes and selects paths that lead to Egress CATS-Routers according to the service and network metrics that have been advertised. The C-PS may be collocated with a Ingress CATS-Router (as shown in {{fig-cats-example-overlay}}) or logically centralized.\r\n```",
+              "createdAt": "2023-03-08T13:43:56Z",
+              "updatedAt": "2023-03-08T13:43:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUM4n",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:45:09Z",
+          "updatedAt": "2023-03-08T13:45:10Z",
+          "comments": [
+            {
+              "originalPosition": 205,
+              "body": "```suggestion\r\nthe C-PS to select a service instance hosted by an edge site that can be accessed through a particular CATS-Router. The C-PS also determines a path to the Egress CATS-Router. This information is provided to Ingress CATS-Router (CATS-Router 1) so that it can forward packets to their proper destination, as computed by the C-PS.\r\n```",
+              "createdAt": "2023-03-08T13:45:09Z",
+              "updatedAt": "2023-03-08T13:45:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUOR3",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:48:04Z",
+          "updatedAt": "2023-03-08T13:48:05Z",
+          "comments": [
+            {
+              "originalPosition": 208,
+              "body": "```suggestion\r\nA service transaction consists of one or more service packets sent by the client to an Ingress CATS-Router it is connected to. The Ingress CATS-Router classifies incoming packets by soliciting the C-TC classifier, encapsulates, and then forwards them to the C-PS-selected  Egress CATS-Router. When these packets reach the Egress CATS-Router, the outer header of the possible overlay encapsulation is removed and resulting packets are sent to the relevant service instance.\r\n```",
+              "createdAt": "2023-03-08T13:48:04Z",
+              "updatedAt": "2023-03-08T13:48:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUOpb",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:48:42Z",
+          "updatedAt": "2023-03-08T13:48:42Z",
+          "comments": [
+            {
+              "originalPosition": 213,
+              "body": "```suggestion\r\nInstance affinity is a key feature of CATS. It means that packets that belong to a given flow associated with a given service should always be sent to the same Egress CATS-Router which will forward them the same service instance. Furthermore, packets of a given flow should be forwarded along the same path to minimize the risk of jeopardizing the integrity of the communication established between thee client and the service instance.\r\n```",
+              "createdAt": "2023-03-08T13:48:42Z",
+              "updatedAt": "2023-03-08T13:48:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5PUPG4",
+          "commit": {
+            "abbreviatedOid": "36f6998"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-03-08T13:49:35Z",
+          "updatedAt": "2023-03-08T13:49:35Z",
+          "comments": [
+            {
+              "originalPosition": 238,
+              "body": "```suggestion\r\nThe information distributed by the C-SMA and C-NMA agents may be sensitive. Such information could indeed disclose intel about the network and the location of compute resources hosted in edge sites. This information may be used by an attacker to identify weak spots in an operator's network. Furthermore, such information may be modified by an attacker resulting in disrupted service delivery for the clients, up to and including misdirection of traffic to an attacker's service implementation. CATS solutions must support authentication and integrity-protection mechanisms between C-SMAs/C-NMAs and C-PSes, and between C-PSes and Ingress CATS-Routers. Also, C-SMA agents need to support a mechanism to authenticate the services for which they provide information to C-PS computation logics, among other CATS functions.\r\n```",
+              "createdAt": "2023-03-08T13:49:35Z",
+              "updatedAt": "2023-03-08T13:49:35Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "PR_kwDOJBcdGs5OinOI",
+      "title": "C-PS may be standalone",
+      "url": "https://github.com/boucadair/CATS-framework/pull/34",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-18T05:35:44Z",
+      "updatedAt": "2023-05-12T06:28:20Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "d1935af34d1247bbe051bfc3bf8a455006d6e893",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "cps-standalone",
+      "headRefOid": "99be87592ec7554422a17abdd2b4ec189fc848fa",
+      "closedAt": "2023-05-12T06:28:19Z",
+      "mergedAt": "2023-05-12T06:28:19Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9b113b39effd247d9de6c68ad1a9e25b416c57f9"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOJBcdGs5OiqKD",
+      "title": "computation algo are out of scope",
+      "url": "https://github.com/boucadair/CATS-framework/pull/35",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-18T05:50:31Z",
+      "updatedAt": "2023-05-12T06:28:33Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "d1935af34d1247bbe051bfc3bf8a455006d6e893",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "computation-algo-out-scope",
+      "headRefOid": "ab0aed40102e6af3f306cf52d3d3b97e0672d621",
+      "closedAt": "2023-05-12T06:28:32Z",
+      "mergedAt": "2023-05-12T06:28:32Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7c52359f5ee710680f3a0019f1e57ee7534f7f96"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOJBcdGs5OjeiE",
+      "title": "Rename CB-DI to CIL-ID",
+      "url": "https://github.com/boucadair/CATS-framework/pull/36",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-18T08:44:39Z",
+      "updatedAt": "2023-05-12T06:31:10Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "7c52359f5ee710680f3a0019f1e57ee7534f7f96",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "rename-cb-CIL-ID",
+      "headRefOid": "f26ec311fca823fb95ea490840c1a7c6c1076100",
+      "closedAt": "2023-05-12T06:31:09Z",
+      "mergedAt": "2023-05-12T06:31:09Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "5f55dd460c6599a2a8a7443c645cdf39a1d9a988"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOJBcdGs5WP_TQ",
+      "title": "Align with the proposed terminology in IETF#117",
+      "url": "https://github.com/boucadair/CATS-framework/pull/37",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-07-24T16:31:32Z",
+      "updatedAt": "2023-08-04T09:56:49Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "6378801824b3a4afbc7975bba563a5152d197827",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "d8db529c824421932c0e20ef5d1822d01d96d05e",
+      "closedAt": "2023-08-04T09:56:48Z",
+      "mergedAt": "2023-08-04T09:56:48Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "95de5f9c723a3258e681dd899881a950d8d66570"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 40,
+      "id": "PR_kwDOJBcdGs5gPs3U",
+      "title": "Nits from Nagendra Kumar",
+      "url": "https://github.com/boucadair/CATS-framework/pull/40",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-23T16:14:30Z",
+      "updatedAt": "2023-11-23T16:15:14Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "3929e0dcd9fb94db8f9cb339c2503e9177eacfef",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "9ed46c0e3602054f7c5a73cfbf3770c948494fe0",
+      "closedAt": "2023-11-23T16:15:13Z",
+      "mergedAt": "2023-11-23T16:15:13Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "387793ac86edd220cdda4dab5035c072dfa98f15"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 41,
+      "id": "PR_kwDOJBcdGs5gPvM0",
+      "title": "along-the-path",
+      "url": "https://github.com/boucadair/CATS-framework/pull/41",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-23T16:22:29Z",
+      "updatedAt": "2023-11-28T16:07:51Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "387793ac86edd220cdda4dab5035c072dfa98f15",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "a2a314a0dacbb34bf281392634070d3683a16910",
+      "closedAt": "2023-11-28T16:07:50Z",
+      "mergedAt": "2023-11-28T16:07:50Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "bc5d40761e4446cd27b596a5dd84b45a27da1f77"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oadPO",
+          "commit": {
+            "abbreviatedOid": "a2a314a"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-11-28T02:33:45Z",
+          "updatedAt": "2023-11-28T02:33:45Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5oft_C",
+          "commit": {
+            "abbreviatedOid": "a2a314a"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thanks",
+          "createdAt": "2023-11-28T15:08:44Z",
+          "updatedAt": "2023-11-28T15:08:44Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOJBcdGs5gPw9Q",
+      "title": "CS-ID uniqueness",
+      "url": "https://github.com/boucadair/CATS-framework/pull/42",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-23T16:28:42Z",
+      "updatedAt": "2023-11-28T16:07:35Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "global-uniqueness",
+      "headRefOid": "8ea6e52f890f1779ca2fcc27e08f807ec76cb71c",
+      "closedAt": "2023-11-28T16:07:34Z",
+      "mergedAt": "2023-11-28T16:07:34Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "dcf1d9607dd32224aad2dc59a351205cba5134f7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oadKt",
+          "commit": {
+            "abbreviatedOid": "8ea6e52"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-11-28T02:33:21Z",
+          "updatedAt": "2023-11-28T02:33:21Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5ofywf",
+          "commit": {
+            "abbreviatedOid": "8ea6e52"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Well, we might not need to emphasize this. As long as it is unique in the scope of CATS domain or CATS service scope. \r\nIt needs to be a global unique ID if it provides global service.\r\n\r\nBut adding this does not bring problems, so it looks good to me .\r\n\r\nPlease merge it.",
+          "createdAt": "2023-11-28T15:17:15Z",
+          "updatedAt": "2023-11-28T15:17:15Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "PR_kwDOJBcdGs5gP9hB",
+      "title": "remove the implem text from the underlay section",
+      "url": "https://github.com/boucadair/CATS-framework/pull/43",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-23T17:13:38Z",
+      "updatedAt": "2023-11-28T16:07:20Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "no-cats-underlay",
+      "headRefOid": "d03bb0f97988a21d8cdfbb9c3c21a0f8c32befe5",
+      "closedAt": "2023-11-28T16:07:19Z",
+      "mergedAt": "2023-11-28T16:07:19Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "853319e182514047aaa32395bc39dc94af73f090"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5of0R-",
+          "commit": {
+            "abbreviatedOid": "d03bb0f"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T15:18:29Z",
+          "updatedAt": "2023-11-28T15:18:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "PR_kwDOJBcdGs5gP-_4",
+      "title": "Remove redundant text about optional need of CIS-ID",
+      "url": "https://github.com/boucadair/CATS-framework/pull/44",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-23T17:19:49Z",
+      "updatedAt": "2023-11-28T16:07:05Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "CIS-ID-optional",
+      "headRefOid": "4d010a242a0598bcd912daf01650b9ae3129aa63",
+      "closedAt": "2023-11-28T16:07:04Z",
+      "mergedAt": "2023-11-28T16:07:04Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "5f14b72da74d465e29ef4d54e8f95690677d2e33"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oadCG",
+          "commit": {
+            "abbreviatedOid": "4d010a2"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2023-11-28T02:32:36Z",
+          "updatedAt": "2023-11-28T02:32:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5of1_g",
+          "commit": {
+            "abbreviatedOid": "4d010a2"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T15:21:11Z",
+          "updatedAt": "2023-11-28T15:21:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOJBcdGs5gQAEW",
+      "title": "adjust C-PS def to be consistent with other entities",
+      "url": "https://github.com/boucadair/CATS-framework/pull/45",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-23T17:24:34Z",
+      "updatedAt": "2023-11-28T16:06:49Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "c-ps-functional-entity",
+      "headRefOid": "1b402248af67dda3e7d9dc236fa8c2f28c7e8405",
+      "closedAt": "2023-11-28T16:06:48Z",
+      "mergedAt": "2023-11-28T16:06:48Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "0b60a5cc25ac9029b8044ba55697241aa02fd4bc"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oacz4",
+          "commit": {
+            "abbreviatedOid": "70203a9"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2023-11-28T02:31:20Z",
+          "updatedAt": "2023-11-28T02:31:31Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "entit -> entity.",
+              "createdAt": "2023-11-28T02:31:20Z",
+              "updatedAt": "2023-11-28T02:31:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5oc1hH",
+          "commit": {
+            "abbreviatedOid": "70203a9"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T09:10:10Z",
+          "updatedAt": "2023-11-28T09:10:10Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n : A functional entity that computes and selects paths towards service locations and instances and which accommodates the requirements of service requests. Such a path computation engine takes into account the service and network status information. See {{sec-cps}}.\r\n```",
+              "createdAt": "2023-11-28T09:10:10Z",
+              "updatedAt": "2023-11-28T09:10:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5odMod",
+          "commit": {
+            "abbreviatedOid": "1b40224"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T09:55:55Z",
+          "updatedAt": "2023-11-28T09:55:56Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5ofs9l",
+          "commit": {
+            "abbreviatedOid": "1b40224"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thanks, it looks good to me.",
+          "createdAt": "2023-11-28T15:06:59Z",
+          "updatedAt": "2023-11-28T15:06:59Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "id": "PR_kwDOJBcdGs5gSCCg",
+      "title": "clarify role of underlay",
+      "url": "https://github.com/boucadair/CATS-framework/pull/46",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-24T07:09:57Z",
+      "updatedAt": "2023-11-28T16:06:34Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "what-is-underlay",
+      "headRefOid": "58ed53f40e788b8f26d1e5bda75e604bb1b31448",
+      "closedAt": "2023-11-28T16:06:33Z",
+      "mergedAt": "2023-11-28T16:06:33Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "4dc5d523fd263111806ff72cfb78b45a7e4607e4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oacrr",
+          "commit": {
+            "abbreviatedOid": "58ed53f"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM.",
+          "createdAt": "2023-11-28T02:30:37Z",
+          "updatedAt": "2023-11-28T02:30:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5of5GS",
+          "commit": {
+            "abbreviatedOid": "58ed53f"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T15:26:29Z",
+          "updatedAt": "2023-11-28T15:26:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOJBcdGs5gSMuw",
+      "title": "get ride of service-specific notions",
+      "url": "https://github.com/boucadair/CATS-framework/pull/47",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-24T07:54:22Z",
+      "updatedAt": "2023-11-28T16:06:19Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "no-service-transaction",
+      "headRefOid": "7fa896eb355dd49855f2b98144ef36f2186f8839",
+      "closedAt": "2023-11-28T16:06:18Z",
+      "mergedAt": "2023-11-28T16:06:17Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fe77222b2fa3aa9d426db7a305f9c0aa2fffd18e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oaenP",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T02:41:33Z",
+          "updatedAt": "2023-11-28T02:41:40Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "\"Access to a service\" looks like a procedure to me. How about using service request, same as the title of the section?",
+              "createdAt": "2023-11-28T02:41:33Z",
+              "updatedAt": "2023-11-28T02:41:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5oc1MV",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T09:09:28Z",
+          "updatedAt": "2023-11-28T09:09:28Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Issuing service request is just an example of accessing a service.",
+              "createdAt": "2023-11-28T09:09:28Z",
+              "updatedAt": "2023-11-28T09:09:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5odMHW",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T09:54:52Z",
+          "updatedAt": "2023-11-28T09:54:52Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Is there other way to access the service without issuing the service request?",
+              "createdAt": "2023-11-28T09:54:52Z",
+              "updatedAt": "2023-11-28T09:54:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5odT8X",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T10:10:24Z",
+          "updatedAt": "2023-11-28T10:10:25Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Please see, e.g., https://datatracker.ietf.org/doc/html/rfc7297#autoid-18.  \r\n\r\nThe point is that we need to avoid making too much assumptions on how a service is accessed, although we all agree that typically this may be triggered by a request.",
+              "createdAt": "2023-11-28T10:10:24Z",
+              "updatedAt": "2023-11-28T10:34:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5odmhl",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T10:48:52Z",
+          "updatedAt": "2023-11-28T10:48:52Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "For the network service, i can see that it can be triggered implicitly. But for computing service, it seems like a service request is unavoidable since client must address the server explicitly.",
+              "createdAt": "2023-11-28T10:48:52Z",
+              "updatedAt": "2023-11-28T10:48:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5oeERu",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T11:58:16Z",
+          "updatedAt": "2023-11-28T11:58:17Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I agree that's likely,  but I do still need to think about services that separate sig vs. data channels out there to generalize. \r\n\r\nFor now, it is not harmful to have service access as a generic concept and then assume that access is likely to be triggered by a service request.\r\n",
+              "createdAt": "2023-11-28T11:58:16Z",
+              "updatedAt": "2023-11-28T11:58:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5oe8oB",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T13:48:32Z",
+          "updatedAt": "2023-11-28T13:48:33Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Right. Service with separate sig and data channel may be an outlier. Service access is fine. Do we need to change the section title to service access too?",
+              "createdAt": "2023-11-28T13:48:33Z",
+              "updatedAt": "2023-11-28T13:48:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5ofCzd",
+          "commit": {
+            "abbreviatedOid": "89432c1"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T13:58:56Z",
+          "updatedAt": "2023-11-28T13:58:56Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "> Do we need to change the section title to service access too?\r\n\r\nI think so. see [7fa896e](https://github.com/boucadair/CATS-framework/pull/47/commits/7fa896eb355dd49855f2b98144ef36f2186f8839)",
+              "createdAt": "2023-11-28T13:58:56Z",
+              "updatedAt": "2023-11-28T13:58:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5ofENq",
+          "commit": {
+            "abbreviatedOid": "7fa896e"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T14:01:29Z",
+          "updatedAt": "2023-11-28T14:01:29Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5of6Xe",
+          "commit": {
+            "abbreviatedOid": "7fa896e"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T15:28:10Z",
+          "updatedAt": "2023-11-28T15:28:10Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "id": "PR_kwDOJBcdGs5gSQLe",
+      "title": "service requests are not set to CATS-Forwarders, but intercepted",
+      "url": "https://github.com/boucadair/CATS-framework/pull/48",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-24T08:08:13Z",
+      "updatedAt": "2023-11-28T16:06:03Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "866441647e2db680a58af66b07049a48d480b888",
+      "closedAt": "2023-11-28T16:06:02Z",
+      "mergedAt": "2023-11-28T16:06:01Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "411b0f1335a4f146c049ded33b538af4b82d99f7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5oabfq",
+          "commit": {
+            "abbreviatedOid": "ebed396"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T02:23:40Z",
+          "updatedAt": "2023-11-28T02:26:25Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "Does CATS information contains network metric? What is CATS-based path computation",
+              "createdAt": "2023-11-28T02:23:41Z",
+              "updatedAt": "2023-11-28T02:26:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5oc0Ra",
+          "commit": {
+            "abbreviatedOid": "ebed396"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T09:07:33Z",
+          "updatedAt": "2023-11-28T09:07:33Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "We do have the following: \r\n\r\n\"   Computing-Aware Traffic Steering (CATS):  A traffic engineering\r\n      approach [I-D.ietf-teas-rfc3272bis] that takes into account the\r\n      **dynamic nature of computing resources and network state** to\r\n      optimize service-specific traffic forwarding towards a given\r\n      service contact instance.  Various relevant metrics may be used to\r\n      enforce such computing-aware traffic steering policies.\"\r\n\r\nThat's said, I think it is better if we simply remove \"CATS-based\" from the text you commented.",
+              "createdAt": "2023-11-28T09:07:33Z",
+              "updatedAt": "2023-11-28T09:07:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5odNCX",
+          "commit": {
+            "abbreviatedOid": "8664416"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-28T09:56:43Z",
+          "updatedAt": "2023-11-28T09:56:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5of9lq",
+          "commit": {
+            "abbreviatedOid": "8664416"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "correct.",
+          "createdAt": "2023-11-28T15:31:46Z",
+          "updatedAt": "2023-11-28T15:31:46Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOJBcdGs5gdZjD",
+      "title": "nits",
+      "url": "https://github.com/boucadair/CATS-framework/pull/51",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T16:32:47Z",
+      "updatedAt": "2023-11-27T16:33:28Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "bbbcde92ebf84b209a5f3e0572ea898c92a8c4e1",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "306e486c48e8ad0c13272ec1915e5dedbf893a66",
+      "closedAt": "2023-11-27T16:33:27Z",
+      "mergedAt": "2023-11-27T16:33:27Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "e2f2ff887bf07f93db35c5505f5a3dbde1bbc6c6"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 54,
+      "id": "PR_kwDOJBcdGs5hhxel",
+      "title": "Update draft-ldbc-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/54",
+      "state": "MERGED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixed typo of hyper-link",
+      "createdAt": "2023-12-08T14:12:29Z",
+      "updatedAt": "2023-12-14T16:37:10Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "d6e605ac8f63b8e37df6dd93f8da899e5db0453f",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "main",
+      "headRefOid": "f338a616cf8d6f1cd259031a472f399555a72d55",
+      "closedAt": "2023-12-14T16:37:09Z",
+      "mergedAt": "2023-12-14T16:37:09Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "fea0b7e51268778da4661641b7530aa456e64587"
+      },
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "please review. I guess we have addressed major issues till now. Let's ask for WG adoption. Though we might add some text from another draft, but it can be done later.",
+          "createdAt": "2023-12-14T16:06:01Z",
+          "updatedAt": "2023-12-14T16:06:01Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5qHl4N",
+          "commit": {
+            "abbreviatedOid": "1aebab3"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-12-13T19:49:51Z",
+          "updatedAt": "2023-12-13T19:49:51Z",
+          "comments": [
+            {
+              "originalPosition": 26,
+              "body": "```suggestion\r\nIn the example shown in  {{fig-cats-example-overlay}}, the client sends a service access to the network through the \"CATS-Forwarder 1\", which is an Ingress CATS-Forwarder. Note that, a service access may consist of one or more service packets (e.g., Session Initiation Protocol (SIP) {{?RFC3261}}, HTTP {{?RFC9112}}, or Real-Time Streaming Protocol (RTSP) {{?RFC7826}}). The Ingress CATS-Forwarder classifies the packets using the information provided by the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation will be removed and the inner packets will be sent to the relevant service contact instance.\r\n```",
+              "createdAt": "2023-12-13T19:49:51Z",
+              "updatedAt": "2023-12-13T19:49:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5qOfpr",
+          "commit": {
+            "abbreviatedOid": "f338a61"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-14T16:18:45Z",
+          "updatedAt": "2023-12-14T16:18:45Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOJBcdGs5mEqRS",
+      "title": "Muzixing add three models",
+      "url": "https://github.com/boucadair/CATS-framework/pull/56",
+      "state": "MERGED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Separate the merge text into three commits, I think the first two are ok. The last one may need to review.\r\n\r\nFor now, I think it is OK to be added, but we need more discussion of it and try to polish it better to fit into the current draft.\r\n\r\nBut we can merge them and ask for WG adoption call, then update it in the future.\r\n\r\nPlease review, thanks!",
+      "createdAt": "2024-02-05T21:10:22Z",
+      "updatedAt": "2024-02-06T13:32:05Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "fea0b7e51268778da4661641b7530aa456e64587",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "muzixing-add-three-models",
+      "headRefOid": "174c4791c176c60e78713a7a40c09746679fc1c6",
+      "closedAt": "2024-02-06T13:31:47Z",
+      "mergedAt": "2024-02-06T13:31:47Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "619e21faa2ccf5f22bb5943ff84b2ffa46ba86dd"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5vJhQZ",
+          "commit": {
+            "abbreviatedOid": "0d1ab64"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-02-06T10:16:44Z",
+          "updatedAt": "2024-02-06T10:36:29Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\nA high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.```",
+              "createdAt": "2024-02-06T10:16:44Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\n\r\nStarting from the bottom part of the figure and moving to the upper part, the following planes are defined:\r\n\r\n```",
+              "createdAt": "2024-02-06T10:17:26Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 37,
+              "body": "```suggestion\r\n* CATS  Management Plane: Responsible for monitoring, configuring, and maintaining CATS network devices.\r\n```",
+              "createdAt": "2024-02-06T10:17:42Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 38,
+              "body": "```suggestion\r\n* CATS Control Plane: Responsible for scheduling services based on computing and network information. It is also responsible for making decisions about how packets should be forwarded by involved forwarding nodes and communicating such decisions to the CATS Data Plane for execution.\r\n```",
+              "createdAt": "2024-02-06T10:19:28Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 39,
+              "body": "```suggestion\r\n* CATS Data Plane: Responsible for computing-aware routing, including handling packets in the data path, such as packet forwarding.\r\n```",
+              "createdAt": "2024-02-06T10:20:20Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "```suggestion\r\nDepending on the specific implementation and deployment model, these planes may involve several functional elements, which are described in the following sections. \r\n```",
+              "createdAt": "2024-02-06T10:21:08Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 24,
+              "body": "```suggestion\r\n                   /\\ NFI                |             |    \r\n```",
+              "createdAt": "2024-02-06T10:21:52Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 24,
+              "body": "Let's avoid geocoordinate things and use meaningful terms. NFI (Network Facing Interface)",
+              "createdAt": "2024-02-06T10:22:36Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 20,
+              "body": "Intf should be defined",
+              "createdAt": "2024-02-06T10:22:51Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "We don't see the instances but the contact points.",
+              "createdAt": "2024-02-06T10:23:15Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\r\nCATS nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service contact instances and network. The main CATS functional elements and their interactions are shown in {{fig-cats-components}}.\r\n```",
+              "createdAt": "2024-02-06T10:24:05Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 93,
+              "body": "```suggestion\r\nA C-PS can be integrated into CATS-Forwarders (e.g., \"C-PS#1\" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., \"C-PS#2\" in {{fig-cats-components}}). Generally, a standalone C-PS can be a functional component of a centralized controller (e.g., PCE). \r\n```",
+              "createdAt": "2024-02-06T10:24:51Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 110,
+              "body": "```suggestion\r\nIn conclusion, considering implementation and deployment of CATS framework (e.g., distribution of service metrics and implementation of C-PS), at least three possible deployment models can be considered as listed below:\r\n\r\n```",
+              "createdAt": "2024-02-06T10:26:01Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 111,
+              "body": "```suggestion\r\n* Distributed model: Computing metrics are distributed among network devices directly using distributed protocols without interactions with a centralized control plane. Service scheduling function is performed by the CATS forwarders in the distribution model, Therefore, the C-PS is integrated into an Ingress CATS-Forwarder.\r\n```",
+              "createdAt": "2024-02-06T10:26:34Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 113,
+              "body": "```suggestion\r\n* Hybrid model: is a combination of distribution and centralized models.\r\n: A part of computing metrics are distributed among the network devices, and others may be collected by a centralized control plane. For example, some static information (e.g., capabilities information) can be distributed among network devices since they are quite stable. Frequent changing information (e.g., resource utilization) can be collected by a centralized control plane to avoid frequent flooding in the distributed control plane. Service scheduling function can be performed by a centralized control plane and/or the CATS forwarder. The entire or partial C-PS function may be implemented in the centralized control plane, depending on the specific implementation and deployment.\r\n```",
+              "createdAt": "2024-02-06T10:28:52Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 130,
+              "body": "```suggestion\r\nIn the centralized model, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane (e.g., a standalone C-PS). \r\n```",
+              "createdAt": "2024-02-06T10:30:01Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 132,
+              "body": "```suggestion\r\nIn the hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized mechanisms. \r\n```",
+              "createdAt": "2024-02-06T10:30:19Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 139,
+              "body": "```suggestion\r\nAdditionally, the C-NMA collects network-related capabilities and metrics. These may be collected and distributed by existing routing protocols, although extensions to such protocols may be required to carry additional information (e.g., link latency). The C-NMA distributes the network metrics to the C-PSes so that they can use the combination of service and network metrics to determine the best Egress CATS-Forwarder to provide access to a service contact instance and invoke the compute function required by a service request. Similar to service-related metrics, the network-related metrics can be distributed using distributed, centralized, or hybrid schemes. This document will not describe such details since this is a deployment choice of existing protocols, and CATS framework does not make any modifications on it.\r\n```",
+              "createdAt": "2024-02-06T10:31:14Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 144,
+              "body": "```suggestion\r\n{{fig-cats-example-overlay}} shows an example of how CATS metrics can be disseminated in the distributed model. There is a client attached to the network via \"CATS-Forwarder 1\". There are three instances of the service with CS-ID \"1\": two are located at \"Service Site 2\" attached via \"CATS-Forwarder 2\" and have CIS-IDs \"1\" and \"2\"; the third service contact instance is located at \"Service Site 3\" attached via \"CATS-Forwarder 3\" and with CIS-ID \"3\". There is also a second service with CS-ID \"2\" with only one service contact instance located at \"Service Site 2\".\r\n```",
+              "createdAt": "2024-02-06T10:31:52Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 164,
+              "body": "```suggestion\r\nIf the CATS framework is deployed using a centralized model, the metric can be, e.g., distributed as illustrated in {{fig-cats-centralized}}.\r\n```",
+              "createdAt": "2024-02-06T10:32:57Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 206,
+              "body": "```suggestion\r\nIf the CATS Framework is deployed using an hybrid model, the metric can be distributed, e.g., as illustrated in the {{fig-cats-hybrid}}. For example, the metrics 1,2,3 associated with the CS-ID1 are collected by the centralized C-PS, and the metrics 4 and 5 are distributed via distributed protocols to the ingress CATS-Forwarder directly. For a service with CS-ID2, all the metrics are collected by the centralized C-PS. The CATS-computed path result will be distributed to the Ingress CATS-Forwarders from the C-PS by considering both the metrics from the C-SMA and C-NMA. Furthermore, the Ingress CATS-Forwarder may also have some ability to compute the path for the subsequent service accessing packets.\r\n```",
+              "createdAt": "2024-02-06T10:34:57Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 259,
+              "body": "```suggestion\r\nA C-PS computes paths that lead to Egress CATS-Forwarders according to both service and network metrics that were advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized (in a Centralized model or Hybrid model).\r\n```",
+              "createdAt": "2024-02-06T10:35:44Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            },
+            {
+              "originalPosition": 264,
+              "body": "```suggestion\r\nIn the example shown in  {{fig-cats-example-overlay}}, the client sends a service access via the network through the \"CATS-Forwarder 1\", which is an Ingress CATS-Forwarder. Note that, a service access may consist of one or more service packets (e.g., Session Initiation Protocol (SIP) {{?RFC3261}}, HTTP {{?RFC9112}}, IPv6{{?RFC8200}}, SRv6{{?RFC8754}} or Real-Time Streaming Protocol (RTSP) {{?RFC7826}}) that carry the CS-ID and potential parameters. The Ingress CATS-Forwarder classifies the packets using the information provided by the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation will be removed and the inner packets will be sent to the relevant service contact instance.\r\n```",
+              "createdAt": "2024-02-06T10:36:20Z",
+              "updatedAt": "2024-02-06T10:36:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLFBE",
+          "commit": {
+            "abbreviatedOid": "d4b79a4"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:27:13Z",
+          "updatedAt": "2024-02-06T13:27:22Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "let's leave it to next commit or revision",
+              "createdAt": "2024-02-06T13:27:13Z",
+              "updatedAt": "2024-02-06T13:27:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLFcg",
+          "commit": {
+            "abbreviatedOid": "d4b79a4"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:28:00Z",
+          "updatedAt": "2024-02-06T13:28:00Z",
+          "comments": [
+            {
+              "originalPosition": 30,
+              "body": "you are correct, let me update it now",
+              "createdAt": "2024-02-06T13:28:00Z",
+              "updatedAt": "2024-02-06T13:28:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLGjQ",
+          "commit": {
+            "abbreviatedOid": "0d1ab64"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:30:01Z",
+          "updatedAt": "2024-02-06T13:30:01Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "LGTM, let's merge and see what people think. But we might need to define what is NFI? ",
+              "createdAt": "2024-02-06T13:30:01Z",
+              "updatedAt": "2024-02-06T13:30:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLGrj",
+          "commit": {
+            "abbreviatedOid": "d4b79a4"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:30:15Z",
+          "updatedAt": "2024-02-06T13:30:15Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\nA high-level view of the CATS framework is illustrated in {{fig-cats-fw}}.\r\n```",
+              "createdAt": "2024-02-06T13:30:15Z",
+              "updatedAt": "2024-02-06T13:30:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLHU_",
+          "commit": {
+            "abbreviatedOid": "174c479"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:31:28Z",
+          "updatedAt": "2024-02-06T13:31:28Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "```suggestion\r\n   |         Management Plane         |  |         |        |\r\n```",
+              "createdAt": "2024-02-06T13:31:28Z",
+              "updatedAt": "2024-02-06T13:31:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLHjI",
+          "commit": {
+            "abbreviatedOid": "174c479"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:31:53Z",
+          "updatedAt": "2024-02-06T13:31:53Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "Then, let's delete it for now and add lablels if needed in future iterations",
+              "createdAt": "2024-02-06T13:31:53Z",
+              "updatedAt": "2024-02-06T13:31:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs5vLH0Q",
+          "commit": {
+            "abbreviatedOid": "174c479"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-06T13:32:04Z",
+          "updatedAt": "2024-02-06T13:32:05Z",
+          "comments": [
+            {
+              "originalPosition": 30,
+              "body": "```suggestion\r\n   |           Data Plane             |  |         | +--------+\r\n```",
+              "createdAt": "2024-02-06T13:32:04Z",
+              "updatedAt": "2024-02-06T13:32:05Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "id": "PR_kwDOJBcdGs5mJPmJ",
+      "title": "get rid of the interface name",
+      "url": "https://github.com/boucadair/CATS-framework/pull/57",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "we can add labels if needed in the next iteration",
+      "createdAt": "2024-02-06T13:36:06Z",
+      "updatedAt": "2024-02-06T13:43:08Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "619e21faa2ccf5f22bb5943ff84b2ffa46ba86dd",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "66d97da617afeecf6b18bb2575491eb229632389",
+      "closedAt": "2024-02-06T13:43:07Z",
+      "mergedAt": "2024-02-06T13:43:07Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "2fc7cea0824652dbf092c45d09f34ff6f56a65ec"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 58,
+      "id": "PR_kwDOJBcdGs5mJRNn",
+      "title": "Update titles",
+      "url": "https://github.com/boucadair/CATS-framework/pull/58",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-06T13:39:28Z",
+      "updatedAt": "2024-02-06T13:42:58Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "619e21faa2ccf5f22bb5943ff84b2ffa46ba86dd",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "9bd967c52bde50b2caee315910eca4ef907901b3",
+      "closedAt": "2024-02-06T13:42:57Z",
+      "mergedAt": "2024-02-06T13:42:57Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "d29b49955671efbd3136d1649008378e3e6366a2"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 59,
+      "id": "PR_kwDOJBcdGs5mPMng",
+      "title": "Update draft-ldbc-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/59",
+      "state": "MERGED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Move Guangping and Gyan to the draft, thank you for your contributions!",
+      "createdAt": "2024-02-07T09:26:57Z",
+      "updatedAt": "2024-02-07T09:33:43Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "1c06b1428c695ea0c8f4fe712ccccd0b9976a293",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "main",
+      "headRefOid": "db352b5b0df9443ceb229e3a219ae6fd0efe1f59",
+      "closedAt": "2024-02-07T09:33:43Z",
+      "mergedAt": "2024-02-07T09:33:43Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "055f7a56ccf9a7ed6039e0739d692aacbf103a5c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 60,
+      "id": "PR_kwDOJBcdGs5mPR1Z",
+      "title": "ACK I-D.yao-cats-awareness-architecture",
+      "url": "https://github.com/boucadair/CATS-framework/pull/60",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-07T09:37:31Z",
+      "updatedAt": "2024-02-07T09:38:05Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "055f7a56ccf9a7ed6039e0739d692aacbf103a5c",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "e3ce4e6b51c39cf190bd40c0b6284fb5954173ee",
+      "closedAt": "2024-02-07T09:38:04Z",
+      "mergedAt": "2024-02-07T09:38:04Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "26b931fdf729e1817e4867c84df5dcb6f21d92db"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 61,
+      "id": "PR_kwDOJBcdGs5mPaGZ",
+      "title": "C-NMA is likely to leverage existing techniques",
+      "url": "https://github.com/boucadair/CATS-framework/pull/61",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-07T09:55:23Z",
+      "updatedAt": "2024-02-07T09:55:50Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "4605789cce263a37844a2c8f8b34a608a357e320",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "7c547a60b288141c437674b52b7bda40c45be9c7",
+      "closedAt": "2024-02-07T09:55:50Z",
+      "mergedAt": "2024-02-07T09:55:50Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "caa4efca3966cdafecafac5b5305d1395520b868"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 62,
+      "id": "PR_kwDOJBcdGs5mPc5x",
+      "title": "clarify that the new figure focuses on the service interaction",
+      "url": "https://github.com/boucadair/CATS-framework/pull/62",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-07T10:01:58Z",
+      "updatedAt": "2024-02-07T10:03:33Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "caa4efca3966cdafecafac5b5305d1395520b868",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "3204ddaea23374a162e11c6bf2e67c74f410984f",
+      "closedAt": "2024-02-07T10:03:32Z",
+      "mergedAt": "2024-02-07T10:03:32Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "10c5cd4d860a064648642e7c7a88242b9f5f08d1"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 64,
+      "id": "PR_kwDOJBcdGs5n5Y_i",
+      "title": "comments from Joel Halpern",
+      "url": "https://github.com/boucadair/CATS-framework/pull/64",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-26T10:36:16Z",
+      "updatedAt": "2024-03-06T07:07:05Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "eaabc3bdfadfbf9ad2784b31c1fc7e09a7ea11fc",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "Joel-comments",
+      "headRefOid": "4929571aec02dbb45422a06f07c109a190bc1a34",
+      "closedAt": "2024-03-06T07:07:04Z",
+      "mergedAt": "2024-03-06T07:07:04Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "dd3bd3d2d842743571bac400853f5ef8cbe958c3"
+      },
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "How can you react so quickly?  I am crazy busy recently. Thank you Med! LOL",
+          "createdAt": "2024-02-28T16:34:52Z",
+          "updatedAt": "2024-02-28T16:35:09Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs5xpn_W",
+          "commit": {
+            "abbreviatedOid": "4929571"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-28T16:34:14Z",
+          "updatedAt": "2024-02-28T16:34:14Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 66,
+      "id": "PR_kwDOJBcdGs5ov8Bj",
+      "title": "Update draft-ldbc-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/66",
+      "state": "MERGED",
+      "author": "luismcontreras",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Correction of typo in relation to the description of Figure 3. I think the reference for the C-SMA agent should be Service Site 3 instead of Service Site 2.",
+      "createdAt": "2024-03-05T17:47:30Z",
+      "updatedAt": "2024-03-06T07:08:57Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "eaabc3bdfadfbf9ad2784b31c1fc7e09a7ea11fc",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "luismcontreras-patch-1",
+      "headRefOid": "519ff6bfdcdd4fffb30564e49a74a503411be5a1",
+      "closedAt": "2024-03-06T07:08:56Z",
+      "mergedAt": "2024-03-06T07:08:56Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "e8ff0eb58dbfa52d1848d0338ce296d276bb2a34"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 68,
+      "id": "PR_kwDOJBcdGs5paHsd",
+      "title": "Comments from CFA",
+      "url": "https://github.com/boucadair/CATS-framework/pull/68",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-12T16:47:13Z",
+      "updatedAt": "2024-03-18T01:09:00Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "62de18e5709391c0339441dad51c25a2b706a302",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "CFA",
+      "headRefOid": "53af767e69436eb66a6d097c03005aa2c30b4514",
+      "closedAt": "2024-03-18T01:09:00Z",
+      "mergedAt": "2024-03-18T01:09:00Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b480160cac8e29e9a27d13b5574165b30ed9f3c6"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 70,
+      "id": "PR_kwDOJBcdGs5tmQzr",
+      "title": "Update draft-ietf-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/70",
+      "state": "MERGED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "delete SFC related text to avoid potential discussion of the Service definition.",
+      "createdAt": "2024-04-24T12:38:20Z",
+      "updatedAt": "2024-04-24T14:23:32Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "b480160cac8e29e9a27d13b5574165b30ed9f3c6",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "main",
+      "headRefOid": "2384519602f99418c0f76d393c8cc4988ab889fb",
+      "closedAt": "2024-04-24T14:23:32Z",
+      "mergedAt": "2024-04-24T14:23:32Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fb74a8b5deed40f6b1cd47b9c78e3fffb6722b2f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs54Zz-M",
+          "commit": {
+            "abbreviatedOid": "2384519"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-24T14:23:24Z",
+          "updatedAt": "2024-04-24T14:23:24Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 71,
+      "id": "PR_kwDOJBcdGs5tsnCY",
+      "title": "Update draft-ietf-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/71",
+      "state": "MERGED",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "addressed Zongpeng's comment regarding Service contact instance",
+      "createdAt": "2024-04-25T08:56:19Z",
+      "updatedAt": "2024-04-30T09:10:53Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "fb74a8b5deed40f6b1cd47b9c78e3fffb6722b2f",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "main",
+      "headRefOid": "e2146596e320e8d07ca8e9437ba959dfb649974b",
+      "closedAt": "2024-04-30T09:10:53Z",
+      "mergedAt": "2024-04-30T09:10:53Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "f2c7bc0e1c79d091201583c96f43465799d68ad4"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
