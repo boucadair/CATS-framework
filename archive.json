@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-09T01:07:08.108600+00:00",
+  "timestamp": "2024-07-11T01:07:51.688293+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -997,6 +997,126 @@
           "updatedAt": "2024-04-24T14:34:42Z"
         }
       ]
+    },
+    {
+      "number": 72,
+      "id": "I_kwDOJBcdGs6O85mu",
+      "title": "comments from Hang SHI",
+      "url": "https://github.com/boucadair/CATS-framework/issues/72",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cats/vO2bvda_E8Mfb9RSm9nQrYZWPzw/",
+      "createdAt": "2024-07-09T14:06:12Z",
+      "updatedAt": "2024-07-09T14:06:12Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 73,
+      "id": "I_kwDOJBcdGs6O86h7",
+      "title": "comments from Xinxin YI",
+      "url": "https://github.com/boucadair/CATS-framework/issues/73",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cats/sQxu5d355goklj47-A3kFVQIzpo/",
+      "createdAt": "2024-07-09T14:07:55Z",
+      "updatedAt": "2024-07-09T14:13:36Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Answer from Cheng https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/\r\n",
+          "createdAt": "2024-07-09T14:13:35Z",
+          "updatedAt": "2024-07-09T14:13:35Z"
+        }
+      ]
+    },
+    {
+      "number": 74,
+      "id": "I_kwDOJBcdGs6O88Zt",
+      "title": "Comments from Dirk",
+      "url": "https://github.com/boucadair/CATS-framework/issues/74",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cats/D5TX8rCfOn3mOSqkLid-paxZzU4/",
+      "createdAt": "2024-07-09T14:11:21Z",
+      "updatedAt": "2024-07-09T14:11:22Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 75,
+      "id": "I_kwDOJBcdGs6O88pf",
+      "title": "Comments from Huijuan YAO",
+      "url": "https://github.com/boucadair/CATS-framework/issues/75",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cats/XFQAwKMn0V6xRp-TXZM-8ix7qVo/",
+      "createdAt": "2024-07-09T14:11:51Z",
+      "updatedAt": "2024-07-09T14:11:51Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 76,
+      "id": "I_kwDOJBcdGs6O8-zL",
+      "title": "Comments from Luis",
+      "url": "https://github.com/boucadair/CATS-framework/issues/76",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cats/sGSINvkw5rllPvThopkl_0WuSE0/",
+      "createdAt": "2024-07-09T14:15:19Z",
+      "updatedAt": "2024-07-09T14:15:19Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 77,
+      "id": "I_kwDOJBcdGs6O8_td",
+      "title": "Comments from Changwang LIN",
+      "url": "https://github.com/boucadair/CATS-framework/issues/77",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi WG,\r\n\r\nSection 3.5, \"Deployment Considerations,\" mentions both the Distributed and Centralized models.\r\nHowever, Section 4, \"CATS Framework Workflow,\" does not mention the Centralized model.\r\nI suggest adding a centralized workflow to the framework. Thank you.\r\n\r\n\r\nThanks,\r\nChangwang",
+      "createdAt": "2024-07-09T14:16:46Z",
+      "updatedAt": "2024-07-09T14:16:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 78,
+      "id": "I_kwDOJBcdGs6O9BZT",
+      "title": "Instance affinity comments from Castern and Sharon",
+      "url": "https://github.com/boucadair/CATS-framework/issues/78",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\r\nhttps://mailarchive.ietf.org/arch/msg/cats/L0dNW8V1WGh_dHFOklxL6-6zmeU/",
+      "createdAt": "2024-07-09T14:19:51Z",
+      "updatedAt": "2024-07-09T14:19:51Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
