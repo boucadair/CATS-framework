@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-27T01:10:47.004953+00:00",
+  "timestamp": "2024-08-29T01:11:58.380313+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -1306,9 +1306,17 @@
       "labels": [],
       "body": "\"Computing Service\" in CATS-framework:\r\nComputing Service:  An offering is made available by a provider by orchestrating a set of computing resources (without networking resources).\r\n\r\n\"Computing Service\" in CATS-Use cases & Requirements:\r\n Computing Service:  An offering that is made available by a provider by orchestrating a set of computing resources to process application content.\r\n Some differences and similarities exist between service and computing service:\r\n* Service is packet-based, while computing service is transaction-based.  Application content is exposed within a computing service.\r\n* Both service and computing service can be \"on-path\" or on \"endpoint\", depending on the service logic or computing service logic that are defined by the provider.\r\n\r\nSugguest CATS-framework adopt the definition on \"Computing Service\", This is from the dicussion on list https://mailarchive.ietf.org/arch/browse/cats/?q=service",
       "createdAt": "2024-07-29T14:40:54Z",
-      "updatedAt": "2024-07-29T14:40:54Z",
+      "updatedAt": "2024-08-28T15:42:17Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ack. Will update it in the next revision.",
+          "createdAt": "2024-08-28T15:42:16Z",
+          "updatedAt": "2024-08-28T15:42:16Z"
+        }
+      ]
     }
   ],
   "pulls": [
