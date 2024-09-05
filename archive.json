@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-03T01:11:33.025990+00:00",
+  "timestamp": "2024-09-05T01:12:38.815511+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -1130,41 +1130,72 @@
       "labels": [],
       "body": "In the introduction\uff0cthe 4th paragraph\uff0c\r\n\r\nOld\r\nA single service site may host one or multiple service contact instances.\r\nNew1\r\nA single service site may host one or multiple service instances, and one or multiple related service contact instances.\r\nOr New2\r\nA single service site may host one service instance for a given service, and in this case one associated service contact instance; meanwhile, a single service site may host multiple service instances for a given service, and in this case one or multiple associated service contact instances.\r\n\r\n\r\nReason of suggestion:\r\nIt is a little hard for a new reader of the draft to understand the relationship among a service site, service instances, and the service contact instance.\r\nIMHO, more explanation should be added here or someplace else.",
       "createdAt": "2024-07-18T07:35:21Z",
-      "updatedAt": "2024-07-18T07:35:21Z",
+      "updatedAt": "2024-09-04T19:05:54Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Well, this is also about the service contact instance. Please see details in emails.",
+          "createdAt": "2024-09-04T19:05:53Z",
+          "updatedAt": "2024-09-04T19:05:53Z"
+        }
+      ]
     },
     {
       "number": 80,
       "id": "I_kwDOJBcdGs6P-7d9",
       "title": "Description about networking resources in computing resources",
       "url": "https://github.com/boucadair/CATS-framework/issues/80",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "2.\u2002Terminology\r\n\r\nOld\r\nComputing Service:\r\nAn offering is made available by a provider by orchestrating a set of computing resources (without networking resources).\u00b6\r\n\r\nNew\r\nAn offering is made available by a provider by orchestrating a set of computing resources (without networking resources in the network domain).\r\n\r\nReason of suggestion:\r\nIn fact, the server has network cards, which can be regards as networking resources. However, it is on the host, and belongs to the computing domain.\r\n\r\nSo, maybe some explanation can be added here. ",
       "createdAt": "2024-07-18T07:49:15Z",
-      "updatedAt": "2024-07-18T07:49:15Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T18:52:32Z",
+      "closedAt": "2024-09-04T18:52:32Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "agree.",
+          "createdAt": "2024-09-04T18:50:51Z",
+          "updatedAt": "2024-09-04T18:50:51Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "BTW, this part will be updated to sync up with the definition in use case draft. see issue https://github.com/boucadair/CATS-framework/issues/90",
+          "createdAt": "2024-09-04T18:52:32Z",
+          "updatedAt": "2024-09-04T18:52:32Z"
+        }
+      ]
     },
     {
       "number": 81,
       "id": "I_kwDOJBcdGs6P_ATH",
       "title": "Description about forwarding decision on CATS-Forwarder",
       "url": "https://github.com/boucadair/CATS-framework/issues/81",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "2.\u2002Terminology\r\n\r\nOld\r\nCATS-Forwarder:\r\nA network entity that makes forwarding decisions based on CATS information to steer traffic specific to a service request towards a corresponding yet selected service contact instance.\r\n\r\nNew:\r\nA network entity that steers traffic specific to a service request towards a corresponding yet selected service contact instance according to the forwarding decisions made by the decision point based on CATS information. The decision point, which is on the C-PS, is responsible for making the steering policy, and it may or may not on the CATS-Forwarder.\r\n\r\nReason of suggestion:\r\nThe CATS-Forwarder may or may not be the decision point for CATS. ",
       "createdAt": "2024-07-18T07:58:42Z",
-      "updatedAt": "2024-07-18T07:58:42Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T18:49:32Z",
+      "closedAt": "2024-09-04T18:49:32Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Agree, good catch!",
+          "createdAt": "2024-09-04T18:49:07Z",
+          "updatedAt": "2024-09-04T18:49:07Z"
+        }
+      ]
     },
     {
       "number": 82,
@@ -1178,41 +1209,65 @@
       "labels": [],
       "body": "2.\u2002Terminology\r\n\r\nold\r\nCATS Traffic Classifier (C-TC):\r\nA functional entity that is responsible for determining which packets belong to a traffic flow for a particular service request. It is also responsible for forwarding such packets along a C-PS computed path that leads to the relevant service contact instance.\r\n\r\nNew:\r\nA functional entity that is responsible for determining which packets belong to CATS, and additionally, it may distinguish which packets belong to a traffic flow for a particular service request. It is also responsible for forwarding such packets along a C-PS computed path that leads to the relevant service contact instance.\r\n\r\nReason of suggestion:\r\nSome services for CATS, perhaps, do not need this Service Contact Instance Affinity. However, their traffic should also be recognized and forwarded to a service contact instance. \r\nSo, IMHO, the function of the C-TC should be described more generally. \r\n\r\n3.4.5.\u2002CATS Traffic Classifier (C-TC)\r\n\r\nOld\r\nCATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets from clients with existing service requests. CATS classifiers also ensure that packets that are bound to a specific service contact instance are all forwarded towards that same service contact instance, as instructed by a C-PS.\r\n\r\nNew\r\nCATS Traffic classifier (C-TC) is a functional component that is responsible for CATS traffic classification, and it may also be responsible for associating incoming packets from clients with existing service requests.\r\nCATS classifiers can ensure that packets that are bound to a specific service contact instance are all forwarded towards that same service contact instance if needed, as instructed by a C-PS.",
       "createdAt": "2024-07-18T08:05:33Z",
-      "updatedAt": "2024-07-18T08:05:33Z",
+      "updatedAt": "2024-09-04T18:48:07Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "see email discussion.\r\n",
+          "createdAt": "2024-09-04T18:48:06Z",
+          "updatedAt": "2024-09-04T18:48:06Z"
+        }
+      ]
     },
     {
       "number": 83,
       "id": "I_kwDOJBcdGs6P_I1o",
       "title": "Description about globally unique of CS-ID",
       "url": "https://github.com/boucadair/CATS-framework/issues/83",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "3.4.1.\u2002Service Sites, Services Instances, and Service Contact Instances\r\n\r\nOld\r\nThe CS-ID does not need to be globally unique, though.\r\n\r\nNew\r\nThe CS-ID does not need to be globally unique, though, for example, in the case of CATS working in a limited domain.\r\n\r\nReason of suggestion:\r\nIMHO, it is better to give some explanation here.\r\n\r\nLimited Domains and Internet Protocols\r\nhttps://datatracker.ietf.org/doc/html/rfc8799\r\nIt has been talked before; however, some explanation may be helpful here.",
       "createdAt": "2024-07-18T08:13:25Z",
-      "updatedAt": "2024-07-18T08:13:25Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T18:34:31Z",
+      "closedAt": "2024-09-04T18:34:30Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "OK\r\n",
+          "createdAt": "2024-09-04T18:34:30Z",
+          "updatedAt": "2024-09-04T18:34:30Z"
+        }
+      ]
     },
     {
       "number": 84,
       "id": "I_kwDOJBcdGs6P_JUK",
       "title": "Modification about 3.4.6.\u2002Overlay CATS-Forwarders",
       "url": "https://github.com/boucadair/CATS-framework/issues/84",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "3.4.6.\u2002Overlay CATS-Forwarders\r\n\r\nOld\r\n If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance. \r\n\r\nNew\r\nIf a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID related information, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance according the information.\r\n\r\nReason of suggestion:\r\nIMHO, it is better to describe more generally here. It is not a MUST CID-ID is marked directly in the packet.\r\n",
       "createdAt": "2024-07-18T08:14:21Z",
-      "updatedAt": "2024-07-18T08:14:21Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T18:35:20Z",
+      "closedAt": "2024-09-04T18:35:20Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "it looks good to me. ",
+          "createdAt": "2024-09-04T18:30:09Z",
+          "updatedAt": "2024-09-04T18:30:09Z"
+        }
+      ]
     },
     {
       "number": 85,
@@ -1226,57 +1281,89 @@
       "labels": [],
       "body": "3.5.\u2002Deployment Considerations\r\n\r\nOld\r\nIn the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. \r\n\r\nNew\r\nIn this case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. Or for a specific service, the CATS computation logic can compute and select paths in advance.\r\n\r\n\r\nReason of suggestion:\r\nIMHO, if the controller needs to compute the path after obtaining an incoming service request packet, it is on-demand but slow.\r\nIf the controller is configured to collect the information about a specific service, it can computer the path without receiving an incoming service request packet.\r\n\r\nOld\r\n\r\nCentralized model:\r\nComputing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder.\r\n\r\nNew\r\nCentralized model:\r\nComputing metrics are collected by a centralized control plane, and then the centralized control plane computes the forwarding path and syncs up with the Ingress CATS-Forwarder.\r\n\r\nReason of suggestion:\r\nIMHO, the service scheduling is related, but may be out of the scope of CATS. So, no need to emphasize it here.\u00a0\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
       "createdAt": "2024-07-18T08:24:39Z",
-      "updatedAt": "2024-07-18T08:24:40Z",
+      "updatedAt": "2024-09-04T18:20:49Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree with you about the service scheduling part. Please see more reply in email.\r\n\r\n\r\n\r\n",
+          "createdAt": "2024-09-04T18:20:48Z",
+          "updatedAt": "2024-09-04T18:20:48Z"
+        }
+      ]
     },
     {
       "number": 86,
       "id": "I_kwDOJBcdGs6P_Pm2",
       "title": "Modification of 4.3.\u2002Metrics Distribution",
       "url": "https://github.com/boucadair/CATS-framework/issues/86",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "4.3.\u2002Metrics Distribution\r\n\r\nOld\r\nAdditionally, the C-NMA collects network-related capabilities and metrics. These may be collected and distributed by existing routing protocols, although extensions to such protocols may be required to carry additional information (e.g., link latency).\r\n\r\nNew\r\nAdditionally, the C-NMA collects network-related capabilities and metrics. These may be collected and distributed by existing measurement protocols and/or routing protocols, although extensions to such protocols may be required to carry additional information (e.g., link latency).\r\n\r\nReason of suggestion:\r\nIMHO, most straightforwardly, the C-NMA can measure the delay between the Ingress and the Target Egress as the metric of the network.",
       "createdAt": "2024-07-18T08:26:49Z",
-      "updatedAt": "2024-07-18T08:26:49Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T14:26:32Z",
+      "closedAt": "2024-09-04T14:26:32Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It is ok ",
+          "createdAt": "2024-09-04T14:26:32Z",
+          "updatedAt": "2024-09-04T14:26:32Z"
+        }
+      ]
     },
     {
       "number": 87,
       "id": "I_kwDOJBcdGs6P_QgK",
       "title": "Modification of 4.4.\u2002Service Access Processing",
       "url": "https://github.com/boucadair/CATS-framework/issues/87",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\r\n\r\n\r\n4.4.\u2002Service Access Processing\r\n\r\nOld\r\nHowever, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.\u00b6\r\n \r\nNew\r\nHowever, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the preference in selecting the service contact instance.\r\n\r\nReason of suggestion:\r\nIMHO, it is better to describe more generally here. It is suggested to be some information about the service contact instance, and it does not have to be the CIS-ID.\r\n",
       "createdAt": "2024-07-18T08:28:43Z",
-      "updatedAt": "2024-07-18T08:28:43Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T14:18:09Z",
+      "closedAt": "2024-09-04T14:18:09Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "well, I am ok with the proposed text. Will update accordingly",
+          "createdAt": "2024-09-04T14:16:26Z",
+          "updatedAt": "2024-09-04T14:16:26Z"
+        }
+      ]
     },
     {
       "number": 88,
       "id": "I_kwDOJBcdGs6P_RG-",
       "title": "Modification of 4.5.\u2002Service Contact Instance Affinity",
       "url": "https://github.com/boucadair/CATS-framework/issues/88",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "4.5.\u2002Service Contact Instance Affinity\r\nOld\r\n Specifically, the same Egress CATS-Forwarder may be sollicited to forward the packets.\r\n \r\nNew\r\n Specifically, the same Egress CATS-Forwarder may be solicited to forward the packets.\r\n \r\n\r\n Old\r\nThe affinity is determined at the time of newly formulated service requests.\r\n \r\nNew\r\nThe affinity is configured on the C-PS when the service is deployed, or is determined at the time of newly formulated service requests.\r\n\r\nReason of suggestion:\r\nIMHO, some services, such as the Video on Demand in CDN system, can be without the Service Contact Instance Affinity by default.",
       "createdAt": "2024-07-18T08:29:58Z",
-      "updatedAt": "2024-07-18T08:29:58Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-04T13:04:58Z",
+      "closedAt": "2024-09-04T13:04:58Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ACK. Will update accordingly.\r\n",
+          "createdAt": "2024-09-04T13:01:49Z",
+          "updatedAt": "2024-09-04T13:01:49Z"
+        }
+      ]
     },
     {
       "number": 89,
@@ -1299,15 +1386,15 @@
       "id": "I_kwDOJBcdGs6RLIaH",
       "title": "Synchronize the definition on \"Computing Service\"",
       "url": "https://github.com/boucadair/CATS-framework/issues/90",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bpatient78",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "\"Computing Service\" in CATS-framework:\r\nComputing Service:  An offering is made available by a provider by orchestrating a set of computing resources (without networking resources).\r\n\r\n\"Computing Service\" in CATS-Use cases & Requirements:\r\n Computing Service:  An offering that is made available by a provider by orchestrating a set of computing resources to process application content.\r\n Some differences and similarities exist between service and computing service:\r\n* Service is packet-based, while computing service is transaction-based.  Application content is exposed within a computing service.\r\n* Both service and computing service can be \"on-path\" or on \"endpoint\", depending on the service logic or computing service logic that are defined by the provider.\r\n\r\nSugguest CATS-framework adopt the definition on \"Computing Service\", This is from the dicussion on list https://mailarchive.ietf.org/arch/browse/cats/?q=service",
       "createdAt": "2024-07-29T14:40:54Z",
-      "updatedAt": "2024-08-28T15:42:17Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-04T13:05:20Z",
+      "closedAt": "2024-09-04T13:05:20Z",
       "comments": [
         {
           "author": "muzixing",
@@ -3640,6 +3727,32 @@
       "mergeCommit": {
         "oid": "f2c7bc0e1c79d091201583c96f43465799d68ad4"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 91,
+      "id": "PR_kwDOJBcdGs56b29l",
+      "title": "Update draft-ietf-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/91",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "update to address Zongpeng's comments",
+      "createdAt": "2024-09-04T19:08:11Z",
+      "updatedAt": "2024-09-04T19:08:11Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "main",
+      "headRefOid": "da78865565007929277cf65550cc9b903f384176",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
