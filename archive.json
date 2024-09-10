@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-08T01:18:10.152350+00:00",
+  "timestamp": "2024-09-10T01:13:32.208056+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -914,9 +914,17 @@
       "labels": [],
       "body": "We do currently say that:\r\n\r\n> CATS Service ID (CS-ID):\r\n> An identifier representing a service, which the clients use to access it. See [Section 3.2](https://boucadair.github.io/CATS-framework/draft-ldbc-cats-framework.html#cats-ids).\r\n\r\nHowever, the identifiers that are used by clients is not always available in clear. There are some hidden assumptions that we need to dive into as this will have implication on the CATS Classification",
       "createdAt": "2024-02-07T10:08:57Z",
-      "updatedAt": "2024-02-07T10:08:58Z",
+      "updatedAt": "2024-09-09T17:37:32Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Med, do you mind to propose some text directly? Thank you so much!",
+          "createdAt": "2024-09-09T17:37:31Z",
+          "updatedAt": "2024-09-09T17:37:31Z"
+        }
+      ]
     },
     {
       "number": 65,
@@ -932,9 +940,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-02-28T14:05:15Z",
-      "updatedAt": "2024-02-28T14:05:19Z",
+      "updatedAt": "2024-09-09T17:42:39Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Med, do you mind to propose some text to address your comment?",
+          "createdAt": "2024-09-09T17:42:37Z",
+          "updatedAt": "2024-09-09T17:42:37Z"
+        }
+      ]
     },
     {
       "number": 67,
@@ -948,7 +964,7 @@
       "labels": [],
       "body": "Not clear to me some parts fo the figures. Assuming Figure 3 is ok, then it is not clear to me the line at the bottom from CS-ID 2 up to CATS forwarder 1. Also whyService CS-ID 2 has no metrics at the bottom part in Figure 5. More clarification text can be benefitial. ",
       "createdAt": "2024-03-05T18:04:45Z",
-      "updatedAt": "2024-04-16T15:20:26Z",
+      "updatedAt": "2024-09-09T17:43:27Z",
       "closedAt": null,
       "comments": [
         {
@@ -957,6 +973,13 @@
           "body": "Hi Luis\uff0cthe bottom line from CS-ID2 up to CATS forwarder 1 is an example of CS-ID route distribution with/without metrics. In Figure 3, it is an distributed model, so the metrics will be attached to the CS-ID routes and distributed to the ingress CATS forwarder.  \r\n\r\nIn Figure 5, it is an hybrid model, so we illustrate that the metric can be collected by a central element and sync up with the Ingress CATS forwarder, so in this case, the CS-ID 2 has no (computing metrics). \r\n\r\nis it clear for you? you can propose some text :) ",
           "createdAt": "2024-04-16T15:20:24Z",
           "updatedAt": "2024-04-16T15:20:24Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hi Luis,  are you ok with my answer? or do you have some text proposal? ",
+          "createdAt": "2024-09-09T17:43:26Z",
+          "updatedAt": "2024-09-09T17:43:26Z"
         }
       ]
     },
