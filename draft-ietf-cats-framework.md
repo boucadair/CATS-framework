@@ -133,6 +133,8 @@ Also, this document describes a workflow of the main CATS procedures that are ex
 
 This document makes use of the following terms:
 
+NOTE Dirk: I noticed that the document uses the term "metric" a lot but has not definition of it. Also, aligned with the role of C-PS, a definition for a "selection algorithm" may be useful to have, taking suitable service  and network metrics as input and providing a service contact instance as output.
+
 Client:
 : An endpoint that is connected to a service provider network.
 
@@ -194,6 +196,8 @@ Ingress CATS-Forwarder:
 
 Egress CATS-Forwarder:
 : An entity that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.
+
+NOTE Dirk: this issue transcends the document, sadly: you define the C-PS as a path selector but keep talking many times how the C-PS "computes" path which is a DIFFERENT task to selecting them. If the C-PS computes path, it is a PCE and should be defined as such. I don't think this aligns with CATS list discussions, though. Instead, I suggest consistency in that C-PS "selects paths" and remove any path computation aspect from its definition  and mentions in the text (I marked a few throughout but may have missed a few, too).
 
 CATS Path Selector (C-PS):
  : A functional entity that computes and selects paths towards service locations and instances and which accommodates the requirements of service requests. Such a path computation engine takes into account the service and network status information. See {{sec-cps}}.
@@ -329,6 +333,8 @@ The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (
 
 There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.
 
+NOTE Dirk: we use the term 'compute' the path, which is different from 'selecting' a path. Does the CATS path selector have the necessary information to actually compute path or is it simply doing what the name suggests (path selector)? If the latter, I suggest to NOT use the word 'compute' but keep using 'select paths' consistently in the description of the component.
+
 A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in {{fig-cats-components}}) or may be deployed as a standalone component (e.g., "C-PS#2" in {{fig-cats-components}}). Generally, a standalone C-PS can be a functional component of a centralized controller (e.g., a Path Computation Element (PCE) {{?RFC4655}}).
 
 ### CATS Traffic Classifier (C-TC) {#sec-ctc}
@@ -352,6 +358,8 @@ The "underlay infrastructure" in {{fig-cats-components}} indicates an IP and/or 
 This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.
 
 Centralized designs where the computing related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (e.g., a PCE) that also collects network metrics may be adopted. In the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. The outcomes of such a computation process may then be communicated to CATS traffic classifiers (C-TCs).
+
+NOTE Dirk: here we again conflate the functions of path computation and selection. It seems that PCE is a path computation element, while a C-PS selects a path - I suggest to stick to this separation.
 
 In conclusion, at least three deployment models can be considered for the deployment of the CATS framework:
 
@@ -530,9 +538,13 @@ If the CATS framework is implemented using an hybrid model, the metric can be di
 
 ## Service Access Processing
 
+NOTE Dirk: again, a C-PS "selects" path, according to its name, and does NOT compute path. Both are separate and different functions!
+
 A C-PS computes paths that lead to Egress CATS-Forwarders according to both service and network metrics that were advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in {{fig-cats-example-overlay}}) or logically centralized (in a centralized model or hybrid model).
 
-This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. However, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.
+NOTE Dirk: reworded the below and added a sentence on that provisioning of said selection logic:
+
+This document does not specify any particular algorithm for path selection purposes to be supported by C-PSes in order to not constrain the CATS framework to one possible selection only. Instead, it is expected that a service request or local policy may feed the C-PS with appropriate information on that selection logic that takes the suitable metric information as input and the selected service contact instance as output. Such "appropriate information" may be in the form of a selection identifier (akin to ports serving as service information), which is in turn mapped onto agreed upon selection mechanisms, enabling service-specific selections of the same set of metrics across many services. Such identifier may be provided "in-band", e.g., as part of the service request, or "out-of-band" through configuration means towards the C-PS.
 
 In the example shown in  {{fig-cats-example-overlay}}, the client sends a service access via the network through the "CATS-Forwarder 1", which is an Ingress CATS-Forwarder. Note that, a service access may consist of one or more service packets (e.g., Session Initiation Protocol (SIP) {{?RFC3261}}, HTTP {{?RFC9112}}, IPv6 {{?RFC8200}}, SRv6 {{?RFC8754}} or Real-Time Streaming Protocol (RTSP) {{?RFC7826}}) that carry the CS-ID and potential parameters. The Ingress CATS-Forwarder classifies the packets using the information provided by the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation will be removed and the inner packets will be sent to the relevant service contact instance.
 
