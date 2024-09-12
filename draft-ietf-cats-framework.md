@@ -360,7 +360,7 @@ The "underlay infrastructure" in {{fig-cats-components}} indicates an IP and/or 
 
 ## Deployment Considerations
 
-This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the specific design of the (CATS) service provider.
+This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.
 
 For example, in a Centralized design, both the computing related metrics from the C-SMAs and the network metrics are collected by a (logically) centralized path computation logic (e.g., a PCE). In this case, the CATS computation logic may process incoming service requests to compute and select paths to service contact instances. More generally, the paths might be computed before the service request comes. The outcomes of such a computation process can then be communicated to CATS traffic classifiers (C-TCs).
 
