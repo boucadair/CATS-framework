@@ -78,7 +78,7 @@ contributor:
   email: luigi.iannone@huawei.com
  -
   name: Hang Shi
-  org: Huawei Technologies
+  org: Huawei Technol ogies
   email: shihang9@huawei.com
  -
   ins: C. Lin
@@ -142,7 +142,7 @@ Computing-Aware Traffic Steering (CATS):
 CATS Service ID (CS-ID):
  : An identifier representing a service, which the clients use to access it. See {{cats-ids}}.
 
-CATS Instance Selector ID (CIS-ID):
+CATS Service Contact Instance ID (CSCI-ID):
  : An identifier of a specific service contact instance. See {{cats-ids}}.
 
 Service:
@@ -222,7 +222,7 @@ CATS Service ID (CS-ID):
   : The CS-ID is independent of which service contact instance serves the service request.
   : Service requests are spread over the service contact instances that can accommodate them, considering the location of the initiator of the service request and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.
 
-CATS Instance Selector ID (CIS-ID):
+CATS Service Contact Instance ID (CSCI-ID):
 : An identifier of a specific service contact instance.
 
 ## Framework Overview {#sec-cats-framework}
@@ -325,7 +325,7 @@ C-NMA is likely to leverage existing techniques (e.g., {{?RFC7471}}, {{?RFC8570}
 
 ### CATS Path Selector (C-PS) {#sec-cps}
 
-The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Forwarders (and potentially the service contact instances) where to forward traffic for a given service request. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CIS-IDs.
+The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Forwarders (and potentially the service contact instances) where to forward traffic for a given service request. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CSCI-IDs.
 
 There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.
 
@@ -339,7 +339,7 @@ CATS classifiers are typically hosted in CATS-Forwarders.
 
 ### Overlay CATS-Forwarders {#sec-ocr}
 
-The Egress CATS-Forwarders are the endpoints that behave as an overlay egress for service requests that are forwarded over a CATS infrastructure. A service site that hosts service instances may be connected to one or more Egress CATS-Forwarders (that is, multi-homing is of course a design option). If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance. In some cases, the choice of the service  contact instance may be left open to the Egress CATS-Forwarder (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Forwarder selects a service contact instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS-Forwarder, among other considerations. Absent explicit policy, an Egress CATS-Forwarder must make sure to forward all packets that pertain to a given service request towards the same service contact instance.
+The Egress CATS-Forwarders are the endpoints that behave as an overlay egress for service requests that are forwarded over a CATS infrastructure. A service site that hosts service instances may be connected to one or more Egress CATS-Forwarders (that is, multi-homing is of course a design option). If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CSCI-ID, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance. In some cases, the choice of the service  contact instance may be left open to the Egress CATS-Forwarder (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Forwarder selects a service contact instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS-Forwarder, among other considerations. Absent explicit policy, an Egress CATS-Forwarder must make sure to forward all packets that pertain to a given service request towards the same service contact instance.
 
 Note that, depending on the design considerations and service requirements, per-service  contact instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a preferred option scalability-wise, but relies on Egress CATS-Forwarders that connect to various service contact instances to select the proper service contact instance. An Egress CATS-Forwarder may choose to aggregate the metrics from different sites as well. In this case, the Egress CATS-Forwarder will choose the best site by itself when the packets arrive at it.
 
@@ -398,26 +398,26 @@ Additionally, the C-NMA collects network-related capabilities and metrics. These
 
 Network metrics may also change over time. Dynamic routing protocols may take advantage of some information or capabilities to prevent the network from being flooded with state change information (e.g., Partial Route Computation (PRC) of OSPFv3 {{?RFC5340}}). C-NMAs should also be configured or instructed like C-SMAs to determine when and how often updates should be notified to the C-PSes.
 
-{{fig-cats-example-overlay}} shows an example of how CATS metrics can be disseminated in the distributed model. There is a client attached to the network via "CATS-Forwarder 1". There are three instances of the service with CS-ID "1": two are located at "Service Site 2" attached via "CATS-Forwarder 2" and have CIS-IDs "1" and "2"; the third service contact instance is located at "Service Site 3" attached via "CATS-Forwarder 3" and with CIS-ID "3". There is also a second service with CS-ID "2" with only one service contact instance located at "Service Site 2".
+{{fig-cats-example-overlay}} shows an example of how CATS metrics can be disseminated in the distributed model. There is a client attached to the network via "CATS-Forwarder 1". There are three instances of the service with CS-ID "1": two are located at "Service Site 2" attached via "CATS-Forwarder 2" and have CSCI-IDs "1" and "2"; the third service contact instance is located at "Service Site 3" attached via "CATS-Forwarder 3" and with CSCI-ID "3". There is also a second service with CS-ID "2" with only one service contact instance located at "Service Site 2".
 
-In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Forwarder 2" distributes the service metrics for both service contact instances (i.e., (CS-ID 1, CIS-ID 1) and (CS-ID 1, CIS-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service contact instance are indicated separately. Similarly, the C-SMA agent located at "Service Site 3" advertises the service metrics for the two services hosted by "Service Site 3".
+In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Forwarder 2" distributes the service metrics for both service contact instances (i.e., (CS-ID 1, CSCI-ID 1) and (CS-ID 1, CSCI-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service contact instance are indicated separately. Similarly, the C-SMA agent located at "Service Site 3" advertises the service metrics for the two services hosted by "Service Site 3".
 
 The service metric advertisements are processed by the C-PS hosted by "CATS-Forwarder 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Forwarder according to the initial  client's service request, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service contact instances as reported by the metrics, and the state of the network.
 
 ~~~
-          Service CS-ID 1, instance CIS-ID 1 <metrics>
-          Service CS-ID 1, instance CIS-ID 2 <metrics>
+          Service CS-ID 1, instance CSCI-ID 1 <metrics>
+          Service CS-ID 1, instance CSCI-ID 2 <metrics>
 
                  :<----------------------:
-                 :                       :              +--------+
-                 :                       :              |CS-ID 1 |
-                 :                       :           +--|CIS-ID 1|
-                 :              +----------------+    |  +--------+
+                 :                       :               +---------+
+                 :                       :               |CS-ID 1  |
+                 :                       :            +--|CSCI-ID 1|
+                 :              +----------------+    |  +---------+
                  :              |    C-SMA       |----|   Service Site 2
-                 :              +----------------+    |  +--------+
-                 :              |CATS-Forwarder 2|    +--|CS-ID 1 |
-                 :              +----------------+       |CIS-ID 2|
- +--------+      :                        |             +--------+
+                 :              +----------------+    |  +---------+
+                 :              |CATS-Forwarder 2|    +--|CS-ID 1  |
+                 :              +----------------+       |CSCI-ID 2|
+ +--------+      :                        |              +---------+
  | Client |      :  Network +----------------------+
  +--------+      :  metrics | +-------+            |
       |          : :<---------| C-NMA |            |
@@ -425,10 +425,10 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Forw
  +---------------------+    |                      |
  |CATS-Forwarder 1|C-PS|----|                      |
  +---------------------+    |       Underlay       |
-                 :          |     Infrastructure   |     +--------+
-                 :          |                      |     |CS-ID 1 |
-                 :          +----------------------+ +---|CIS-ID 3|
-                 :                    |              |   +--------+
+                 :          |     Infrastructure   |     +---------+
+                 :          |                      |     |CS-ID 1  |
+                 :          +----------------------+ +---|CSCI-ID 3|
+                 :                    |              |   +---------+
                  :          +----------------+  +-------+
                  :          |CATS-Forwarder 3|--| C-SMA | Service Site 3
                  :          +----------------+  +-------+
@@ -436,43 +436,43 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Forw
                  :                                :  +---|CS-ID 2|
                  :                                :      +-------+
                  :<-------------------------------:
-          Service CS-ID 1, instance CIS-ID 3 <metrics>
+          Service CS-ID 1, instance CSCI-ID 3 <metrics>
           Service CS-ID 2, <metrics>
 ~~~
 {: #fig-cats-example-overlay title="An Example of CATS Metric Dessimination in a Distributed Model"}
 
-The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIS-ID information will not be included in the advertisement. Instead, a per-site CIS-ID may be used in case multiple sites are connected to the Egress CATS-Forwarder to explicitly indicate the site from where the aggregated metrics come.
+The example in {{fig-cats-example-overlay}} mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CSCI-ID information will not be included in the advertisement. Instead, a per-site CSCI-ID may be used in case multiple sites are connected to the Egress CATS-Forwarder to explicitly indicate the site from where the aggregated metrics come.
 
 If the CATS framework is implemented using a centralized model, the metric can be, e.g., distributed as illustrated in {{fig-cats-centralized}}.
 
 ~~~
-                        Service CS-ID 1, instance CIS-ID 1 <metrics>
-                        Service CS-ID 1, instance CIS-ID 2 <metrics>
-                        Service CS-ID 1, instance CIS-ID 3 <metrics>
+                        Service CS-ID 1, instance CSCI-ID 1 <metrics>
+                        Service CS-ID 1, instance CSCI-ID 2 <metrics>
+                        Service CS-ID 1, instance CSCI-ID 3 <metrics>
                         Service CS-ID 2, <metrics>
 
              :       +------+
-             :<------| C-PS |<----------------------------------+
-             :       +------+ <------+              +--------+  |
-             :          ^            |           +--|CS-ID 1 |  |
-             :          |            |           |  |CIS-ID 1|  |
-             :          |   +----------------+   |  +--------+  |
-             :          |   |    C-SMA       |---|Service Site 2|
-             :          |   +----------------+   |  +--------+  |
-             :          |   |CATS-Forwarder 2|   +--|CS-ID 1 |  |
-             :          |   +----------------+      |CIS-ID 2|  |
- +--------+  :          |             |             +--------+  |
- | Client |  :  Network |   +----------------------+            |
- +--------+  :  metrics |   | +-------+            |            |
+             :<------| C-PS |<-----------------------------------+
+             :       +------+ <------+              +---------+  |
+             :          ^            |           +--|CS-ID 1  |  |
+             :          |            |           |  |CSCI-ID 1|  |
+             :          |   +----------------+   |  +---------+  |
+             :          |   |    C-SMA       |---|Service Site 2 |
+             :          |   +----------------+   |  +---------+  |
+             :          |   |CATS-Forwarder 2|   +--|CS-ID 1  |  |
+             :          |   +----------------+      |CSCI-ID 2|  |
+ +--------+  :          |             |             +---------+  |
+ | Client |  :  Network |   +----------------------+             |
+ +--------+  :  metrics |   | +-------+            |             |
       |      :          +-----| C-NMA |            |      +-----+
       |      :          |   | +-------+            |      |C-SMA|<-+
  +----------------+ <---+   |                      |      +-----+  |
  |CATS-Forwarder 1|---------|                      |          ^    |
  +----------------+         |       Underlay       |          |    |
-             :              |     Infrastructure   |     +--------+|
-             :              |                      |     |CS-ID 1 ||
-             :              +----------------------+  +--|CIS-ID 3||
-             :                        |               |  +--------+|
+             :              |     Infrastructure   |    +---------+|
+             :              |                      |    |CS-ID 1  ||
+             :              +----------------------+  +-|CSCI-ID 3||
+             :                        |               | +---------+|
              :          +----------------+------------+            |
              :          |CATS-Forwarder 3|         Service Site 3  |
              :          +----------------+                         |
@@ -480,7 +480,7 @@ If the CATS framework is implemented using a centralized model, the metric can b
              :                        +-------:------|CS-ID 2|-----+
              :                                :      +-------+
              :<-------------------------------:
-      Service CS-ID 1, instance CIS-ID 3
+      Service CS-ID 1, instance CSCI-ID 3
       Service CS-ID 2
 ~~~
 {: #fig-cats-centralized title="An Example of CATS Metric Distribution in a Centralized Model"}
@@ -489,33 +489,33 @@ If the CATS framework is implemented using an hybrid model, the metric can be di
 
 ~~~
 
-                   Service CS-ID 1, instance CIS-ID 1 <metric 1,2,3>
-                   Service CS-ID 1, instance CIS-ID 2 <metric 1,2,3>
-                   Service CS-ID 1, instance CIS-ID 3 <metric 1,2,3>
+                   Service CS-ID 1, instance CSCI-ID 1 <metric 1,2,3>
+                   Service CS-ID 1, instance CSCI-ID 2 <metric 1,2,3>
+                   Service CS-ID 1, instance CSCI-ID 3 <metric 1,2,3>
                    Service CS-ID 2, <metrics>
 
              :       +------+
-             :<------| C-PS |<----------------------------------+
-             :       +------+ <------+              +--------+  |
-             :          ^            |           +--|CS-ID 1 |  |
-             :          |            |           |  |CIS-ID 1|  |
-             :          |   +----------------+   |  +--------+  |
-             :          |   |    C-SMA       |---|Service Site 2|
-             :          |   +----------------+   |  +--------+  |
-             :          |   |CATS-Forwarder 2|   +--|CS-ID 1 |  |
-             :          |   +----------------+      |CIS-ID 2|  |
- +--------+  :          |             |             +--------+  |
- | Client |  :  Network |   +----------------------+            |
- +--------+  :  metrics |   | +-------+            |            |
+             :<------| C-PS |<-----------------------------------+
+             :       +------+ <------+              +---------+  |
+             :          ^            |           +--|CS-ID 1  |  |
+             :          |            |           |  |CSCI-ID 1|  |
+             :          |   +----------------+   |  +---------+  |
+             :          |   |    C-SMA       |---|Service Site 2 |
+             :          |   +----------------+   |  +---------+  |
+             :          |   |CATS-Forwarder 2|   +--|CS-ID 1  |  |
+             :          |   +----------------+      |CSCI-ID 2|  |
+ +--------+  :          |             |             +---------+  |
+ | Client |  :  Network |   +----------------------+             |
+ +--------+  :  metrics |   | +-------+            |             |
       |      :          +-----| C-NMA |            |      +-----+
       |      :          |   | +-------+            |      |C-SMA|<-+
  +----------------+ <---+   |                      |      +-----+  |
  |CATS-Forwarder 1|---------|                      |          ^    |
  |----------------+         |       Underlay       |          |    |
- |C-PS|      :              |     Infrastructure   |     +--------+|
- +----+      :              |                      |     |CS-ID 1 ||
-             :              +----------------------+  +--|CIS-ID 3||
-             :                        |               |  +--------+|
+ |C-PS|      :              |     Infrastructure   |    +---------+|
+ +----+      :              |                      |    |CS-ID 1  ||
+             :              +----------------------+  +-|CSCI-ID 3||
+             :                        |               | +---------+|
              :          +----------------+------------+            |
              :          |CATS-Forwarder 3|         Service Site 3  |
              :          +----------------+                         |
@@ -523,7 +523,7 @@ If the CATS framework is implemented using an hybrid model, the metric can be di
              :                        +-------:------|CS-ID 2|-----+
              :                                :      +-------+
              :<-------------------------------:
-      Service CS-ID 1, instance CIS-ID 3, <metric 4,5>
+      Service CS-ID 1, instance CSCI-ID 3, <metric 4,5>
       Service CS-ID 2
 ~~~
 {: #fig-cats-hybrid title="An Example of CATS Metric Distribution in Hybrid Model"}
