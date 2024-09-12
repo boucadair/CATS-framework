@@ -312,7 +312,7 @@ CATS nodes make forwarding decisions for a given service request that has been r
 
 Service sites are the premises that host a set of computing resources. As mentioned in {{cats-ids}}, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID). The CS-ID does not need to be globally unique, though, for example, in the case of CATS working in a limited domain.
 
-Service instances are the accessed by service contact instance in CATS framework, therefore, a client will not see the service instances but only the service contact instance.
+As service instances are accessed via a service contact instance, a client will not see the service instances but only the service contact instance.
 
 A single service can be represented and accessed via several contact instances that run in different regions of a network.
 
