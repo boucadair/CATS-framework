@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-10T01:13:32.208056+00:00",
+  "timestamp": "2024-09-12T01:13:00.080129+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -1073,9 +1073,17 @@
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/cats/D5TX8rCfOn3mOSqkLid-paxZzU4/",
       "createdAt": "2024-07-09T14:11:21Z",
-      "updatedAt": "2024-07-09T14:11:22Z",
+      "updatedAt": "2024-09-11T13:44:23Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "dirk-trossen-huawei",
+          "authorAssociation": "NONE",
+          "body": "Published pull request for changes addressing this issue and adding other issues identified",
+          "createdAt": "2024-09-11T13:44:21Z",
+          "updatedAt": "2024-09-11T13:44:21Z"
+        }
+      ]
     },
     {
       "number": 75,
@@ -1146,15 +1154,15 @@
       "id": "I_kwDOJBcdGs6P-1P2",
       "title": "Description about the service contact instance in a single service site",
       "url": "https://github.com/boucadair/CATS-framework/issues/79",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "In the introduction\uff0cthe 4th paragraph\uff0c\r\n\r\nOld\r\nA single service site may host one or multiple service contact instances.\r\nNew1\r\nA single service site may host one or multiple service instances, and one or multiple related service contact instances.\r\nOr New2\r\nA single service site may host one service instance for a given service, and in this case one associated service contact instance; meanwhile, a single service site may host multiple service instances for a given service, and in this case one or multiple associated service contact instances.\r\n\r\n\r\nReason of suggestion:\r\nIt is a little hard for a new reader of the draft to understand the relationship among a service site, service instances, and the service contact instance.\r\nIMHO, more explanation should be added here or someplace else.",
       "createdAt": "2024-07-18T07:35:21Z",
-      "updatedAt": "2024-09-04T19:05:54Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-11T13:53:24Z",
+      "closedAt": "2024-09-11T13:53:24Z",
       "comments": [
         {
           "author": "muzixing",
@@ -1162,6 +1170,13 @@
           "body": "Well, this is also about the service contact instance. Please see details in emails.",
           "createdAt": "2024-09-04T19:05:53Z",
           "updatedAt": "2024-09-04T19:05:53Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "closed as addressed by PR#91",
+          "createdAt": "2024-09-11T13:53:24Z",
+          "updatedAt": "2024-09-11T13:53:24Z"
         }
       ]
     },
@@ -1225,15 +1240,15 @@
       "id": "I_kwDOJBcdGs6P_Erd",
       "title": "Description about C-TC",
       "url": "https://github.com/boucadair/CATS-framework/issues/82",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "2.\u2002Terminology\r\n\r\nold\r\nCATS Traffic Classifier (C-TC):\r\nA functional entity that is responsible for determining which packets belong to a traffic flow for a particular service request. It is also responsible for forwarding such packets along a C-PS computed path that leads to the relevant service contact instance.\r\n\r\nNew:\r\nA functional entity that is responsible for determining which packets belong to CATS, and additionally, it may distinguish which packets belong to a traffic flow for a particular service request. It is also responsible for forwarding such packets along a C-PS computed path that leads to the relevant service contact instance.\r\n\r\nReason of suggestion:\r\nSome services for CATS, perhaps, do not need this Service Contact Instance Affinity. However, their traffic should also be recognized and forwarded to a service contact instance. \r\nSo, IMHO, the function of the C-TC should be described more generally. \r\n\r\n3.4.5.\u2002CATS Traffic Classifier (C-TC)\r\n\r\nOld\r\nCATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets from clients with existing service requests. CATS classifiers also ensure that packets that are bound to a specific service contact instance are all forwarded towards that same service contact instance, as instructed by a C-PS.\r\n\r\nNew\r\nCATS Traffic classifier (C-TC) is a functional component that is responsible for CATS traffic classification, and it may also be responsible for associating incoming packets from clients with existing service requests.\r\nCATS classifiers can ensure that packets that are bound to a specific service contact instance are all forwarded towards that same service contact instance if needed, as instructed by a C-PS.",
       "createdAt": "2024-07-18T08:05:33Z",
-      "updatedAt": "2024-09-04T18:48:07Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-11T13:53:04Z",
+      "closedAt": "2024-09-11T13:53:04Z",
       "comments": [
         {
           "author": "muzixing",
@@ -1241,6 +1256,13 @@
           "body": "see email discussion.\r\n",
           "createdAt": "2024-09-04T18:48:06Z",
           "updatedAt": "2024-09-04T18:48:06Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "close after sync up with zongpeng. The PR#91 can address his comments",
+          "createdAt": "2024-09-11T13:53:04Z",
+          "updatedAt": "2024-09-11T13:53:04Z"
         }
       ]
     },
@@ -1297,15 +1319,15 @@
       "id": "I_kwDOJBcdGs6P_Og1",
       "title": "Description about Centralized designs and Centralized model in 3.5.\u2002Deployment Considerations",
       "url": "https://github.com/boucadair/CATS-framework/issues/85",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "3.5.\u2002Deployment Considerations\r\n\r\nOld\r\nIn the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. \r\n\r\nNew\r\nIn this case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. Or for a specific service, the CATS computation logic can compute and select paths in advance.\r\n\r\n\r\nReason of suggestion:\r\nIMHO, if the controller needs to compute the path after obtaining an incoming service request packet, it is on-demand but slow.\r\nIf the controller is configured to collect the information about a specific service, it can computer the path without receiving an incoming service request packet.\r\n\r\nOld\r\n\r\nCentralized model:\r\nComputing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder.\r\n\r\nNew\r\nCentralized model:\r\nComputing metrics are collected by a centralized control plane, and then the centralized control plane computes the forwarding path and syncs up with the Ingress CATS-Forwarder.\r\n\r\nReason of suggestion:\r\nIMHO, the service scheduling is related, but may be out of the scope of CATS. So, no need to emphasize it here.\u00a0\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
       "createdAt": "2024-07-18T08:24:39Z",
-      "updatedAt": "2024-09-04T18:20:49Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-11T13:52:23Z",
+      "closedAt": "2024-09-11T13:52:22Z",
       "comments": [
         {
           "author": "muzixing",
@@ -1313,6 +1335,13 @@
           "body": "I agree with you about the service scheduling part. Please see more reply in email.\r\n\r\n\r\n\r\n",
           "createdAt": "2024-09-04T18:20:48Z",
           "updatedAt": "2024-09-04T18:20:48Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "closed after sync up with zongpeng",
+          "createdAt": "2024-09-11T13:52:22Z",
+          "updatedAt": "2024-09-11T13:52:22Z"
         }
       ]
     },
@@ -1393,16 +1422,24 @@
       "id": "I_kwDOJBcdGs6P_XZ4",
       "title": "Some other suggestions about the draft that may be considered",
       "url": "https://github.com/boucadair/CATS-framework/issues/89",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dzpzp",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "[1]\r\n2.\u2002Terminology\r\nOld\r\nService contact instance:\r\na service contact instance is reachable via at least one Egress CATS Forwarder.\u00b6\r\nNew\r\na service contact instance-->A service contact instance\r\n\r\n[2]\r\n3.3.\u2002Framework Overview\r\nOld\r\nStarting from the bottom part of\u00a0Figure 1\u00a0and moving to the upper part, the following planes are defined:\r\nNew\r\nStarting from the upper part of\u00a0Figure 1\u00a0and moving to the bottom part, the following planes are defined:\r\n\r\n[3]\r\n3.4.\u2002CATS Functional Components\r\nOld\r\nCATS nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service contact instances and network.\r\nNew\r\nCATS nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service instances and network.\r\nReason of suggestion:\r\nSometimes, it is referred as status of service contact instance, and sometimes, it is referred as status of service instance. IMHO, it should be status of service instance.\r\n\r\n[4]\r\n3.4.7.\u2002Underlay Infrastructure\r\nOld\r\nThe CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders (Section 3.4.6)\r\nNew\r\nP-CS  --> C-PS\r\n\r\n[5]\r\n4.\u2002CATS Framework Workflow\r\nOld\r\nThe following subsections provide an overview of how the CATS workflow operates assuming a distributed CATS design. \r\nNew\r\nThe following subsections provide an overview of how the CATS workflow operates assuming a distributed CATS design by default.\r\n\r\n[6]\r\n5.\u2002Security Considerations\r\nOld\r\nThe computing resource information changes over time very frequently, especially with the creation and termination of service contact instances.\r\nNew\r\nThe computing resource information changes over time very frequently, especially with the creation and termination of service instances.\r\n\r\nOld\r\nThis issue could be exploited by an attacker (e.g., by spawning and deleting service contact instances very rapidly).\r\nNew\r\nThis issue could be exploited by an attacker (e.g., by spawning and deleting service instances very rapidly).\r\n\r\n[7]\r\n6.\u2002Privacy Considerations\r\nOld\r\nSince the service will, in some cases, need to know about applications, clients, and even user identity, the C-PS computed path information should be encrypted if the client/service communication is not already encrypted.\r\nNew\r\nSince the service will, in some cases, need to know about applications, clients, and even user identity, the C-PS computed path could be encrypted if the client/service communication is not already encrypted.\r\n\r\nReason of suggestion:\r\nIt is confusing what need to be encrypted here, the path information or the overload of the path.\r\n",
       "createdAt": "2024-07-18T08:43:00Z",
-      "updatedAt": "2024-07-18T08:43:00Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-09-11T13:52:02Z",
+      "closedAt": "2024-09-11T13:52:01Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Sync up with zongpeng, he agreed that this issue can be closed.",
+          "createdAt": "2024-09-11T13:52:01Z",
+          "updatedAt": "2024-09-11T13:52:01Z"
+        }
+      ]
     },
     {
       "number": 90,
@@ -3765,18 +3802,60 @@
       "labels": [],
       "body": "update to address Zongpeng's comments",
       "createdAt": "2024-09-04T19:08:11Z",
-      "updatedAt": "2024-09-04T19:08:11Z",
+      "updatedAt": "2024-09-11T14:08:26Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
       "headRepository": "muzixing/CATS-Framework",
       "headRefName": "main",
-      "headRefOid": "da78865565007929277cf65550cc9b903f384176",
+      "headRefOid": "25e996348d058ce7803b6106acb22d95049405b8",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This update is agreed by Cheng and Zongpeng, other authors have not replied yet. Med, if you are ok with the update, please merge it.",
+          "createdAt": "2024-09-11T14:08:25Z",
+          "updatedAt": "2024-09-11T14:08:25Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 92,
+      "id": "PR_kwDOJBcdGs57KjQk",
+      "title": "Addressed and added issues",
+      "url": "https://github.com/boucadair/CATS-framework/pull/92",
+      "state": "OPEN",
+      "author": "dirk-trossen-huawei",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "see email from 11.09.2024 to CATS list on added items",
+      "createdAt": "2024-09-11T13:41:23Z",
+      "updatedAt": "2024-09-11T13:58:33Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
+      "headRepository": "dirk-trossen-huawei/CATS-framework",
+      "headRefName": "dot",
+      "headRefOid": "f4389e9a491d277181bfc01cd2cdaf8935e4cca2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Please wait, we can add some text to define metric and others to address your further comments.",
+          "createdAt": "2024-09-11T13:58:32Z",
+          "updatedAt": "2024-09-11T13:58:32Z"
+        }
+      ],
       "reviews": []
     }
   ]
