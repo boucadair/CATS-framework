@@ -314,7 +314,7 @@ Service sites are the premises that host a set of computing resources. As mentio
 
 As service instances are accessed via a service contact instance, a client will not see the service instances but only the service contact instance.
 
-A single service can be represented and accessed via several contact instances that run in different regions of a network.
+A single service can be represented and accessed via several contact instances that run in same or different regions of a network.
 
 {{fig-cats-components}} shows two CATS nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders ({{sec-ocr}}).
 
