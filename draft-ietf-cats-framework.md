@@ -78,7 +78,7 @@ contributor:
   email: luigi.iannone@huawei.com
  -
   name: Hang Shi
-  org: Huawei Technol ogies
+  org: Huawei Technologies
   email: shihang9@huawei.com
  -
   ins: C. Lin
