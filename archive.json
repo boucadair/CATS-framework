@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-12T01:13:00.080129+00:00",
+  "timestamp": "2024-09-15T01:20:52.379356+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -3802,13 +3802,13 @@
       "labels": [],
       "body": "update to address Zongpeng's comments",
       "createdAt": "2024-09-04T19:08:11Z",
-      "updatedAt": "2024-09-11T14:08:26Z",
+      "updatedAt": "2024-09-13T14:58:13Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
       "headRepository": "muzixing/CATS-Framework",
       "headRefName": "main",
-      "headRefOid": "25e996348d058ce7803b6106acb22d95049405b8",
+      "headRefOid": "5929ce1ef6828a4765d1eb0d9108e602b2a3c0c4",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -3820,9 +3820,305 @@
           "body": "This update is agreed by Cheng and Zongpeng, other authors have not replied yet. Med, if you are ok with the update, please merge it.",
           "createdAt": "2024-09-11T14:08:25Z",
           "updatedAt": "2024-09-11T14:08:25Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "For the rest comments\uff0cmy proposal is to go with two ways:\r\n1. keep it now, and send an email to the list to discuss the text of definition. change the definition in two drafts next time.\r\n2. provide new text, update it and ask for comment. Update it again when we get conclusion on the definition.\r\n\r\nIt will be better to update this revision ASAP, so that we can work on another revision to address rest issues.",
+          "createdAt": "2024-09-13T13:54:51Z",
+          "updatedAt": "2024-09-13T13:54:51Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "I suggest we don't make proposed changes for the pending points (that is, revert to the OLD text). For each pending point, create a separate PR. That would ease merging and converging. Thanks.",
+          "createdAt": "2024-09-13T14:30:17Z",
+          "updatedAt": "2024-09-13T14:30:17Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I suggest we don't make proposed changes for the pending points (that is, revert to the OLD text). For each pending point, create a separate PR. That would ease merging and converging. Thanks.\r\n\r\nI fully agree. So let's do in this way. \r\n\r\nBTW, I merged two PRs already, cause the conflicts on this. You may revert them and merge this firstly, or you can edit it manually. Sorry for that :)\r\n\r\n",
+          "createdAt": "2024-09-13T14:58:11Z",
+          "updatedAt": "2024-09-13T14:58:11Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs6JEQfh",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-09-12T08:32:58Z",
+          "updatedAt": "2024-09-12T08:50:48Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Do we really need to mention \"to process application content\"?",
+              "createdAt": "2024-09-12T08:32:58Z",
+              "updatedAt": "2024-09-12T08:50:48Z"
+            },
+            {
+              "originalPosition": 20,
+              "body": "\"computing service\" is still a service! Also, why are we adding this diff here? How this is linked to \"application\" mentioned right before?",
+              "createdAt": "2024-09-12T08:34:00Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 22,
+              "body": "Whether this is packet based or not actually depends on the service. Let alone that we need to define what is a transaction. We don't actually need to dive into these details from a CATS perspective.",
+              "createdAt": "2024-09-12T08:35:53Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\n  : A client-facing service function instance that is responsible for receiving requests in the context of a given service.\r\n  : A service contact instance can handle one or more service instances.\r\n  : Steering beyond a service contact instance is hidden to both clients and CATS components.\r\n  : A service request is processed according to the service logic (e.g., handle locally or solicit backend resources).\r\n```\r\n\r\n\"A service contact instance can represent one or more service instance.\" seems to be redundant with \"A service contact instance may dispatch service requests to one or more service instances\". \r\n\r\nAlso, I don't parse what is meant by \"represent\"? Do you mean \"A service contact instance can handle one or more service instances.\"?",
+              "createdAt": "2024-09-12T08:38:48Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "```suggestion\r\n : A network entity that steers traffic specific to a service request towards a corresponding yet selected service contact instance according to provisioned forwarding decisions. These decisions are supplied by a C-PS, which may or may not be on the CATS-Forwarder.\r\n```",
+              "createdAt": "2024-09-12T08:45:07Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 73,
+              "body": "```suggestion\r\nAs service instances are accessed via a service contact instance, a client will not see the service instances but only the service contact instance.\r\n```",
+              "createdAt": "2024-09-12T08:46:27Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 76,
+              "body": "```suggestion\r\nA single service can be represented and accessed via several contact instances that run in same or different regions of a network.\r\n```",
+              "createdAt": "2024-09-12T08:47:04Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 85,
+              "body": "```suggestion\r\nEgress CATS-Forwarders are the endpoints that behave as an overlay egress for service requests that are forwarded over a CATS infrastructure. A service site that hosts service instances may be connected to one or more Egress CATS-Forwarders (e.g., multi-homing design). If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID related information, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance accordingly. In some cases, the choice of the service contact instance may be left open to the Egress CATS-Forwarder (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Forwarder selects a service contact instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS-Forwarder, among other considerations. Absent explicit policy, an Egress CATS-Forwarder must make sure to forward all packets that pertain to a given service request towards the same service contact instance.\r\n```",
+              "createdAt": "2024-09-12T08:49:00Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "The tweaked text seems to conflict with this part \"the choice of the service contact instance may be left open to the Egress CATS-Forwarder\" in subsequent part of the text.",
+              "createdAt": "2024-09-12T08:49:36Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            },
+            {
+              "originalPosition": 97,
+              "body": "```suggestion\r\nThis document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.\r\n```",
+              "createdAt": "2024-09-12T08:50:10Z",
+              "updatedAt": "2024-09-12T08:50:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JEip1",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T09:00:50Z",
+          "updatedAt": "2024-09-12T09:00:50Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "```suggestion\r\nThis document does not specify any path computation and instance selection algorithm running in C-PSes. However, it is expected that a service request or a policy may feed the C-PS computation logic with Objective Functions that provide the optimization goal or preference in selecting the service contact instance.\r\n```",
+              "createdAt": "2024-09-12T09:00:50Z",
+              "updatedAt": "2024-09-12T09:00:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JEsr-",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T09:17:32Z",
+          "updatedAt": "2024-09-12T09:17:32Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "Any reason to remove the example (\"e.g., in terms of maximum latency\")? Otherwise, we have text that is too generic? I would keep the example here. Also, may delete \"preference\" as this can be part of the goal. \r\n\r\nI still prefer the OLD text.\r\n\r\n\r\n\r\n",
+              "createdAt": "2024-09-12T09:17:32Z",
+              "updatedAt": "2024-09-12T09:17:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JEtsc",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T09:19:15Z",
+          "updatedAt": "2024-09-12T09:19:15Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "\"However, it is expected that a service request or a policy..\"\r\n\r\nDo we have examples where a service request \"feed the C-PS computation\"?",
+              "createdAt": "2024-09-12T09:19:15Z",
+              "updatedAt": "2024-09-12T09:19:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JHb2D",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "VMatrix1900",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T14:03:14Z",
+          "updatedAt": "2024-09-12T14:03:14Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "> Any reason to remove the example (\"e.g., in terms of maximum latency\")? Otherwise, we have text that is too generic? I would keep the example here. Also, may delete \"preference\" as this can be part of the goal.\r\n> \r\n> I still prefer the OLD text.\r\n\r\nObjective Functions does not provide information of the path charateristics. The path characteristics is the input of the Objective Function.",
+              "createdAt": "2024-09-12T14:03:14Z",
+              "updatedAt": "2024-09-12T14:03:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JHj7z",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T14:15:19Z",
+          "updatedAt": "2024-09-12T14:15:19Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "I was not questioning that part of the modif :-)",
+              "createdAt": "2024-09-12T14:15:19Z",
+              "updatedAt": "2024-09-12T14:15:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JImna",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T15:41:36Z",
+          "updatedAt": "2024-09-12T15:41:36Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "this is for sync up with the definition in use case draft. I am good with removing or keeping it. But if we want to address the comment, better to keep it. LOL. Only some editorial modification.",
+              "createdAt": "2024-09-12T15:41:36Z",
+              "updatedAt": "2024-09-12T15:41:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JInmZ",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T15:43:13Z",
+          "updatedAt": "2024-09-12T15:43:13Z",
+          "comments": [
+            {
+              "originalPosition": 20,
+              "body": "change it to service? or just delete it. As long as the definition is the same in use case and framework draft, I am ok. ",
+              "createdAt": "2024-09-12T15:43:13Z",
+              "updatedAt": "2024-09-12T15:43:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JIpCN",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T15:45:44Z",
+          "updatedAt": "2024-09-12T15:45:44Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "Personally, I agree with you. Do yo mind to simplify the definition? we need to sync up with the one in use case draft. Better to send an email in the CATS ML",
+              "createdAt": "2024-09-12T15:45:44Z",
+              "updatedAt": "2024-09-12T15:45:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JIwN8",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T15:57:00Z",
+          "updatedAt": "2024-09-12T15:57:00Z",
+          "comments": [
+            {
+              "originalPosition": 97,
+              "body": "LOL, I try to find an English word to replace it, but it seems that I failed.  I am good with this.",
+              "createdAt": "2024-09-12T15:57:00Z",
+              "updatedAt": "2024-09-12T15:57:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JIx0d",
+          "commit": {
+            "abbreviatedOid": "25e9963"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T15:59:55Z",
+          "updatedAt": "2024-09-12T15:59:55Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "To me, we may need to use some straightforward wording for better understanding. Objective function introduces unnecessary complexities to me. ",
+              "createdAt": "2024-09-12T15:59:55Z",
+              "updatedAt": "2024-09-12T15:59:55Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 92,
@@ -3836,7 +4132,7 @@
       "labels": [],
       "body": "see email from 11.09.2024 to CATS list on added items",
       "createdAt": "2024-09-11T13:41:23Z",
-      "updatedAt": "2024-09-11T13:58:33Z",
+      "updatedAt": "2024-09-12T08:52:13Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
@@ -3854,9 +4150,155 @@
           "body": "Please wait, we can add some text to define metric and others to address your further comments.",
           "createdAt": "2024-09-11T13:58:32Z",
           "updatedAt": "2024-09-11T13:58:32Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "I would split these into separate issues and then create appropriate PR to address them individually. Thanks.",
+          "createdAt": "2024-09-12T08:52:12Z",
+          "updatedAt": "2024-09-12T08:52:12Z"
         }
       ],
       "reviews": []
+    },
+    {
+      "number": 93,
+      "id": "PR_kwDOJBcdGs57QogM",
+      "title": "Rename CATS Instance Selector ID to CATS Service Contact Instance ID",
+      "url": "https://github.com/boucadair/CATS-framework/pull/93",
+      "state": "MERGED",
+      "author": "VMatrix1900",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "CIS-ID to CSCI-ID too.",
+      "createdAt": "2024-09-12T07:24:21Z",
+      "updatedAt": "2024-09-13T13:50:17Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "VMatrix1900-patch-1",
+      "headRefOid": "7ba7b66c5bd0ac217b0f0dcce1f0c5fb520e17a6",
+      "closedAt": "2024-09-13T13:50:16Z",
+      "mergedAt": "2024-09-13T13:50:16Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "e3ee5512c59814cb2ea95387e6f57de08bdcab93"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "The change to \"CATS Service Contact Instance ID\" looks reasonable to me.",
+          "createdAt": "2024-09-12T08:53:24Z",
+          "updatedAt": "2024-09-12T08:53:24Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "let's merge this, and ask for comments of the CSIC-ID.",
+          "createdAt": "2024-09-13T13:27:01Z",
+          "updatedAt": "2024-09-13T13:27:01Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs6JIzE1",
+          "commit": {
+            "abbreviatedOid": "99d8aa9"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "I will prefer to make the Abbreviations shorter, CSCI-ID seens too long and hard in pronounce. CATS SCI-ID? or SCI-ID ? \r\n\r\n\r\n",
+          "createdAt": "2024-09-12T16:02:08Z",
+          "updatedAt": "2024-09-12T16:05:33Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Technologies  ",
+              "createdAt": "2024-09-12T16:02:08Z",
+              "updatedAt": "2024-09-12T16:05:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JRxfd",
+          "commit": {
+            "abbreviatedOid": "99d8aa9"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-13T13:25:41Z",
+          "updatedAt": "2024-09-13T13:25:42Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n  org: Huawei Technologies\r\n```",
+              "createdAt": "2024-09-13T13:25:41Z",
+              "updatedAt": "2024-09-13T13:25:42Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 94,
+      "id": "PR_kwDOJBcdGs57RObQ",
+      "title": "Use consistent service site definition.",
+      "url": "https://github.com/boucadair/CATS-framework/pull/94",
+      "state": "MERGED",
+      "author": "VMatrix1900",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-12T08:39:45Z",
+      "updatedAt": "2024-09-13T13:50:35Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "VMatrix1900-patch-2",
+      "headRefOid": "364ef8f9ffb4f00c54eeecdbbc7454015f96223e",
+      "closedAt": "2024-09-13T13:50:33Z",
+      "mergedAt": "2024-09-13T13:50:33Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "84e700998a406d8c4608ce407501cbba5a376d31"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs6JI1jP",
+          "commit": {
+            "abbreviatedOid": "364ef8f"
+          },
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-12T16:06:24Z",
+          "updatedAt": "2024-09-12T16:06:24Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6JPkt5",
+          "commit": {
+            "abbreviatedOid": "364ef8f"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T09:05:43Z",
+          "updatedAt": "2024-09-13T09:05:43Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
