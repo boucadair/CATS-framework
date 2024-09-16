@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>A Framework for Computing-Aware Traffic Steering (CATS)</title>
+<meta content="Cheng Li" name="author">
+<meta content="Zongpeng Du" name="author">
+<meta content="Mohamed Boucadair" name="author">
+<meta content="Luis M. Contreras" name="author">
+<meta content="John E Drake" name="author">
+<meta content="
+       This document describes a framework for Computing-Aware Traffic Steering (CATS). Particularly, the document identifies a set of CATS components, describes their interactions, and exemplifies the workflow of the control and data planes. 
+    " name="description">
+<meta content="xml2rfc 3.23.0" name="generator">
+<meta content="User Experience" name="keyword">
+<meta content="Collaborative Networking" name="keyword">
+<meta content="Service optimization" name="keyword">
+<meta content="draft-ietf-cats-framework-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.23.0
+    Python 3.12.3
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.0
+    intervaltree 3.1.0
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
+    pycountry 22.3.5
+    PyYAML 6.0.1
+    requests 2.32.3
+    setuptools 70.3.0
+    wcwidth 0.2.13
+-->
+<link href="draft-ietf-cats-framework.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cabin Condensed", sans-serif;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+}
+:is(ol, ul) :is(ol, ul) {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  line-height: 1;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+}
+dl.olPercent {
+  --indent: 5ch;
+}
+dl > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+dl.olPercent > dt {
+  min-width: calc(var(--indent) - 2ch);
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
+  margin-top: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
+  margin-bottom: 0;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    overflow-x: auto;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+}
+a.pilcrow[href] { color: var(--pilcrow-weak); }
+a.pilcrow[href]:hover { text-decoration: none; }
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+}
+#identifiers dt {
+  width: var(--identifier-width);
+  min-width: var(--identifier-width);
+  clear: left;
+  float: left;
+  text-align: right;
+  margin-right: 1ch;
+}
+#identifiers dd {
+  margin: 0;
+  margin-left: calc(1em + var(--identifier-width)) !important;
+  min-width: 5em;
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+#toc nav ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+#toc nav li {
+  line-height: 1.3em;
+  margin: 2px 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+#toc a.xref {
+  white-space: normal;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 10ch;
+  margin-right: 1.5ch;
+}
+.references dt:target::before {
+  content: "⇒";
+  width: 15px;
+  margin: 0 10px 0 -25px;
+}
+.references dd {
+  margin-left: 12ch !important;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1px 0 0 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc.active {
+      opacity: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 8px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active nav {
+    display: block;
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin-top: 2px;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  #toc nav > ul  {
+    margin-bottom: 2em;
+  }
+  #toc ul {
+    margin: 0 0 0 4px;
+    font-size: var(--small-font-size);
+  }
+  #toc ul :is(p, li) {
+    margin: 2px 0;
+    line-height: 22px;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre, .vcard {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  :is(h2, h3, h4, h5, h6)+*, dd {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Changes introduced to fix issues found during implementation */
+
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin: 8px 0.5em 0;
+}
+
+/* Provide styling for table cell text alignment */
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 20em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">CATS Framework</td>
+<td class="right">September 2024</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Li, et al.</td>
+<td class="center">Expires 20 March 2025</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">cats</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-ietf-cats-framework-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2024-09-16" class="published">16 September 2024</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Informational</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2025-03-20">20 March 2025</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">C. Li, <span class="editor">Ed.</span>
+</div>
+<div class="org">Huawei Technologies</div>
+</div>
+<div class="author">
+      <div class="author-name">Z. Du</div>
+<div class="org">China Mobile</div>
+</div>
+<div class="author">
+      <div class="author-name">M. Boucadair, <span class="editor">Ed.</span>
+</div>
+<div class="org">Orange</div>
+</div>
+<div class="author">
+      <div class="author-name">L. M. Contreras</div>
+<div class="org">Telefonica</div>
+</div>
+<div class="author">
+      <div class="author-name">J. Drake</div>
+<div class="org">Juniper Networks, Inc.</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">A Framework for Computing-Aware Traffic Steering (CATS)</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">This document describes a framework for Computing-Aware Traffic Steering (CATS). Particularly, the document identifies a set of CATS components, describes their interactions, and exemplifies the workflow of the control and data planes.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 20 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2024 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-cats-framework-and-componen" class="internal xref">CATS Framework and Components</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-assumptions" class="internal xref">Assumptions</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-cats-identifiers" class="internal xref">CATS Identifiers</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-framework-overview" class="internal xref">Framework Overview</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-cats-functional-components" class="internal xref">CATS Functional Components</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.1">
+                    <p id="section-toc.1-1.3.2.4.2.1.1"><a href="#section-3.4.1" class="auto internal xref">3.4.1</a>.  <a href="#name-service-sites-services-inst" class="internal xref">Service Sites, Services Instances, and Service Contact Instances</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.2">
+                    <p id="section-toc.1-1.3.2.4.2.2.1"><a href="#section-3.4.2" class="auto internal xref">3.4.2</a>.  <a href="#name-cats-service-metric-agent-c" class="internal xref">CATS Service Metric Agent (C-SMA)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.3">
+                    <p id="section-toc.1-1.3.2.4.2.3.1"><a href="#section-3.4.3" class="auto internal xref">3.4.3</a>.  <a href="#name-cats-network-metric-agent-c" class="internal xref">CATS Network Metric Agent (C-NMA)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.4">
+                    <p id="section-toc.1-1.3.2.4.2.4.1"><a href="#section-3.4.4" class="auto internal xref">3.4.4</a>.  <a href="#name-cats-path-selector-c-ps" class="internal xref">CATS Path Selector (C-PS)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.5">
+                    <p id="section-toc.1-1.3.2.4.2.5.1"><a href="#section-3.4.5" class="auto internal xref">3.4.5</a>.  <a href="#name-cats-traffic-classifier-c-t" class="internal xref">CATS Traffic Classifier (C-TC)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.6">
+                    <p id="section-toc.1-1.3.2.4.2.6.1"><a href="#section-3.4.6" class="auto internal xref">3.4.6</a>.  <a href="#name-overlay-cats-forwarders" class="internal xref">Overlay CATS-Forwarders</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4.2.7">
+                    <p id="section-toc.1-1.3.2.4.2.7.1"><a href="#section-3.4.7" class="auto internal xref">3.4.7</a>.  <a href="#name-underlay-infrastructure" class="internal xref">Underlay Infrastructure</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-deployment-considerations" class="internal xref">Deployment Considerations</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-cats-framework-workflow" class="internal xref">CATS Framework Workflow</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-provisioning-of-cats-compon" class="internal xref">Provisioning of CATS Components</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-service-announcement" class="internal xref">Service Announcement</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-metrics-distribution" class="internal xref">Metrics Distribution</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-service-access-processing" class="internal xref">Service Access Processing</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-service-contact-instance-af" class="internal xref">Service Contact Instance Affinity</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">Computing service architectures have been expanding from single service site to multiple, sometimes collaborative, service sites to address various issues (e.g., long response times or suboptimal service and network resource usage).<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">The underlying networking infrastructures that include computing resources usually provide relatively static service dispatching (that is, the selection of the service instances that will be invoked for a request). In such infrastructures, service-specific traffic is often directed to the closest service site from a routing perspective without considering the actual network state (e.g., traffic congestion conditions) or the service site state.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">As described in <span>[<a href="#I-D.ietf-cats-usecases-requirements" class="cite xref">I-D.ietf-cats-usecases-requirements</a>]</span>, traffic steering that takes into account computing resource metrics would benefit several services, including latency-sensitive services like immersive services that rely upon the use of augmented reality or virtual reality (AR/VR) techniques. This document provides an architectural framework that aims at facilitating the making of compute- and network-aware traffic steering decisions in networking environments where computing service resources are deployed.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">The Computing-Aware Traffic Steering (CATS) framework assumes that there might be multiple service instances that are providing one given service. Each of these service instances can be accessed via a service contact instance. A single service site may have limited computing resources available at a given time, whereas the various service sites may experience different resource availability issues over time. A single service site may host one or multiple service contact instances.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">Steering in CATS is about selecting the appropriate service contact instance that will service a request according to a set of network and computing metrics. That selection may not necessarily reveal the actual service instance that will be invoked, e.g., in hierarchical or recursive contexts. Therefore, the metrics of the service contact instance may be the aggregated metrics from multiple service instances.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">The CATS framework is an overlay framework for the selection of the suitable service contact instance(s) from a set of candidates. The exact characterization of 'suitable' is determined by a combination of networking and computing metrics.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">Also, this document describes a workflow of the main CATS procedures that are executed in both the control and data planes.<a href="#section-1-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="terminology">
+<section id="section-2">
+      <h2 id="name-terminology">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+      </h2>
+<p id="section-2-1">This document makes use of the following terms:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-2-2">
+        <dt id="section-2-2.1">Client:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.2">
+          <p id="section-2-2.2.1">An endpoint that is connected to a service provider network.<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.3">Computing-Aware Traffic Steering (CATS):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.4">
+          <p id="section-2-2.4.1">A traffic engineering approach <span>[<a href="#I-D.ietf-teas-rfc3272bis" class="cite xref">I-D.ietf-teas-rfc3272bis</a>]</span> that takes into account the dynamic nature of computing resources and network state to optimize service-specific traffic forwarding towards a given service contact instance. Various relevant metrics may be used to enforce such computing-aware traffic steering policies.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.5">CATS Service ID (CS-ID):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.6">
+          <p id="section-2-2.6.1">An identifier representing a service, which the clients use to access it. See <a href="#cats-ids" class="auto internal xref">Section 3.2</a>.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.7">CATS Instance Selector ID (CIS-ID):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.8">
+          <p id="section-2-2.8.1">An identifier of a specific service contact instance. See <a href="#cats-ids" class="auto internal xref">Section 3.2</a>.<a href="#section-2-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.9">Service:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.10">
+          <p id="section-2-2.10.1">An offering that is made available by a provider by orchestrating a set of resources (networking, compute, storage, etc.).<a href="#section-2-2.10.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.11"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.12">
+          <p id="section-2-2.12.1">Which and how these resources are solicited is part of the service logic which is internal to the provider. For example, these resources may be:<a href="#section-2-2.12.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2-2.12.2.1">
+              <p id="section-2-2.12.2.1.1">Exposed by one or multiple processes.<a href="#section-2-2.12.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-2-2.12.2.2">
+              <p id="section-2-2.12.2.2.1">Provided by virtual instances, physical, or a combination thereof.<a href="#section-2-2.12.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-2-2.12.2.3">
+              <p id="section-2-2.12.2.3.1">Hosted within the same or distinct nodes.<a href="#section-2-2.12.2.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-2-2.12.2.4">
+              <p id="section-2-2.12.2.4.1">Hosted within the same or multiple service sites.<a href="#section-2-2.12.2.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-2-2.12.2.5">
+              <p id="section-2-2.12.2.5.1">Chained to provide a service using a variety of means.<a href="#section-2-2.12.2.5.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.13"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.14">
+          <p id="section-2-2.14.1">How a service is structured is out of the scope of CATS.<a href="#section-2-2.14.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.15"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.16">
+          <p id="section-2-2.16.1">The same service can be provided in many locations; each of them constitutes a service instance.<a href="#section-2-2.16.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.17">Computing Service:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.18">
+          <p id="section-2-2.18.1">An offering is made available by a provider by orchestrating a set of computing resources (without networking resources).<a href="#section-2-2.18.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.19">Service instance:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.20">
+          <p id="section-2-2.20.1">An instance of running resources according to a given service logic.<a href="#section-2-2.20.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.21"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.22">
+          <p id="section-2-2.22.1">Many such instances can be enabled by a provider. Instances that adhere to the same service logic provide the same service.<a href="#section-2-2.22.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.23"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.24">
+          <p id="section-2-2.24.1">An instance is typically running in a service site. Clients' requests are serviced by one of these instances.<a href="#section-2-2.24.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.25">Service site:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.26">
+          <p id="section-2-2.26.1">A location that hosts the resources that are required to offer a service.<a href="#section-2-2.26.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.27"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.28">
+          <p id="section-2-2.28.1">A service site may be a node or a set of nodes.<a href="#section-2-2.28.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.29"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.30">
+          <p id="section-2-2.30.1">A CATS-serviced site is a service site that is connected to a CATS-Forwarder.<a href="#section-2-2.30.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.31">Service contact instance:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.32">
+          <p id="section-2-2.32.1">A client-facing service function instance that is responsible for receiving requests in the context of a given service. A service request is processed according to the service logic (e.g., handle locally or solicit backend resources). Steering beyond the service contact instance is hidden to both clients and CATS components.<a href="#section-2-2.32.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.33"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.34">
+          <p id="section-2-2.34.1">a service contact instance is reachable via at least one Egress CATS Forwarder.<a href="#section-2-2.34.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.35"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.36">
+          <p id="section-2-2.36.1">A service can be accessed via multiple service contact instances running at the same or different locations (service sites).<a href="#section-2-2.36.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.37"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.38">
+          <p id="section-2-2.38.1">The same service contact instance may dispatch service requests to one or more service instances (e.g., a service contact instance that behaves as a service load-balancer).<a href="#section-2-2.38.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.39">Computing-aware forwarding (or steering, computing):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.40">
+          <p id="section-2-2.40.1">A forwarding (or steering, computing) scheme which takes a set of metrics that reflect the capabilities and state of computing resources as input.<a href="#section-2-2.40.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.41">Service request:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.42">
+          <p id="section-2-2.42.1">A request to access or invoke a specific service. Such a request is steered to a service contact instance via CATS-Forwarders.<a href="#section-2-2.42.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.43"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.44">
+          <p id="section-2-2.44.1">A service request is placed using service-specific protocols.<a href="#section-2-2.44.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.45"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.46">
+          <p id="section-2-2.46.1">Service requests are not explicitly sent by clients to CATS-Forwarders.<a href="#section-2-2.46.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.47">CATS-Forwarder:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.48">
+          <p id="section-2-2.48.1">A network entity that makes forwarding decisions based on CATS information to steer traffic specific to a  service request towards a corresponding yet selected service contact instance. The selection of a service contact instance relies upon a multi-metric path computation.<a href="#section-2-2.48.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.49"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.50">
+          <p id="section-2-2.50.1">A CATS-Forwarder may behave as Ingress or Egress CATS-Forwarder.<a href="#section-2-2.50.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.51">Ingress CATS-Forwarder:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.52">
+          <p id="section-2-2.52.1">An entity that steers service-specific traffic along a CATS-computed path that leads to an Egress CATS-Forwarder that connects to the most suitable service site that host the service contact instance selected to satisfy the initial service request.<a href="#section-2-2.52.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.53">Egress CATS-Forwarder:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.54">
+          <p id="section-2-2.54.1">An entity that is located at the end of a CATS-computed path and which connects to a CATS-serviced site.<a href="#section-2-2.54.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.55">CATS Path Selector (C-PS):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.56">
+          <p id="section-2-2.56.1">A functional entity that computes and selects paths towards service locations and instances and which accommodates the requirements of service requests. Such a path computation engine takes into account the service and network status information. See <a href="#sec-cps" class="auto internal xref">Section 3.4.4</a>.<a href="#section-2-2.56.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.57">CATS Service Metric Agent (C-SMA):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.58">
+          <p id="section-2-2.58.1">A functional entity that is responsible for collecting service capabilities and status, and for reporting them to a CATS Path Selector (C-PS). See <a href="#sec-csma" class="auto internal xref">Section 3.4.2</a>.<a href="#section-2-2.58.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.59">CATS Network Metric Agent (C-NMA):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.60">
+          <p id="section-2-2.60.1">A functional entity that is responsible for collecting network capabilities and status, and for reporting them to a C-PS. See <a href="#sec-cnma" class="auto internal xref">Section 3.4.3</a>.<a href="#section-2-2.60.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.61">CATS Traffic Classifier (C-TC):</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.62">
+          <p id="section-2-2.62.1">A functional entity that is responsible for determining which packets belong to a traffic flow for a particular service request. It is also responsible for forwarding such packets along a C-PS computed path that leads to the relevant service contact instance. See <a href="#sec-ctc" class="auto internal xref">Section 3.4.5</a>.<a href="#section-2-2.62.1" class="pilcrow">¶</a></p>
+</dd>
+      <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="Framework-and-concepts">
+<section id="section-3">
+      <h2 id="name-cats-framework-and-componen">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-cats-framework-and-componen" class="section-name selfRef">CATS Framework and Components</a>
+      </h2>
+<div id="assumptions">
+<section id="section-3.1">
+        <h3 id="name-assumptions">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-assumptions" class="section-name selfRef">Assumptions</a>
+        </h3>
+<p id="section-3.1-1">CATS assumes that there are multiple service instances running on different service sites, and which provide a given service that is represented by the same service identifier (see <a href="#cats-ids" class="auto internal xref">Section 3.2</a>). However, CATS does not make any assumption about these instances other than they are reachable via one or multiple service contact instances.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="cats-ids">
+<section id="section-3.2">
+        <h3 id="name-cats-identifiers">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-cats-identifiers" class="section-name selfRef">CATS Identifiers</a>
+        </h3>
+<p id="section-3.2-1">CATS uses the following identifiers:<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.2-2">
+          <dt id="section-3.2-2.1">CATS Service ID (CS-ID):</dt>
+          <dd style="margin-left: 1.5em" id="section-3.2-2.2">
+            <p id="section-3.2-2.2.1">An identifier representing a service, which the clients use to access it. Such an ID identifies all the instances of a given service, regardless of their location.<a href="#section-3.2-2.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.2-2.3"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.2-2.4">
+            <p id="section-3.2-2.4.1">The CS-ID is independent of which service contact instance serves the service request.<a href="#section-3.2-2.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.2-2.5"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.2-2.6">
+            <p id="section-3.2-2.6.1">Service requests are spread over the service contact instances that can accommodate them, considering the location of the initiator of the service request and the availability (in terms of resource/traffic load, for example) of the service instances resource-wise among other considerations like traffic congestion conditions.<a href="#section-3.2-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.2-2.7">CATS Instance Selector ID (CIS-ID):</dt>
+          <dd style="margin-left: 1.5em" id="section-3.2-2.8">
+            <p id="section-3.2-2.8.1">An identifier of a specific service contact instance.<a href="#section-3.2-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="sec-cats-framework">
+<section id="section-3.3">
+        <h3 id="name-framework-overview">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-framework-overview" class="section-name selfRef">Framework Overview</a>
+        </h3>
+<p id="section-3.3-1">A high-level view of the CATS framework, without expanding the functional entities in the network, is illustrated in <a href="#fig-cats-fw" class="auto internal xref">Figure 1</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<span id="name-main-cats-interactions"></span><div id="fig-cats-fw">
+<figure id="figure-1">
+          <div class="alignLeft art-text artwork" id="section-3.3-2.1">
+<pre>
+   +----------------------------------+  |         +--------+
+   |         Management Plane         |  |         |        |
+   +----------------------------------+  |&lt;=======&gt;| C-SMA  |
+   |           Control Plane          |  |         |        |
+   +----------------------------------+  |         +---+----+
+                   /\                    |             |
+                   ||                    |             |
+                   \/                    |             |
+   +----------------------------------+  |         +--------+
+   |           Data Plane             |  |         | +--------+
+   +----------------------------------+  |&lt;=======&gt;| |Service |
+                                         |         +-|Contact |
+                                         |           |Instance|
+                                         |           +--------+
+
+            Network Domain                  Computing Domain
+</pre>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-main-cats-interactions" class="selfRef">Main CATS Interactions</a>
+          </figcaption></figure>
+</div>
+<p id="section-3.3-3">Starting from the bottom part of <a href="#fig-cats-fw" class="auto internal xref">Figure 1</a> and moving to the upper part, the following planes are defined:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.3-4.1">
+            <p id="section-3.3-4.1.1">CATS  Management Plane: Responsible for monitoring, configuring, and maintaining CATS network devices.<a href="#section-3.3-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.3-4.2">
+            <p id="section-3.3-4.2.1">CATS Control Plane: Responsible for scheduling services based on computing and network information. It is also responsible for making decisions about how packets should be forwarded by involved forwarding nodes and communicating such decisions to the CATS Data Plane for execution.<a href="#section-3.3-4.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.3-4.3">
+            <p id="section-3.3-4.3.1">CATS Data Plane: Responsible for computing-aware routing, including handling packets in the data path, such as packet forwarding.<a href="#section-3.3-4.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-3.3-5">Depending on implementation and deployment, these planes may consist of several functional elements/components, and the details will be described in the following sections.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-cats-arch">
+<section id="section-3.4">
+        <h3 id="name-cats-functional-components">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-cats-functional-components" class="section-name selfRef">CATS Functional Components</a>
+        </h3>
+<p id="section-3.4-1">CATS nodes make forwarding decisions for a given service request that has been received from a client according to the capabilities and status information of both service contact instances and network. The main CATS functional elements and their interactions are shown in <a href="#fig-cats-components" class="auto internal xref">Figure 2</a>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<span id="name-cats-functional-components-2"></span><div id="fig-cats-components">
+<figure id="figure-2">
+          <div class="alignLeft art-text artwork" id="section-3.4-2.1">
+<pre>
+    +-----+              +------+           +------+
+  +------+|            +------+ |         +------+ |
+  |client|+            |client|-+         |client|-+
+  +---+--+             +---+--+           +---+--+
+      |                    |                  |
+      | +----------------+ |            +-----+----------+
+      +-+    C-TC#1      +-+      +-----+    C-TC#2      |
+        |----------------|        |     |----------------|
+        |     |C-PS#1    |    +------+  |CATS-Forwarder 4|
+  ......|     +----------|....|C-PS#2|..|                |...
+  :     |CATS-Forwarder 2|    |      |  |                |  .
+  :     +----------------+    +------+  +----------------+  :
+  :                                                         :
+  :                                            +-------+    :
+  :                         Underlay           | C-NMA |    :
+  :                      Infrastructure        +-------+    :
+  :                                                         :
+  :                                                         :
+  : +----------------+                +----------------+    :
+  : |CATS-Forwarder 1|  +-------+     |CATS-Forwarder 3|    :
+  :.|                |..|C-SMA#1|.... |                |....:
+    +---------+------+  +-------+     +----------------+
+              |         |             |   C-SMA#2      |
+              |         |             +-------+--------+
+              |         |                     |
+              |         |                     |
+           +------------+               +------------+
+          +------------+ |             +------------+ |
+          |  Service   | |             |  Service   | |
+          |  Contact   | |             |  Contact   | |
+          |  Instance  |-+             |  Instance  |-+
+          +------------+               +------------+
+           service site 1              service site 2
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-cats-functional-components-2" class="selfRef">CATS Functional Components</a>
+          </figcaption></figure>
+</div>
+<div id="sec-service-sites">
+<section id="section-3.4.1">
+          <h4 id="name-service-sites-services-inst">
+<a href="#section-3.4.1" class="section-number selfRef">3.4.1. </a><a href="#name-service-sites-services-inst" class="section-name selfRef">Service Sites, Services Instances, and Service Contact Instances</a>
+          </h4>
+<p id="section-3.4.1-1">Service sites are locations that host resources (including computing resources) that are required to offer a service. As mentioned in <a href="#cats-ids" class="auto internal xref">Section 3.2</a>, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID). The CS-ID does not need to be globally unique, though.<a href="#section-3.4.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-2">Service instances can be instantiated and accessed through different service sites so that a single service can be represented and accessed via several contact instances that run in different regions of a network.<a href="#section-3.4.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-3"><a href="#fig-cats-components" class="auto internal xref">Figure 2</a> shows two CATS nodes ("CATS-Forwarder 1" and "CATS-Forwarder 3") that provide access to service contact instances. These nodes behave as Egress CATS-Forwarders (<a href="#sec-ocr" class="auto internal xref">Section 3.4.6</a>).<a href="#section-3.4.1-3" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.4.1-4.1">
+              <p id="section-3.4.1-4.1.1">Note: "Egress" is used here in reference to the direction of the service request placement. The directionality is called to explicitly identify the exit node of the CATS infrastructure.<a href="#section-3.4.1-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</section>
+</div>
+<div id="sec-csma">
+<section id="section-3.4.2">
+          <h4 id="name-cats-service-metric-agent-c">
+<a href="#section-3.4.2" class="section-number selfRef">3.4.2. </a><a href="#name-cats-service-metric-agent-c" class="section-name selfRef">CATS Service Metric Agent (C-SMA)</a>
+          </h4>
+<p id="section-3.4.2-1">The CATS Service Metric Agent (C-SMA) is a functional component that gathers information about service sites and server resources, as well as the status of the different service instances. The C-SMAs may be located adjacent to the service contact instances, co-located with service contact instances, hosted by the Egress CATS-Forwarders (<a href="#sec-ocr" class="auto internal xref">Section 3.4.6</a>), etc.<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-2"><a href="#fig-cats-components" class="auto internal xref">Figure 2</a> shows one C-SMA embedded in "CATS-Forwarder 3", and another C-SMA that is adjacent to "CATS-Forwarder 1".<a href="#section-3.4.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-cnma">
+<section id="section-3.4.3">
+          <h4 id="name-cats-network-metric-agent-c">
+<a href="#section-3.4.3" class="section-number selfRef">3.4.3. </a><a href="#name-cats-network-metric-agent-c" class="section-name selfRef">CATS Network Metric Agent (C-NMA)</a>
+          </h4>
+<p id="section-3.4.3-1">The CATS Network Metric Agent (C-NMA) is a functional component that gathers information about the state of the underlay network. The C-NMAs may be implemented as standalone components or may be hosted by other components, such as CATS-Forwarders or CATS Path Selectors (C-PS) (<a href="#sec-cps" class="auto internal xref">Section 3.4.4</a>).<a href="#section-3.4.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.3-2">C-NMA is likely to leverage existing techniques (e.g., <span>[<a href="#RFC7471" class="cite xref">RFC7471</a>]</span>, <span>[<a href="#RFC8570" class="cite xref">RFC8570</a>]</span>, and <span>[<a href="#RFC8571" class="cite xref">RFC8571</a>]</span>).<a href="#section-3.4.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.4.3-3"><a href="#fig-cats-components" class="auto internal xref">Figure 2</a> shows a single, standalone C-NMA within the underlay network. There may be one or more C-NMAs for an underlay network.<a href="#section-3.4.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-cps">
+<section id="section-3.4.4">
+          <h4 id="name-cats-path-selector-c-ps">
+<a href="#section-3.4.4" class="section-number selfRef">3.4.4. </a><a href="#name-cats-path-selector-c-ps" class="section-name selfRef">CATS Path Selector (C-PS)</a>
+          </h4>
+<p id="section-3.4.4-1">The C-SMAs and C-NMAs share the collected information with CATS Path Selectors (C-PSes) that use such information to select the Egress CATS-Forwarders (and potentially the service contact instances) where to forward traffic for a given service request. C-PSes also determine the best paths (possibly using tunnels) to forward traffic, according to various criteria that include network state and traffic congestion conditions. The collected information is encoded into one or more metrics that feed the C-PS path computation logic. Such an information also includes CS-ID and possibly CIS-IDs.<a href="#section-3.4.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.4-2">There might be one or more C-PSes used to compute CATS paths in a CATS infrastructure.<a href="#section-3.4.4-2" class="pilcrow">¶</a></p>
+<p id="section-3.4.4-3">A C-PS can be integrated into CATS-Forwarders (e.g., "C-PS#1" in <a href="#fig-cats-components" class="auto internal xref">Figure 2</a>) or may be deployed as a standalone component (e.g., "C-PS#2" in <a href="#fig-cats-components" class="auto internal xref">Figure 2</a>). Generally, a standalone C-PS can be a functional component of a centralized controller (e.g., a Path Computation Element (PCE) <span>[<a href="#RFC4655" class="cite xref">RFC4655</a>]</span>).<a href="#section-3.4.4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-ctc">
+<section id="section-3.4.5">
+          <h4 id="name-cats-traffic-classifier-c-t">
+<a href="#section-3.4.5" class="section-number selfRef">3.4.5. </a><a href="#name-cats-traffic-classifier-c-t" class="section-name selfRef">CATS Traffic Classifier (C-TC)</a>
+          </h4>
+<p id="section-3.4.5-1">CATS Traffic Classifier (C-TC) is a functional component that is responsible for associating incoming packets from clients with existing service requests. CATS classifiers also ensure that packets that are bound to a specific service contact instance are all forwarded towards that same service contact instance, as instructed by a C-PS.<a href="#section-3.4.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.5-2">CATS classifiers are typically hosted in CATS-Forwarders.<a href="#section-3.4.5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-ocr">
+<section id="section-3.4.6">
+          <h4 id="name-overlay-cats-forwarders">
+<a href="#section-3.4.6" class="section-number selfRef">3.4.6. </a><a href="#name-overlay-cats-forwarders" class="section-name selfRef">Overlay CATS-Forwarders</a>
+          </h4>
+<p id="section-3.4.6-1">The Egress CATS-Forwarders are the endpoints that behave as an overlay egress for service requests that are forwarded over a CATS infrastructure. A service site that hosts service instances may be connected to one or more Egress CATS-Forwarders (that is, multi-homing is of course a design option). If a C-PS has selected a specific service contact instance and the C-TC has marked the traffic with the CIS-ID, the Egress CATS-Forwarder then forwards traffic to the relevant service contact instance. In some cases, the choice of the service  contact instance may be left open to the Egress CATS-Forwarder (i.e., traffic is marked only with the CS-ID). In such cases, the Egress CATS-Forwarder selects a service contact instance using its knowledge of service and network capabilities as well as the current load as observed by the CATS-Forwarder, among other considerations. Absent explicit policy, an Egress CATS-Forwarder must make sure to forward all packets that pertain to a given service request towards the same service contact instance.<a href="#section-3.4.6-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.6-2">Note that, depending on the design considerations and service requirements, per-service  contact instance computing-related metrics or aggregated per-site computing related metrics (and a combination thereof) can be used by a C-PS. Using aggregated per-site computing related metrics appears as a preferred option scalability-wise, but relies on Egress CATS-Forwarders that connect to various service contact instances to select the proper service contact instance. An Egress CATS-Forwarder may choose to aggregate the metrics from different sites as well. In this case, the Egress CATS-Forwarder will choose the best site by itself when the packets arrive at it.<a href="#section-3.4.6-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="underlay-infrastructure">
+<section id="section-3.4.7">
+          <h4 id="name-underlay-infrastructure">
+<a href="#section-3.4.7" class="section-number selfRef">3.4.7. </a><a href="#name-underlay-infrastructure" class="section-name selfRef">Underlay Infrastructure</a>
+          </h4>
+<p id="section-3.4.7-1">The "underlay infrastructure" in <a href="#fig-cats-components" class="auto internal xref">Figure 2</a> indicates an IP and/or MPLS network that is not necessarily CATS-aware. The CATS paths that are computed by a P-CS will be distributed among the CATS-Forwarders (<a href="#sec-ocr" class="auto internal xref">Section 3.4.6</a>), and will not affect the underlay nodes. Underlay nodes are typically P routers (<span><a href="https://rfc-editor.org/rfc/rfc4026#section-5.3.1" class="relref">Section 5.3.1</a> of [<a href="#RFC4026" class="cite xref">RFC4026</a>]</span>).<a href="#section-3.4.7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="deployment-considerations">
+<section id="section-3.5">
+        <h3 id="name-deployment-considerations">
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-deployment-considerations" class="section-name selfRef">Deployment Considerations</a>
+        </h3>
+<p id="section-3.5-1">This document does not make any assumption about how the various CATS functional elements are implemented and deployed. Concretely, whether a CATS deployment follows a fully distributed design or relies upon a mix of centralized (e.g., a C-PS) and distributed CATS functions (e.g., CATS traffic classifiers) is deployment-specific and may reflect the savoir-faire of the (CATS) service provider.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-2">Centralized designs where the computing related metrics from the C-SMAs are collected by a (logically) centralized path computation logic (e.g., a PCE) that also collects network metrics may be adopted. In the latter case, the CATS computation logic may process incoming service requests to compute and select paths and, therefore, service contact instances. The outcomes of such a computation process may then be communicated to CATS traffic classifiers (C-TCs).<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+<p id="section-3.5-3">In conclusion, at least three deployment models can be considered for the deployment of the CATS framework:<a href="#section-3.5-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.5-4">
+          <dt id="section-3.5-4.1">Distributed model:</dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-4.2">
+            <p id="section-3.5-4.2.1">Computing metrics are distributed among network devices directly using distributed protocols without interactions with a centralized control plane. Service scheduling function is performed by the CATS forwarders in the distribution model, Therefore, the C-PS is integrated into an Ingress CATS-Forwarder.<a href="#section-3.5-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.5-4.3">Centralized model:</dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-4.4">
+            <p id="section-3.5-4.4.1">Computing metrics are collected by a centralized control plane, and then the centralized control plane performs service scheduling function, and computes the forwarding path for service requests and syncs up with the Ingress CATS-Forwarder. In this model, C-PS is implemented in the centralized control plane.<a href="#section-3.5-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.5-4.5">Hybrid model:</dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-4.6">
+            <p id="section-3.5-4.6.1">Is a combination of distribution and centralized models.<a href="#section-3.5-4.6.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.5-4.7"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-4.8">
+            <p id="section-3.5-4.8.1">A part of computing metrics are distributed among involved network devices, and others may be collected by a centralized control plane. For example, some static information (e.g., capabilities information) can be distributed among network devices since they are quite stable. Frequent changing information (e.g., resource utilization) can be collected by a centralized control plane to avoid frequent flooding in the distributed control plane. Service scheduling function can be performed by a centralized control plane and/or the CATS forwarder. The entire or partial C-PS function may be implemented in the centralized control plane, depending on the specific implementation and deployment.<a href="#section-3.5-4.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
+</div>
+<div id="cats-framework-workflow">
+<section id="section-4">
+      <h2 id="name-cats-framework-workflow">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-cats-framework-workflow" class="section-name selfRef">CATS Framework Workflow</a>
+      </h2>
+<p id="section-4-1">The following subsections provide an overview of how the CATS workflow operates assuming a distributed CATS design.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<div id="provisioning-of-cats-components">
+<section id="section-4.1">
+        <h3 id="name-provisioning-of-cats-compon">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-provisioning-of-cats-compon" class="section-name selfRef">Provisioning of CATS Components</a>
+        </h3>
+<p id="section-4.1-1">TBC: --detail required provisioning at CAST elements (booptsrapping, credentials of peer CAST nodes, services, optimization metrics per service, etc.)--<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="service-announcement">
+<section id="section-4.2">
+        <h3 id="name-service-announcement">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-service-announcement" class="section-name selfRef">Service Announcement</a>
+        </h3>
+<p id="section-4.2-1">A service is associated with a unique identifier called a CS-ID. A CS-ID may be a network identifier, such as an IP address. The mapping of CS-IDs to network identifiers may be learned through a name resolution service, such as DNS <span>[<a href="#RFC1034" class="cite xref">RFC1034</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="metrics-distribution">
+<section id="section-4.3">
+        <h3 id="name-metrics-distribution">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-metrics-distribution" class="section-name selfRef">Metrics Distribution</a>
+        </h3>
+<p id="section-4.3-1">As described in <a href="#sec-cats-arch" class="auto internal xref">Section 3.4</a>, a C-SMA collects both service-related capabilities and metrics, and associates them with a CS-ID that identifies the service. The C-SMA may aggregate the metrics for multiple service  contact  instances, or maintain them separately or both.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">The C-SMA then advertises CS-IDs along with metrics to related C-PSes in the network. Depending on deployment choice, CS-IDs with metrics may be distributed in different ways.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.3-3">For example, in a distributed model, CS-IDs with metrics can be distributed from the C-SMA to an Egress CATS Forwarder firstly and then be redistributed by the Egress CATS Forwarder to related C-PSes that are integrated into Ingress CATS Forwarders.<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.3-4">In the centralized model, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+<p id="section-4.3-5">In the hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways.<a href="#section-4.3-5" class="pilcrow">¶</a></p>
+<p id="section-4.3-6">The service metrics include computing-related metrics and potentially other service-specific metrics like the number of end-users who access the service contact instance at any given time, their location, etc.<a href="#section-4.3-6" class="pilcrow">¶</a></p>
+<p id="section-4.3-7">Computing metrics may change very frequently (see <span>[<a href="#I-D.ietf-cats-usecases-requirements" class="cite xref">I-D.ietf-cats-usecases-requirements</a>]</span> for a discussion). How frequently such information is distributed is to be determined as part of the specification of any communication protocol (including routing protocols) that may be used to distribute the information. Various options can be considered, such as (but not limited to) interval-based updates, threshold-triggered updates, or policy-based updates.<a href="#section-4.3-7" class="pilcrow">¶</a></p>
+<p id="section-4.3-8">Additionally, the C-NMA collects network-related capabilities and metrics. These may be collected and distributed by existing routing protocols, although extensions to such protocols may be required to carry additional information (e.g., link latency). The C-NMA distributes the network metrics to the C-PSes so that they can use the combination of service and network metrics to determine the best Egress CATS-Forwarder to provide access to a service contact instance and invoke the compute function required by a service request. Similar to service-related metrics, the network-related metrics can be distributed using distributed, centralized, or hybrid schemes. This document does not describe such details since this is a deployment-specific.<a href="#section-4.3-8" class="pilcrow">¶</a></p>
+<p id="section-4.3-9">Network metrics may also change over time. Dynamic routing protocols may take advantage of some information or capabilities to prevent the network from being flooded with state change information (e.g., Partial Route Computation (PRC) of OSPFv3 <span>[<a href="#RFC5340" class="cite xref">RFC5340</a>]</span>). C-NMAs should also be configured or instructed like C-SMAs to determine when and how often updates should be notified to the C-PSes.<a href="#section-4.3-9" class="pilcrow">¶</a></p>
+<p id="section-4.3-10"><a href="#fig-cats-example-overlay" class="auto internal xref">Figure 3</a> shows an example of how CATS metrics can be disseminated in the distributed model. There is a client attached to the network via "CATS-Forwarder 1". There are three instances of the service with CS-ID "1": two are located at "Service Site 2" attached via "CATS-Forwarder 2" and have CIS-IDs "1" and "2"; the third service contact instance is located at "Service Site 3" attached via "CATS-Forwarder 3" and with CIS-ID "3". There is also a second service with CS-ID "2" with only one service contact instance located at "Service Site 2".<a href="#section-4.3-10" class="pilcrow">¶</a></p>
+<p id="section-4.3-11">In <a href="#fig-cats-example-overlay" class="auto internal xref">Figure 3</a>, the C-SMA collocated with "CATS-Forwarder 2" distributes the service metrics for both service contact instances (i.e., (CS-ID 1, CIS-ID 1) and (CS-ID 1, CIS-ID 2)). Note that this information may be aggregated into a single advertisement, but in this case, the metrics for each service contact instance are indicated separately. Similarly, the C-SMA agent located at "Service Site 3" advertises the service metrics for the two services hosted by "Service Site 3".<a href="#section-4.3-11" class="pilcrow">¶</a></p>
+<p id="section-4.3-12">The service metric advertisements are processed by the C-PS hosted by "CATS-Forwarder 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Forwarder according to the initial  client's service request, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service contact instances as reported by the metrics, and the state of the network.<a href="#section-4.3-12" class="pilcrow">¶</a></p>
+<span id="name-an-example-of-cats-metric-d"></span><div id="fig-cats-example-overlay">
+<figure id="figure-3">
+          <div class="alignLeft art-text artwork" id="section-4.3-13.1">
+<pre>
+          Service CS-ID 1, instance CIS-ID 1 &lt;metrics&gt;
+          Service CS-ID 1, instance CIS-ID 2 &lt;metrics&gt;
+
+                 :&lt;----------------------:
+                 :                       :              +--------+
+                 :                       :              |CS-ID 1 |
+                 :                       :           +--|CIS-ID 1|
+                 :              +----------------+    |  +--------+
+                 :              |    C-SMA       |----|   Service Site 2
+                 :              +----------------+    |  +--------+
+                 :              |CATS-Forwarder 2|    +--|CS-ID 1 |
+                 :              +----------------+       |CIS-ID 2|
+ +--------+      :                        |             +--------+
+ | Client |      :  Network +----------------------+
+ +--------+      :  metrics | +-------+            |
+      |          : :&lt;---------| C-NMA |            |
+      |          : :        | +-------+            |
+ +---------------------+    |                      |
+ |CATS-Forwarder 1|C-PS|----|                      |
+ +---------------------+    |       Underlay       |
+                 :          |     Infrastructure   |     +--------+
+                 :          |                      |     |CS-ID 1 |
+                 :          +----------------------+ +---|CIS-ID 3|
+                 :                    |              |   +--------+
+                 :          +----------------+  +-------+
+                 :          |CATS-Forwarder 3|--| C-SMA | Service Site 3
+                 :          +----------------+  +-------+
+                 :                                :  |   +-------+
+                 :                                :  +---|CS-ID 2|
+                 :                                :      +-------+
+                 :&lt;-------------------------------:
+          Service CS-ID 1, instance CIS-ID 3 &lt;metrics&gt;
+          Service CS-ID 2, &lt;metrics&gt;
+</pre>
+</div>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<a href="#name-an-example-of-cats-metric-d" class="selfRef">An Example of CATS Metric Dessimination in a Distributed Model</a>
+          </figcaption></figure>
+</div>
+<p id="section-4.3-14">The example in <a href="#fig-cats-example-overlay" class="auto internal xref">Figure 3</a> mainly describes a per-instance computing-related metric distribution. In the case of distributing aggregated per-site computing-related metrics, the per-instance CIS-ID information will not be included in the advertisement. Instead, a per-site CIS-ID may be used in case multiple sites are connected to the Egress CATS-Forwarder to explicitly indicate the site from where the aggregated metrics come.<a href="#section-4.3-14" class="pilcrow">¶</a></p>
+<p id="section-4.3-15">If the CATS framework is implemented using a centralized model, the metric can be, e.g., distributed as illustrated in <a href="#fig-cats-centralized" class="auto internal xref">Figure 4</a>.<a href="#section-4.3-15" class="pilcrow">¶</a></p>
+<span id="name-an-example-of-cats-metric-di"></span><div id="fig-cats-centralized">
+<figure id="figure-4">
+          <div class="alignLeft art-text artwork" id="section-4.3-16.1">
+<pre>
+                        Service CS-ID 1, instance CIS-ID 1 &lt;metrics&gt;
+                        Service CS-ID 1, instance CIS-ID 2 &lt;metrics&gt;
+                        Service CS-ID 1, instance CIS-ID 3 &lt;metrics&gt;
+                        Service CS-ID 2, &lt;metrics&gt;
+
+             :       +------+
+             :&lt;------| C-PS |&lt;----------------------------------+
+             :       +------+ &lt;------+              +--------+  |
+             :          ^            |           +--|CS-ID 1 |  |
+             :          |            |           |  |CIS-ID 1|  |
+             :          |   +----------------+   |  +--------+  |
+             :          |   |    C-SMA       |---|Service Site 2|
+             :          |   +----------------+   |  +--------+  |
+             :          |   |CATS-Forwarder 2|   +--|CS-ID 1 |  |
+             :          |   +----------------+      |CIS-ID 2|  |
+ +--------+  :          |             |             +--------+  |
+ | Client |  :  Network |   +----------------------+            |
+ +--------+  :  metrics |   | +-------+            |            |
+      |      :          +-----| C-NMA |            |      +-----+
+      |      :          |   | +-------+            |      |C-SMA|&lt;-+
+ +----------------+ &lt;---+   |                      |      +-----+  |
+ |CATS-Forwarder 1|---------|                      |          ^    |
+ +----------------+         |       Underlay       |          |    |
+             :              |     Infrastructure   |     +--------+|
+             :              |                      |     |CS-ID 1 ||
+             :              +----------------------+  +--|CIS-ID 3||
+             :                        |               |  +--------+|
+             :          +----------------+------------+            |
+             :          |CATS-Forwarder 3|         Service Site 3  |
+             :          +----------------+                         |
+             :                        |       :      +-------+     |
+             :                        +-------:------|CS-ID 2|-----+
+             :                                :      +-------+
+             :&lt;-------------------------------:
+      Service CS-ID 1, instance CIS-ID 3
+      Service CS-ID 2
+</pre>
+</div>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<a href="#name-an-example-of-cats-metric-di" class="selfRef">An Example of CATS Metric Distribution in a Centralized Model</a>
+          </figcaption></figure>
+</div>
+<p id="section-4.3-17">If the CATS framework is implemented using an hybrid model, the metric can be distributed, e.g., as illustrated in the <a href="#fig-cats-hybrid" class="auto internal xref">Figure 5</a>. For example, the metrics 1,2,3 associated with the CS-ID1 are collected by the centralized C-PS, and the metrics 4 and 5 are distributed via distributed protocols to the ingress CATS-Forwarder directly. For a service with CS-ID2, all the metrics are collected by the centralized C-PS. The CATS-computed path result will be distributed to the Ingress CATS-Forwarders from the C-PS by considering both the metrics from the C-SMA and C-NMA. Furthermore, the Ingress CATS-Forwarder may also have some ability to compute the path for the subsequent service accessing packets.<a href="#section-4.3-17" class="pilcrow">¶</a></p>
+<span id="name-an-example-of-cats-metric-dis"></span><div id="fig-cats-hybrid">
+<figure id="figure-5">
+          <div class="alignLeft art-text artwork" id="section-4.3-18.1">
+<pre>
+                   Service CS-ID 1, instance CIS-ID 1 &lt;metric 1,2,3&gt;
+                   Service CS-ID 1, instance CIS-ID 2 &lt;metric 1,2,3&gt;
+                   Service CS-ID 1, instance CIS-ID 3 &lt;metric 1,2,3&gt;
+                   Service CS-ID 2, &lt;metrics&gt;
+
+             :       +------+
+             :&lt;------| C-PS |&lt;----------------------------------+
+             :       +------+ &lt;------+              +--------+  |
+             :          ^            |           +--|CS-ID 1 |  |
+             :          |            |           |  |CIS-ID 1|  |
+             :          |   +----------------+   |  +--------+  |
+             :          |   |    C-SMA       |---|Service Site 2|
+             :          |   +----------------+   |  +--------+  |
+             :          |   |CATS-Forwarder 2|   +--|CS-ID 1 |  |
+             :          |   +----------------+      |CIS-ID 2|  |
+ +--------+  :          |             |             +--------+  |
+ | Client |  :  Network |   +----------------------+            |
+ +--------+  :  metrics |   | +-------+            |            |
+      |      :          +-----| C-NMA |            |      +-----+
+      |      :          |   | +-------+            |      |C-SMA|&lt;-+
+ +----------------+ &lt;---+   |                      |      +-----+  |
+ |CATS-Forwarder 1|---------|                      |          ^    |
+ |----------------+         |       Underlay       |          |    |
+ |C-PS|      :              |     Infrastructure   |     +--------+|
+ +----+      :              |                      |     |CS-ID 1 ||
+             :              +----------------------+  +--|CIS-ID 3||
+             :                        |               |  +--------+|
+             :          +----------------+------------+            |
+             :          |CATS-Forwarder 3|         Service Site 3  |
+             :          +----------------+                         |
+             :                        |       :      +-------+     |
+             :                        +-------:------|CS-ID 2|-----+
+             :                                :      +-------+
+             :&lt;-------------------------------:
+      Service CS-ID 1, instance CIS-ID 3, &lt;metric 4,5&gt;
+      Service CS-ID 2
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-an-example-of-cats-metric-dis" class="selfRef">An Example of CATS Metric Distribution in Hybrid Model</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="service-access-processing">
+<section id="section-4.4">
+        <h3 id="name-service-access-processing">
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-service-access-processing" class="section-name selfRef">Service Access Processing</a>
+        </h3>
+<p id="section-4.4-1">A C-PS computes paths that lead to Egress CATS-Forwarders according to both service and network metrics that were advertised. A C-PS may be collocated with an Ingress CATS-Forwarder (as shown in <a href="#fig-cats-example-overlay" class="auto internal xref">Figure 3</a>) or logically centralized (in a centralized model or hybrid model).<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">This document does not specify any algorithm for path computation and selection purposes to be supported by C-PSes. However, it is expected that a service request or local policy may feed the C-PS computation logic with Objective Functions that provide some information about the path characteristics (e.g., in terms of maximum latency) and the selected service contact instance.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.4-3">In the example shown in  <a href="#fig-cats-example-overlay" class="auto internal xref">Figure 3</a>, the client sends a service access via the network through the "CATS-Forwarder 1", which is an Ingress CATS-Forwarder. Note that, a service access may consist of one or more service packets (e.g., Session Initiation Protocol (SIP) <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span>, HTTP <span>[<a href="#RFC9112" class="cite xref">RFC9112</a>]</span>, IPv6 <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>, SRv6 <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> or Real-Time Streaming Protocol (RTSP) <span>[<a href="#RFC7826" class="cite xref">RFC7826</a>]</span>) that carry the CS-ID and potential parameters. The Ingress CATS-Forwarder classifies the packets using the information provided by the CATS classifier (C-TC). When a matching classification entry is found for the packets, the Ingress CATS-Forwarder encapsulates and forwards them to the C-PS selected Egress CATS-Forwarder. When these packets reach the Egress CATS-Forwarder, the outer header of the possible overlay encapsulation will be removed and the inner packets will be sent to the relevant service contact instance.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4.4-4.1">
+            <p id="section-4.4-4.1.1">Note that multi-homed clients may be connected to multiple CATS infrastructures that may be operated by the same or distinct service providers. This version of the framework does not cover multihoming specifics.<a href="#section-4.4-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+</section>
+</div>
+<div id="service-contact-instance-affinity">
+<section id="section-4.5">
+        <h3 id="name-service-contact-instance-af">
+<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-service-contact-instance-af" class="section-name selfRef">Service Contact Instance Affinity</a>
+        </h3>
+<p id="section-4.5-1">Instance affinity means that packets that belong to a flow associated with a service should always be sent to the same service contact instance. Furthermore, packets of a given flow should be forwarded along the same path to avoid mis-ordering and to prevent the introduction of unpredictable latency variations. Specifically, the same Egress CATS-Forwarder may be sollicited to forward the packets.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.5-2">The affinity is determined at the time of newly formulated service requests.<a href="#section-4.5-2" class="pilcrow">¶</a></p>
+<p id="section-4.5-3">Note that different services may have different notions of what constitutes a 'flow' and may, thus, identify a flow differently. Typically, a flow is identified by the 5-tuple transport coordinates (source and destination addresses, source and destination port numbers, and protocol). However, for instance, an RTP video stream may use different port numbers for video and audio channels: in that case, affinity may be identified as a combination of the two 5-tuple flow identifiers so that both flows are addressed to the same service contact instance.<a href="#section-4.5-3" class="pilcrow">¶</a></p>
+<p id="section-4.5-4">Hence, when specifying a protocol to communicate information about service contact instance affinity, a certain level of flexibility for identifying flows should be supported. Or, from a more general perspective, there should be a flexible mechanism to specify and identify the set of packets that are subject to a service contact instance affinity.<a href="#section-4.5-4" class="pilcrow">¶</a></p>
+<p id="section-4.5-5">More importantly, the means for identifying a flow for the purpose of ensuring instance affinity should be application-independent to avoid the need for service-specific instance affinity methods. However, service contact instance affinity information may be configurable on a per-service basis. For each service, the information can include the flow/packets identification type and means, affinity timeout value, etc.<a href="#section-4.5-5" class="pilcrow">¶</a></p>
+<p id="section-4.5-6">This document does not define any mechanism for defining or enforcing service contact instance affinity.<a href="#section-4.5-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-5">
+      <h2 id="name-security-considerations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-5-1">The computing resource information changes over time very frequently, especially with the creation and termination of service contact instances. When such an information is carried in a routing protocol, too many updates may affect network stability. This issue could be exploited by an attacker (e.g., by spawning and deleting service contact instances very rapidly). CATS solutions must support guards against such misbehaviors. For example, these solutions should support aggregation techniques, dampening mechanisms, and threshold-triggered distribution updates.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">The information distributed by the C-SMA and C-NMA agents may be sensitive. Such information could indeed disclose intel about the network and the location of compute resources hosted in service sites. This information may be used by an attacker to identify weak spots in an operator's network. Furthermore, such information may be modified by an attacker resulting in disrupted service delivery for the clients, up to and including misdirection of traffic to an attacker's service implementation. CATS solutions must support authentication and integrity-protection mechanisms between C-SMAs/C-NMAs and C-PSes, and between C-PSes and Ingress CATS-Forwarders. Also, C-SMA agents need to support a mechanism to authenticate the services for which they provide information to C-PS computation logics, among other CATS functions.<a href="#section-5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="privacy-considerations">
+<section id="section-6">
+      <h2 id="name-privacy-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
+      </h2>
+<p id="section-6-1">Means to prevent that on-path nodes in the underlay infrastructure to fingerprint and track clients (e.g., determine which client accesses which service) must be supported by CATS solutions. More generally, personal data must not be exposed to external parties by CATS beyond what is carried in the packet that was originally issued by the client.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">Since the service will, in some cases, need to know about applications, clients, and even user identity, the C-PS computed path information should be encrypted if the client/service communication is not already encrypted.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">For more discussion about privacy, refer to <span>[<a href="#RFC6462" class="cite xref">RFC6462</a>]</span> and <span>[<a href="#RFC6973" class="cite xref">RFC6973</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-7">
+      <h2 id="name-iana-considerations">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-7-1">This document makes no requests for IANA action.<a href="#section-7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-8">
+      <h2 id="name-informative-references">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+      </h2>
+<dl class="references">
+<dt id="I-D.ietf-cats-usecases-requirements">[I-D.ietf-cats-usecases-requirements]</dt>
+      <dd>
+<span class="refAuthor">Yao, K.</span>, <span class="refAuthor">Trossen, D.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Shi, H.</span>, <span class="refAuthor">Li, Y.</span>, <span class="refAuthor">Zhang, S.</span>, and <span class="refAuthor">Q. An</span>, <span class="refTitle">"Computing-Aware Traffic Steering (CATS) Problem Statement, Use Cases, and Requirements"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cats-usecases-requirements-03</span>, <time datetime="2024-07-03" class="refDate">3 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cats-usecases-requirements-03">https://datatracker.ietf.org/doc/html/draft-ietf-cats-usecases-requirements-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-teas-rfc3272bis">[I-D.ietf-teas-rfc3272bis]</dt>
+      <dd>
+<span class="refAuthor">Farrel, A.</span>, <span class="refTitle">"Overview and Principles of Internet Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc3272bis-27</span>, <time datetime="2023-08-12" class="refDate">12 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc3272bis-27">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc3272bis-27</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.yao-cats-awareness-architecture">[I-D.yao-cats-awareness-architecture]</dt>
+      <dd>
+<span class="refAuthor">Yao, H.</span>, <span class="refAuthor">wang, X.</span>, <span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Huang, D.</span>, and <span class="refAuthor">C. Lin</span>, <span class="refTitle">"Computing and Network Information Awareness (CNIA) system architecture for CATS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-yao-cats-awareness-architecture-02</span>, <time datetime="2023-10-22" class="refDate">22 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-yao-cats-awareness-architecture-02">https://datatracker.ietf.org/doc/html/draft-yao-cats-awareness-architecture-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1034">[RFC1034]</dt>
+      <dd>
+<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1034">https://www.rfc-editor.org/rfc/rfc1034</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3261">[RFC3261]</dt>
+      <dd>
+<span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Camarillo, G.</span>, <span class="refAuthor">Johnston, A.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Sparks, R.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-06" class="refDate">June 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3261">https://www.rfc-editor.org/rfc/rfc3261</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4026">[RFC4026]</dt>
+      <dd>
+<span class="refAuthor">Andersson, L.</span> and <span class="refAuthor">T. Madsen</span>, <span class="refTitle">"Provider Provisioned Virtual Private Network (VPN) Terminology"</span>, <span class="seriesInfo">RFC 4026</span>, <span class="seriesInfo">DOI 10.17487/RFC4026</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4026">https://www.rfc-editor.org/rfc/rfc4026</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4655">[RFC4655]</dt>
+      <dd>
+<span class="refAuthor">Farrel, A.</span>, <span class="refAuthor">Vasseur, J.-P.</span>, and <span class="refAuthor">J. Ash</span>, <span class="refTitle">"A Path Computation Element (PCE)-Based Architecture"</span>, <span class="seriesInfo">RFC 4655</span>, <span class="seriesInfo">DOI 10.17487/RFC4655</span>, <time datetime="2006-08" class="refDate">August 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4655">https://www.rfc-editor.org/rfc/rfc4655</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5340">[RFC5340]</dt>
+      <dd>
+<span class="refAuthor">Coltun, R.</span>, <span class="refAuthor">Ferguson, D.</span>, <span class="refAuthor">Moy, J.</span>, and <span class="refAuthor">A. Lindem</span>, <span class="refTitle">"OSPF for IPv6"</span>, <span class="seriesInfo">RFC 5340</span>, <span class="seriesInfo">DOI 10.17487/RFC5340</span>, <time datetime="2008-07" class="refDate">July 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5340">https://www.rfc-editor.org/rfc/rfc5340</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6462">[RFC6462]</dt>
+      <dd>
+<span class="refAuthor">Cooper, A.</span>, <span class="refTitle">"Report from the Internet Privacy Workshop"</span>, <span class="seriesInfo">RFC 6462</span>, <span class="seriesInfo">DOI 10.17487/RFC6462</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6462">https://www.rfc-editor.org/rfc/rfc6462</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6973">[RFC6973]</dt>
+      <dd>
+<span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Aboba, B.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Morris, J.</span>, <span class="refAuthor">Hansen, M.</span>, and <span class="refAuthor">R. Smith</span>, <span class="refTitle">"Privacy Considerations for Internet Protocols"</span>, <span class="seriesInfo">RFC 6973</span>, <span class="seriesInfo">DOI 10.17487/RFC6973</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6973">https://www.rfc-editor.org/rfc/rfc6973</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7471">[RFC7471]</dt>
+      <dd>
+<span class="refAuthor">Giacalone, S.</span>, <span class="refAuthor">Ward, D.</span>, <span class="refAuthor">Drake, J.</span>, <span class="refAuthor">Atlas, A.</span>, and <span class="refAuthor">S. Previdi</span>, <span class="refTitle">"OSPF Traffic Engineering (TE) Metric Extensions"</span>, <span class="seriesInfo">RFC 7471</span>, <span class="seriesInfo">DOI 10.17487/RFC7471</span>, <time datetime="2015-03" class="refDate">March 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7471">https://www.rfc-editor.org/rfc/rfc7471</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7826">[RFC7826]</dt>
+      <dd>
+<span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Rao, A.</span>, <span class="refAuthor">Lanphier, R.</span>, <span class="refAuthor">Westerlund, M.</span>, and <span class="refAuthor">M. Stiemerling, Ed.</span>, <span class="refTitle">"Real-Time Streaming Protocol Version 2.0"</span>, <span class="seriesInfo">RFC 7826</span>, <span class="seriesInfo">DOI 10.17487/RFC7826</span>, <time datetime="2016-12" class="refDate">December 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7826">https://www.rfc-editor.org/rfc/rfc7826</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8200">[RFC8200]</dt>
+      <dd>
+<span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8200">https://www.rfc-editor.org/rfc/rfc8200</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8570">[RFC8570]</dt>
+      <dd>
+<span class="refAuthor">Ginsberg, L., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Giacalone, S.</span>, <span class="refAuthor">Ward, D.</span>, <span class="refAuthor">Drake, J.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"IS-IS Traffic Engineering (TE) Metric Extensions"</span>, <span class="seriesInfo">RFC 8570</span>, <span class="seriesInfo">DOI 10.17487/RFC8570</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8570">https://www.rfc-editor.org/rfc/rfc8570</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8571">[RFC8571]</dt>
+      <dd>
+<span class="refAuthor">Ginsberg, L., Ed.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Tantsura, J.</span>, and <span class="refAuthor">C. Filsfils</span>, <span class="refTitle">"BGP - Link State (BGP-LS) Advertisement of IGP Traffic Engineering Performance Metric Extensions"</span>, <span class="seriesInfo">RFC 8571</span>, <span class="seriesInfo">DOI 10.17487/RFC8571</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8571">https://www.rfc-editor.org/rfc/rfc8571</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8754">[RFC8754]</dt>
+      <dd>
+<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Dukes, D., Ed.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">D. Voyer</span>, <span class="refTitle">"IPv6 Segment Routing Header (SRH)"</span>, <span class="seriesInfo">RFC 8754</span>, <span class="seriesInfo">DOI 10.17487/RFC8754</span>, <time datetime="2020-03" class="refDate">March 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8754">https://www.rfc-editor.org/rfc/rfc8754</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9112">[RFC9112]</dt>
+    <dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP/1.1"</span>, <span class="seriesInfo">STD 99</span>, <span class="seriesInfo">RFC 9112</span>, <span class="seriesInfo">DOI 10.17487/RFC9112</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9112">https://www.rfc-editor.org/rfc/rfc9112</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="acknowledgements">
+<section id="appendix-A">
+      <h2 id="name-acknowledgements">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+      </h2>
+<p id="appendix-A-1">The authors would like to thank Joel Halpern, John Scudder, Dino Farinacci, Adrian Farrel,
+Cullen Jennings, Linda Dunbar, Jeffrey Zhang, Peng Liu, Fang Gao, Aijun Wang, Cong Li,
+Xinxin Yi, Jari Arkko, Mingyu Wu, Haibo Wang, Xia Chen, Jianwei Mao, Guofeng Qian, Zhenbin Li,
+Xinyue Zhang, and Nagendra Kumar for their comments and suggestions.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Some text about various deployment models was originally documented in <span>[<a href="#I-D.yao-cats-awareness-architecture" class="cite xref">I-D.yao-cats-awareness-architecture</a>]</span>.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="contributors">
+<section id="appendix-B">
+      <h2 id="name-contributors">
+<a href="#name-contributors" class="section-name selfRef">Contributors</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Guangping Huang</span></div>
+<div dir="auto" class="left"><span class="org">ZTE</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:huang.guangping@zte.com.cn" class="email">huang.guangping@zte.com.cn</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Gyan Mishra</span></div>
+<div dir="auto" class="left"><span class="org">Verizon Inc.</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:hayabusagsm@gmail.com" class="email">hayabusagsm@gmail.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Huijuan Yao</span></div>
+<div dir="auto" class="left"><span class="org">China Mobile</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:yaohuijuan@chinamobile.com" class="email">yaohuijuan@chinamobile.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Yizhou Li</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:liyizhou@huawei.com" class="email">liyizhou@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Dirk Trossen</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:dirk.trossen@huawei.com" class="email">dirk.trossen@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Luigi Iannone</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:luigi.iannone@huawei.com" class="email">luigi.iannone@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Hang Shi</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:shihang9@huawei.com" class="email">shihang9@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Changwang Lin</span></div>
+<div dir="auto" class="left"><span class="org">New H3C Technologies</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:linchangwang.04414@h3c.com" class="email">linchangwang.04414@h3c.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Xueshun Wang</span></div>
+<div dir="auto" class="left"><span class="org">CICT</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:xswang@fiberhome.com" class="email">xswang@fiberhome.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Xuewei Wang</span></div>
+<div dir="auto" class="left"><span class="org">Ruijie Networks</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:wangxuewei1@ruijie.com.cn" class="email">wangxuewei1@ruijie.com.cn</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Christian Jacquenet</span></div>
+<div dir="auto" class="left"><span class="org">Orange</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:christian.jacquenet@orange.com" class="email">christian.jacquenet@orange.com</a>
+</div>
+</address>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-C">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Cheng Li (<span class="role">editor</span>)</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:c.l@huawei.com" class="email">c.l@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Zongpeng Du</span></div>
+<div dir="auto" class="left"><span class="org">China Mobile</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:duzongpeng@chinamobile.com" class="email">duzongpeng@chinamobile.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Mohamed Boucadair (<span class="role">editor</span>)</span></div>
+<div dir="auto" class="left"><span class="org">Orange</span></div>
+<div dir="auto" class="left"><span class="country-name">France</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:mohamed.boucadair@orange.com" class="email">mohamed.boucadair@orange.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Luis M. Contreras</span></div>
+<div dir="auto" class="left"><span class="org">Telefonica</span></div>
+<div dir="auto" class="left"><span class="country-name">Spain</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:luismiguel.contrerasmurillo@telefonica.com" class="email">luismiguel.contrerasmurillo@telefonica.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">John E Drake</span></div>
+<div dir="auto" class="left"><span class="org">Juniper Networks, Inc.</span></div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:je_drake@yahoo.com" class="email">je_drake@yahoo.com</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
