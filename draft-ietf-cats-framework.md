@@ -301,7 +301,7 @@ CATS nodes make forwarding decisions for a given service request that has been r
 
 ### Service Sites, Services Instances, and Service Contact Instances {#sec-service-sites}
 
-Service sites are locations that host resources (including computing resources) that are required to offer a service. As mentioned in {{cats-ids}}, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID). The CS-ID does not need to be globally unique, though.
+Service sites are the premises that host a set of computing resources. As mentioned in {{cats-ids}}, a compute service (e.g., for face recognition purposes or a game server) is uniquely identified by a CATS Service IDentifier (CS-ID). The CS-ID does not need to be globally unique, though.
 
 Service instances can be instantiated and accessed through different service sites so that a single service can be represented and accessed via several contact instances that run in different regions of a network.
 
