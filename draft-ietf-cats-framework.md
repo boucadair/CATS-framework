@@ -153,13 +153,8 @@ Service:
   : The same service can be provided in many locations; each of them constitutes a service instance.
 
 Computing Service:
-  : An offering that is made available by a provider by orchestrating a set of computing resources to process application content.
-
-  : Some differences and similarities exist between service and computing service:
-
-    * Service is packet-based, while computing service is transaction-based. Application content is exposed within a computing service.
-    * Both service and computing service can be "on-path" or on "endpoint", depending on the service logic or computing service logic that are defined by the provider.
-
+  : An offering is made available by a provider by orchestrating a set of computing resources.
+  
 CATS Service ID (CS-ID):
  : An identifier representing a service, which the clients use to access it. See {{cats-ids}}.
 
