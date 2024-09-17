@@ -814,9 +814,8 @@ Table of Contents
    This document does not specify any path computation and instance
    selection algorithm running in C-PSes.  However, it is expected that
    a service request or a policy may feed the C-PS computation logic
-   with Objective Functions that provide the optimization goal (e.g., in
-   terms of maximum latency) and preference in selecting the service
-   contact instance.
+   with optimization goals (e.g., in terms of maximum latency) and
+   preferences in selecting the service contact instance.
 
    In the example shown in Figure 3, the client sends a service access
    via the network through the "CATS-Forwarder 1", which is an Ingress
