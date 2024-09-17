@@ -154,7 +154,7 @@ Service:
 
 Computing Service:
   : An offering is made available by a provider by orchestrating a set of computing resources.
-  
+
 CATS Service ID (CS-ID):
  : An identifier representing a service, which the clients use to access it. See {{cats-ids}}.
 
