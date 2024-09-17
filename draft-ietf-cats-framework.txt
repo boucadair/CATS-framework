@@ -390,7 +390,7 @@ Table of Contents
              |  Contact   | |             |  Contact   | |
              |  Instance  |-+             |  Instance  |-+
              +------------+               +------------+
-              service site 1              service site 2
+              Service Site 1              Service Site 2
 
                     Figure 2: CATS Functional Components
 
@@ -665,8 +665,8 @@ Table of Contents
    service contact instances as reported by the metrics, and the state
    of the network.
 
-          Service CS-ID 1, instance CSCI-ID 1 <metrics>
-          Service CS-ID 1, instance CSCI-ID 2 <metrics>
+          Service CS-ID 1, contact instance CSCI-ID 1 <metrics>
+          Service CS-ID 1, contact instance CSCI-ID 2 <metrics>
 
                  :<----------------------:
                  :                       :               +---------+
@@ -696,7 +696,7 @@ Table of Contents
                  :                                :  +---|CS-ID 2|
                  :                                :      +-------+
                  :<-------------------------------:
-          Service CS-ID 1, instance CSCI-ID 3 <metrics>
+          Service CS-ID 1, contact instance CSCI-ID 3 <metrics>
           Service CS-ID 2, <metrics>
 
         Figure 3: An Example of CATS Metric Dessimination in a
@@ -747,7 +747,7 @@ Table of Contents
                 :                        +-------:------|CS-ID 2|-----+
                 :                                :      +-------+
                 :<-------------------------------:
-         Service CS-ID 1, instance CSCI-ID 3
+         Service CS-ID 1, contact instance CSCI-ID 3
          Service CS-ID 2
 
      Figure 4: An Example of CATS Metric Distribution in a Centralized
@@ -799,7 +799,7 @@ Table of Contents
                 :                        +-------:------|CS-ID 2|-----+
                 :                                :      +-------+
                 :<-------------------------------:
-         Service CS-ID 1, instance CSCI-ID 3, <metric 4,5>
+         Service CS-ID 1, contact instance CSCI-ID 3, <metric 4,5>
          Service CS-ID 2
 
       Figure 5: An Example of CATS Metric Distribution in Hybrid Model
