@@ -298,7 +298,7 @@ CATS nodes make forwarding decisions for a given service request that has been r
           |  Contact   | |             |  Contact   | |
           |  Instance  |-+             |  Instance  |-+
           +------------+               +------------+
-           service site 1              service site 2
+           Service Site 1              Service Site 2
 ~~~
 {: #fig-cats-components title="CATS Functional Components"}
 
@@ -410,8 +410,8 @@ In {{fig-cats-example-overlay}}, the C-SMA collocated with "CATS-Forwarder 2" di
 The service metric advertisements are processed by the C-PS hosted by "CATS-Forwarder 1". The C-PS also processes network metric advertisements sent by the C-NMA. All metrics are used by the C-PS to compute and select the most relevant path that leads to the Egress CATS-Forwarder according to the initial  client's service request, the service that is requested ("CS-ID 1" or "CS-ID 2"), the state of the service contact instances as reported by the metrics, and the state of the network.
 
 ~~~
-          Service CS-ID 1, instance CSCI-ID 1 <metrics>
-          Service CS-ID 1, instance CSCI-ID 2 <metrics>
+          Service CS-ID 1, contact instance CSCI-ID 1 <metrics>
+          Service CS-ID 1, contact instance CSCI-ID 2 <metrics>
 
                  :<----------------------:
                  :                       :               +---------+
@@ -441,7 +441,7 @@ The service metric advertisements are processed by the C-PS hosted by "CATS-Forw
                  :                                :  +---|CS-ID 2|
                  :                                :      +-------+
                  :<-------------------------------:
-          Service CS-ID 1, instance CSCI-ID 3 <metrics>
+          Service CS-ID 1, contact instance CSCI-ID 3 <metrics>
           Service CS-ID 2, <metrics>
 ~~~
 {: #fig-cats-example-overlay title="An Example of CATS Metric Dessimination in a Distributed Model"}
@@ -485,7 +485,7 @@ If the CATS framework is implemented using a centralized model, the metric can b
              :                        +-------:------|CS-ID 2|-----+
              :                                :      +-------+
              :<-------------------------------:
-      Service CS-ID 1, instance CSCI-ID 3
+      Service CS-ID 1, contact instance CSCI-ID 3
       Service CS-ID 2
 ~~~
 {: #fig-cats-centralized title="An Example of CATS Metric Distribution in a Centralized Model"}
@@ -528,7 +528,7 @@ If the CATS framework is implemented using an hybrid model, the metric can be di
              :                        +-------:------|CS-ID 2|-----+
              :                                :      +-------+
              :<-------------------------------:
-      Service CS-ID 1, instance CSCI-ID 3, <metric 4,5>
+      Service CS-ID 1, contact instance CSCI-ID 3, <metric 4,5>
       Service CS-ID 2
 ~~~
 {: #fig-cats-hybrid title="An Example of CATS Metric Distribution in Hybrid Model"}
