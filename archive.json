@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-17T01:01:27.417507+00:00",
+  "timestamp": "2024-09-19T01:14:45.419881+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -931,7 +931,7 @@
       "id": "I_kwDOJBcdGs6AsH3N",
       "title": "Clarify objective function",
       "url": "https://github.com/boucadair/CATS-framework/issues/65",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -940,8 +940,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-02-28T14:05:15Z",
-      "updatedAt": "2024-09-09T17:42:39Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-17T08:54:34Z",
+      "closedAt": "2024-09-17T08:54:34Z",
       "comments": [
         {
           "author": "muzixing",
@@ -3795,24 +3795,26 @@
       "id": "PR_kwDOJBcdGs56b29l",
       "title": "Update draft-ietf-cats-framework.md",
       "url": "https://github.com/boucadair/CATS-framework/pull/91",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "update to address Zongpeng's comments",
       "createdAt": "2024-09-04T19:08:11Z",
-      "updatedAt": "2024-09-16T15:58:15Z",
+      "updatedAt": "2024-09-17T06:20:27Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
-      "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
+      "baseRefOid": "84e700998a406d8c4608ce407501cbba5a376d31",
       "headRepository": "muzixing/CATS-Framework",
       "headRefName": "main",
-      "headRefOid": "384e77501ff05d7367863ff3b9bd41817c23d900",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "5c4b27f23b29cc237ba992ce51b164840fd9d116",
+      "closedAt": "2024-09-17T06:20:27Z",
+      "mergedAt": "2024-09-17T06:20:27Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "985d6e0c824ce2b4656ddc5641494255840d79b7"
+      },
       "comments": [
         {
           "author": "muzixing",
@@ -3939,9 +3941,9 @@
           "comments": [
             {
               "originalPosition": 137,
-              "body": "```suggestion\r\nThis document does not specify any path computation and instance selection algorithm running in C-PSes. However, it is expected that a service request or a policy may feed the C-PS computation logic with Objective Functions that provide the optimization goal or preference in selecting the service contact instance.\r\n```",
+              "body": "```suggestion\r\nThis document does not specify any path computation and instance selection algorithm running in C-PSes. However, it is expected that a service request or a policy may feed the C-PS computation logic with Objective Functions that provide the optimization goal (e.g., in terms of maximum latency) and preference in selecting the service contact instance.\r\n```",
               "createdAt": "2024-09-12T09:00:50Z",
-              "updatedAt": "2024-09-12T09:00:51Z"
+              "updatedAt": "2024-09-17T06:03:14Z"
             }
           ]
         },
@@ -4124,6 +4126,19 @@
               "updatedAt": "2024-09-12T15:59:55Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJBcdGs6Jl7DD",
+          "commit": {
+            "abbreviatedOid": "ab73ab0"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-17T06:06:28Z",
+          "updatedAt": "2024-09-17T06:06:28Z",
+          "comments": []
         }
       ]
     },
@@ -4312,25 +4327,33 @@
       "id": "PR_kwDOJBcdGs57ocK0",
       "title": "Revert \"Use consistent service site definition.\"",
       "url": "https://github.com/boucadair/CATS-framework/pull/95",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Reverts boucadair/CATS-framework#94\r\n\r\nWaiting for merge other PRs before this one",
       "createdAt": "2024-09-16T14:37:43Z",
-      "updatedAt": "2024-09-16T14:37:43Z",
+      "updatedAt": "2024-09-17T06:16:05Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "84e700998a406d8c4608ce407501cbba5a376d31",
       "headRepository": "boucadair/CATS-framework",
       "headRefName": "revert-94-VMatrix1900-patch-2",
       "headRefOid": "978ea96203d03dfbf8d31651a763142845e6fd52",
-      "closedAt": null,
+      "closedAt": "2024-09-17T06:16:05Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Fixed the conflicts directly in the other PR",
+          "createdAt": "2024-09-17T06:16:05Z",
+          "updatedAt": "2024-09-17T06:16:05Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -4338,25 +4361,76 @@
       "id": "PR_kwDOJBcdGs57odlG",
       "title": "Revert \"Rename CATS Instance Selector ID to CATS Service Contact Instance ID\"",
       "url": "https://github.com/boucadair/CATS-framework/pull/96",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Reverts boucadair/CATS-framework#93\r\n\r\nwaiting for mering #91 before this one.",
       "createdAt": "2024-09-16T14:40:21Z",
-      "updatedAt": "2024-09-16T14:40:21Z",
+      "updatedAt": "2024-09-17T06:16:45Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "84e700998a406d8c4608ce407501cbba5a376d31",
       "headRepository": "boucadair/CATS-framework",
       "headRefName": "revert-93-VMatrix1900-patch-1",
       "headRefOid": "68a79b68bdbab6de9cf95984af3aa1a183023a1c",
-      "closedAt": null,
+      "closedAt": "2024-09-17T06:16:44Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "No need for this",
+          "createdAt": "2024-09-17T06:16:44Z",
+          "updatedAt": "2024-09-17T06:16:44Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 97,
+      "id": "PR_kwDOJBcdGs57tbSV",
+      "title": "objective function",
+      "url": "https://github.com/boucadair/CATS-framework/pull/97",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "address [#](https://github.com/boucadair/CATS-framework/issues/65)",
+      "createdAt": "2024-09-17T06:22:16Z",
+      "updatedAt": "2024-09-17T08:54:34Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "985d6e0c824ce2b4656ddc5641494255840d79b7",
+      "headRepository": "boucadair/CATS-framework",
+      "headRefName": "objective-function",
+      "headRefOid": "347acd72847c4e9d178033f576a2e3628eb4feeb",
+      "closedAt": "2024-09-17T08:54:33Z",
+      "mergedAt": "2024-09-17T08:54:33Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "ea89f3010ef04a6787b15fb4529a23287c5e17ad"
+      },
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Approve. But let you merge the PR in case that you may want to merge PRs in order.",
+          "createdAt": "2024-09-17T08:35:49Z",
+          "updatedAt": "2024-09-17T08:35:49Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "After you merge this PR, I think we can update a new revision. As you are a Chair now, so it will be better for me to send the email to announce the update, and you to review and approve :)  Will merge this PR before Thursday if you do not have time to handle it. ",
+          "createdAt": "2024-09-17T08:38:53Z",
+          "updatedAt": "2024-09-17T08:38:53Z"
+        }
+      ],
       "reviews": []
     }
   ]
