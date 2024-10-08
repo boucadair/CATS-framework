@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-06T01:22:03.027265+00:00",
+  "timestamp": "2024-10-08T01:16:32.179278+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -1129,9 +1129,17 @@
       "labels": [],
       "body": "Hi WG,\r\n\r\nSection 3.5, \"Deployment Considerations,\" mentions both the Distributed and Centralized models.\r\nHowever, Section 4, \"CATS Framework Workflow,\" does not mention the Centralized model.\r\nI suggest adding a centralized workflow to the framework. Thank you.\r\n\r\n\r\nThanks,\r\nChangwang",
       "createdAt": "2024-07-09T14:16:46Z",
-      "updatedAt": "2024-07-09T14:16:46Z",
+      "updatedAt": "2024-10-07T13:52:33Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "we do have some text related to the centralized model in section 4. Already request for specific comments or text proposal in CATS ML. Awaiting for reply.",
+          "createdAt": "2024-10-07T13:52:32Z",
+          "updatedAt": "2024-10-07T13:52:32Z"
+        }
+      ]
     },
     {
       "number": 78,
@@ -4431,6 +4439,32 @@
           "updatedAt": "2024-09-17T08:38:53Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 98,
+      "id": "PR_kwDOJBcdGs591G4H",
+      "title": "Update draft-ietf-cats-framework.md",
+      "url": "https://github.com/boucadair/CATS-framework/pull/98",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "addressed Xinxin Yi's comment https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/",
+      "createdAt": "2024-10-07T14:55:16Z",
+      "updatedAt": "2024-10-07T14:55:16Z",
+      "baseRepository": "boucadair/CATS-framework",
+      "baseRefName": "main",
+      "baseRefOid": "dffbc1716e0590b11feeaa94ad61571ebe2726b7",
+      "headRepository": "muzixing/CATS-Framework",
+      "headRefName": "main",
+      "headRefOid": "b7ff53781b21967a3a608f67b7f8559fb0c0b4ca",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
