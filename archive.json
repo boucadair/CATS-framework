@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-08T01:16:32.179278+00:00",
+  "timestamp": "2024-10-10T01:16:15.172404+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -1026,31 +1026,39 @@
       "id": "I_kwDOJBcdGs6O85mu",
       "title": "comments from Hang SHI",
       "url": "https://github.com/boucadair/CATS-framework/issues/72",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/cats/vO2bvda_E8Mfb9RSm9nQrYZWPzw/",
       "createdAt": "2024-07-09T14:06:12Z",
-      "updatedAt": "2024-07-09T14:06:12Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-10-08T08:57:48Z",
+      "closedAt": "2024-10-08T08:57:48Z",
+      "comments": [
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "checked with Hang, we can closed the issue.",
+          "createdAt": "2024-10-08T08:57:48Z",
+          "updatedAt": "2024-10-08T08:57:48Z"
+        }
+      ]
     },
     {
       "number": 73,
       "id": "I_kwDOJBcdGs6O86h7",
       "title": "comments from Xinxin YI",
       "url": "https://github.com/boucadair/CATS-framework/issues/73",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/cats/sQxu5d355goklj47-A3kFVQIzpo/",
       "createdAt": "2024-07-09T14:07:55Z",
-      "updatedAt": "2024-07-09T14:13:36Z",
-      "closedAt": null,
+      "updatedAt": "2024-10-09T07:47:07Z",
+      "closedAt": "2024-10-09T07:47:06Z",
       "comments": [
         {
           "author": "muzixing",
@@ -1058,6 +1066,13 @@
           "body": "Answer from Cheng https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/\r\n",
           "createdAt": "2024-07-09T14:13:35Z",
           "updatedAt": "2024-07-09T14:13:35Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://github.com/boucadair/CATS-framework/pull/98 addressed this comment.",
+          "createdAt": "2024-10-09T07:47:06Z",
+          "updatedAt": "2024-10-09T07:47:06Z"
         }
       ]
     },
@@ -4453,7 +4468,7 @@
       "labels": [],
       "body": "addressed Xinxin Yi's comment https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/",
       "createdAt": "2024-10-07T14:55:16Z",
-      "updatedAt": "2024-10-07T14:55:16Z",
+      "updatedAt": "2024-10-08T12:54:55Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "dffbc1716e0590b11feeaa94ad61571ebe2726b7",
