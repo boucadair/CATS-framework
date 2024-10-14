@@ -396,7 +396,7 @@ For example, in a distributed model, CS-IDs with metrics can be distributed from
 
 In the centralized model, CS-IDs with metrics can be distributed from the C-SMA to a centralized control plane, for instance, a standalone C-PS.
 
-In the hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways. The specific combination of metric distribution is an implementation choice, which is determined by the requirements of specific services. 
+In the hybrid model, the metrics can be distributed to C-PSes in combination of distributed and centralized ways. The specific combination of metric distribution is an implementation choice, which is determined by the requirements of specific services.
 
 The service metrics include computing-related metrics and potentially other service-specific metrics like the number of end-users who access the service contact instance at any given time, their location, etc.
 
