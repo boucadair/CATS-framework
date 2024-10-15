@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-13T01:21:37.363485+00:00",
+  "timestamp": "2024-10-15T01:17:39.609564+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -1081,15 +1081,15 @@
       "id": "I_kwDOJBcdGs6O88Zt",
       "title": "Comments from Dirk",
       "url": "https://github.com/boucadair/CATS-framework/issues/74",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/cats/D5TX8rCfOn3mOSqkLid-paxZzU4/",
       "createdAt": "2024-07-09T14:11:21Z",
-      "updatedAt": "2024-09-11T13:44:23Z",
-      "closedAt": null,
+      "updatedAt": "2024-10-14T14:36:55Z",
+      "closedAt": "2024-10-14T14:36:55Z",
       "comments": [
         {
           "author": "dirk-trossen-huawei",
@@ -1097,6 +1097,13 @@
           "body": "Published pull request for changes addressing this issue and adding other issues identified",
           "createdAt": "2024-09-11T13:44:21Z",
           "updatedAt": "2024-09-11T13:44:21Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "addressed in https://github.com/boucadair/CATS-framework/pull/98/files\r\n",
+          "createdAt": "2024-10-14T14:36:55Z",
+          "updatedAt": "2024-10-14T14:36:55Z"
         }
       ]
     },
@@ -4170,21 +4177,21 @@
       "id": "PR_kwDOJBcdGs57KjQk",
       "title": "Addressed and added issues",
       "url": "https://github.com/boucadair/CATS-framework/pull/92",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dirk-trossen-huawei",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "see email from 11.09.2024 to CATS list on added items",
       "createdAt": "2024-09-11T13:41:23Z",
-      "updatedAt": "2024-09-12T08:52:13Z",
+      "updatedAt": "2024-10-14T14:38:06Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "f2c7bc0e1c79d091201583c96f43465799d68ad4",
       "headRepository": "dirk-trossen-huawei/CATS-framework",
       "headRefName": "dot",
       "headRefOid": "f4389e9a491d277181bfc01cd2cdaf8935e4cca2",
-      "closedAt": null,
+      "closedAt": "2024-10-14T14:38:06Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -4202,6 +4209,13 @@
           "body": "I would split these into separate issues and then create appropriate PR to address them individually. Thanks.",
           "createdAt": "2024-09-12T08:52:12Z",
           "updatedAt": "2024-09-12T08:52:12Z"
+        },
+        {
+          "author": "muzixing",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed in https://github.com/boucadair/CATS-framework/pull/98/files\r\n",
+          "createdAt": "2024-10-14T14:38:06Z",
+          "updatedAt": "2024-10-14T14:38:06Z"
         }
       ],
       "reviews": []
@@ -4468,13 +4482,13 @@
       "labels": [],
       "body": "addressed Xinxin Yi's comment https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/",
       "createdAt": "2024-10-07T14:55:16Z",
-      "updatedAt": "2024-10-08T12:54:55Z",
+      "updatedAt": "2024-10-14T14:35:17Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "dffbc1716e0590b11feeaa94ad61571ebe2726b7",
       "headRepository": "muzixing/CATS-Framework",
       "headRefName": "main",
-      "headRefOid": "b7ff53781b21967a3a608f67b7f8559fb0c0b4ca",
+      "headRefOid": "4c9ef6dd612b5efd976d112864db17a50c1deee6",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
