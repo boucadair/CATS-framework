@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-15T01:17:39.609564+00:00",
+  "timestamp": "2024-10-17T01:16:59.028365+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -4482,7 +4482,7 @@
       "labels": [],
       "body": "addressed Xinxin Yi's comment https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/",
       "createdAt": "2024-10-07T14:55:16Z",
-      "updatedAt": "2024-10-14T14:35:17Z",
+      "updatedAt": "2024-10-16T15:15:11Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "dffbc1716e0590b11feeaa94ad61571ebe2726b7",
