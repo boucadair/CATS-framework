@@ -140,7 +140,7 @@ Computing-Aware Traffic Steering (CATS):
  :  A traffic engineering approach {{?I-D.ietf-teas-rfc3272bis}} that takes into account the dynamic nature of computing resources and network state to optimize service-specific traffic forwarding towards a given service contact instance. Various relevant metrics may be used to enforce such computing-aware traffic steering policies.
 
 Metric:
-: A metric is any information that provides suitable input information to a selection mechanism to determine an CATS egress node.
+: An information that provides suitable input information to a selection mechanism to determine a CATS egress node.
 
 Service:
   : An offering that is made available by a provider by orchestrating a set of resources (networking, compute, storage, etc.).
