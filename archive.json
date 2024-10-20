@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-17T01:16:59.028365+00:00",
+  "timestamp": "2024-10-20T01:23:08.226380+00:00",
   "repo": "boucadair/CATS-framework",
   "labels": [
     {
@@ -4475,26 +4475,49 @@
       "id": "PR_kwDOJBcdGs591G4H",
       "title": "Update draft-ietf-cats-framework.md",
       "url": "https://github.com/boucadair/CATS-framework/pull/98",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "muzixing",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "addressed Xinxin Yi's comment https://mailarchive.ietf.org/arch/msg/cats/zEMQBkgEpm3rQQlLeyYlb04GJQ8/",
       "createdAt": "2024-10-07T14:55:16Z",
-      "updatedAt": "2024-10-16T15:15:11Z",
+      "updatedAt": "2024-10-17T13:02:40Z",
       "baseRepository": "boucadair/CATS-framework",
       "baseRefName": "main",
       "baseRefOid": "dffbc1716e0590b11feeaa94ad61571ebe2726b7",
       "headRepository": "muzixing/CATS-Framework",
       "headRefName": "main",
-      "headRefOid": "4c9ef6dd612b5efd976d112864db17a50c1deee6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "b3c0b0d1fe5d59e4b621943563cf79bd41dd69e7",
+      "closedAt": "2024-10-17T13:02:40Z",
+      "mergedAt": "2024-10-17T13:02:40Z",
+      "mergedBy": "muzixing",
+      "mergeCommit": {
+        "oid": "fc0b17f3f1d44fad710305b672f8333b87388c1a"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJBcdGs6Ni5EL",
+          "commit": {
+            "abbreviatedOid": "4c9ef6d"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Thanks.",
+          "createdAt": "2024-10-17T09:55:43Z",
+          "updatedAt": "2024-10-17T09:58:38Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n: An information that provides suitable input information to a selection mechanism to determine a CATS egress node.\r\n```",
+              "createdAt": "2024-10-17T09:55:44Z",
+              "updatedAt": "2024-10-17T09:58:38Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
